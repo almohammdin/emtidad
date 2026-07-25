@@ -252,3 +252,85 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .result-guide-head span{display:inline-flex;min-height:0;margin-bottom:7px}
  .result-guide-grid,.result-services-grid{grid-template-columns:1fr}
 }
+
+/* v0.3.7 transparent identity, controlled selects and score thermometer */
+.logo-stage{
+ width:auto!important;
+ min-height:0!important;
+ padding:0!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ box-shadow:none!important;
+ overflow:visible!important
+}
+.logo-stage:before,.logo-stage:after{display:none!important}
+.platform-logo{width:min(310px,72vw)!important;max-height:255px!important;filter:drop-shadow(0 14px 25px rgba(13,54,86,.10))!important}
+.platform-suite-badge{
+ display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:15px;
+ padding:8px 15px;border:1px solid rgba(13,54,86,.12);border-radius:999px;
+ background:rgba(255,255,255,.72);box-shadow:0 8px 24px rgba(13,54,86,.06);
+ color:var(--navy);font-size:14px;font-weight:700
+}
+.platform-suite-badge i{width:1px;height:18px;background:rgba(201,133,60,.58)}
+.platform-suite-badge strong{color:var(--gold);font-weight:900}
+.values-lead blockquote{
+ font-size:clamp(23px,3vw,34px)!important;
+ line-height:1.75!important
+}
+.form-group select,.knowledge-controls select{
+ -webkit-appearance:none;appearance:none;
+ padding-right:12px!important;padding-left:40px!important;
+ background-color:#fff!important;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230D3656' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E")!important;
+ background-repeat:no-repeat!important;background-position:left 13px center!important;background-size:16px!important
+}
+.result-guide{overflow:hidden}
+.result-thermometer{direction:ltr;padding:36px 10px 4px}
+.result-heat-bar{
+ position:relative;height:22px;border:4px solid #E2E5E4;border-radius:999px;
+ background:linear-gradient(90deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);
+ box-shadow:inset 0 1px 3px rgba(0,0,0,.18)
+}
+.result-heat-pointer{
+ position:absolute;left:var(--pointer);top:-39px;transform:translateX(-50%);
+ display:grid;justify-items:center;z-index:2
+}
+.result-heat-pointer strong{
+ display:block;min-width:46px;padding:4px 8px;border-radius:8px;background:var(--navy);
+ color:#fff!important;font-family:Arial,sans-serif!important;font-size:12px!important;line-height:1.2
+}
+.result-heat-pointer:after{
+ content:"";width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;
+ border-top:10px solid var(--navy)
+}
+.result-heat-ticks{
+ display:grid;grid-template-columns:repeat(6,1fr);margin-top:7px;color:#7C878F;
+ font-family:Arial,sans-serif!important;font-size:9px;font-weight:700
+}
+.result-heat-ticks span{text-align:center}
+.result-heat-ticks span:first-child{text-align:left}.result-heat-ticks span:last-child{text-align:right}
+.result-guide-grid{margin-top:12px}
+.result-guide-grid article{min-height:98px}
+.footer-social{display:grid;justify-items:center;gap:7px}
+.footer-links{gap:9px!important}
+.footer-links a{
+ width:42px;height:42px;min-height:42px!important;padding:0!important;justify-content:center!important;
+ border-radius:13px!important
+}
+.footer-links .social-icon{
+ width:100%!important;height:100%!important;flex-basis:100%!important;background:transparent!important
+}
+.footer-links .social-icon svg{width:18px!important;height:18px!important}
+.social-handle{color:#F0BF87;text-decoration:none;font-family:Arial,sans-serif!important;font-size:12px;font-weight:700;letter-spacing:.03em}
+@media(max-width:720px){
+ .platform-logo{width:min(255px,68vw)!important;max-height:220px!important}
+ .platform-suite-badge{gap:7px;padding:7px 11px;font-size:12px}
+ .values-lead blockquote{font-size:clamp(21px,7vw,28px)!important}
+ .footer-social{width:100%}
+ .footer-links{display:flex!important;justify-content:center!important;width:auto!important;max-width:none!important}
+ .footer-links a{width:41px}
+ .result-thermometer{padding-inline:0}
+ .result-guide-grid{display:grid;grid-template-columns:repeat(5,minmax(145px,1fr));overflow-x:auto;direction:ltr;padding-bottom:5px}
+ .result-guide-grid article{direction:rtl;min-height:105px}
+}

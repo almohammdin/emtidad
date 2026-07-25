@@ -1,12 +1,12 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.3.6';
+const VERSION='v0.3.7';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
  {value:'83%',title:'رؤساء مجالس الإدارة من العائلة',meaning:'تمثيل العائلة يتركز في مستوى القرار الاستراتيجي لدى الشركات العائلية المدرجة المشمولة بالتقرير.',region:'السعودية',sample:'الشركات العائلية المدرجة',year:'2022',source:'هيئة السوق المالية',kind:'دراسة بحثية لهيئة السوق المالية',url:'https://cma.gov.sa/AboutCMA/ResearchAndReports/Documents/Development%20of%20family%20businesses.pdf'},
  {value:'32%',title:'مديرون تنفيذيون من العائلة',meaning:'البيانات تعكس اتجاهاً أكبر إلى إسناد التنفيذ لكفاءات من داخل العائلة وخارجها.',region:'السعودية',sample:'الشركات العائلية المدرجة',year:'2022',source:'هيئة السوق المالية',kind:'مؤشر مستخلص من دراسة هيئة السوق المالية',url:'https://cma.gov.sa/AboutCMA/ResearchAndReports/Documents/Development%20of%20family%20businesses.pdf'},
- {value:'25%',title:'حققت نمواً مزدوج الرقم',meaning:'النمو القوي أصبح أكثر تركزاً بين الشركات التي تجمع الغرض والمرونة والاستثمار المقصود.',region:'62 دولة ومنطقة',sample:'1,325 شركة عائلية',year:'2025',source:'PwC',kind:'مسح مهني',url:'https://www.pwc.com/gx/en/issues/business-model-reinvention/family-business-survey.html'},
+ {value:'25%',title:'حققت نمواً مُضاعفاً',meaning:'النمو القوي أصبح أكثر تركزاً بين الشركات التي تجمع الغرض والمرونة والاستثمار المقصود.',region:'62 دولة ومنطقة',sample:'1,325 شركة عائلية',year:'2025',source:'PwC',kind:'مسح مهني',url:'https://www.pwc.com/gx/en/issues/business-model-reinvention/family-business-survey.html'},
  {value:'2,683',title:'شركة عائلية في تقرير عالمي',meaning:'التقرير يربط الأداء بالحوكمة والقيادة والاستدامة بين الأجيال والقدرة على الاستثمار الاستراتيجي.',region:'أكثر من 80 دولة',sample:'2,683 شركة',year:'2025',source:'KPMG وSTEP',kind:'تقرير مهني',url:'https://kpmg.com/us/en/articles/2025/global-family-business-report.html'}
 ];
 const axes=[
@@ -27,7 +27,7 @@ const knowledgeData=[
  {id:'fbcg-nxg',title:'برنامج الجيل القادم للشركات العائلية',type:'برنامج تعليمي',topic:'الجيل القادم',region:'خليجي وعالمي',year:'مستمر',level:'تمهيدي',source:'مجلس الشركات العائلية الخليجية',summary:'مسار للتعلم والتواصل والإرشاد يربط أفراد الجيل القادم بخبراء وأقران وشبكة دولية للشركات العائلية.',highlights:['تعلم وإرشاد','شبكة أقران دولية','تهيئة الجيل القادم'],url:'https://fbc-gulf.org/ar/about/next-generation/introduction',reviewed:'يوليو 2026'},
  {id:'cma2022',title:'تطور الشركات العائلية المدرجة في السوق المالية',type:'تقرير هيئة السوق المالية',topic:'الإدراج والحوكمة',region:'سعودي',year:'2022',level:'متوسط',source:'هيئة السوق المالية',summary:'تقرير بحثي يعرض تمثيل العائلة في المجالس والمناصب التنفيذية، والإدراج، والقيمة السوقية، وتوزع الشركات العائلية.',highlights:['83% من الرؤساء من العائلة','32% من التنفيذيين من العائلة','قراءة أثر الإدراج والحوكمة'],url:'https://cma.gov.sa/AboutCMA/ResearchAndReports/Documents/Development%20of%20family%20businesses.pdf',reviewed:'يوليو 2026'},
  {id:'ifc',title:'دليل IFC لحوكمة الشركات العائلية',type:'دليل عالمي',topic:'الحوكمة',region:'عالمي',year:'2011',level:'متوسط',source:'مؤسسة التمويل الدولية',summary:'دليل عملي يغطي مراحل المؤسس وشراكة الإخوة واتحاد أبناء العمومة، وهياكل حوكمة العائلة والمجلس والتعاقب.',highlights:['تعدد الأدوار داخل العائلة','مجلس العائلة وسياسة التوظيف','المجلس والمدير التنفيذي والتعاقب'],url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook',reviewed:'يوليو 2026'},
- {id:'pwc2025',title:'الاستطلاع العالمي الثاني عشر للشركات العائلية',type:'تقرير مهني',topic:'النمو والتجديد',region:'عالمي',year:'2025',level:'متوسط',source:'PwC',summary:'مسح عالمي يقرأ النمو والغرض والمرونة والاستثمار والتقنية بين الشركات العائلية.',highlights:['1,325 شركة في 62 نطاقاً','25% حققت نمواً مزدوج الرقم','الغرض والمرونة يرتبطان بالأداء'],url:'https://www.pwc.com/gx/en/issues/business-model-reinvention/family-business-survey.html',reviewed:'يوليو 2026'},
+ {id:'pwc2025',title:'الاستطلاع العالمي الثاني عشر للشركات العائلية',type:'تقرير مهني',topic:'النمو والتجديد',region:'عالمي',year:'2025',level:'متوسط',source:'PwC',summary:'مسح عالمي يقرأ النمو والغرض والمرونة والاستثمار والتقنية بين الشركات العائلية.',highlights:['1,325 شركة في 62 نطاقاً','25% حققت نمواً مُضاعفاً','الغرض والمرونة يرتبطان بالأداء'],url:'https://www.pwc.com/gx/en/issues/business-model-reinvention/family-business-survey.html',reviewed:'يوليو 2026'},
  {id:'kpmg2025',title:'التقرير العالمي للشركات العائلية 2025',type:'تقرير مهني',topic:'الأداء والحوكمة',region:'عالمي',year:'2025',level:'متخصص',source:'KPMG وSTEP',summary:'بحث عالمي يربط النمو بالحوكمة والقيادة والاستدامة والريادة والاستثمار الاستراتيجي.',highlights:['2,683 شركة','أكثر من 80 دولة','حوكمة وقيادة واستثمار'],url:'https://kpmg.com/us/en/articles/2025/global-family-business-report.html',reviewed:'يوليو 2026'},
  {id:'kpmg2026',title:'التقرير العالمي للشركات العائلية 2026',type:'تقرير مهني',topic:'الذكاء الاصطناعي والتجديد',region:'عالمي',year:'2026',level:'متخصص',source:'KPMG',summary:'رؤى حديثة حول التقنية والذكاء الاصطناعي والقيادة في الشركات العائلية والمؤسسة من المؤسس.',highlights:['1,927 قائداً ومساهمـاً وتنفيذياً','41 دولة','التقنية والقيادة والاستدامة'],url:'https://kpmg.com/xx/en/our-insights/ai-and-technology/global-family-business-report.html',reviewed:'يوليو 2026'},
  {id:'sedco2025',title:'إطار الحوكمة في التقرير المتكامل لسدكو 2025',type:'دراسة حالة',topic:'حوكمة العائلة والشركة',region:'سعودي',year:'2025',level:'متخصص',source:'سدكو القابضة',summary:'إفصاح مؤسسي حول الحوكمة ومراجعة المواثيق العائلية واللجان والشفافية وخلق القيمة المستدامة.',highlights:['تحديث المواثيق العائلية','حوكمة الشركة والمساهمين','إفصاح مؤسسي متكامل'],url:'https://annualreview.sedco.com/corporate_governance/governance_framework.html',reviewed:'يوليو 2026'},
@@ -135,7 +135,7 @@ function sanitizeFilePart(value){return String(value||'').trim().replace(/[\\/:*
 function reportFileName(){const name=sanitizeFilePart(state.profile.familyName)||'الشركة العائلية';return `إمتداد - تقرير تشخيص الاستدامة - ${name}`}
 function reportDate(){const d=new Date();return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`}
 function escapeAttr(v){return escapeHtml(v).replace(/`/g,'&#96;')}
-function printReport(){
+function printReportLegacy(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  const fileName=reportFileName();
  const logoUrl=new URL('assets/images/emtidad-logo.png',document.baseURI).href;
@@ -167,6 +167,78 @@ function printReport(){
  Promise.all([w.document.fonts?.ready||Promise.resolve(),waitImages]).then(()=>setTimeout(run,180));
 }
 
+function scorePointer(score){return Math.max(3,Math.min(97,Number(score)||0))}
+function thermometerMarkup(score,className='result-thermometer'){
+ return `<div class="${className}" style="--pointer:${scorePointer(score)}%"><div class="result-heat-bar"><span class="result-heat-pointer"><strong>${score}%</strong></span></div><div class="result-heat-ticks" aria-hidden="true"><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span></div></div>`
+}
+
+function printReport(){
+ const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
+ syncProfileInputs();
+ const fileName=reportFileName();
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.7',document.baseURI).href;
+ const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
+ const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
+ const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
+ const blackUrl=new URL('assets/fonts/TheYearofHandicrafts-Black.woff2',document.baseURI).href;
+ const axisHtml=r.axisScores.map(a=>`<article class="axis-box"><div><strong>${escapeHtml(a.title)}</strong><span>${a.score}%</span></div><i><b style="width:${a.score}%"></b></i></article>`).join('');
+ const list=(arr,type)=>arr.slice(0,type==='risk'?4:5).map((x,i)=>`<li><b>${i+1}</b><div><strong>${escapeHtml(type==='risk'?x.q:type==='doc'?x.doc:x.action)}</strong><span>${escapeHtml(type==='risk'?x.axis:type==='doc'?'وثيقة مقترحة للإنشاء أو التحديث':'أولوية مقترحة وفق الأثر والإلحاح')}</span></div></li>`).join('');
+ const reportLevels=RESULT_LEVELS.map(level=>`<div class="${r.overall>=level.min&&r.overall<=level.max?'active':''}"><strong>${level.min}–${level.max}</strong><span>${escapeHtml(level.label)}</span></div>`).join('');
+ const reportTools=['فحص صحة الحوكمة','منظومة أعمال المجالس','بوصلة النمو','سجل المخاطر'].map((title,i)=>{
+  const tool=naifToolsData.find(x=>x.title===title);if(!tool)return '';
+  return `<li class="tool-item"><a href="${escapeAttr(tool.url)}" target="_blank" rel="noopener"><b>${i+1}</b><div><strong>${escapeHtml(tool.title)}</strong><span>${escapeHtml(tool.desc)}</span></div><em>فتح الأداة</em></a></li>`;
+ }).join('');
+ const family=escapeHtml(state.profile.familyName||'غير محدد');
+ const generationMap={'1':'الجيل الأول','2':'الجيل الثاني','3':'الجيل الثالث','4':'الجيل الرابع فأكثر'};
+ const legalMap={llc:'شركة ذات مسؤولية محدودة',jsc:'شركة مساهمة',sjsc:'شركة مساهمة مبسطة',holding:'شركة قابضة',other:'شكل آخر'};
+ const boardMap={none:'غير موجود',informal:'ممارسة غير رسمية',formal:'مجلس رسمي'};
+ const profileCells=`<div class="profile-cell"><small>الجيل الحالي</small><strong>${generationMap[state.profile.generation]||'غير محدد'}</strong></div><div class="profile-cell"><small>عدد الملاك</small><strong>${escapeHtml(state.profile.owners||'غير محدد')}</strong></div><div class="profile-cell"><small>الشكل النظامي</small><strong>${legalMap[state.profile.legalForm]||'غير محدد'}</strong></div><div class="profile-cell"><small>مجلس الإدارة</small><strong>${boardMap[state.profile.board]||'غير محدد'}</strong></div>`;
+ const currentLevel=RESULT_LEVELS.find(level=>r.overall>=level.min&&r.overall<=level.max)||RESULT_LEVELS[0];
+ const reportHtml=`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${escapeHtml(fileName)}</title><style>
+ @font-face{font-family:Craft;src:url('${regularUrl}') format('woff2');font-weight:400;font-display:swap}
+ @font-face{font-family:Craft;src:url('${semiUrl}') format('woff2');font-weight:600;font-display:swap}
+ @font-face{font-family:Craft;src:url('${blackUrl}') format('woff2');font-weight:900;font-display:swap}
+ @page{size:A4;margin:7mm}
+ *{box-sizing:border-box;font-synthesis:none}
+ html,body{margin:0;background:#fff;color:#172532;font-family:Craft,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:optimizeLegibility}
+ .page{width:196mm;max-width:100%;min-height:283mm;margin:0 auto;display:flex;flex-direction:column;background:#fff}
+ .head{display:grid;grid-template-columns:102px 1fr auto;gap:14px;align-items:center;padding:11px 14px;border-radius:17px;background:linear-gradient(135deg,#F7EFE4,#EEF3F6);border:1px solid #E3D7C8}
+ .head img{width:96px;height:67px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:19px;font-weight:900}.head p{margin:1px 0 0;color:#68747D;font-size:10px}
+ .meta{text-align:left;font-size:9px;color:#6B7780;display:grid;gap:2px;justify-items:end}.meta strong{display:block;color:#0D3656;font-size:10.5px}
+ .summary{display:grid;grid-template-columns:108px 1fr;gap:14px;align-items:center;margin-top:8px;padding:11px;border:1px solid #E4DDD3;border-radius:15px;background:#FFFEFC}
+ .ring{width:98px;height:98px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#C9853C calc(var(--score)*1%),#E9E5DE 0);position:relative}
+ .ring:before{content:'';position:absolute;inset:9px;border-radius:50%;background:#fff}.ring div{position:relative;text-align:center}.ring strong{display:block;font-family:Arial,sans-serif;font-size:25px;color:#0D3656;line-height:1}.ring span{font-size:8px;color:#6F7A82}
+ .summary h2{margin:0 0 3px;color:#0D3656;font-size:18px}.summary p{margin:0;color:#59666F;font-size:9.7px;line-height:1.65}
+ .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:7px}.kpi{padding:6px 8px;border-radius:9px;background:#F7F3ED;border:1px solid #E8DED2}.kpi small{display:block;color:#7D868D;font-size:7px}.kpi strong{color:#0D3656;font-size:8.8px}
+ .guide{margin-top:7px;padding:8px 10px;border:1px solid #E5E0D8;border-radius:12px;background:#FAF8F4;break-inside:avoid}.guide-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.guide-head h3{margin:0;color:#0D3656;font-size:11px}.guide-head p{margin:0;color:#65717A;font-size:7.5px}.guide-head p strong{color:#B36B22}
+ .report-thermometer{direction:ltr;padding:25px 5px 0}.result-heat-bar{position:relative;height:15px;border:3px solid #E2E5E4;border-radius:999px;background:linear-gradient(90deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);box-shadow:inset 0 1px 2px rgba(0,0,0,.16)}
+ .result-heat-pointer{position:absolute;left:var(--pointer);top:-27px;transform:translateX(-50%);display:grid;justify-items:center}.result-heat-pointer strong{display:block;min-width:35px;padding:2px 5px;border-radius:5px;background:#0D3656;color:#fff;font-family:Arial,sans-serif;font-size:8px;line-height:1.25}.result-heat-pointer:after{content:'';width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #0D3656}
+ .result-heat-ticks{display:grid;grid-template-columns:repeat(6,1fr);margin-top:3px;color:#7C878F;font-family:Arial,sans-serif;font-size:6px;font-weight:700}.result-heat-ticks span{text-align:center}.result-heat-ticks span:first-child{text-align:left}.result-heat-ticks span:last-child{text-align:right}
+ .report-levels{direction:ltr;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:4px}.report-levels div{direction:rtl;text-align:center;padding:3px 2px;border-radius:6px;color:#77828A}.report-levels div.active{background:#0D3656;color:#fff}.report-levels strong,.report-levels span{display:block}.report-levels strong{font-family:Arial,sans-serif;font-size:5.8px}.report-levels span{font-size:6.4px;font-weight:700}
+ .profile-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:7px}.profile-cell{padding:5px 8px;border-radius:8px;background:#F7F3ED;border:1px solid #E8DED2}.profile-cell small{display:block;color:#7D868D;font-size:6.5px}.profile-cell strong{display:block;color:#0D3656;font-size:8px}
+ .axes{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-top:7px}.axis-box{padding:6px 8px;border:1px solid #E5E0D8;border-radius:9px;background:#fff}.axis-box div{display:flex;justify-content:space-between;gap:8px;font-size:8px}.axis-box strong{color:#263843}.axis-box span{color:#B36B22;font-family:Arial,sans-serif;font-weight:900}.axis-box i{display:block;height:4px;background:#ECE9E4;border-radius:999px;margin-top:4px;overflow:hidden}.axis-box b{display:block;height:100%;background:linear-gradient(90deg,#C9853C,#154D74);border-radius:999px}
+ .columns{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(151px,auto);gap:6px;margin-top:7px}.card{border:1px solid #E5E0D8;border-radius:11px;padding:9px;background:#fff;min-height:149px;break-inside:avoid}.card h3{margin:0 0 7px;color:#0D3656;font-size:11.5px}.card ol{list-style:none;padding:0;margin:0;display:grid;gap:5px}.card li{display:grid;grid-template-columns:20px 1fr;gap:5px;align-items:start}.card li>b,.tool-item a>b{width:20px;height:20px;border-radius:6px;background:#F2E4D4;color:#A86427;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:7px}.card li strong{display:block;color:#263843;font-size:7.9px;line-height:1.35}.card li span{display:block;color:#7B858C;font-size:6.5px;line-height:1.35;margin-top:1px}
+ .tool-item{display:block!important}.tool-item a{display:grid;grid-template-columns:20px 1fr auto;gap:5px;align-items:center;padding:2px;border-radius:7px;color:#263843;text-decoration:none}.tool-item a:hover{background:#F7F3ED}.tool-item em{color:#0D3656;font-size:6px;font-style:normal;font-weight:700}.tool-item strong{color:#0D3656!important;text-decoration:underline;text-decoration-color:#C9853C;text-underline-offset:2px}
+ .method{margin-top:7px;padding:6px 8px;border-radius:8px;background:#F8F4EE;color:#6A5D4F;font-size:6.8px;line-height:1.45;break-inside:avoid}
+ .doc-footer{margin-top:auto;display:grid;grid-template-columns:82px 1fr auto;gap:9px;align-items:center;border-top:1px solid #DED8CF;padding-top:7px;color:#65717A;font-size:6.8px;break-inside:avoid}.doc-footer img{width:78px;height:28px;object-fit:contain}.doc-footer-center{display:flex;align-items:center;justify-content:center;gap:8px}.suite-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #DCCDBB;border-radius:999px;background:#F8F4EE;color:#0D3656;font-size:7px;font-weight:900}.suite-badge i{width:1px;height:11px;background:#C9853C}.doc-footer a{color:#0D3656;text-decoration:none}.version{color:#B36B22;font-weight:900;font-size:6px}
+ @media print{html,body{width:210mm}.page{width:196mm;max-width:196mm;min-height:283mm}}
+ </style></head><body><main class="page">
+ <header class="head"><img src="${logoUrl}" alt="شعار إمتداد"><div><h1>منظومة الشركات العائلية | أداة إمتداد</h1><p>تقرير تشخيص جاهزية الاستدامة والانتقال المؤسسي</p></div><div class="meta"><strong>${family}</strong><span>${reportDate()}</span></div></header>
+ <section class="summary"><div class="ring" style="--score:${r.overall}"><div><strong>${r.overall}%</strong><span>جاهزية الاستدامة</span></div></div><div><h2>${escapeHtml(r.label)}</h2><p>${escapeHtml(r.desc)}</p><div class="kpis"><div class="kpi"><small>الثقة في النتيجة</small><strong>${r.confidence}%</strong></div><div class="kpi"><small>أقوى محور</small><strong>${escapeHtml(r.strongest.title)}</strong></div><div class="kpi"><small>الأكثر أولوية</small><strong>${escapeHtml(r.weakest.title)}</strong></div></div></div></section>
+ <section class="guide" aria-label="دليل قراءة النتيجة"><div class="guide-head"><h3>دليل قراءة النتيجة</h3><p><strong>${escapeHtml(currentLevel.label)}</strong> — ${escapeHtml(currentLevel.desc)}</p></div>${thermometerMarkup(r.overall,'report-thermometer')}<div class="report-levels">${reportLevels}</div></section>
+ <section class="profile-strip">${profileCells}</section><section class="axes">${axisHtml}</section>
+ <section class="columns"><article class="card"><h3>المخاطر والفجوات ذات الأولوية</h3><ol>${list(r.risks,'risk')}</ol></article><article class="card"><h3>الوثائق المطلوبة</h3><ol>${list(r.docs,'doc')}</ol></article><article class="card"><h3>أبرز الأولويات المقترحة</h3><ol>${list(r.priorities,'priority')}</ol></article><article class="card"><h3>أدوات مرتبطة بالنتيجة</h3><ol>${reportTools}</ol></article></section>
+ <div class="method"><strong>منهجية القراءة:</strong> يشير رأس المؤشر إلى موقع النتيجة الحالية بين التأسيس الأولي والاستدامة المتقدمة. يحسب كل محور من الأسئلة المنطبقة عليه، وخيار «لا ينطبق» يخرج السؤال من الحساب.</div>
+ <footer class="doc-footer"><img src="${naifUrl}" alt="شعار نايف المحمدي"><div class="doc-footer-center"><span class="suite-badge"><span>منظومة الشركات العائلية</span><i></i><strong>أداة إمتداد</strong></span><a href="${PLATFORM_URL}">${PLATFORM_URL}</a></div><span class="version">${VERSION}</span></footer>
+ </main></body></html>`;
+ const w=window.open('','_blank','width=1050,height=1400');
+ if(!w){toast('اسمح بالنوافذ المنبثقة لطباعة التقرير');return}
+ w.document.open();w.document.write(reportHtml);w.document.close();w.document.title=fileName;
+ const run=()=>{w.document.title=fileName;w.focus();w.onafterprint=()=>w.close();w.print()};
+ const waitImages=Promise.all([...w.document.images].map(img=>img.complete?Promise.resolve():new Promise(res=>{img.onload=img.onerror=res})));
+ Promise.all([w.document.fonts?.ready||Promise.resolve(),waitImages]).then(()=>setTimeout(run,220));
+}
+
 function enhanceResultActions(){
  const printBtn=$('printBtn');if(!printBtn)return;
  const footer=printBtn.closest('.result-footer');
@@ -176,7 +248,7 @@ function enhanceResultActions(){
  printBtn.innerHTML=`${icon('print')} تحميل التقرير PDF`;
  if(!$('resultGuide')){
   const guide=document.createElement('section');guide.className='result-guide';guide.id='resultGuide';
-  guide.innerHTML=`<div class="result-guide-head"><span>دليل مبسط</span><h3>كيف تقرأ النتيجة؟</h3><p>الدرجة تحدد مستوى نضج الممارسات؛ والمستوى المظلل هو نطاق نتيجتك الحالية.</p></div><div class="result-guide-grid">${RESULT_LEVELS.map(level=>`<article class="${state.result?.overall>=level.min&&state.result?.overall<=level.max?'active':''}"><strong>${level.min}–${level.max}</strong><h4>${level.label}</h4><p>${level.desc}</p></article>`).join('')}</div>`;
+  guide.innerHTML=`<div class="result-guide-head"><span>دليل النتيجة</span><h3>كيف تقرأ النتيجة؟</h3><p>يشير رأس المؤشر إلى موقع نتيجتك الحالية بين التأسيس الأولي والاستدامة المتقدمة.</p></div>${thermometerMarkup(state.result?.overall||0)}<div class="result-guide-grid">${RESULT_LEVELS.map(level=>`<article class="${state.result?.overall>=level.min&&state.result?.overall<=level.max?'active':''}"><strong>${level.min}–${level.max}</strong><h4>${level.label}</h4><p>${level.desc}</p></article>`).join('')}</div>`;
   footer?.parentElement?.querySelector('.result-summary')?.after(guide);
  }
  if(!$('resultServices')){
