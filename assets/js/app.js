@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.3.3';
+const VERSION='v0.3.4';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
@@ -151,6 +151,44 @@ function printReport(){
  Promise.all([w.document.fonts?.ready||Promise.resolve(),waitImages]).then(()=>setTimeout(run,180));
 }
 
+async function shareResult(){
+ const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
+ const family=String(state.profile.familyName||'الشركة العائلية').trim();
+ const priority=r.priorities?.[0]?.action||r.weakest?.title||'مراجعة أولويات الاستدامة';
+ const title=`نتيجة تشخيص إمتداد - ${family}`;
+ const summary=`نتيجة تشخيص جاهزية الاستدامة في إمتداد\n${family}\nالنتيجة: ${r.overall}%\nالمرحلة: ${r.label}\nالأولوية الأولى: ${priority}`;
+ try{
+  if(navigator.share){await navigator.share({title,text:summary,url:PLATFORM_URL});return}
+  await navigator.clipboard.writeText(`${summary}\n${PLATFORM_URL}`);
+  toast('تم نسخ ملخص النتيجة للمشاركة');
+ }catch(e){
+  if(e?.name==='AbortError')return;
+  try{
+   const area=document.createElement('textarea');area.value=`${summary}\n${PLATFORM_URL}`;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();toast('تم نسخ ملخص النتيجة للمشاركة');
+  }catch(_){toast('تعذرت المشاركة في هذا المتصفح')}
+ }
+}
+
+function enhanceResultActions(){
+ const printBtn=$('printBtn');if(!printBtn)return;
+ const footer=printBtn.closest('.result-footer');
+ const heading=footer?.querySelector('h3'),description=footer?.querySelector('p');
+ if(heading)heading.textContent='حفظ ومشاركة النتيجة';
+ if(description)description.textContent='احفظ التقرير بصيغة PDF أو شارك ملخص النتيجة مباشرة.';
+ printBtn.innerHTML=`${icon('print')} حفظ التقرير PDF`;
+ if(!$('shareBtn')){
+  const shareBtn=document.createElement('button');shareBtn.type='button';shareBtn.className='btn primary';shareBtn.id='shareBtn';shareBtn.innerHTML=`${icon('external')} مشاركة النتيجة`;printBtn.before(shareBtn);shareBtn.addEventListener('click',shareResult);
+ }
+ if(!$('resultServices')){
+  const extraByAxis={purpose:'شراكة',charter:'شراكة',ownership:'شراكة',company:'مصفوفة الصلاحيات',succession:'مصفوفة الصلاحيات',wealth:'فحص صحة الحوكمة',resilience:'مصفوفة الصلاحيات'};
+  const titles=[extraByAxis[state.result?.weakest?.id],'منظومة أعمال المجالس','فحص صحة الحوكمة'].filter(Boolean);
+  const tools=[...new Set(titles)].map(title=>naifToolsData.find(tool=>tool.title===title)).filter(Boolean);
+  const services=document.createElement('section');services.className='result-services';services.id='resultServices';
+  services.innerHTML=`<div class="result-services-head"><div><span>أدوات تكمل النتيجة</span><h3>خطوات عملية مرتبطة بالتشخيص</h3></div><p>روابط مباشرة لخدمات وأدوات تساعد على تحويل الأولويات إلى عمل منظم.</p></div><div class="result-services-grid">${tools.map(tool=>`<a href="${tool.url}" target="_blank" rel="noopener"><span class="service-icon">${icon(tool.icon)}</span><span><strong>${tool.title}</strong><small>${tool.desc}</small></span>${icon('external')}</a>`).join('')}</div>`;
+  footer?.parentElement?.querySelector('.method-card')?.before(services);
+ }
+}
+
 function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}}
 function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};state.answers=state.answers||{}}}catch(e){}}
@@ -196,6 +234,12 @@ function stage(score){if(score<25)return['مرحلة التأسيس المؤسس
 function buildResult(){const axisScores=applicableAxes().map(a=>({...a,...scoreAxis(a.id)})).filter(x=>x.score!==null);const overall=Math.round(axisScores.reduce((s,x)=>s+x.score,0)/axisScores.length);const answered=axisScores.reduce((s,x)=>s+x.answered,0),total=axisScores.reduce((s,x)=>s+x.total,0);const confidence=Math.round(answered/Math.max(1,total)*100);const [label,desc]=stage(overall);const all=[];axisScores.forEach(a=>applicableQuestions(a.id).forEach(q=>{const k=a.id+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k)||state.answers[k]===null)return;all.push({axis:a.title,axisId:a.id,q:q.q,value:state.answers[k],w:q.w,doc:q.doc,action:q.action,severity:(4-state.answers[k])*q.w})}));all.sort((a,b)=>b.severity-a.severity);const risks=all.slice(0,4);let docs=[...new Map(all.filter(x=>x.value<=2).map(x=>[x.doc,x])).values()].slice(0,5);let priorities=[...new Map(all.filter(x=>x.value<=2).map(x=>[x.action,x])).values()].slice(0,5);if(!docs.length)docs=[...new Map(all.map(x=>[x.doc,x])).values()].slice(0,3);if(!priorities.length)priorities=[...new Map(all.map(x=>[x.action,x])).values()].slice(0,3);const strongest=[...axisScores].sort((a,b)=>b.score-a.score)[0],weakest=[...axisScores].sort((a,b)=>a.score-b.score)[0];state.result={overall,confidence,label,desc,axisScores,risks,docs,priorities,strongest,weakest};save()}
 function resultPanel(){const r=state.result;if(!r){buildResult();return resultPanel()}const axisHtml=r.axisScores.map(a=>`<article class="axis-result"><div class="axis-result-head"><h4>${a.title}</h4><strong>${a.score}%</strong></div><div class="bar"><span style="width:${a.score}%"></span></div></article>`).join('');const list=(arr,type)=>arr.map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${type==='risk'?x.q:type==='doc'?x.doc:x.action}</strong><span>${type==='risk'?`${x.axis} · مستوى الإجابة ${x.value} من 4`:type==='doc'?'وثيقة مقترحة للإنشاء أو التحديث':'أولوية مقترحة وفق أثرها وإلحاحها'}</span></div></div>`).join('');return `<div class="panel-title"><div class="axis-icon">${icon('report')}</div><div><h3>نتيجة جاهزية الاستدامة</h3><p>درجة داخلية استرشادية تساعد على ترتيب الحوار والوثائق والأولويات.</p></div></div><div class="result-shell"><section class="result-summary"><div class="score-ring" style="--score:${r.overall}"><div><strong>${r.overall}%</strong><span>جاهزية الاستدامة</span></div></div><div><h3>${r.label}</h3><p>${r.desc}</p><div class="result-kpis"><div class="result-kpi"><small>الثقة في النتيجة</small><strong>${r.confidence}%</strong></div><div class="result-kpi"><small>أقوى محور</small><strong>${r.strongest.title}</strong></div><div class="result-kpi"><small>الأكثر أولوية</small><strong>${r.weakest.title}</strong></div></div></div></section><section class="axis-results">${axisHtml}</section><div class="result-grid"><section class="result-card"><h3>المخاطر والفجوات ذات الأولوية</h3><div class="risk-list">${list(r.risks,'risk')}</div></section><section class="result-card"><h3>الوثائق المطلوبة</h3><div class="doc-list">${list(r.docs,'doc')}</div></section><section class="result-card"><h3>أبرز الأولويات المقترحة</h3><div class="priority-list">${list(r.priorities,'priority')}</div></section><section class="result-card"><h3>معرفة مرتبطة بالنتيجة</h3><div class="priority-list">${knowledgeForAxis(r.weakest.id).map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${x.title}</strong><span>${x.source} · ${x.year}</span></div></div>`).join('')}</div></section></div><div class="method-card"><strong>منهجية التشخيص:</strong> يحسب كل محور من الأسئلة المنطبقة عليه وفق أهمية السؤال، ثم يحسب المتوسط بين المحاور المنطبقة. خيار «لا ينطبق» يخرج السؤال من الحساب، ومحور الوقف يدخل عند وجود وقف أو رغبة جادة في دراسته. النتيجة مقياس داخلي استرشادي وليست مقارنة سوقية.</div><div class="result-footer"><div><h3>المشاركة</h3><p>تقرير ملون من صفحة A4 واحدة.</p><div class="print-filename">اسم الملف المقترح: <strong>${escapeHtml(reportFileName())}.pdf</strong></div></div><div class="result-actions"><button class="btn ghost" id="restartBtn">إعادة التشخيص</button><button class="btn secondary" id="printBtn">${icon('print')} طباعة التقرير</button></div></div></div>`}
 function knowledgeForAxis(axisId){const map={purpose:['pwc2025','imd'],charter:['law11','ifc'],ownership:['law11','cma2022'],company:['cma2022','ifc'],succession:['ifc','insead'],wealth:['rajhiwaqf','masic'],resilience:['kpmg2025','pwc2025']};return (map[axisId]||['ifc','pwc2025']).map(id=>knowledgeData.find(x=>x.id===id)).filter(Boolean)}
-function renderDiagnostic(){const s=steps();if(state.step>=s.length)state.step=s.length-1;renderStepTabs();updateProgress();const current=s[state.step];$('diagPanel').innerHTML=current.id==='profile'?profilePanel():current.id==='result'?resultPanel():axisPanel(axes.find(a=>a.id===current.id));bindPanel()}
+function renderDiagnostic(){
+ const s=steps();if(state.step>=s.length)state.step=s.length-1;
+ renderStepTabs();updateProgress();
+ const current=s[state.step];
+ $('diagPanel').innerHTML=current.id==='profile'?profilePanel():current.id==='result'?resultPanel():axisPanel(axes.find(a=>a.id===current.id));
+ bindPanel();enhanceResultActions();
+}
 $('modalClose').addEventListener('click',()=>$('modal').hidden=true);$('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').hidden=true});
 load();renderStats();renderAxesPreview();setupKnowledgeFilters();renderKnowledge();renderCases();renderTools();renderCenters();renderDiagnostic();
