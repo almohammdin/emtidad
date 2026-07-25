@@ -253,7 +253,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .result-guide-grid,.result-services-grid{grid-template-columns:1fr}
 }
 
-/* v0.3.7 transparent identity, controlled selects and score thermometer */
+/* v0.3.8 transparent identity, RTL score scale and dual exports */
 .logo-stage{
  width:auto!important;
  min-height:0!important;
@@ -289,7 +289,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .result-thermometer{direction:ltr;padding:36px 10px 4px}
 .result-heat-bar{
  position:relative;height:22px;border:4px solid #E2E5E4;border-radius:999px;
- background:linear-gradient(90deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);
+ background:linear-gradient(270deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);
  box-shadow:inset 0 1px 3px rgba(0,0,0,.18)
 }
 .result-heat-pointer{
@@ -305,12 +305,12 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  border-top:10px solid var(--navy)
 }
 .result-heat-ticks{
- display:grid;grid-template-columns:repeat(6,1fr);margin-top:7px;color:#7C878F;
+ direction:rtl;display:grid;grid-template-columns:repeat(6,1fr);margin-top:7px;color:#7C878F;
  font-family:Arial,sans-serif!important;font-size:9px;font-weight:700
 }
 .result-heat-ticks span{text-align:center}
-.result-heat-ticks span:first-child{text-align:left}.result-heat-ticks span:last-child{text-align:right}
-.result-guide-grid{margin-top:12px}
+.result-heat-ticks span:first-child{text-align:right}.result-heat-ticks span:last-child{text-align:left}
+.result-guide-grid{direction:rtl;margin-top:12px}
 .result-guide-grid article{min-height:98px}
 .footer-social{display:grid;justify-items:center;gap:7px}
 .footer-links{gap:9px!important}
@@ -331,6 +331,6 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .footer-links{display:flex!important;justify-content:center!important;width:auto!important;max-width:none!important}
  .footer-links a{width:41px}
  .result-thermometer{padding-inline:0}
- .result-guide-grid{display:grid;grid-template-columns:repeat(5,minmax(145px,1fr));overflow-x:auto;direction:ltr;padding-bottom:5px}
+ .result-guide-grid{display:grid;grid-template-columns:repeat(5,minmax(145px,1fr));overflow-x:auto;direction:rtl;padding-bottom:5px}
  .result-guide-grid article{direction:rtl;min-height:105px}
 }

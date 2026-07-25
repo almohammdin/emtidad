@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.3.7';
+const VERSION='v0.3.8';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
@@ -167,7 +167,7 @@ function printReportLegacy(){
  Promise.all([w.document.fonts?.ready||Promise.resolve(),waitImages]).then(()=>setTimeout(run,180));
 }
 
-function scorePointer(score){return Math.max(3,Math.min(97,Number(score)||0))}
+function scorePointer(score){return Math.max(3,Math.min(97,100-(Number(score)||0)))}
 function thermometerMarkup(score,className='result-thermometer'){
  return `<div class="${className}" style="--pointer:${scorePointer(score)}%"><div class="result-heat-bar"><span class="result-heat-pointer"><strong>${score}%</strong></span></div><div class="result-heat-ticks" aria-hidden="true"><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span></div></div>`
 }
@@ -176,7 +176,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.7',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.8',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -198,10 +198,10 @@ function printReport(){
  @font-face{font-family:Craft;src:url('${regularUrl}') format('woff2');font-weight:400;font-display:swap}
  @font-face{font-family:Craft;src:url('${semiUrl}') format('woff2');font-weight:600;font-display:swap}
  @font-face{font-family:Craft;src:url('${blackUrl}') format('woff2');font-weight:900;font-display:swap}
- @page{size:A4;margin:7mm}
+ @page{size:A4;margin:10mm}
  *{box-sizing:border-box;font-synthesis:none}
  html,body{margin:0;background:#fff;color:#172532;font-family:Craft,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:optimizeLegibility}
- .page{width:196mm;max-width:100%;min-height:283mm;margin:0 auto;display:flex;flex-direction:column;background:#fff}
+ .page{width:100%;max-width:190mm;min-height:277mm;margin:0 auto;display:flex;flex-direction:column;background:#fff;overflow:hidden}
  .head{display:grid;grid-template-columns:102px 1fr auto;gap:14px;align-items:center;padding:11px 14px;border-radius:17px;background:linear-gradient(135deg,#F7EFE4,#EEF3F6);border:1px solid #E3D7C8}
  .head img{width:96px;height:67px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:19px;font-weight:900}.head p{margin:1px 0 0;color:#68747D;font-size:10px}
  .meta{text-align:left;font-size:9px;color:#6B7780;display:grid;gap:2px;justify-items:end}.meta strong{display:block;color:#0D3656;font-size:10.5px}
@@ -211,17 +211,17 @@ function printReport(){
  .summary h2{margin:0 0 3px;color:#0D3656;font-size:18px}.summary p{margin:0;color:#59666F;font-size:9.7px;line-height:1.65}
  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:7px}.kpi{padding:6px 8px;border-radius:9px;background:#F7F3ED;border:1px solid #E8DED2}.kpi small{display:block;color:#7D868D;font-size:7px}.kpi strong{color:#0D3656;font-size:8.8px}
  .guide{margin-top:7px;padding:8px 10px;border:1px solid #E5E0D8;border-radius:12px;background:#FAF8F4;break-inside:avoid}.guide-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.guide-head h3{margin:0;color:#0D3656;font-size:11px}.guide-head p{margin:0;color:#65717A;font-size:7.5px}.guide-head p strong{color:#B36B22}
- .report-thermometer{direction:ltr;padding:25px 5px 0}.result-heat-bar{position:relative;height:15px;border:3px solid #E2E5E4;border-radius:999px;background:linear-gradient(90deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);box-shadow:inset 0 1px 2px rgba(0,0,0,.16)}
+ .report-thermometer{direction:ltr;padding:25px 5px 0}.result-heat-bar{position:relative;height:15px;border:3px solid #E2E5E4;border-radius:999px;background:linear-gradient(270deg,#D9362B 0%,#F06B23 24%,#F2C43C 45%,#A8CF36 66%,#3CA653 100%);box-shadow:inset 0 1px 2px rgba(0,0,0,.16)}
  .result-heat-pointer{position:absolute;left:var(--pointer);top:-27px;transform:translateX(-50%);display:grid;justify-items:center}.result-heat-pointer strong{display:block;min-width:35px;padding:2px 5px;border-radius:5px;background:#0D3656;color:#fff;font-family:Arial,sans-serif;font-size:8px;line-height:1.25}.result-heat-pointer:after{content:'';width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid #0D3656}
- .result-heat-ticks{display:grid;grid-template-columns:repeat(6,1fr);margin-top:3px;color:#7C878F;font-family:Arial,sans-serif;font-size:6px;font-weight:700}.result-heat-ticks span{text-align:center}.result-heat-ticks span:first-child{text-align:left}.result-heat-ticks span:last-child{text-align:right}
- .report-levels{direction:ltr;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:4px}.report-levels div{direction:rtl;text-align:center;padding:3px 2px;border-radius:6px;color:#77828A}.report-levels div.active{background:#0D3656;color:#fff}.report-levels strong,.report-levels span{display:block}.report-levels strong{font-family:Arial,sans-serif;font-size:5.8px}.report-levels span{font-size:6.4px;font-weight:700}
+ .result-heat-ticks{direction:rtl;display:grid;grid-template-columns:repeat(6,1fr);margin-top:3px;color:#7C878F;font-family:Arial,sans-serif;font-size:6px;font-weight:700}.result-heat-ticks span{text-align:center}.result-heat-ticks span:first-child{text-align:right}.result-heat-ticks span:last-child{text-align:left}
+ .report-levels{direction:rtl;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:4px}.report-levels div{direction:rtl;text-align:center;padding:3px 2px;border-radius:6px;color:#77828A}.report-levels div.active{background:#0D3656;color:#fff}.report-levels strong,.report-levels span{display:block}.report-levels strong{font-family:Arial,sans-serif;font-size:5.8px}.report-levels span{font-size:6.4px;font-weight:700}
  .profile-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:7px}.profile-cell{padding:5px 8px;border-radius:8px;background:#F7F3ED;border:1px solid #E8DED2}.profile-cell small{display:block;color:#7D868D;font-size:6.5px}.profile-cell strong{display:block;color:#0D3656;font-size:8px}
  .axes{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-top:7px}.axis-box{padding:6px 8px;border:1px solid #E5E0D8;border-radius:9px;background:#fff}.axis-box div{display:flex;justify-content:space-between;gap:8px;font-size:8px}.axis-box strong{color:#263843}.axis-box span{color:#B36B22;font-family:Arial,sans-serif;font-weight:900}.axis-box i{display:block;height:4px;background:#ECE9E4;border-radius:999px;margin-top:4px;overflow:hidden}.axis-box b{display:block;height:100%;background:linear-gradient(90deg,#C9853C,#154D74);border-radius:999px}
- .columns{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:minmax(151px,auto);gap:6px;margin-top:7px}.card{border:1px solid #E5E0D8;border-radius:11px;padding:9px;background:#fff;min-height:149px;break-inside:avoid}.card h3{margin:0 0 7px;color:#0D3656;font-size:11.5px}.card ol{list-style:none;padding:0;margin:0;display:grid;gap:5px}.card li{display:grid;grid-template-columns:20px 1fr;gap:5px;align-items:start}.card li>b,.tool-item a>b{width:20px;height:20px;border-radius:6px;background:#F2E4D4;color:#A86427;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:7px}.card li strong{display:block;color:#263843;font-size:7.9px;line-height:1.35}.card li span{display:block;color:#7B858C;font-size:6.5px;line-height:1.35;margin-top:1px}
- .tool-item{display:block!important}.tool-item a{display:grid;grid-template-columns:20px 1fr auto;gap:5px;align-items:center;padding:2px;border-radius:7px;color:#263843;text-decoration:none}.tool-item a:hover{background:#F7F3ED}.tool-item em{color:#0D3656;font-size:6px;font-style:normal;font-weight:700}.tool-item strong{color:#0D3656!important;text-decoration:underline;text-decoration-color:#C9853C;text-underline-offset:2px}
+ .columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-auto-rows:minmax(147px,auto);gap:6px;margin-top:7px}.card{min-width:0;border:1px solid #E5E0D8;border-radius:11px;padding:9px;background:#fff;min-height:145px;break-inside:avoid}.card h3{margin:0 0 7px;color:#0D3656;font-size:11.5px}.card ol{list-style:none;padding:0;margin:0;display:grid;gap:5px}.card li{min-width:0;display:grid;grid-template-columns:20px minmax(0,1fr);gap:5px;align-items:start}.card li>b,.tool-item a>b{width:20px;height:20px;border-radius:6px;background:#F2E4D4;color:#A86427;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:7px}.card li strong{display:block;color:#263843;font-size:7.9px;line-height:1.35;overflow-wrap:anywhere}.card li span{display:block;color:#7B858C;font-size:6.5px;line-height:1.35;margin-top:1px;overflow-wrap:anywhere}
+ .tool-item{display:block!important}.tool-item a{min-width:0;display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:5px;align-items:center;padding:2px;border-radius:7px;color:#263843;text-decoration:none}.tool-item a:hover{background:#F7F3ED}.tool-item em{color:#0D3656;font-size:6px;font-style:normal;font-weight:700;white-space:nowrap}.tool-item strong{color:#0D3656!important;text-decoration:underline;text-decoration-color:#C9853C;text-underline-offset:2px}
  .method{margin-top:7px;padding:6px 8px;border-radius:8px;background:#F8F4EE;color:#6A5D4F;font-size:6.8px;line-height:1.45;break-inside:avoid}
- .doc-footer{margin-top:auto;display:grid;grid-template-columns:82px 1fr auto;gap:9px;align-items:center;border-top:1px solid #DED8CF;padding-top:7px;color:#65717A;font-size:6.8px;break-inside:avoid}.doc-footer img{width:78px;height:28px;object-fit:contain}.doc-footer-center{display:flex;align-items:center;justify-content:center;gap:8px}.suite-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #DCCDBB;border-radius:999px;background:#F8F4EE;color:#0D3656;font-size:7px;font-weight:900}.suite-badge i{width:1px;height:11px;background:#C9853C}.doc-footer a{color:#0D3656;text-decoration:none}.version{color:#B36B22;font-weight:900;font-size:6px}
- @media print{html,body{width:210mm}.page{width:196mm;max-width:196mm;min-height:283mm}}
+ .doc-footer{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #DED8CF;padding-top:7px;color:#65717A;font-size:6.8px;break-inside:avoid}.doc-footer-brand{min-width:0;display:flex;align-items:center;gap:7px}.doc-footer img{width:72px;height:27px;object-fit:contain;flex:0 0 auto}.suite-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #DCCDBB;border-radius:999px;background:#F8F4EE;color:#0D3656;font-size:7px;font-weight:900;white-space:nowrap}.suite-badge i{width:1px;height:11px;background:#C9853C}.doc-footer-link{direction:ltr;display:flex;align-items:center;gap:6px;white-space:nowrap}.doc-footer a{color:#0D3656;text-decoration:none}.version{color:#B36B22;font-weight:900;font-size:6px}
+ @media print{html,body{width:auto}.page{width:100%;max-width:190mm;min-height:277mm}}
  </style></head><body><main class="page">
  <header class="head"><img src="${logoUrl}" alt="شعار إمتداد"><div><h1>منظومة الشركات العائلية | أداة إمتداد</h1><p>تقرير تشخيص جاهزية الاستدامة والانتقال المؤسسي</p></div><div class="meta"><strong>${family}</strong><span>${reportDate()}</span></div></header>
  <section class="summary"><div class="ring" style="--score:${r.overall}"><div><strong>${r.overall}%</strong><span>جاهزية الاستدامة</span></div></div><div><h2>${escapeHtml(r.label)}</h2><p>${escapeHtml(r.desc)}</p><div class="kpis"><div class="kpi"><small>الثقة في النتيجة</small><strong>${r.confidence}%</strong></div><div class="kpi"><small>أقوى محور</small><strong>${escapeHtml(r.strongest.title)}</strong></div><div class="kpi"><small>الأكثر أولوية</small><strong>${escapeHtml(r.weakest.title)}</strong></div></div></div></section>
@@ -229,7 +229,7 @@ function printReport(){
  <section class="profile-strip">${profileCells}</section><section class="axes">${axisHtml}</section>
  <section class="columns"><article class="card"><h3>المخاطر والفجوات ذات الأولوية</h3><ol>${list(r.risks,'risk')}</ol></article><article class="card"><h3>الوثائق المطلوبة</h3><ol>${list(r.docs,'doc')}</ol></article><article class="card"><h3>أبرز الأولويات المقترحة</h3><ol>${list(r.priorities,'priority')}</ol></article><article class="card"><h3>أدوات مرتبطة بالنتيجة</h3><ol>${reportTools}</ol></article></section>
  <div class="method"><strong>منهجية القراءة:</strong> يشير رأس المؤشر إلى موقع النتيجة الحالية بين التأسيس الأولي والاستدامة المتقدمة. يحسب كل محور من الأسئلة المنطبقة عليه، وخيار «لا ينطبق» يخرج السؤال من الحساب.</div>
- <footer class="doc-footer"><img src="${naifUrl}" alt="شعار نايف المحمدي"><div class="doc-footer-center"><span class="suite-badge"><span>منظومة الشركات العائلية</span><i></i><strong>أداة إمتداد</strong></span><a href="${PLATFORM_URL}">${PLATFORM_URL}</a></div><span class="version">${VERSION}</span></footer>
+ <footer class="doc-footer"><div class="doc-footer-brand"><img src="${naifUrl}" alt="شعار نايف المحمدي"><span class="suite-badge"><span>منظومة الشركات العائلية</span><i></i><strong>أداة إمتداد</strong></span></div><div class="doc-footer-link"><a href="${PLATFORM_URL}">almohammdin.github.io/emtidad/</a><span class="version">${VERSION}</span></div></footer>
  </main></body></html>`;
  const w=window.open('','_blank','width=1050,height=1400');
  if(!w){toast('اسمح بالنوافذ المنبثقة لطباعة التقرير');return}
@@ -239,12 +239,191 @@ function printReport(){
  Promise.all([w.document.fonts?.ready||Promise.resolve(),waitImages]).then(()=>setTimeout(run,220));
 }
 
+function canvasRoundRect(ctx,x,y,width,height,radius){
+ const r=Math.min(radius,width/2,height/2);
+ ctx.beginPath();
+ ctx.moveTo(x+r,y);
+ ctx.arcTo(x+width,y,x+width,y+height,r);
+ ctx.arcTo(x+width,y+height,x,y+height,r);
+ ctx.arcTo(x,y+height,x,y,r);
+ ctx.arcTo(x,y,x+width,y,r);
+ ctx.closePath();
+}
+
+function canvasCard(ctx,x,y,width,height,radius,fill='#FFFFFF',stroke='#E7DED2'){
+ canvasRoundRect(ctx,x,y,width,height,radius);
+ ctx.fillStyle=fill;ctx.fill();
+ if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}
+}
+
+function canvasLines(ctx,text,maxWidth,maxLines=3){
+ const words=String(text||'').trim().split(/\s+/).filter(Boolean),lines=[];
+ let line='';
+ words.forEach(word=>{
+  const candidate=line?`${line} ${word}`:word;
+  if(ctx.measureText(candidate).width<=maxWidth||!line)line=candidate;
+  else{lines.push(line);line=word}
+ });
+ if(line)lines.push(line);
+ if(lines.length>maxLines){
+  lines.length=maxLines;
+  let last=lines[maxLines-1];
+  while(last&&ctx.measureText(`${last}…`).width>maxWidth)last=last.split(' ').slice(0,-1).join(' ');
+  lines[maxLines-1]=`${last}…`;
+ }
+ return lines;
+}
+
+function canvasWrappedText(ctx,text,x,y,maxWidth,lineHeight,maxLines=3){
+ const lines=canvasLines(ctx,text,maxWidth,maxLines);
+ lines.forEach((line,index)=>ctx.fillText(line,x,y+(index*lineHeight)));
+ return y+(lines.length*lineHeight);
+}
+
+function canvasImageContain(ctx,img,x,y,width,height){
+ const scale=Math.min(width/img.naturalWidth,height/img.naturalHeight);
+ const drawWidth=img.naturalWidth*scale,drawHeight=img.naturalHeight*scale;
+ ctx.drawImage(img,x+(width-drawWidth)/2,y+(height-drawHeight)/2,drawWidth,drawHeight);
+}
+
+function loadCanvasImage(src){
+ return new Promise((resolve,reject)=>{
+  const img=new Image();
+  img.onload=()=>resolve(img);
+  img.onerror=()=>reject(new Error(`تعذر تحميل الصورة: ${src}`));
+  img.src=src;
+ });
+}
+
+async function buildResultImageCanvas(){
+ const r=state.result;if(!r)throw new Error('لا توجد نتيجة للتصدير');
+ syncProfileInputs();
+ await (document.fonts?.ready||Promise.resolve());
+ const [logo,naif]=await Promise.all([
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.3.8',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
+ ]);
+ const canvas=document.createElement('canvas');
+ canvas.width=1600;canvas.height=2000;
+ const ctx=canvas.getContext('2d',{alpha:false});
+ const navy='#0D3656',navy2='#154D74',gold='#C9853C',ink='#263843',muted='#68747D',paper='#F7F5F1';
+ const font='EmtidadCraft, Arial, sans-serif';
+ ctx.fillStyle=paper;ctx.fillRect(0,0,canvas.width,canvas.height);
+ const bg=ctx.createLinearGradient(0,0,1600,2000);
+ bg.addColorStop(0,'#FFFFFF');bg.addColorStop(.52,'#F8F6F2');bg.addColorStop(1,'#F1F5F7');
+ ctx.fillStyle=bg;ctx.fillRect(0,0,1600,2000);
+ ctx.fillStyle=gold;ctx.fillRect(0,0,1600,14);
+ ctx.globalAlpha=.045;ctx.fillStyle=gold;
+ [180,470,820,1260,1510].forEach((x,index)=>{ctx.beginPath();ctx.arc(x,210+(index%2)*130,95+(index*17),0,Math.PI*2);ctx.fill()});
+ ctx.globalAlpha=1;
+ ctx.direction='rtl';
+ canvasImageContain(ctx,logo,655,38,290,290);
+ ctx.textAlign='center';ctx.fillStyle=navy;ctx.font=`900 51px ${font}`;
+ ctx.fillText('منظومة الشركات العائلية | أداة إمتداد',800,355);
+ ctx.fillStyle=muted;ctx.font=`600 25px ${font}`;
+ ctx.fillText('نتيجة تشخيص جاهزية الاستدامة والانتقال المؤسسي',800,405);
+ const family=state.profile.familyName||'الشركة العائلية';
+ ctx.fillStyle=gold;ctx.font=`700 23px ${font}`;
+ ctx.fillText(`${family}  •  ${reportDate()}`,800,452);
+
+ canvasCard(ctx,90,500,1420,270,34,'#FFFFFF','#E4DDD3');
+ const ringX=1330,ringY=635,ringRadius=92;
+ ctx.lineWidth=22;ctx.strokeStyle='#E9E5DE';ctx.beginPath();ctx.arc(ringX,ringY,ringRadius,0,Math.PI*2);ctx.stroke();
+ ctx.strokeStyle=gold;ctx.lineCap='round';ctx.beginPath();ctx.arc(ringX,ringY,ringRadius,-Math.PI/2,(-Math.PI/2)+(Math.PI*2*(r.overall/100)));ctx.stroke();ctx.lineCap='butt';
+ ctx.textAlign='center';ctx.fillStyle=navy;ctx.font=`900 54px Arial`;
+ ctx.fillText(`${r.overall}%`,ringX,635);
+ ctx.fillStyle=muted;ctx.font=`600 18px ${font}`;ctx.fillText('النتيجة الكلية',ringX,674);
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 40px ${font}`;
+ ctx.fillText(r.label,1140,570);
+ ctx.fillStyle=muted;ctx.font=`500 24px ${font}`;
+ canvasWrappedText(ctx,r.desc,1140,620,900,41,3);
+ const kpis=[
+  ['الثقة في النتيجة',`${r.confidence}%`],
+  ['أقوى محور',r.strongest.title],
+  ['الأكثر أولوية',r.weakest.title]
+ ];
+ kpis.forEach((item,index)=>{
+  const x=110+(index*330);
+  canvasCard(ctx,x,690,305,58,15,'#F7F3ED','#E8DED2');
+  ctx.textAlign='right';ctx.fillStyle=muted;ctx.font=`500 16px ${font}`;ctx.fillText(item[0],x+285,714);
+  ctx.fillStyle=navy;ctx.font=`800 18px ${font}`;ctx.fillText(item[1],x+285,738);
+ });
+
+ canvasCard(ctx,90,810,1420,250,30,'#FFFEFC','#E5E0D8');
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 30px ${font}`;ctx.fillText('دليل قراءة النتيجة',1450,860);
+ const level=RESULT_LEVELS.find(item=>r.overall>=item.min&&r.overall<=item.max)||RESULT_LEVELS[0];
+ ctx.fillStyle=muted;ctx.font=`500 19px ${font}`;ctx.fillText(`${level.label}: ${level.desc}`,1450,895);
+ const barX=150,barY=970,barWidth=1300,barHeight=30;
+ const heat=ctx.createLinearGradient(barX,0,barX+barWidth,0);
+ heat.addColorStop(0,'#3CA653');heat.addColorStop(.34,'#A8CF36');heat.addColorStop(.55,'#F2C43C');heat.addColorStop(.76,'#F06B23');heat.addColorStop(1,'#D9362B');
+ canvasRoundRect(ctx,barX,barY,barWidth,barHeight,15);ctx.fillStyle=heat;ctx.fill();ctx.strokeStyle='#DDE2E1';ctx.lineWidth=8;ctx.stroke();
+ const pointerX=barX+(barWidth*(1-(r.overall/100)));
+ canvasCard(ctx,pointerX-49,barY-69,98,43,11,navy,null);
+ ctx.textAlign='center';ctx.fillStyle='#FFFFFF';ctx.font='800 19px Arial';ctx.fillText(`${r.overall}%`,pointerX,barY-41);
+ ctx.beginPath();ctx.moveTo(pointerX-12,barY-26);ctx.lineTo(pointerX+12,barY-26);ctx.lineTo(pointerX,barY-8);ctx.closePath();ctx.fillStyle=navy;ctx.fill();
+ ctx.direction='ltr';ctx.font='700 16px Arial';ctx.fillStyle=muted;
+ [0,20,40,60,80,100].forEach(value=>{const x=barX+(barWidth*(1-(value/100)));ctx.textAlign='center';ctx.fillText(String(value),x,1035)});
+ ctx.direction='rtl';
+
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 31px ${font}`;ctx.fillText('نتائج المحاور',1510,1125);
+ r.axisScores.slice(0,6).forEach((axis,index)=>{
+  const col=index%2,row=Math.floor(index/2),x=col===0?825:90,y=1155+(row*122),width=685;
+  canvasCard(ctx,x,y,width,101,22,'#FFFFFF','#E5E0D8');
+  ctx.textAlign='right';ctx.fillStyle=ink;ctx.font=`800 21px ${font}`;ctx.fillText(axis.title,x+width-28,y+36);
+  ctx.textAlign='left';ctx.fillStyle=gold;ctx.font='900 22px Arial';ctx.fillText(`${axis.score}%`,x+28,y+36);
+  canvasRoundRect(ctx,x+28,y+62,width-56,12,6);ctx.fillStyle='#ECE9E4';ctx.fill();
+  const fillWidth=(width-56)*(axis.score/100);
+  canvasRoundRect(ctx,x+width-28-fillWidth,y+62,fillWidth,12,6);
+  const axisGradient=ctx.createLinearGradient(x+28,0,x+width-28,0);axisGradient.addColorStop(0,gold);axisGradient.addColorStop(1,navy2);
+  ctx.fillStyle=axisGradient;ctx.fill();
+ });
+
+ const prioritiesY=1540;
+ canvasCard(ctx,90,prioritiesY,1420,300,30,'#FFFFFF','#E5E0D8');
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 31px ${font}`;ctx.fillText('أبرز الأولويات المقترحة',1450,1595);
+ r.priorities.slice(0,3).forEach((priority,index)=>{
+  const y=1645+(index*58);
+  canvasCard(ctx,1360,y-30,46,46,13,'#F2E4D4',null);
+  ctx.textAlign='center';ctx.fillStyle=gold;ctx.font='900 19px Arial';ctx.fillText(String(index+1),1383,y);
+  ctx.textAlign='right';ctx.fillStyle=ink;ctx.font=`700 21px ${font}`;
+  canvasWrappedText(ctx,priority.action,1335,y,1160,29,2);
+ });
+
+ ctx.strokeStyle='#DED8CF';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(90,1890);ctx.lineTo(1510,1890);ctx.stroke();
+ canvasImageContain(ctx,naif,1280,1910,220,58);
+ canvasCard(ctx,820,1915,420,48,24,'#F8F4EE','#DCCDBB');
+ ctx.textAlign='center';ctx.fillStyle=navy;ctx.font=`800 17px ${font}`;ctx.fillText('منظومة الشركات العائلية  |  أداة إمتداد',1030,1946);
+ ctx.direction='ltr';ctx.textAlign='left';ctx.fillStyle=navy;ctx.font='700 16px Arial';
+ ctx.fillText('almohammdin.github.io/emtidad/',100,1938);
+ ctx.fillStyle=gold;ctx.font='800 14px Arial';ctx.fillText(VERSION,100,1964);
+ return canvas;
+}
+
+async function exportResultImage(){
+ if(!state.result){toast('اعرض النتيجة أولا');return}
+ const btn=$('imageBtn'),original=btn?.innerHTML;
+ if(btn){btn.disabled=true;btn.setAttribute('aria-busy','true');btn.textContent='جارٍ تجهيز الصورة…'}
+ try{
+  const canvas=await buildResultImageCanvas();
+  const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('تعذر إنشاء ملف الصورة')),'image/png'));
+  const url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download=`${reportFileName()}.png`;document.body.appendChild(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),2000);
+  if(btn)btn.dataset.exported='1600x2000';
+  toast('تم تجهيز صورة النتيجة بدقة عالية');
+ }catch(error){
+  console.error(error);toast('تعذر تصدير الصورة، حاول مرة أخرى');
+ }finally{
+  if(btn){btn.disabled=false;btn.removeAttribute('aria-busy');btn.innerHTML=original}
+ }
+}
+
 function enhanceResultActions(){
  const printBtn=$('printBtn');if(!printBtn)return;
  const footer=printBtn.closest('.result-footer');
  const heading=footer?.querySelector('h3'),description=footer?.querySelector('p');
- if(heading)heading.textContent='تحميل التقرير';
- if(description)description.textContent='افتح التقرير ثم اختر «حفظ بتنسيق PDF» لتنزيله.';
+ if(heading)heading.textContent='تصدير النتيجة';
+ if(description)description.textContent='نزّل صورة عالية الدقة أو افتح تقرير PDF الجاهز للطباعة.';
  printBtn.innerHTML=`${icon('print')} تحميل التقرير PDF`;
  if(!$('resultGuide')){
   const guide=document.createElement('section');guide.className='result-guide';guide.id='resultGuide';
@@ -299,11 +478,11 @@ function validateProfile(){const required=['generation','owners','branches','leg
 function unanswered(axisId){return applicableQuestions(axisId).filter(q=>!Object.prototype.hasOwnProperty.call(state.answers,axisId+'_'+q.id))}
 function canAdvanceTo(target){if(target===0)return true;if(!validateProfile())return false;const s=steps();for(let i=1;i<Math.min(target,s.length-1);i++){const id=s[i].id;if(unanswered(id).length){toast('أكمل إجابات المحاور السابقة');return false}}return true}
 function syncProfileInputs(){document.querySelectorAll('#diagPanel input[id],#diagPanel select[id]').forEach(el=>{state.profile[el.id]=el.value})}
-function bindPanel(){document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{state.profile[el.id]=el.value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));$('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save()});$('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save()});$('printBtn')?.addEventListener('click',printReport);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})}
+function bindPanel(){document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{state.profile[el.id]=el.value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));$('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save()});$('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save()});$('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})}
 function scoreAxis(axisId){const qs=applicableQuestions(axisId);let earned=0,max=0,answered=0;qs.forEach(q=>{const k=axisId+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k))return;const v=state.answers[k];if(v===null)return;earned+=v*q.w;max+=4*q.w;answered++});return {score:max?Math.round(earned/max*100):null,answered,total:qs.length}}
 function stage(score){const level=RESULT_LEVELS.find(x=>score>=x.min&&score<=x.max)||RESULT_LEVELS[0];return[level.label,level.desc]}
 function buildResult(){const axisScores=applicableAxes().map(a=>({...a,...scoreAxis(a.id)})).filter(x=>x.score!==null);const overall=Math.round(axisScores.reduce((s,x)=>s+x.score,0)/axisScores.length);const answered=axisScores.reduce((s,x)=>s+x.answered,0),total=axisScores.reduce((s,x)=>s+x.total,0);const confidence=Math.round(answered/Math.max(1,total)*100);const [label,desc]=stage(overall);const all=[];axisScores.forEach(a=>applicableQuestions(a.id).forEach(q=>{const k=a.id+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k)||state.answers[k]===null)return;all.push({axis:a.title,axisId:a.id,q:q.q,value:state.answers[k],w:q.w,doc:q.doc,action:q.action,severity:(4-state.answers[k])*q.w})}));all.sort((a,b)=>b.severity-a.severity);const risks=all.slice(0,4);let docs=[...new Map(all.filter(x=>x.value<=2).map(x=>[x.doc,x])).values()].slice(0,5);let priorities=[...new Map(all.filter(x=>x.value<=2).map(x=>[x.action,x])).values()].slice(0,5);if(!docs.length)docs=[...new Map(all.map(x=>[x.doc,x])).values()].slice(0,3);if(!priorities.length)priorities=[...new Map(all.map(x=>[x.action,x])).values()].slice(0,3);const strongest=[...axisScores].sort((a,b)=>b.score-a.score)[0],weakest=[...axisScores].sort((a,b)=>a.score-b.score)[0];state.result={overall,confidence,label,desc,axisScores,risks,docs,priorities,strongest,weakest};save()}
-function resultPanel(){const r=state.result;if(!r){buildResult();return resultPanel()}const axisHtml=r.axisScores.map(a=>`<article class="axis-result"><div class="axis-result-head"><h4>${a.title}</h4><strong>${a.score}%</strong></div><div class="bar"><span style="width:${a.score}%"></span></div></article>`).join('');const list=(arr,type)=>arr.map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${type==='risk'?x.q:type==='doc'?x.doc:x.action}</strong><span>${type==='risk'?`${x.axis} · مستوى الإجابة ${x.value} من 4`:type==='doc'?'وثيقة مقترحة للإنشاء أو التحديث':'أولوية مقترحة وفق أثرها وإلحاحها'}</span></div></div>`).join('');return `<div class="panel-title"><div class="axis-icon">${icon('report')}</div><div><h3>نتيجة جاهزية الاستدامة</h3><p>درجة داخلية استرشادية تساعد على ترتيب الحوار والوثائق والأولويات.</p></div></div><div class="result-shell"><section class="result-summary"><div class="score-ring" style="--score:${r.overall}"><div><strong>${r.overall}%</strong><span>جاهزية الاستدامة</span></div></div><div><h3>${r.label}</h3><p>${r.desc}</p><div class="result-kpis"><div class="result-kpi"><small>الثقة في النتيجة</small><strong>${r.confidence}%</strong></div><div class="result-kpi"><small>أقوى محور</small><strong>${r.strongest.title}</strong></div><div class="result-kpi"><small>الأكثر أولوية</small><strong>${r.weakest.title}</strong></div></div></div></section><section class="axis-results">${axisHtml}</section><div class="result-grid"><section class="result-card"><h3>المخاطر والفجوات ذات الأولوية</h3><div class="risk-list">${list(r.risks,'risk')}</div></section><section class="result-card"><h3>الوثائق المطلوبة</h3><div class="doc-list">${list(r.docs,'doc')}</div></section><section class="result-card"><h3>أبرز الأولويات المقترحة</h3><div class="priority-list">${list(r.priorities,'priority')}</div></section><section class="result-card"><h3>معرفة مرتبطة بالنتيجة</h3><div class="priority-list">${knowledgeForAxis(r.weakest.id).map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${x.title}</strong><span>${x.source} · ${x.year}</span></div></div>`).join('')}</div></section></div><div class="method-card"><strong>منهجية التشخيص:</strong> يحسب كل محور من الأسئلة المنطبقة عليه وفق أهمية السؤال، ثم يحسب المتوسط بين المحاور المنطبقة. خيار «لا ينطبق» يخرج السؤال من الحساب، ومحور الوقف يدخل عند وجود وقف أو رغبة جادة في دراسته. النتيجة مقياس داخلي استرشادي وليست مقارنة سوقية.</div><div class="result-footer"><div><h3>تحميل التقرير</h3><p>افتح التقرير ثم اختر «حفظ بتنسيق PDF» لتنزيله.</p><div class="print-filename">اسم الملف المقترح: <strong>${escapeHtml(reportFileName())}.pdf</strong></div></div><div class="result-actions"><button class="btn ghost" id="restartBtn">إعادة التشخيص</button><button class="btn secondary" id="printBtn">${icon('print')} تحميل التقرير PDF</button></div></div></div>`}
+function resultPanel(){const r=state.result;if(!r){buildResult();return resultPanel()}const axisHtml=r.axisScores.map(a=>`<article class="axis-result"><div class="axis-result-head"><h4>${a.title}</h4><strong>${a.score}%</strong></div><div class="bar"><span style="width:${a.score}%"></span></div></article>`).join('');const list=(arr,type)=>arr.map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${type==='risk'?x.q:type==='doc'?x.doc:x.action}</strong><span>${type==='risk'?`${x.axis} · مستوى الإجابة ${x.value} من 4`:type==='doc'?'وثيقة مقترحة للإنشاء أو التحديث':'أولوية مقترحة وفق أثرها وإلحاحها'}</span></div></div>`).join('');return `<div class="panel-title"><div class="axis-icon">${icon('report')}</div><div><h3>نتيجة جاهزية الاستدامة</h3><p>درجة داخلية استرشادية تساعد على ترتيب الحوار والوثائق والأولويات.</p></div></div><div class="result-shell"><section class="result-summary"><div class="score-ring" style="--score:${r.overall}"><div><strong>${r.overall}%</strong><span>جاهزية الاستدامة</span></div></div><div><h3>${r.label}</h3><p>${r.desc}</p><div class="result-kpis"><div class="result-kpi"><small>الثقة في النتيجة</small><strong>${r.confidence}%</strong></div><div class="result-kpi"><small>أقوى محور</small><strong>${r.strongest.title}</strong></div><div class="result-kpi"><small>الأكثر أولوية</small><strong>${r.weakest.title}</strong></div></div></div></section><section class="axis-results">${axisHtml}</section><div class="result-grid"><section class="result-card"><h3>المخاطر والفجوات ذات الأولوية</h3><div class="risk-list">${list(r.risks,'risk')}</div></section><section class="result-card"><h3>الوثائق المطلوبة</h3><div class="doc-list">${list(r.docs,'doc')}</div></section><section class="result-card"><h3>أبرز الأولويات المقترحة</h3><div class="priority-list">${list(r.priorities,'priority')}</div></section><section class="result-card"><h3>معرفة مرتبطة بالنتيجة</h3><div class="priority-list">${knowledgeForAxis(r.weakest.id).map((x,i)=>`<div class="result-item"><div class="result-index">${i+1}</div><div><strong>${x.title}</strong><span>${x.source} · ${x.year}</span></div></div>`).join('')}</div></section></div><div class="method-card"><strong>منهجية التشخيص:</strong> يحسب كل محور من الأسئلة المنطبقة عليه وفق أهمية السؤال، ثم يحسب المتوسط بين المحاور المنطبقة. خيار «لا ينطبق» يخرج السؤال من الحساب، ومحور الوقف يدخل عند وجود وقف أو رغبة جادة في دراسته. النتيجة مقياس داخلي استرشادي وليست مقارنة سوقية.</div><div class="result-footer"><div><h3>تصدير النتيجة</h3><p>نزّل صورة عالية الدقة أو افتح تقرير PDF الجاهز للطباعة.</p><div class="print-filename">اسم الملف المقترح: <strong>${escapeHtml(reportFileName())}</strong></div></div><div class="result-actions"><button class="btn ghost" id="restartBtn">إعادة التشخيص</button><button class="btn ghost" id="imageBtn">${icon('report')} تصدير النتيجة صورة</button><button class="btn secondary" id="printBtn">${icon('print')} تحميل التقرير PDF</button></div></div></div>`}
 function knowledgeForAxis(axisId){const map={purpose:['pwc2025','imd'],charter:['law11','ifc'],ownership:['law11','cma2022'],company:['cma2022','ifc'],succession:['ifc','insead'],wealth:['rajhiwaqf','masic'],resilience:['kpmg2025','pwc2025']};return (map[axisId]||['ifc','pwc2025']).map(id=>knowledgeData.find(x=>x.id===id)).filter(Boolean)}
 function renderDiagnostic(){
  const s=steps();if(state.step>=s.length)state.step=s.length-1;
