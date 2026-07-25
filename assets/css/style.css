@@ -204,7 +204,6 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .result-services-grid>a>svg{width:15px;height:15px;color:var(--gold)}
 .result-services-grid strong{display:block;font-size:13px}
 .result-services-grid small{display:block;margin-top:3px;color:var(--muted);font-size:10px;line-height:1.55}
-.knowledge-card a[href*="laws.boe.gov.sa"]{display:none!important}
 @media(max-width:720px){
  .footer-shell{padding:22px 0 14px}
  .footer-main{flex-direction:column;align-items:center;gap:17px}
@@ -219,4 +218,37 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .result-services-head{display:block;text-align:right}
  .result-services-head p{margin-top:6px}
  .result-services-grid{grid-template-columns:1fr}
+}
+
+/* v0.3.5 result guide, social icons and report links */
+.footer-copy p{margin:0!important;color:rgba(255,255,255,.68)!important;font-size:10.5px!important}
+.naif-mark{filter:brightness(0) saturate(100%) invert(79%) sepia(36%) saturate(703%) hue-rotate(342deg) brightness(98%) contrast(92%)!important}
+.footer-links .social-icon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:0 0 28px;background:rgba(255,255,255,.09);color:#F0BF87}
+.footer-links .social-icon svg{width:15px!important;height:15px!important}
+.footer-links .social-icon .brand-fill{fill:currentColor;stroke:none}
+.result-guide{padding:18px;border:1px solid rgba(13,54,86,.12);border-radius:20px;background:#fff}
+.result-guide-head{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center;margin-bottom:12px}
+.result-guide-head span{grid-row:1 / span 2;display:grid;place-items:center;min-height:46px;padding:7px 10px;border-radius:13px;background:#F2E4D4;color:var(--gold);font-size:11px;font-weight:900}
+.result-guide-head h3{margin:0;color:var(--navy);font-size:20px}
+.result-guide-head p{margin:1px 0 0;color:var(--muted);font-size:11px}
+.result-guide-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.result-guide-grid article{min-height:112px;padding:11px;border:1px solid var(--line);border-radius:14px;background:#FBFAF7}
+.result-guide-grid article.active{color:#fff;background:linear-gradient(145deg,var(--navy),var(--navy2));border-color:transparent;box-shadow:0 10px 22px rgba(13,54,86,.14)}
+.result-guide-grid strong{display:block;color:var(--gold);font-size:11px}
+.result-guide-grid h4{margin:3px 0 4px;color:var(--navy);font-size:12px}
+.result-guide-grid p{margin:0;color:var(--muted);font-size:9.5px;line-height:1.55}
+.result-guide-grid article.active strong{color:#F0BF87}
+.result-guide-grid article.active h4,.result-guide-grid article.active p{color:#fff}
+.result-services-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:980px){
+ .result-guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .result-services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+ .footer-brand{flex-direction:column;gap:7px}
+ .footer-copy{text-align:center}
+ .footer-links .social-icon{width:26px;height:26px;flex-basis:26px}
+ .result-guide-head{display:block}
+ .result-guide-head span{display:inline-flex;min-height:0;margin-bottom:7px}
+ .result-guide-grid,.result-services-grid{grid-template-columns:1fr}
 }
