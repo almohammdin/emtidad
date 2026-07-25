@@ -143,10 +143,10 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .hero:before{background:url('../images/brand-pattern.svg') center 30px/420px 240px repeat!important;opacity:.33!important}
 .hero:after{display:none!important}
 .hero-inner{padding:8px 24px 30px!important}
-.logo-stage{position:relative;display:grid;place-items:center;width:min(460px,92vw);min-height:320px;padding:28px 20px 24px;border-radius:36px;background:linear-gradient(165deg,#0B2338 0%,#0F3554 55%,#123F63 100%);box-shadow:0 28px 60px rgba(13,54,86,.16), inset 0 1px 0 rgba(255,255,255,.06);border:1px solid rgba(13,54,86,.08);overflow:hidden}
-.logo-stage:before{content:"";position:absolute;inset:16px;border-radius:28px;border:1px solid rgba(226,164,94,.28);pointer-events:none}
-.logo-stage:after{content:"";position:absolute;width:88%;height:78%;border-radius:50%;background:radial-gradient(circle, rgba(255,250,242,.98) 0%, rgba(245,235,222,.96) 44%, rgba(255,255,255,0) 74%);top:10%;left:6%;filter:blur(2px)}
-.platform-logo{position:relative;z-index:1;width:min(360px,80vw)!important;max-height:255px!important;filter:drop-shadow(0 14px 28px rgba(0,0,0,.12))!important}
+.logo-stage{position:relative;display:grid;place-items:center;width:min(420px,88vw);min-height:300px;padding:24px 22px;border-radius:32px;background:linear-gradient(180deg,#FFFFFF 0%,#FDFAF5 100%);box-shadow:0 20px 48px rgba(13,54,86,.11);border:1px solid rgba(201,133,60,.30);overflow:hidden}
+.logo-stage:before{content:"";position:absolute;inset:12px;border-radius:23px;border:1px solid rgba(201,133,60,.18);pointer-events:none}
+.logo-stage:after{display:none!important}
+.platform-logo{position:relative;z-index:1;width:min(330px,74vw)!important;max-height:260px!important;object-fit:contain!important;filter:none!important}
 .platform-tagline{margin-top:16px!important;font-size:21px!important;font-weight:700!important}
 .hero h1{font-family:'EmtidadCraft',sans-serif!important;font-weight:900!important;max-width:980px!important}
 .hero p{font-family:'EmtidadCraft',sans-serif!important;max-width:880px!important}
@@ -156,7 +156,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .result-footer{align-items:flex-start!important}
 .result-footer .btn.secondary{white-space:nowrap}
 .footer-version{font-size:15px}
-@media(max-width:720px){.logo-stage{min-height:250px;border-radius:28px;padding:20px 16px}.platform-logo{width:min(285px,76vw)!important;max-height:205px!important}.platform-tagline{font-size:18px!important}}
+@media(max-width:720px){.logo-stage{width:min(360px,88vw);min-height:238px;border-radius:25px;padding:18px 16px}.logo-stage:before{inset:9px;border-radius:18px}.platform-logo{width:min(270px,70vw)!important;max-height:215px!important}.platform-tagline{font-size:18px!important}}
 @media print{body{zoom:1!important}}
 
 
