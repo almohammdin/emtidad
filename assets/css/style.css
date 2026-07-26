@@ -335,8 +335,52 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .result-guide-grid article{direction:rtl;min-height:105px}
 }
 
-/* v0.4.1 referenced, fillable Emtidad templates */
+/* v0.4.2 fixed Word furniture and distinguished Emtidad templates */
+.templates-showcase{
+ position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+ gap:24px;align-items:center;margin:34px 0 15px;padding:25px;border-radius:26px;
+ border:1px solid rgba(240,188,96,.48);
+ background:
+  radial-gradient(circle at 8% 20%,rgba(240,188,96,.18),transparent 30%),
+  linear-gradient(135deg,#0D3656 0%,#154D74 100%);
+ box-shadow:0 18px 45px rgba(13,54,86,.15);color:#fff
+}
+.templates-showcase:after{
+ content:"";position:absolute;left:-75px;bottom:-95px;width:220px;height:220px;border-radius:50%;
+ border:1px solid rgba(240,188,96,.22);box-shadow:0 0 0 28px rgba(240,188,96,.035)
+}
+.templates-showcase-copy,.templates-showcase-titles{position:relative;z-index:1}
+.templates-showcase-kicker{
+ display:inline-flex;padding:5px 10px;border-radius:999px;background:rgba(240,188,96,.15);
+ border:1px solid rgba(240,188,96,.28);color:var(--footer-gold);font-size:10px;font-weight:900
+}
+.templates-showcase h3{margin:9px 0 6px;color:#fff;font-size:clamp(25px,3vw,34px);line-height:1.35}
+.templates-showcase p{max-width:620px;margin:0;color:rgba(255,255,255,.76);font-size:12px;line-height:1.85}
+.templates-showcase-stats{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.templates-showcase-stats span{
+ display:inline-flex;align-items:center;gap:4px;padding:6px 9px;border-radius:10px;
+ background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);
+ color:rgba(255,255,255,.8);font-size:9px
+}
+.templates-showcase-stats strong{color:var(--footer-gold);font-family:Arial,sans-serif;font-size:10px}
+.templates-showcase-titles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.templates-showcase-titles span{
+ min-height:44px;display:flex;align-items:center;padding:9px 11px;border-radius:12px;
+ background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);
+ color:#fff;font-size:10.5px;font-weight:800;line-height:1.55
+}
+.templates-grid-shell{
+ padding:15px;border:1px solid rgba(201,133,60,.18);border-radius:25px;
+ background:linear-gradient(180deg,#F8F4EE,#FFF);box-shadow:0 10px 28px rgba(13,54,86,.05)
+}
 .template-card{display:flex;flex-direction:column;min-height:250px}
+.templates-grid-shell .template-card{
+ position:relative;overflow:hidden;border-color:rgba(201,133,60,.23);
+ box-shadow:0 8px 20px rgba(13,54,86,.045)
+}
+.templates-grid-shell .template-card:before{
+ content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold))
+}
 .tool-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .template-kind{
  display:inline-flex;padding:4px 9px;border-radius:999px;background:#EAF2F6;color:var(--navy);
@@ -411,6 +455,11 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .template-actions .btn{flex:0 0 auto;white-space:nowrap}
 .modal-card:has(.template-references){width:min(920px,100%)}
 @media(max-width:720px){
+ .templates-showcase{grid-template-columns:1fr;gap:18px;margin-top:26px;padding:20px;border-radius:22px}
+ .templates-showcase-titles{grid-template-columns:1fr}
+ .templates-showcase-titles span{min-height:40px}
+ .templates-showcase-stats{display:grid}
+ .templates-grid-shell{padding:10px;border-radius:20px}
  .template-intro{grid-template-columns:1fr}
  .template-fields,.template-checks,.template-practices ol{grid-template-columns:1fr}
  .template-actions{align-items:stretch;flex-direction:column}
