@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.3.9';
+const VERSION='v0.4.0';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
@@ -98,6 +98,120 @@ const toolsData=[
   {title:'المصارف والاستدامة',items:['المصارف وأولوياتها وشروط الاستحقاق واضحة','معالجة فائض العوائد أو عجزها محددة','آلية تعديل المصارف عند تغير الظروف مدروسة']}
  ]}
 ];
+const templateGuides={
+ 'قائمة جاهزية الميثاق':{
+  outcome:'محضر نطاق واضح يحدد الأطراف والموضوعات الحساسة وجهة الاعتماد قبل بدء صياغة الميثاق.',
+  practices:[
+   'صنّف المشاركين بحسب دوائر العائلة والملكية والشركة؛ فقد يجمع الشخص أكثر من صفة ولكل صفة حق ومسؤولية مختلفة.',
+   'افصل موضوعات التوافق العائلي عن القرارات التي تحتاج اعتماداً نظامياً من الشركاء أو مجلس الإدارة.',
+   'احصر الخلافات والاتفاقات السابقة والوثائق القائمة قبل الجلسة الأولى حتى لا تبدأ الصياغة من افتراضات غير موثقة.',
+   'اتفق مسبقاً على طريقة الاعتماد ودورية المراجعة والجهة التي تتابع الالتزام.'
+  ],
+  references:[
+   {level:'سعودي',name:'المركز الوطني للمنشآت العائلية',use:'التحول المؤسسي يبدأ بتوثيق الحدود بين العائلة والملكية والمنشأة وبناء حوار منظم قبل كتابة الميثاق.',url:'https://www.spa.gov.sa/N2018939'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'تحديد هياكل حوكمة العائلة والملكية والشركة بما يلائم بيئة الخليج.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'فهم تداخل الأدوار وتكييف هيكل الحوكمة مع مرحلة تطور العائلة والشركة.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'فهرس الميثاق العائلي':{
+  outcome:'فهرس نطاق قابل للتحويل إلى تكليف مهني لصياغة ميثاق يغطي العلاقة والملكية والعمل والاستمرار.',
+  practices:[
+   'ابدأ بتعريف المصطلحات والصفات: فرد العائلة، المالك، العامل، عضو المجلس، والجهة العائلية؛ ولا تستخدمها بالتبادل.',
+   'اجعل لكل باب قاعدة واضحة وجهة صاحبة صلاحية وآلية تطبيق، لا مجرد قيمة أو أمنية.',
+   'اربط أحكام الملكية والتوظيف والتوزيعات والتخارج بالوثائق النظامية للشركة عند الحاجة.',
+   'ضع في نهاية الميثاق دورة مراجعة ومؤشرات التزام وآلية متدرجة لمعالجة الخلاف.'
+  ],
+  references:[
+   {level:'سعودي',name:'وزارة التجارة — نطاق الميثاق العائلي',use:'يشمل تنظيم الملكية والحوكمة والإدارة والعمل وتوظيف أفراد العائلة والتوزيعات وانتقال الحصص وتسوية الخلافات.',url:'https://mc.gov.sa/ar/mediacenter/News/Pages/22-01-23-01.aspx'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'مرجعية لبناء أبواب الميثاق وربط حوكمة العائلة بحوكمة الملكية والشركة.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'نماذج عملية لدستور العائلة وأجهزة الحوكمة وسياسة التوظيف والمجلس والتعاقب.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'سياسة توظيف أفراد العائلة':{
+  outcome:'مسودة سياسة تفصل حق الملكية عن الاستحقاق الوظيفي وتحدد الدخول والتقييم والترقية والخروج بعدالة.',
+  practices:[
+   'لا تُنشأ وظيفة لشخص؛ يبدأ التوظيف من احتياج ووصف وظيفي وموازنة معتمدة.',
+   'طبّق معايير المؤهل والخبرة والمقابلة على المرشح العائلي كما تطبق على المرشحين الآخرين، مع توثيق الاستثناءات.',
+   'اجعل الأجر والتقييم والترقية ضمن نظام الشركة وتحت مدير مباشر لا يقع في تعارض مصالح.',
+   'افصل التظلم الوظيفي عن الخلاف العائلي، وافصل الحقوق الوظيفية عن حقوق الملكية.'
+  ],
+  references:[
+   {level:'سعودي',name:'وزارة التجارة — الميثاق العائلي',use:'يجيز تنظيم سياسة عمل أفراد العائلة وتوظيفهم ضمن الميثاق بما يدعم الاستمرارية.',url:'https://mc.gov.sa/ar/mediacenter/News/Pages/22-01-23-01.aspx'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'ربط دخول أفراد العائلة إلى العمل بالكفاءة والحوكمة وتجنب تضارب الأدوار.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'يتضمن نموذجاً لسياسة توظيف أفراد العائلة ويربطها بالمؤهلات والتقييم والتطور المهني.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'مبادئ توزيع الأرباح':{
+  outcome:'ورقة قرار توثق ترتيب استخدام الأرباح وحدود السيولة والاستثمار والنطاق المستهدف للتوزيع والاستثناءات.',
+  practices:[
+   'ابدأ بصافي الربح القابل للتوزيع ثم اخصم الالتزامات والاحتياطيات والسيولة التشغيلية قبل مناقشة نسبة التوزيع.',
+   'اعتمد نطاقاً مستهدفاً أو معادلة معلنة بدلاً من التفاوض على النسبة من الصفر كل سنة.',
+   'افصل بين احتياجات الملاك الشخصية وبين قدرة الشركة على التوزيع، ووثّق مبررات أي استثناء.',
+   'حدد بوضوح من يقترح ومن يراجع السيولة والمخاطر ومن يعتمد القرار.'
+  ],
+  references:[
+   {level:'سعودي',name:'وزارة التجارة — نطاق الميثاق العائلي',use:'يعد توزيع الأرباح والتصرف في الحصص من الموضوعات التي يمكن تنظيمها ضمن الميثاق العائلي.',url:'https://mc.gov.sa/ar/mediacenter/News/Pages/22-01-23-01.aspx'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'موازنة حقوق الملاك واستدامة الشركة ضمن قواعد ملكية وقرار واضحة.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'فصل أدوار الملاك والمجلس والإدارة وبناء قرارات قابلة للمساءلة والمتابعة.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'قائمة التعاقب القيادي':{
+  outcome:'خريطة تعاقب لكل دور حرج تتضمن البديل الطارئ والمرشحين وفجواتهم وخطة التطوير ونقل المعرفة.',
+  practices:[
+   'ضع خطة طوارئ للغياب المفاجئ منفصلة عن خطة الخلافة طويلة المدى.',
+   'عرّف متطلبات الدور ومعايير النجاح أولاً، ثم قيّم المرشحين من العائلة وخارجها على المعايير نفسها.',
+   'حوّل فجوات المرشح إلى تجارب فعلية ومهام وقياس، لا إلى دورات تدريبية فقط.',
+   'اجعل قرار الاختيار لجهة حوكمة واضحة، مع خطة تسليم ومؤشرات لأول مئة يوم.'
+  ],
+  references:[
+   {level:'سعودي',name:'المركز الوطني للمنشآت العائلية',use:'برامج الاستمرارية تركز على الحوكمة والثروة والتعاقب وإعداد الجيلين الحالي والقادم.',url:'https://www.spa.gov.sa/N2635449'},
+   {level:'إقليمي',name:'دليل التعاقب لمجلس الشركات العائلية الخليجية',use:'تخطيط الانتقال في السياق الخليجي وربطه بالقيادة والخلافات والتخطيط الاستراتيجي والثروة.',url:'https://fbc-gulf.org/en/details/1431/family-business-council-gulf-launches-a-book-with-guidelines-on-family-business-succession-planning-in-the-gcc'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'التعاقب في الإدارة التنفيذية واختيار القيادة وربطه بدور المجلس واستمرارية الشركة.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'جدول مجلس العائلة':{
+  outcome:'جدول اجتماع ومحضر متابعة يحول الحوار العائلي إلى قرارات ومسؤولين ومواعيد إنجاز.',
+  practices:[
+   'اجعل مجلس العائلة مساحة لقضايا العائلة والملكية ولا تحوّله إلى مجلس إدارة موازٍ.',
+   'أرسل المواد قبل الاجتماع وحدد لكل بند هل هو للمعلومة أو النقاش أو القرار.',
+   'لا يغلق بند قرار بلا مسؤول وموعد ومؤشر إنجاز، وابدأ كل اجتماع بمتابعة القرارات السابقة.',
+   'راجع التمثيل دورياً لضمان حضور الفروع والأجيال مع بقاء المجلس بحجم يسمح بالعمل.'
+  ],
+  references:[
+   {level:'سعودي',name:'المركز الوطني للمنشآت العائلية',use:'فصل دوائر العائلة والملكية والمنشأة وتنظيم قنوات الحوار يقلل تداخل الصلاحيات.',url:'https://www.spa.gov.sa/N2018939'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'تشكيل هياكل عائلية واضحة للاجتماع والتواصل والقرار والمتابعة.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'دور جمعية العائلة ومجلس العائلة وسياساتهما في مراحل نمو الملكية العائلية.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'مصفوفة الأدوار':{
+  outcome:'مصفوفة قرار تمنع ازدواج الصلاحية وتوضح من يقترح ويراجع ويعتمد وينفذ ويتابع في القضايا الجوهرية.',
+  practices:[
+   'اكتب القرارات لا المسميات العامة؛ مثال: اعتماد التوزيعات أو تعيين الرئيس التنفيذي، لا عبارة «الإدارة».',
+   'أعط كل قرار جهة اعتماد واحدة، ويمكن تعدد جهات المشورة والتنفيذ دون تعدد المرجعية.',
+   'ميّز صفة الشخص في كل قرار: مالك أو عضو مجلس أو تنفيذي أو عضو مجلس عائلة.',
+   'راجع المصفوفة عند تغير الملكية أو الهيكل أو القيادة، واربطها بمحاضر الاعتماد والتفويض.'
+  ],
+  references:[
+   {level:'سعودي',name:'المركز الوطني للمنشآت العائلية',use:'إطار الدوائر الثلاث يساعد على فصل صفة العائلة عن الملكية وعن مسؤولية المنشأة.',url:'https://www.spa.gov.sa/N2018939'},
+   {level:'إقليمي',name:'ميثاق حوكمة الشركات العائلية الخليجية',use:'تحديد اختصاصات أجهزة العائلة والملكية والشركة ومنع التداخل بينها.',url:'https://fbc-gulf.org/ar/listing/governance-code/governance-code'},
+   {level:'عالمي',name:'دليل IFC لحوكمة الشركات العائلية',use:'معالجة تداخل الأدوار وبناء أجهزة حوكمة ومجلس وإدارة بصلاحيات واضحة.',url:'https://www.ifc.org/en/insights-reports/2011/ifc-family-business-governance-handbook'}
+  ]
+ },
+ 'قائمة دراسة الوقف':{
+  outcome:'مذكرة نطاق تحدد الغرض والأصول والمصارف والنظارة والاستثمار والرقابة قبل الانتقال للصياغة الشرعية والنظامية.',
+  practices:[
+   'ابدأ بالغرض والمستفيدين وشروط الواقف قبل اختيار الأصل أو الهيكل؛ فالوقف وسيلة لتحقيق غرض لا غاية مستقلة.',
+   'اختبر أثر إخراج الأصل على سيولة العائلة والشركة، وحدد سياسة تحفظ الأصل وتمول المصارف بصورة مستدامة.',
+   'نظّم تكوين النظارة والصلاحيات والتعارض والاستخلاف والتقارير والمراجعة منذ البداية.',
+   'اعرض التصور على مختص شرعي ونظامي ومالي قبل الإقرار أو نقل الأصول.'
+  ],
+  references:[
+   {level:'سعودي',name:'الهيئة العامة للأوقاف — مشروع حوكمة الأوقاف',use:'حوكمة الوقف تقوم على وضوح القرار وحماية الأصل وتحقيق شروط الواقف والاستدامة والرقابة.',url:'https://web.awqaf.gov.sa/ar/media-center/%D8%A7%D9%84%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9-%D9%84%D9%84%D8%A3%D9%88%D9%82%D8%A7%D9%81-%D8%AA%D8%B9%D9%82%D8%AF-%D8%B9%D8%AF%D8%AF%D9%8B%D8%A7-%D9%85%D9%86-%D9%88%D8%B1%D8%B4-%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D9%84%D8%AA%D8%B9%D8%B1%D9%8A%D9%81-%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%A7%D9%84%D9%88%D9%82%D9%81%D9%8A-%D8%A8%D9%85%D8%B4%D8%B1%D9%88%D8%B9-%D8%AD%D9%88%D9%83%D9%85%D8%A9'},
+   {level:'إقليمي',name:'دليل التعاقب لمجلس الشركات العائلية الخليجية',use:'ربط نقل الثروة والاستمرارية بالسياق الخليجي والاعتبارات الشرعية والعائلية.',url:'https://fbc-gulf.org/en/details/1431/family-business-council-gulf-launches-a-book-with-guidelines-on-family-business-succession-planning-in-the-gcc'},
+   {level:'عالمي',name:'IMD — حوكمة العائلة المالكة',use:'بناء خارطة مترابطة للملكية والتعاقب والإرث واتخاذ القرار عبر الأجيال.',url:'https://www.imd.org/family-business/fpbf/future-proofing-business-family/'}
+  ]
+ }
+};
 const centersData=[
  {name:'المركز الوطني للمنشآت العائلية',scope:'مبادرات وأدلة وبرامج وطنية للشركات العائلية.',url:'https://ncfb.org.sa/',region:'سعودي'},
  {name:'وزارة التجارة',scope:'نظام الشركات واللوائح والخدمات المرتبطة بالكيانات.',url:'https://mc.gov.sa/',region:'سعودي'},
@@ -211,7 +325,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.9',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.4.0',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -335,7 +449,7 @@ async function buildResultImageCanvas(){
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
  const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.3.9',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.4.0',document.baseURI).href),
   loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
  ]);
  const canvas=document.createElement('canvas');
@@ -482,25 +596,70 @@ function renderAxesPreview(){$('axisPreview').innerHTML=axes.map(a=>`<article cl
 function setupKnowledgeFilters(){const types=[...new Set(knowledgeData.map(x=>x.type))],regions=[...new Set(knowledgeData.map(x=>x.region))],levels=[...new Set(knowledgeData.map(x=>x.level))];$('knowledgeType').innerHTML='<option value="">كل الأنواع</option>'+types.map(x=>`<option>${x}</option>`).join('');$('knowledgeRegion').innerHTML='<option value="">سعودي وعالمي</option>'+regions.map(x=>`<option>${x}</option>`).join('');$('knowledgeLevel').innerHTML='<option value="">كل المستويات</option>'+levels.map(x=>`<option>${x}</option>`).join('');['knowledgeSearch','knowledgeType','knowledgeRegion','knowledgeLevel'].forEach(id=>$(id).addEventListener(id==='knowledgeSearch'?'input':'change',renderKnowledge))}
 function renderKnowledge(){const q=$('knowledgeSearch').value.trim().toLowerCase(),type=$('knowledgeType').value,region=$('knowledgeRegion').value,level=$('knowledgeLevel').value;const rows=knowledgeData.filter(x=>(!q||[x.title,x.topic,x.source,x.summary,...x.highlights].join(' ').toLowerCase().includes(q))&&(!type||x.type===type)&&(!region||x.region===region)&&(!level||x.level===level));$('knowledgeGrid').innerHTML=rows.length?rows.map(x=>`<article class="knowledge-card"><div class="meta"><span class="chip ${x.type.includes('رسمي')||x.type.includes('نظام')?'official':''}">${x.type}</span><span class="chip">${x.region}</span><span class="chip">${x.level}</span></div><h3>${x.title}</h3><p>${x.summary}</p><ul class="highlights">${x.highlights.map(h=>`<li>${h}</li>`).join('')}</ul><footer><span>${x.source} · ${x.year} · مراجعة ${x.reviewed}</span>${x.url?`<a href="${x.url}" target="_blank" rel="noopener">المصدر ${icon('external')}</a>`:''}</footer></article>`).join(''):'<div class="empty-state">تظهر المواد المطابقة هنا.</div>'}
 function renderCases(){$('caseGrid').innerHTML=caseStudiesData.map(c=>`<article class="case-card"><div class="case-top"><span>${c.focus}</span><small>${c.reviewed}</small></div><h3>${c.name}</h3><p>${c.summary}</p><ul class="case-lessons">${c.lessons.map(x=>`<li>${x}</li>`).join('')}</ul><a href="${c.url}" target="_blank" rel="noopener">${c.source} ${icon('external')}</a></article>`).join('')}
-function toolTemplateText(t){
- return `${t.title}\n${t.intro}\n\n${t.sections.map(section=>`${section.title}\n${section.items.map(item=>section.type==='fields'?`${item}: ______________________________`:`[ ] ${item}`).join('\n')}`).join('\n\n')}\n\nملاحظة: نموذج تمهيدي يُخصص ويُراجع مهنياً قبل الاعتماد.`;
+function templateGuideFor(t){return templateGuides[t.title]||{outcome:'مخرج عملي قابل للمراجعة والتخصيص.',practices:[],references:[]}}
+function collectTemplateState(){
+ const values={};
+ document.querySelectorAll('#modalBody [data-template-section][data-template-item]').forEach(el=>{
+  const key=`${el.dataset.templateSection}:${el.dataset.templateItem}`;
+  values[key]=el.type==='checkbox'?el.checked:el.value.trim();
+ });
+ return values;
+}
+function toolTemplateText(t,values={}){
+ const guide=templateGuideFor(t);
+ const body=t.sections.map((section,si)=>`${section.title}\n${section.items.map((item,ii)=>{
+  const value=values[`${si}:${ii}`];
+  return section.type==='fields'?`${item}: ${value||'—'}`:`${value?'[✓]':'[ ]'} ${item}`;
+ }).join('\n')}`).join('\n\n');
+ const practices=guide.practices.map((item,i)=>`${i+1}. ${item}`).join('\n');
+ const references=guide.references.map(ref=>`- ${ref.level} | ${ref.name}\n  الفائدة: ${ref.use}\n  ${ref.url}`).join('\n');
+ return `${t.title}\n${t.intro}\n\nالمخرج المتوقع\n${guide.outcome}\n\n${body}\n\nأفضل الممارسات\n${practices}\n\nالمرجعيات المهنية\n${references}\n\nملاحظة: صياغة إمتداد استرشادية مبنية على المرجعيات المذكورة، وتُخصص وتُراجع مهنياً قبل الاعتماد.`;
 }
 async function copyToolTemplate(i){
- const text=toolTemplateText(toolsData[i]);
+ const text=toolTemplateText(toolsData[i],collectTemplateState());
  try{
   if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(text);
   else{
    const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';
    document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
   }
-  toast('تم نسخ النموذج كاملاً');
+  toast('تم نسخ النموذج المعبأ مع مرجعياته');
  }catch(error){console.error(error);toast('تعذر النسخ، حاول مرة أخرى')}
 }
-function renderTools(){$('naifToolsGrid').innerHTML=naifToolsData.map(t=>`<article class="tool-card linked-tool"><div class="tool-icon">${icon(t.icon)}</div><h3>${t.title}</h3><p>${t.desc}</p><a href="${t.url}" target="_blank" rel="noopener">فتح الأداة ${icon('external')}</a></article>`).join('');$('toolsGrid').innerHTML=toolsData.map((t,i)=>`<article class="tool-card template-card"><div class="tool-card-top"><div class="tool-icon">${icon(t.icon)}</div><span class="template-kind">${t.kind}</span></div><h3>${t.title}</h3><p>${t.desc}</p><button type="button" data-tool="${i}">فتح النموذج</button></article>`).join('');document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>openTool(Number(b.dataset.tool))))}
+function templateDocumentHtml(i){
+ const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.4.0',document.baseURI).href;
+ const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
+ const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><div class="${section.type==='fields'?'doc-fields':'doc-checks'}">${section.items.map((item,ii)=>{
+  const value=values[`${si}:${ii}`];
+  return section.type==='fields'?`<div><span>${escapeHtml(item)}</span><strong>${escapeHtml(value||'لم يُعبأ')}</strong></div>`:`<div class="${value?'checked':''}"><b>${value?'✓':'□'}</b><span>${escapeHtml(item)}</span></div>`;
+ }).join('')}</div></section>`).join('');
+ const practices=guide.practices.map((item,i)=>`<li><b>${i+1}</b><span>${escapeHtml(item)}</span></li>`).join('');
+ const references=guide.references.map(ref=>`<article><span>${escapeHtml(ref.level)}</span><div><h3>${escapeHtml(ref.name)}</h3><p>${escapeHtml(ref.use)}</p><a href="${ref.url}">${escapeHtml(ref.url)}</a></div></article>`).join('');
+ return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${escapeHtml(t.title)} | إمتداد</title><style>
+ @page{size:A4;margin:14mm}*{box-sizing:border-box}body{margin:0;background:#fff;color:#263843;font-family:Arial,"Tahoma",sans-serif;direction:rtl;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{width:100%;max-width:182mm;margin:auto}.doc-head{display:grid;grid-template-columns:86px 1fr auto;gap:14px;align-items:center;padding:13px 15px;border:1px solid #E5DDD1;border-radius:18px;background:linear-gradient(135deg,#F8F1E8,#EEF3F6)}.doc-head img{width:80px;height:64px;object-fit:contain}.doc-head h1{margin:0;color:#0D3656;font-size:20px}.doc-head p{margin:4px 0 0;color:#6B7780;font-size:10px}.doc-head time{font-size:9px;color:#7A858D;direction:ltr}.outcome{margin:12px 0;padding:13px 15px;border-right:4px solid #C9853C;border-radius:12px;background:#F8F4EE}.outcome small{display:block;color:#A36328;font-weight:700}.outcome strong{display:block;margin-top:4px;color:#0D3656;font-size:12px;line-height:1.7}.doc-section{margin-top:10px;padding:12px;border:1px solid #E5E0D8;border-radius:13px;break-inside:avoid}.doc-section h2,.practices h2,.references h2{margin:0 0 9px;color:#0D3656;font-size:14px}.doc-fields{display:grid;grid-template-columns:1fr 1fr;gap:7px}.doc-fields div{padding:8px;border-radius:9px;background:#F7F5F1}.doc-fields span{display:block;color:#78828A;font-size:8px}.doc-fields strong{display:block;margin-top:3px;color:#263843;font-size:10px;min-height:14px}.doc-checks{display:grid;grid-template-columns:1fr 1fr;gap:6px}.doc-checks div{display:grid;grid-template-columns:18px 1fr;gap:6px;align-items:start;padding:6px 7px;border:1px solid #ECE6DD;border-radius:8px;font-size:9px;line-height:1.55}.doc-checks b{color:#A36328;font-size:12px}.doc-checks .checked{background:#EEF5F1;border-color:#CFE1D8}.practices,.references{margin-top:10px;padding:12px;border:1px solid #E5E0D8;border-radius:13px;break-inside:avoid}.practices ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}.practices li{display:grid;grid-template-columns:20px 1fr;gap:6px;font-size:8.7px;line-height:1.6}.practices li b{width:20px;height:20px;display:grid;place-items:center;border-radius:7px;background:#F2E4D4;color:#A36328}.references article{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:7px 0;border-top:1px dashed #DED8CF;break-inside:avoid}.references article:first-of-type{border-top:0}.references article>span{align-self:start;padding:4px 6px;border-radius:999px;background:#F2E4D4;color:#925821;text-align:center;font-size:8px;font-weight:700}.references h3{margin:0;color:#0D3656;font-size:10px}.references p{margin:2px 0;color:#5E6A73;font-size:8px;line-height:1.5}.references a{display:block;color:#0D3656;font-size:7px;direction:ltr;text-align:left;overflow-wrap:anywhere}.method{margin-top:9px;color:#6F665D;font-size:7.5px;line-height:1.6}.doc-footer{margin-top:12px;padding-top:8px;border-top:1px solid #DDD6CC;display:grid;grid-template-columns:76px 1fr auto;gap:9px;align-items:center;font-size:8px;color:#68747D;break-inside:avoid}.doc-footer img{width:72px;height:28px;object-fit:contain}.doc-footer strong{display:block;color:#0D3656}.doc-footer a{color:#0D3656;text-decoration:none;direction:ltr}.doc-footer em{font-style:normal;color:#A36328;font-weight:700}@media print{.page{max-width:none}.doc-head,.doc-section,.outcome,.practices,.references{box-shadow:none}}
+ </style></head><body><main class="page"><header class="doc-head"><img src="${logoUrl}" alt="شعار إمتداد"><div><h1>${escapeHtml(t.title)}</h1><p>منظومة الشركات العائلية | أداة إمتداد</p></div><time>${reportDate()}</time></header><div class="outcome"><small>المخرج المتوقع</small><strong>${escapeHtml(guide.outcome)}</strong></div>${sections}<section class="practices"><h2>أفضل الممارسات المطبقة في النموذج</h2><ol>${practices}</ol></section><section class="references"><h2>المرجعيات وما استفاد منه النموذج</h2>${references}</section><p class="method">هذه صياغة إمتداد استرشادية مبنية على المرجعيات المذكورة، وليست نقلاً حرفياً عنها. تُخصص بحسب حالة العائلة وتُراجع مهنياً وشرعياً ونظامياً ومالياً متى كان ذلك منطبقاً.</p><footer class="doc-footer"><img src="${naifUrl}" alt="شعار نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><a href="${PLATFORM_URL}">${PLATFORM_URL}</a></div><em>${VERSION}</em></footer></main></body></html>`;
+}
+function safeTemplateFilename(name){return name.replace(/[\\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim()}
+function downloadTemplateWord(i){
+ const html=templateDocumentHtml(i);
+ const blob=new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'});
+ const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download=`إمتداد - ${safeTemplateFilename(toolsData[i].title)}.doc`;
+ document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(link.href),1500);toast('تم تجهيز ملف Word');
+}
+function printTemplate(i){
+ const win=window.open('','_blank','noopener,noreferrer');
+ if(!win){toast('اسمح بالنوافذ المنبثقة لحفظ PDF');return}
+ win.document.open();win.document.write(templateDocumentHtml(i));win.document.close();
+ setTimeout(()=>{win.focus();win.print()},700);
+}
+function renderTools(){$('naifToolsGrid').innerHTML=naifToolsData.map(t=>`<article class="tool-card linked-tool"><div class="tool-icon">${icon(t.icon)}</div><h3>${t.title}</h3><p>${t.desc}</p><a href="${t.url}" target="_blank" rel="noopener">فتح الأداة ${icon('external')}</a></article>`).join('');$('toolsGrid').innerHTML=toolsData.map((t,i)=>{const guide=templateGuideFor(t);return `<article class="tool-card template-card"><div class="tool-card-top"><div class="tool-icon">${icon(t.icon)}</div><span class="template-kind">${t.kind}</span></div><h3>${t.title}</h3><p>${t.desc}</p><small class="template-card-outcome">${escapeHtml(guide.outcome)}</small><div class="template-card-meta"><span>قابل للتعبئة</span><span>${guide.references.length} مرجعيات</span><span>Word وPDF</span></div><button type="button" data-tool="${i}">فتح واستخدام النموذج</button></article>`}).join('');document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>openTool(Number(b.dataset.tool))))}
 function openTool(i){
- const t=toolsData[i];
+ const t=toolsData[i],guide=templateGuideFor(t);
  $('modalTitle').textContent=t.title;
- $('modalBody').innerHTML=`<div class="template-intro"><span>${escapeHtml(t.kind)}</span><p>${escapeHtml(t.intro)}</p></div><div class="template-sections">${t.sections.map(section=>`<section class="template-section"><h4>${escapeHtml(section.title)}</h4>${section.type==='fields'?`<div class="template-fields">${section.items.map(item=>`<label><span>${escapeHtml(item)}</span><i aria-hidden="true"></i></label>`).join('')}</div>`:`<div class="template-checks">${section.items.map(item=>`<label><input type="checkbox"><span>${escapeHtml(item)}</span></label>`).join('')}</div>`}</section>`).join('')}</div><div class="template-actions"><p>هذا نموذج تمهيدي قابل للنسخ والتخصيص، ويُراجع مهنياً قبل الاعتماد.</p><button class="btn secondary" type="button" id="copyToolBtn">${icon('check')} نسخ النموذج كاملاً</button></div>`;
+ $('modalBody').innerHTML=`<div class="template-intro"><span>${escapeHtml(t.kind)}</span><p>${escapeHtml(t.intro)}</p></div><section class="template-outcome"><small>ما الذي ستحصل عليه؟</small><strong>${escapeHtml(guide.outcome)}</strong></section><div class="template-sections">${t.sections.map((section,si)=>`<section class="template-section"><h4>${escapeHtml(section.title)}</h4>${section.type==='fields'?`<div class="template-fields">${section.items.map((item,ii)=>`<label><span>${escapeHtml(item)}</span><input class="template-field-input" data-template-section="${si}" data-template-item="${ii}" placeholder="اكتب هنا"></label>`).join('')}</div>`:`<div class="template-checks">${section.items.map((item,ii)=>`<label><input type="checkbox" data-template-section="${si}" data-template-item="${ii}"><span>${escapeHtml(item)}</span></label>`).join('')}</div>`}</section>`).join('')}</div><section class="template-practices"><div class="template-block-head"><span>تطبيق عملي</span><h4>أفضل الممارسات المطبقة في النموذج</h4></div><ol>${guide.practices.map((item,n)=>`<li><b>${n+1}</b><span>${escapeHtml(item)}</span></li>`).join('')}</ol></section><section class="template-references"><div class="template-block-head"><span>مرجعية مهنية</span><h4>المصادر وما استفاد منه النموذج</h4></div><div>${guide.references.map(ref=>`<a href="${ref.url}" target="_blank" rel="noopener"><span>${escapeHtml(ref.level)}</span><strong>${escapeHtml(ref.name)}</strong><small>${escapeHtml(ref.use)}</small>${icon('external')}</a>`).join('')}</div></section><div class="template-method">صياغة إمتداد استرشادية مبنية على المرجعيات المبينة أعلاه، وليست نقلاً حرفياً عنها. تُخصص وتُراجع مهنياً قبل الاعتماد.</div><div class="template-actions"><p>عبّئ الحقول وحدد البنود، ثم نزّل وثيقة مهنية قابلة للحفظ والمشاركة.</p><div><button class="btn primary" type="button" id="wordToolBtn">تنزيل Word</button><button class="btn secondary" type="button" id="pdfToolBtn">${icon('print')} طباعة / حفظ PDF</button><button class="btn ghost" type="button" id="copyToolBtn">نسخ النص</button></div></div>`;
+ $('wordToolBtn').addEventListener('click',()=>downloadTemplateWord(i));
+ $('pdfToolBtn').addEventListener('click',()=>printTemplate(i));
  $('copyToolBtn').addEventListener('click',()=>copyToolTemplate(i));
  $('modal').hidden=false;
 }
