@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.4.1';
+const VERSION='v0.4.2';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
@@ -325,7 +325,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.4.1',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.4.2',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -449,7 +449,7 @@ async function buildResultImageCanvas(){
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
  const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.4.1',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.4.2',document.baseURI).href),
   loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
  ]);
  const canvas=document.createElement('canvas');
@@ -608,7 +608,7 @@ function collectTemplateState(){
 function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
  const isWord=mode==='word';
- const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.4.1',document.baseURI).href;
+ const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.4.2',document.baseURI).href;
  const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo.png',document.baseURI).href;
  const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><table class="doc-table ${section.type==='fields'?'doc-fields':'doc-checks'}" width="100%" cellspacing="0" cellpadding="0"><tbody>${section.items.map((item,ii)=>{
   const value=values[`${si}:${ii}`];
@@ -617,33 +617,211 @@ function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const practices=guide.practices.map((item,i)=>`<tr><td class="row-number" width="34">${i+1}</td><td>${escapeHtml(item)}</td></tr>`).join('');
  const references=guide.references.map(ref=>`<tr><td class="reference-level" width="60">${escapeHtml(ref.level)}</td><td><strong>${escapeHtml(ref.name)}</strong><p>${escapeHtml(ref.use)}</p><a href="${ref.url}">فتح المرجع</a></td></tr>`).join('');
  const namespaces=isWord?' xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"':'';
+ const headerTable=`<table class="doc-head" width="100%" cellspacing="0" cellpadding="0"><tr><td class="logo-cell" width="72"><img src="${logoUrl}" width="58" height="58" alt="شعار إمتداد"></td><td><h1>${escapeHtml(t.title)}</h1><p>منظومة الشركات العائلية | أداة إمتداد</p></td><td class="date-cell" width="82">${reportDate()}</td></tr></table>`;
+ const footerTable=`<table class="doc-footer" width="100%" cellspacing="0" cellpadding="0"><tr><td class="naif-cell" width="82"><img src="${naifUrl}" width="72" height="32" alt="شعار نايف المحمدي"></td><td><strong>منظومة الشركات العائلية | أداة إمتداد</strong><a href="${PLATFORM_URL}">almohammdin.github.io/emtidad/</a></td><td class="version-cell" width="52">${VERSION}</td></tr></table>`;
+ const pageRule=isWord
+  ?'@page Section1{size:595.3pt 841.9pt;margin:72pt 36pt 58pt 36pt;mso-header-margin:12pt;mso-footer-margin:12pt;mso-header:emtidadHeader;mso-footer:emtidadFooter}div.Section1{page:Section1}'
+  :'@page{size:A4;margin:10mm 12mm}';
+ const wordFurniture=isWord
+  ?`<div class="word-header" style="mso-element:header" id="emtidadHeader">${headerTable}</div><div class="word-footer" style="mso-element:footer" id="emtidadFooter"><div class="doc-footer-wrap">${footerTable}</div></div>`
+  :'';
+ const visibleHeader=isWord?'':headerTable;
+ const visibleFooter=isWord?'':`<div class="doc-footer-wrap">${footerTable}</div>`;
+ const sectionOpen=isWord?'<div class="Section1">':'';
+ const sectionClose=isWord?'</div>':'';
  return `<!doctype html><html${namespaces} lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="generator" content="Emtidad ${VERSION}"><title>إمتداد - ${escapeHtml(t.title)}</title><style>
- @page{size:A4;margin:10mm 12mm}*{box-sizing:border-box}html,body{width:100%;margin:0;padding:0;background:#fff;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:10pt}.document-shell{width:100%;max-width:100%;border-collapse:collapse;table-layout:fixed}.document-shell>tbody>tr>td{padding:0}.doc-head{width:100%;margin:0 0 8px;border-collapse:collapse;table-layout:fixed;border:1px solid #E5DDD1;background:#F7F1E8}.doc-head td{vertical-align:middle;padding:8px 10px}.doc-head .logo-cell{width:72px;text-align:center}.doc-head img{display:block;width:58px!important;height:58px!important;max-width:58px!important;max-height:58px!important;margin:auto;object-fit:contain}.doc-head h1{margin:0;color:#0D3656;font-size:17pt;line-height:1.25}.doc-head p{margin:4px 0 0;color:#6B7780;font-size:8pt}.doc-head .date-cell{width:82px;color:#7A858D;font-size:7.5pt;text-align:left;direction:ltr}.outcome{margin:2px 0 10px;padding:10px 12px;border-right:4px solid #C9853C;background:#F8F4EE}.outcome small{display:block;color:#A36328;font-size:7.5pt;font-weight:700}.outcome strong{display:block;margin-top:3px;color:#0D3656;font-size:9.5pt;line-height:1.65}.doc-section,.practices,.references{margin:0 0 9px;padding:9px 10px;border:1px solid #E5E0D8;page-break-inside:avoid;break-inside:avoid}.doc-section h2,.practices h2,.references h2{margin:0 0 7px;color:#0D3656;font-size:11pt}.doc-table,.practice-table,.reference-table{width:100%;border-collapse:collapse;table-layout:fixed}.doc-table th,.doc-table td,.practice-table td,.reference-table td{padding:6px 7px;border:1px solid #ECE6DD;vertical-align:top;line-height:1.5;overflow-wrap:anywhere;word-break:break-word}.doc-fields th{width:34%;background:#F7F5F1;color:#66727B;text-align:right;font-size:8pt}.doc-fields td{color:#263843;font-size:8.5pt}.doc-checks td{font-size:8.5pt}.doc-checks .check-mark,.practice-table .row-number{width:34px;text-align:center;color:#A36328;font-size:10pt;font-weight:700;background:#F8F4EE}.doc-checks .checked td{background:#EEF5F1}.practice-table td{font-size:8.3pt}.reference-table td{font-size:8pt}.reference-table .reference-level{width:60px;text-align:center;color:#925821;font-weight:700;background:#F2E4D4}.reference-table strong{display:block;color:#0D3656;font-size:8.5pt}.reference-table p{margin:2px 0;color:#5E6A73;line-height:1.5}.reference-table a{display:inline-block;color:#0D3656;font-weight:700;text-decoration:underline}.method{margin:0;padding:7px 9px;background:#F7F5F1;color:#6F665D;font-size:7.2pt;line-height:1.55;page-break-inside:avoid}.doc-footer-wrap{margin-top:12px;padding-top:8px;border-top:1px solid #DDD6CC;page-break-inside:avoid;break-inside:avoid}.doc-footer{width:100%;border-collapse:collapse;table-layout:fixed}.doc-footer td{padding:0;vertical-align:middle;color:#68747D;font-size:7.2pt}.doc-footer .naif-cell{width:82px}.doc-footer img{display:block;width:72px!important;height:32px!important;max-width:72px!important;max-height:32px!important;object-fit:contain}.doc-footer strong{display:block;color:#0D3656;font-size:7.7pt}.doc-footer a{color:#0D3656;text-decoration:none;direction:ltr}.doc-footer .version-cell{width:52px;text-align:left;color:#A36328;font-weight:700}.word .document-shell{mso-table-lspace:0pt;mso-table-rspace:0pt}.word .doc-head img,.word .doc-footer img{mso-width-source:userset;mso-height-source:userset}@media print{html,body{overflow:visible}.document-shell{width:100%!important}.doc-section,.practices,.references,.method,.doc-footer-wrap{page-break-inside:avoid}}
- </style></head><body class="${isWord?'word':'print'}"><table class="doc-head" width="100%" cellspacing="0" cellpadding="0"><tr><td class="logo-cell" width="72"><img src="${logoUrl}" width="58" height="58" alt="شعار إمتداد"></td><td><h1>${escapeHtml(t.title)}</h1><p>منظومة الشركات العائلية | أداة إمتداد</p></td><td class="date-cell" width="82">${reportDate()}</td></tr></table><table class="document-shell" width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><div class="outcome"><small>المخرج المتوقع</small><strong>${escapeHtml(guide.outcome)}</strong></div>${sections}<section class="practices"><h2>أفضل الممارسات المطبقة في النموذج</h2><table class="practice-table" width="100%" cellspacing="0" cellpadding="0"><tbody>${practices}</tbody></table></section><section class="references"><h2>المرجعيات وما استفاد منه النموذج</h2><table class="reference-table" width="100%" cellspacing="0" cellpadding="0"><tbody>${references}</tbody></table></section><p class="method">هذه صياغة إمتداد استرشادية مبنية على المرجعيات المذكورة، وليست نقلاً حرفياً عنها. تُخصص بحسب حالة العائلة وتُراجع مهنياً وشرعياً ونظامياً ومالياً متى كان ذلك منطبقاً.</p><div class="doc-footer-wrap"><table class="doc-footer" width="100%" cellspacing="0" cellpadding="0"><tr><td class="naif-cell" width="82"><img src="${naifUrl}" width="72" height="32" alt="شعار نايف المحمدي"></td><td><strong>منظومة الشركات العائلية | أداة إمتداد</strong><a href="${PLATFORM_URL}">almohammdin.github.io/emtidad/</a></td><td class="version-cell" width="52">${VERSION}</td></tr></table></div></td></tr></tbody></table></body></html>`;
+ ${pageRule}*{box-sizing:border-box}html,body{width:100%;margin:0;padding:0;background:#fff;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{font-size:10pt}.document-shell{width:100%;max-width:100%;border-collapse:collapse;table-layout:fixed}.document-shell>tbody>tr>td{padding:0}.doc-head{width:100%;margin:0 0 8px;border-collapse:collapse;table-layout:fixed;border:1px solid #E5DDD1;background:#F7F1E8}.doc-head td{vertical-align:middle;padding:8px 10px}.doc-head .logo-cell{width:72px;text-align:center}.doc-head img{display:block;width:58px!important;height:58px!important;max-width:58px!important;max-height:58px!important;margin:auto;object-fit:contain}.doc-head h1{margin:0;color:#0D3656;font-size:17pt;line-height:1.25}.doc-head p{margin:4px 0 0;color:#6B7780;font-size:8pt}.doc-head .date-cell{width:82px;color:#7A858D;font-size:7.5pt;text-align:left;direction:ltr}.outcome{margin:2px 0 10px;padding:10px 12px;border-right:4px solid #C9853C;background:#F8F4EE}.outcome small{display:block;color:#A36328;font-size:7.5pt;font-weight:700}.outcome strong{display:block;margin-top:3px;color:#0D3656;font-size:9.5pt;line-height:1.65}.doc-section,.practices,.references{margin:0 0 9px;padding:9px 10px;border:1px solid #E5E0D8;page-break-inside:avoid;break-inside:avoid}.doc-section h2,.practices h2,.references h2{margin:0 0 7px;color:#0D3656;font-size:11pt}.doc-table,.practice-table,.reference-table{width:100%;border-collapse:collapse;table-layout:fixed}.doc-table th,.doc-table td,.practice-table td,.reference-table td{padding:6px 7px;border:1px solid #ECE6DD;vertical-align:top;line-height:1.5;overflow-wrap:anywhere;word-break:break-word}.doc-fields th{width:34%;background:#F7F5F1;color:#66727B;text-align:right;font-size:8pt}.doc-fields td{color:#263843;font-size:8.5pt}.doc-checks td{font-size:8.5pt}.doc-checks .check-mark,.practice-table .row-number{width:34px;text-align:center;color:#A36328;font-size:10pt;font-weight:700;background:#F8F4EE}.doc-checks .checked td{background:#EEF5F1}.practice-table td{font-size:8.3pt}.reference-table td{font-size:8pt}.reference-table .reference-level{width:60px;text-align:center;color:#925821;font-weight:700;background:#F2E4D4}.reference-table strong{display:block;color:#0D3656;font-size:8.5pt}.reference-table p{margin:2px 0;color:#5E6A73;line-height:1.5}.reference-table a{display:inline-block;color:#0D3656;font-weight:700;text-decoration:underline}.method{margin:0;padding:7px 9px;background:#F7F5F1;color:#6F665D;font-size:7.2pt;line-height:1.55;page-break-inside:avoid}.doc-footer-wrap{margin-top:12px;padding-top:8px;border-top:1px solid #DDD6CC;page-break-inside:avoid;break-inside:avoid}.doc-footer{width:100%;border-collapse:collapse;table-layout:fixed}.doc-footer td{padding:0;vertical-align:middle;color:#68747D;font-size:7.2pt}.doc-footer .naif-cell{width:82px}.doc-footer img{display:block;width:72px!important;height:32px!important;max-width:72px!important;max-height:32px!important;object-fit:contain}.doc-footer strong{display:block;color:#0D3656;font-size:7.7pt}.doc-footer a{color:#0D3656;text-decoration:none;direction:ltr}.doc-footer .version-cell{width:52px;text-align:left;color:#A36328;font-weight:700}.word .document-shell{mso-table-lspace:0pt;mso-table-rspace:0pt}.word .doc-head img,.word .doc-footer img{mso-width-source:userset;mso-height-source:userset}.word-header .doc-head{margin:0}.word-footer .doc-footer-wrap{margin:0;padding-top:6px}.word-header,.word-footer{margin:0;padding:0}@media print{html,body{overflow:visible}.document-shell{width:100%!important}.doc-section,.practices,.references,.method,.doc-footer-wrap{page-break-inside:avoid}}
+ </style></head><body class="${isWord?'word':'print'}">${wordFurniture}${sectionOpen}${visibleHeader}<table class="document-shell" width="100%" cellspacing="0" cellpadding="0"><tbody><tr><td><div class="outcome"><small>المخرج المتوقع</small><strong>${escapeHtml(guide.outcome)}</strong></div>${sections}<section class="practices"><h2>أفضل الممارسات المطبقة في النموذج</h2><table class="practice-table" width="100%" cellspacing="0" cellpadding="0"><tbody>${practices}</tbody></table></section><section class="references"><h2>المرجعيات وما استفاد منه النموذج</h2><table class="reference-table" width="100%" cellspacing="0" cellpadding="0"><tbody>${references}</tbody></table></section><p class="method">هذه صياغة إمتداد استرشادية مبنية على المرجعيات المذكورة، وليست نقلاً حرفياً عنها. تُخصص بحسب حالة العائلة وتُراجع مهنياً وشرعياً ونظامياً ومالياً متى كان ذلك منطبقاً.</p>${visibleFooter}</td></tr></tbody></table>${sectionClose}</body></html>`;
 }
 function safeTemplateFilename(name){return name.replace(/[\\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim()}
-async function imageUrlAsDataUrl(url){
+let docxLibraryPromise=null;
+function ensureDocxLibrary(){
+ if(window.docx?.Document&&window.docx?.Packer)return Promise.resolve(window.docx);
+ if(docxLibraryPromise)return docxLibraryPromise;
+ docxLibraryPromise=new Promise((resolve,reject)=>{
+  const existing=document.querySelector('script[data-emtidad-docx]');
+  const finish=()=>window.docx?.Document&&window.docx?.Packer?resolve(window.docx):reject(new Error('تعذر تهيئة مكتبة Word'));
+  if(existing){
+   existing.addEventListener('load',finish,{once:true});
+   existing.addEventListener('error',()=>reject(new Error('تعذر تحميل مكتبة Word')),{once:true});
+   return;
+  }
+  const script=document.createElement('script');
+  script.src=new URL('assets/js/docx.iife.js?v=9.5.1',document.baseURI).href;
+  script.async=true;
+  script.dataset.emtidadDocx='true';
+  script.addEventListener('load',finish,{once:true});
+  script.addEventListener('error',()=>reject(new Error('تعذر تحميل مكتبة Word')),{once:true});
+  document.head.appendChild(script);
+ });
+ return docxLibraryPromise;
+}
+async function imageUrlAsBytes(url){
  const response=await fetch(url,{cache:'force-cache'});
  if(!response.ok)throw new Error(`تعذر تحميل الصورة: ${response.status}`);
- const blob=await response.blob();
- return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(blob)});
+ return new Uint8Array(await response.arrayBuffer());
+}
+function buildTemplateDocx(i,D,images){
+ const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
+ const navy='0D3656',gold='C9853C',goldDark='925821',ink='263843',muted='66727B',line='E5E0D8',soft='F8F4EE',pale='F7F5F1',green='EEF5F1',white='FFFFFF';
+ const pageWidth=10450;
+ const border=(color=line,size=5)=>({style:D.BorderStyle.SINGLE,size,color});
+ const borders=(color=line,size=5)=>({top:border(color,size),bottom:border(color,size),left:border(color,size),right:border(color,size)});
+ const run=(text,options={})=>new D.TextRun({
+  text:String(text??''),font:'Arial',size:options.size||20,color:options.color||ink,
+  bold:Boolean(options.bold),italics:Boolean(options.italics),rightToLeft:options.rtl!==false,
+  break:options.break||0
+ });
+ const paragraph=(content,options={})=>new D.Paragraph({
+  children:Array.isArray(content)?content:[run(content,options)],
+  bidirectional:options.rtl!==false,
+  alignment:options.alignment||D.AlignmentType.RIGHT,
+  spacing:{before:options.before||0,after:options.after??80,line:options.line||300},
+  keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines)
+ });
+ const cell=(children,options={})=>new D.TableCell({
+  children:Array.isArray(children)?children:[children],
+  width:options.width?{size:options.width,type:D.WidthType.DXA}:undefined,
+  shading:options.fill?{type:D.ShadingType.CLEAR,color:'auto',fill:options.fill}:undefined,
+  borders:options.borders||borders(),
+  margins:options.margins||{top:90,bottom:90,left:110,right:110},
+  verticalAlign:options.verticalAlign||D.VerticalAlign.CENTER
+ });
+ const table=(rows,width=pageWidth)=>new D.Table({
+  rows,width:{size:width,type:D.WidthType.DXA},layout:D.TableLayoutType.FIXED
+ });
+ const spacer=(height=70)=>new D.Paragraph({spacing:{before:0,after:height},children:[]});
+ const heading=(text)=>paragraph(text,{bold:true,size:25,color:navy,after:100,keepNext:true});
+ const imageParagraph=(data,width,height,alignment=D.AlignmentType.CENTER)=>{
+  if(!data)return paragraph('إمتداد',{bold:true,size:16,color:navy,alignment});
+  return new D.Paragraph({
+   alignment,spacing:{before:0,after:0},
+   children:[new D.ImageRun({type:'png',data,transformation:{width,height},altText:{title:'إمتداد',description:'شعار إمتداد',name:'Emtidad'}})]
+  });
+ };
+
+ const header=new D.Header({children:[
+  table([new D.TableRow({cantSplit:true,children:[
+   cell(paragraph(reportDate(),{rtl:false,alignment:D.AlignmentType.LEFT,size:14,color:muted,after:0}),{width:1350,fill:soft,borders:borders('DED6CA',5)}),
+   cell([
+    paragraph(t.title,{bold:true,size:24,color:navy,after:20}),
+    paragraph('منظومة الشركات العائلية | أداة إمتداد',{size:15,color:muted,after:0})
+   ],{width:7900,fill:soft,borders:borders('DED6CA',5)}),
+   cell(imageParagraph(images.logo,46,46),{width:1200,fill:soft,borders:borders('DED6CA',5),margins:{top:55,bottom:55,left:70,right:70}})
+  ]})])
+ ]});
+
+ const footer=new D.Footer({children:[
+  table([new D.TableRow({cantSplit:true,children:[
+   cell(paragraph(VERSION,{rtl:false,alignment:D.AlignmentType.LEFT,size:13,color:goldDark,bold:true,after:0}),{width:1200,borders:{top:border('D8CFC2',5),bottom:border(white,0),left:border(white,0),right:border(white,0)},margins:{top:75,bottom:20,left:0,right:0}}),
+   cell([
+    paragraph('منظومة الشركات العائلية | أداة إمتداد',{bold:true,size:14,color:navy,alignment:D.AlignmentType.CENTER,after:10}),
+    new D.Paragraph({
+     alignment:D.AlignmentType.CENTER,spacing:{before:0,after:0},
+     children:[new D.ExternalHyperlink({
+      link:PLATFORM_URL,
+      children:[new D.TextRun({text:'almohammdin.github.io/emtidad/',font:'Arial',size:13,color:navy,underline:{type:'single',color:navy}})]
+     })]
+    })
+   ],{width:7900,borders:{top:border('D8CFC2',5),bottom:border(white,0),left:border(white,0),right:border(white,0)},margins:{top:75,bottom:20,left:30,right:30}}),
+   cell(imageParagraph(images.naif,92,36),{width:1350,borders:{top:border('D8CFC2',5),bottom:border(white,0),left:border(white,0),right:border(white,0)},margins:{top:55,bottom:10,left:0,right:0}})
+  ]})])
+ ]});
+
+ const children=[];
+ children.push(table([new D.TableRow({cantSplit:true,children:[
+  cell([
+   paragraph('المخرج المتوقع',{bold:true,size:15,color:goldDark,after:20}),
+   paragraph(guide.outcome,{bold:true,size:20,color:navy,after:0,line:330})
+  ],{width:pageWidth,fill:soft,borders:{top:border('E6D8C8',5),bottom:border('E6D8C8',5),left:border('E6D8C8',5),right:border(gold,22)},margins:{top:120,bottom:120,left:140,right:150}})
+ ]})]));
+ children.push(spacer(110));
+
+ t.sections.forEach((section,si)=>{
+  children.push(heading(section.title));
+  const rows=section.items.map((item,ii)=>{
+   const value=values[`${si}:${ii}`];
+   if(section.type==='fields'){
+    return new D.TableRow({cantSplit:true,children:[
+     cell(paragraph(value||'لم يُعبأ',{size:17,color:value?ink:muted,after:0}),{width:6900,fill:white}),
+     cell(paragraph(item,{bold:true,size:16,color:muted,after:0}),{width:3550,fill:pale})
+    ]});
+   }
+   return new D.TableRow({cantSplit:true,children:[
+    cell(paragraph(item,{size:17,color:ink,after:0}),{width:9700,fill:value?green:white}),
+    cell(paragraph(value?'✓':'□',{rtl:false,bold:true,size:20,color:value?goldDark:muted,alignment:D.AlignmentType.CENTER,after:0}),{width:750,fill:value?green:soft})
+   ]});
+  });
+  children.push(table(rows));
+  children.push(spacer(100));
+ });
+
+ children.push(heading('أفضل الممارسات المطبقة في النموذج'));
+ children.push(table(guide.practices.map((item,index)=>new D.TableRow({cantSplit:true,children:[
+  cell(paragraph(item,{size:16,color:ink,after:0,line:300}),{width:9700,fill:white}),
+  cell(paragraph(String(index+1),{rtl:false,bold:true,size:17,color:goldDark,alignment:D.AlignmentType.CENTER,after:0}),{width:750,fill:soft})
+ ]}))));
+ children.push(spacer(110));
+
+ children.push(heading('المرجعيات وما استفاد منه النموذج'));
+ children.push(table(guide.references.map(ref=>new D.TableRow({cantSplit:true,children:[
+  cell([
+   paragraph(ref.name,{bold:true,size:17,color:navy,after:25}),
+   paragraph(ref.use,{size:15,color:muted,after:25,line:290}),
+   new D.Paragraph({
+    bidirectional:true,alignment:D.AlignmentType.RIGHT,spacing:{before:0,after:0},
+    children:[new D.ExternalHyperlink({
+     link:ref.url,
+     children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:15,color:navy,bold:true,rightToLeft:true,underline:{type:'single',color:navy}})]
+    })]
+   })
+  ],{width:8800,fill:white,margins:{top:110,bottom:110,left:120,right:120}}),
+  cell(paragraph(ref.level,{bold:true,size:16,color:goldDark,alignment:D.AlignmentType.CENTER,after:0}),{width:1650,fill:'F2E4D4'})
+ ]}))));
+ children.push(spacer(110));
+
+ children.push(table([new D.TableRow({cantSplit:true,children:[
+  cell(paragraph('هذه صياغة إمتداد استرشادية مبنية على المرجعيات المذكورة، وليست نقلاً حرفياً عنها. تُخصص بحسب حالة العائلة وتُراجع مهنياً وشرعياً ونظامياً ومالياً متى كان ذلك منطبقاً.',{size:14,color:'6F665D',after:0,line:285}),{width:pageWidth,fill:pale,margins:{top:100,bottom:100,left:120,right:120}})
+ ]})]));
+
+ return new D.Document({
+  creator:'إمتداد',title:`إمتداد - ${t.title}`,subject:'نموذج عملي للشركات العائلية',
+  description:`نموذج ${t.title} من منظومة الشركات العائلية | أداة إمتداد`,
+  styles:{default:{document:{run:{font:'Arial',size:20,color:ink},paragraph:{spacing:{after:80}}}}},
+  sections:[{
+   properties:{page:{
+    size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},
+    margin:{top:1050,right:720,bottom:980,left:720,header:260,footer:260}
+   }},
+   headers:{default:header},footers:{default:footer},children
+  }]
+ });
 }
 async function downloadTemplateWord(i){
+ const btn=$('wordToolBtn'),original=btn?.innerHTML;
+ if(btn){btn.disabled=true;btn.setAttribute('aria-busy','true');btn.textContent='جارٍ تجهيز Word…'}
  toast('جاري تجهيز ملف Word');
- const imageUrls={
-  logo:new URL('assets/images/emtidad-logo.png?v=0.4.1',document.baseURI).href,
-  naif:new URL('assets/images/naif-logo.png',document.baseURI).href
- };
- let embeddedImages={};
  try{
-  const [logo,naif]=await Promise.all([imageUrlAsDataUrl(imageUrls.logo),imageUrlAsDataUrl(imageUrls.naif)]);
-  embeddedImages={logo,naif};
- }catch(error){console.warn('تعذر تضمين صور Word، سيستخدم الملف الروابط المباشرة.',error)}
- const html=templateDocumentHtml(i,'word',embeddedImages);
- const blob=new Blob(['\ufeff',html],{type:'application/msword;charset=utf-8'});
- const objectUrl=URL.createObjectURL(blob);
- const link=document.createElement('a');link.href=objectUrl;link.download=`إمتداد - ${safeTemplateFilename(toolsData[i].title)}.doc`;
- document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),1500);toast('تم تجهيز ملف Word');
+  const [D,logo,naif]=await Promise.all([
+   ensureDocxLibrary(),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.4.2',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
+  ]);
+  const documentFile=buildTemplateDocx(i,D,{logo,naif});
+  const blob=await D.Packer.toBlob(documentFile);
+  const objectUrl=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=objectUrl;
+  link.download=`إمتداد - ${safeTemplateFilename(toolsData[i].title)}.docx`;
+  document.body.appendChild(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(objectUrl),2000);
+  toast('تم تجهيز ملف Word برأس وتذييل ثابتين');
+ }catch(error){
+  console.error(error);
+  toast('تعذر تجهيز ملف Word، حاول مرة أخرى');
+ }finally{
+  if(btn){btn.disabled=false;btn.removeAttribute('aria-busy');btn.innerHTML=original}
+ }
 }
 function printTemplate(i){
  const win=window.open('','_blank');
