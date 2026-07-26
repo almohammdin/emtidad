@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.3.8';
+const VERSION='v0.3.9';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const STORAGE_KEY='emtidad_v033';
 const statsData=[
@@ -54,14 +54,49 @@ const naifToolsData=[
  {title:'شراكة',icon:'ownership',desc:'أداة تساعد الشركاء على تنظيم العلاقة والحقوق والقرارات الجوهرية.',url:'https://almohammdin.github.io/SHARAKAH/'}
 ];
 const toolsData=[
- {title:'قائمة جاهزية الميثاق',icon:'charter',desc:'أسئلة تمهيدية قبل بدء مشروع صياغة الميثاق.',content:['وضوح الغرض المشترك','تحديد الأطراف المشاركين','تجهيز بيانات الملكية','حصر السياسات القائمة','اختيار آلية الاعتماد والمراجعة']},
- {title:'فهرس الميثاق العائلي',icon:'book',desc:'هيكل مقترح لأبواب الميثاق ومحاوره.',content:['هوية العائلة وقيمها','الملكية وانتقالها','مجلس العائلة','التوظيف والأجور','التوزيعات والتخارج','الخلافات والمراجعة']},
- {title:'سياسة توظيف أفراد العائلة',icon:'family',desc:'نقاط تأسيسية للمؤهلات والخبرة والتقييم.',content:['متطلبات الدخول','الخبرة الخارجية','المسار الوظيفي','التقييم والمكافأة','الخروج من الوظيفة']},
- {title:'مبادئ توزيع الأرباح',icon:'chart',desc:'قائمة حوار توازن الملاك والنمو والسيولة.',content:['نسبة التوزيع','الاحتياطي','إعادة الاستثمار','احتياجات السيولة','المراجعة الدورية']},
- {title:'قائمة التعاقب القيادي',icon:'succession',desc:'قراءة جاهزية القيادة والبدائل والتأهيل.',content:['الأدوار الحرجة','المرشحون','معايير الاختيار','خطة التطوير','قرار التعيين والتسليم']},
- {title:'جدول مجلس العائلة',icon:'governance',desc:'هيكل اجتماع يحول الحوار إلى قرارات موثقة.',content:['الملكية والتوزيعات','الجيل القادم','السياسات العائلية','المخاطر والخلافات','متابعة القرارات']},
- {title:'مصفوفة الأدوار',icon:'layers',desc:'فصل العائلة والملكية والمجلس والإدارة.',content:['من يقترح','من يراجع','من يعتمد','من ينفذ','من يراقب']},
- {title:'قائمة دراسة الوقف',icon:'waqf',desc:'أسئلة الغرض والأصول والنظارة والمصارف.',content:['الغرض الوقفي','الأصول المناسبة','المرونة والسيولة','النظارة والاستخلاف','الحوكمة والرقابة']}
+ {title:'قائمة جاهزية الميثاق',icon:'charter',kind:'قائمة تحقق',desc:'أسئلة تمهيدية قبل بدء مشروع صياغة الميثاق.',intro:'استخدم القائمة للتأكد من جاهزية العائلة قبل بدء جلسات إعداد الميثاق.',sections:[
+  {title:'بيانات المشروع',type:'fields',items:['اسم العائلة أو الشركة','منسق مشروع الميثاق','الأطراف المشاركة','التاريخ المستهدف للبدء']},
+  {title:'جاهزية الحوار',items:['الغرض المشترك من استمرار الملكية العائلية واضح','الفروع والأجيال المعنية ممثلة في الحوار','بيانات الملكية والكيانات محدثة ومتاحة','السياسات والاتفاقات القائمة جرى حصرها','الموضوعات الحساسة والخلافات المحتملة محددة']},
+  {title:'الاعتماد والمتابعة',items:['جهة اعتماد الميثاق محددة','آلية التعديل والمراجعة الدورية واضحة','المسؤول عن متابعة الالتزام محدد']}
+ ]},
+ {title:'فهرس الميثاق العائلي',icon:'book',kind:'هيكل وثيقة',desc:'هيكل مقترح لأبواب الميثاق ومحاوره.',intro:'فهرس عملي يمكن نسخه كنقطة بداية لنطاق وثيقة الميثاق العائلي.',sections:[
+  {title:'بيانات الوثيقة',type:'fields',items:['اسم العائلة','اسم الشركة أو المجموعة','رقم الإصدار','تاريخ الاعتماد']},
+  {title:'الهوية والعلاقة',items:['الديباجة والتعريفات','هوية العائلة وقيمها ورسالتها','علاقة العائلة بالشركة','تمثيل الفروع والأجيال','الجمعية أو مجلس العائلة']},
+  {title:'الملكية والعمل',items:['قواعد الملكية وانتقالها','التصرف في الحصص أو الأسهم والتخارج','التوزيعات وإعادة الاستثمار','توظيف أفراد العائلة وتقييمهم','عضوية مجلس الإدارة والقيادات التنفيذية']},
+  {title:'الاستمرار والالتزام',items:['إعداد الجيل القادم والتعاقب','تعارض المصالح والسرية','معالجة الخلافات','تعديل الميثاق ومراجعته','مؤشرات الالتزام بالميثاق']}
+ ]},
+ {title:'سياسة توظيف أفراد العائلة',icon:'family',kind:'مسودة سياسة',desc:'نقاط تأسيسية للمؤهلات والخبرة والتقييم.',intro:'هيكل تمهيدي لصياغة سياسة عادلة ومعلنة للعمل العائلي داخل الشركة.',sections:[
+  {title:'نطاق السياسة',type:'fields',items:['الجهات والوظائف المشمولة','جهة اعتماد السياسة','جهة تطبيق السياسة','دورية المراجعة']},
+  {title:'شروط الالتحاق',items:['وجود احتياج وظيفي معتمد ووصف وظيفي واضح','استيفاء المؤهل والخبرة المطلوبة للوظيفة','تحديد الحد الأدنى للخبرة الخارجية عند الحاجة','خضوع المرشح لإجراءات الاختيار نفسها المطبقة على غير أفراد العائلة']},
+  {title:'أثناء العمل',items:['تحديد المدير المباشر بعيداً عن تضارب المصالح','ربط الأجر والمزايا بسلم معتمد','تقييم الأداء وفق مؤشرات موثقة','تحديد مسار الترقية والتطوير المهني']},
+  {title:'انتهاء العلاقة',items:['تطبيق إجراءات المساءلة وإنهاء الخدمة بعدالة','تحديد آلية التظلم ومعالجة الخلاف','فصل الحقوق الوظيفية عن الحقوق بصفتهم ملاكاً']}
+ ]},
+ {title:'مبادئ توزيع الأرباح',icon:'chart',kind:'ورقة قرار',desc:'قائمة حوار توازن الملاك والنمو والسيولة.',intro:'ورقة نقاش تساعد الملاك على بناء سياسة توزيع واضحة وقابلة للمراجعة.',sections:[
+  {title:'بيانات القرار',type:'fields',items:['السنة المالية','صافي الربح القابل للتوزيع','الاحتياجات الاستثمارية','الالتزامات والتمويل']},
+  {title:'معايير التوزيع',items:['الحفاظ على سيولة تشغيلية آمنة','تغطية الالتزامات والاحتياطيات النظامية','تمويل فرص النمو المعتمدة','مراعاة احتياجات الملاك دون الإضرار بالشركة','تحديد حد أدنى أو نطاق مستهدف للتوزيع']},
+  {title:'الحوكمة',items:['الجهة التي تقترح نسبة التوزيع محددة','الجهة التي تراجع السيولة والمخاطر محددة','الجهة صاحبة صلاحية الاعتماد محددة','توقيت المراجعة الدورية والاستثناءات موثق']}
+ ]},
+ {title:'قائمة التعاقب القيادي',icon:'succession',kind:'قائمة تحقق',desc:'قراءة جاهزية القيادة والبدائل والتأهيل.',intro:'قائمة عملية لتحديد الوظائف الحرجة وتجهيز انتقال قيادي منظم.',sections:[
+  {title:'نطاق الخطة',type:'fields',items:['المنصب أو الدور الحرج','شاغل المنصب الحالي','الإطار الزمني المتوقع للانتقال','مالك خطة التعاقب']},
+  {title:'الجاهزية',items:['متطلبات الدور ومعايير النجاح مكتوبة','يوجد بديل طارئ عند الغياب المفاجئ','المرشحون المحتملون محددون بموضوعية','فجوات كل مرشح موثقة','خطة التطوير والتجربة العملية معتمدة']},
+  {title:'الانتقال',items:['صلاحية الاختيار والتعيين واضحة','خطة تسليم المعرفة والعلاقات موجودة','مؤشرات نجاح أول 100 يوم محددة','تاريخ مراجعة الخطة واختبارها محدد']}
+ ]},
+ {title:'جدول مجلس العائلة',icon:'governance',kind:'جدول اجتماع',desc:'هيكل اجتماع يحول الحوار إلى قرارات موثقة.',intro:'جدول جاهز لتنظيم اجتماع مجلس العائلة وربط النقاش بالقرار والمتابعة.',sections:[
+  {title:'بيانات الاجتماع',type:'fields',items:['رقم الاجتماع وتاريخه','مكان الاجتماع أو رابطه','رئيس الاجتماع','أمين السر','الحضور والاعتذارات']},
+  {title:'بنود دورية',items:['متابعة قرارات الاجتماع السابق','مستجدات الملكية والتوزيعات','الجيل القادم والتعليم والتأهيل','السياسات العائلية والميثاق','المخاطر أو الخلافات ذات الأثر','المناسبات والمبادرات العائلية']},
+  {title:'إقفال الاجتماع',items:['لكل قرار مسؤول وموعد إنجاز','الموضوعات المؤجلة وأسبابها موثقة','موعد الاجتماع القادم محدد','المحضر يراجع ويعتمد وفق الآلية المتفق عليها']}
+ ]},
+ {title:'مصفوفة الأدوار',icon:'layers',kind:'مصفوفة مسؤوليات',desc:'فصل العائلة والملكية والمجلس والإدارة.',intro:'نموذج لتوزيع أدوار الاقتراح والمراجعة والاعتماد والتنفيذ والمتابعة.',sections:[
+  {title:'بيانات المصفوفة',type:'fields',items:['القرار أو الموضوع','الجهات المعنية','مالك تحديث المصفوفة','تاريخ آخر مراجعة']},
+  {title:'الأدوار المطلوب تحديدها',items:['من يقترح القرار؟','من يقدم المشورة أو يراجع؟','من يملك صلاحية الاعتماد؟','من ينفذ القرار؟','من يتابع التنفيذ ويرفع التقارير؟']},
+  {title:'قرارات يوصى بإدراجها',items:['التوزيعات وإعادة الاستثمار','تعيين القيادات التنفيذية','توظيف أفراد العائلة','بيع الأصول أو الاستثمارات الجوهرية','انتقال الملكية والتخارج','الخلافات وتعارض المصالح']}
+ ]},
+ {title:'قائمة دراسة الوقف',icon:'waqf',kind:'قائمة دراسة',desc:'أسئلة الغرض والأصول والنظارة والمصارف.',intro:'أسئلة تأسيسية لتنظيم نطاق دراسة الوقف قبل الانتقال إلى الصياغة الشرعية والنظامية والمالية.',sections:[
+  {title:'بيانات الدراسة',type:'fields',items:['مقدم المبادرة','الغرض المقترح للوقف','المستفيدون المستهدفون','الأصول محل الدراسة']},
+  {title:'الغرض والأصول',items:['الغرض الوقفي محدد وقابل للقياس','الأصول المقترحة مناسبة لطبيعة الوقف','أثر الوقف على سيولة العائلة والشركة مدروس','سياسة الاستثمار والمحافظة على الأصل واضحة']},
+  {title:'النظارة والحوكمة',items:['تكوين النظارة ومعايير العضوية محددة','الصلاحيات وآلية اتخاذ القرار واضحة','الاستخلاف والتعاقب في النظارة منظم','الرقابة والتقارير والمراجعة الدورية محددة']},
+  {title:'المصارف والاستدامة',items:['المصارف وأولوياتها وشروط الاستحقاق واضحة','معالجة فائض العوائد أو عجزها محددة','آلية تعديل المصارف عند تغير الظروف مدروسة']}
+ ]}
 ];
 const centersData=[
  {name:'المركز الوطني للمنشآت العائلية',scope:'مبادرات وأدلة وبرامج وطنية للشركات العائلية.',url:'https://ncfb.org.sa/',region:'سعودي'},
@@ -176,7 +211,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.8',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.3.9',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -300,7 +335,7 @@ async function buildResultImageCanvas(){
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
  const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.3.8',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.3.9',document.baseURI).href),
   loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
  ]);
  const canvas=document.createElement('canvas');
@@ -447,8 +482,28 @@ function renderAxesPreview(){$('axisPreview').innerHTML=axes.map(a=>`<article cl
 function setupKnowledgeFilters(){const types=[...new Set(knowledgeData.map(x=>x.type))],regions=[...new Set(knowledgeData.map(x=>x.region))],levels=[...new Set(knowledgeData.map(x=>x.level))];$('knowledgeType').innerHTML='<option value="">كل الأنواع</option>'+types.map(x=>`<option>${x}</option>`).join('');$('knowledgeRegion').innerHTML='<option value="">سعودي وعالمي</option>'+regions.map(x=>`<option>${x}</option>`).join('');$('knowledgeLevel').innerHTML='<option value="">كل المستويات</option>'+levels.map(x=>`<option>${x}</option>`).join('');['knowledgeSearch','knowledgeType','knowledgeRegion','knowledgeLevel'].forEach(id=>$(id).addEventListener(id==='knowledgeSearch'?'input':'change',renderKnowledge))}
 function renderKnowledge(){const q=$('knowledgeSearch').value.trim().toLowerCase(),type=$('knowledgeType').value,region=$('knowledgeRegion').value,level=$('knowledgeLevel').value;const rows=knowledgeData.filter(x=>(!q||[x.title,x.topic,x.source,x.summary,...x.highlights].join(' ').toLowerCase().includes(q))&&(!type||x.type===type)&&(!region||x.region===region)&&(!level||x.level===level));$('knowledgeGrid').innerHTML=rows.length?rows.map(x=>`<article class="knowledge-card"><div class="meta"><span class="chip ${x.type.includes('رسمي')||x.type.includes('نظام')?'official':''}">${x.type}</span><span class="chip">${x.region}</span><span class="chip">${x.level}</span></div><h3>${x.title}</h3><p>${x.summary}</p><ul class="highlights">${x.highlights.map(h=>`<li>${h}</li>`).join('')}</ul><footer><span>${x.source} · ${x.year} · مراجعة ${x.reviewed}</span>${x.url?`<a href="${x.url}" target="_blank" rel="noopener">المصدر ${icon('external')}</a>`:''}</footer></article>`).join(''):'<div class="empty-state">تظهر المواد المطابقة هنا.</div>'}
 function renderCases(){$('caseGrid').innerHTML=caseStudiesData.map(c=>`<article class="case-card"><div class="case-top"><span>${c.focus}</span><small>${c.reviewed}</small></div><h3>${c.name}</h3><p>${c.summary}</p><ul class="case-lessons">${c.lessons.map(x=>`<li>${x}</li>`).join('')}</ul><a href="${c.url}" target="_blank" rel="noopener">${c.source} ${icon('external')}</a></article>`).join('')}
-function renderTools(){$('naifToolsGrid').innerHTML=naifToolsData.map(t=>`<article class="tool-card linked-tool"><div class="tool-icon">${icon(t.icon)}</div><h3>${t.title}</h3><p>${t.desc}</p><a href="${t.url}" target="_blank" rel="noopener">فتح الأداة ${icon('external')}</a></article>`).join('');$('toolsGrid').innerHTML=toolsData.map((t,i)=>`<article class="tool-card"><div class="tool-icon">${icon(t.icon)}</div><h3>${t.title}</h3><p>${t.desc}</p><button type="button" data-tool="${i}">عرض المحتوى</button></article>`).join('');document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>openTool(Number(b.dataset.tool))))}
-function openTool(i){const t=toolsData[i];$('modalTitle').textContent=t.title;$('modalBody').innerHTML=`<p>${t.desc}</p><h4>العناصر الأساسية</h4><ul>${t.content.map(x=>`<li>${x}</li>`).join('')}</ul><p>هذه أداة أولية تساعد على بدء الحوار، وتُخصص وتُراجع قبل الاعتماد.</p>`;$('modal').hidden=false}
+function toolTemplateText(t){
+ return `${t.title}\n${t.intro}\n\n${t.sections.map(section=>`${section.title}\n${section.items.map(item=>section.type==='fields'?`${item}: ______________________________`:`[ ] ${item}`).join('\n')}`).join('\n\n')}\n\nملاحظة: نموذج تمهيدي يُخصص ويُراجع مهنياً قبل الاعتماد.`;
+}
+async function copyToolTemplate(i){
+ const text=toolTemplateText(toolsData[i]);
+ try{
+  if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(text);
+  else{
+   const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';
+   document.body.appendChild(area);area.select();document.execCommand('copy');area.remove();
+  }
+  toast('تم نسخ النموذج كاملاً');
+ }catch(error){console.error(error);toast('تعذر النسخ، حاول مرة أخرى')}
+}
+function renderTools(){$('naifToolsGrid').innerHTML=naifToolsData.map(t=>`<article class="tool-card linked-tool"><div class="tool-icon">${icon(t.icon)}</div><h3>${t.title}</h3><p>${t.desc}</p><a href="${t.url}" target="_blank" rel="noopener">فتح الأداة ${icon('external')}</a></article>`).join('');$('toolsGrid').innerHTML=toolsData.map((t,i)=>`<article class="tool-card template-card"><div class="tool-card-top"><div class="tool-icon">${icon(t.icon)}</div><span class="template-kind">${t.kind}</span></div><h3>${t.title}</h3><p>${t.desc}</p><button type="button" data-tool="${i}">فتح النموذج</button></article>`).join('');document.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>openTool(Number(b.dataset.tool))))}
+function openTool(i){
+ const t=toolsData[i];
+ $('modalTitle').textContent=t.title;
+ $('modalBody').innerHTML=`<div class="template-intro"><span>${escapeHtml(t.kind)}</span><p>${escapeHtml(t.intro)}</p></div><div class="template-sections">${t.sections.map(section=>`<section class="template-section"><h4>${escapeHtml(section.title)}</h4>${section.type==='fields'?`<div class="template-fields">${section.items.map(item=>`<label><span>${escapeHtml(item)}</span><i aria-hidden="true"></i></label>`).join('')}</div>`:`<div class="template-checks">${section.items.map(item=>`<label><input type="checkbox"><span>${escapeHtml(item)}</span></label>`).join('')}</div>`}</section>`).join('')}</div><div class="template-actions"><p>هذا نموذج تمهيدي قابل للنسخ والتخصيص، ويُراجع مهنياً قبل الاعتماد.</p><button class="btn secondary" type="button" id="copyToolBtn">${icon('check')} نسخ النموذج كاملاً</button></div>`;
+ $('copyToolBtn').addEventListener('click',()=>copyToolTemplate(i));
+ $('modal').hidden=false;
+}
 function renderCenters(){$('centersGrid').innerHTML=centersData.map(c=>`<article class="center-card"><span class="chip ${c.region==='سعودي'?'official':''}">${c.region}</span><h3>${c.name}</h3><p>${c.scope}</p><a href="${c.url}" target="_blank" rel="noopener">زيارة الجهة ${icon('external')}</a></article>`).join('')}
 function applicableAxes(){return axes.filter(a=>a.id!=='wealth'||state.profile.waqfInterest==='yes')}
 function applicableQuestions(axisId){return (questions[axisId]||[]).filter(q=>!q.show||q.show(state.profile))}

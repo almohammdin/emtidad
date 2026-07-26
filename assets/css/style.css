@@ -334,3 +334,39 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .result-guide-grid{display:grid;grid-template-columns:repeat(5,minmax(145px,1fr));overflow-x:auto;direction:rtl;padding-bottom:5px}
  .result-guide-grid article{direction:rtl;min-height:105px}
 }
+
+/* v0.3.9 usable Emtidad templates */
+.template-card{display:flex;flex-direction:column;min-height:250px}
+.tool-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.template-kind{
+ display:inline-flex;padding:4px 9px;border-radius:999px;background:#EAF2F6;color:var(--navy);
+ font-size:10px;font-weight:800
+}
+.template-card button{margin-top:auto}
+.template-intro{
+ display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;margin-top:14px;
+ padding:13px 15px;border:1px solid #E8DED2;border-radius:15px;background:#F8F4EE
+}
+.template-intro span{padding:4px 8px;border-radius:999px;background:#F2E4D4;color:#925821;font-size:10px;font-weight:900;white-space:nowrap}
+.template-intro p{margin:0;color:#52606A;font-size:13px}
+.template-sections{display:grid;gap:12px;margin-top:14px}
+.template-section{padding:15px;border:1px solid var(--line);border-radius:17px;background:#FFFEFC}
+.template-section h4{margin:0 0 10px!important;color:var(--navy);font-size:16px}
+.template-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.template-fields label{display:grid;gap:5px;padding:9px 10px;border-radius:11px;background:#F7F5F1;color:#4E5A63;font-size:11px}
+.template-fields i{display:block;height:13px;border-bottom:1px dashed #B8B0A5}
+.template-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.template-checks label{display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:start;padding:9px 10px;border:1px solid #ECE6DD;border-radius:11px;background:#fff;color:#3C4953;font-size:11.5px;line-height:1.65}
+.template-checks input{width:16px;height:16px;margin-top:3px;accent-color:var(--gold)}
+.template-actions{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:15px;
+ padding-top:14px;border-top:1px solid var(--line)
+}
+.template-actions p{margin:0;color:var(--muted);font-size:11px}
+.template-actions .btn{flex:0 0 auto}
+@media(max-width:720px){
+ .template-intro{grid-template-columns:1fr}
+ .template-fields,.template-checks{grid-template-columns:1fr}
+ .template-actions{align-items:stretch;flex-direction:column}
+ .template-actions .btn{width:100%}
+}
