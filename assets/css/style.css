@@ -526,3 +526,54 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .nav-links a{padding:8px 10px;border-radius:11px;font-size:10px}
  .nav-links a.nav-diagnostic{padding-inline:12px}
 }
+
+/* v0.4.6 fair-valuation knowledge, readiness and reporting */
+.valuation-insights{
+ margin-top:24px;padding:22px;border:1px solid rgba(201,133,60,.32);border-radius:24px;
+ background:linear-gradient(135deg,#FFF9F1,#F7F3ED);box-shadow:0 10px 28px rgba(13,54,86,.05)
+}
+.valuation-insights-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:15px}
+.valuation-insights-head h3{margin:3px 0;color:var(--navy);font-size:24px}
+.valuation-insights-head p{margin:0;color:var(--muted);font-size:12px;line-height:1.75}
+.valuation-insights-head>a{
+ flex:0 0 auto;padding:9px 13px;border-radius:12px;background:var(--navy);color:#fff;
+ font-size:11px;font-weight:900;text-decoration:none
+}
+.valuation-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.valuation-stat-card{padding:15px;border:1px solid #E8DED2;border-radius:17px;background:#fff}
+.valuation-stat-card .stat-value{font-size:27px;color:var(--gold)}
+.valuation-stat-card h3{margin:6px 0 4px;color:var(--navy);font-size:14px}
+.valuation-stat-card p{margin:0;color:var(--muted);font-size:10.5px;line-height:1.7}
+.valuation-stat-card footer{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)}
+.valuation-stat-card footer span{color:#947253;font-size:9px;font-weight:800}
+.valuation-stat-card footer a{display:flex;gap:4px;align-items:center;color:var(--navy);font-size:9px;font-weight:800;text-decoration:none}
+.valuation-disclaimer{margin:12px 0 0;color:#74695D;font-size:10px;line-height:1.7}
+.knowledge-card.featured{grid-column:span 2;border-color:rgba(201,133,60,.45);background:linear-gradient(135deg,#FFF9F1,#fff)}
+.knowledge-card.featured h3{font-size:21px}
+.valuation-result{border:1px solid rgba(201,133,60,.38);border-radius:20px;padding:17px;background:linear-gradient(135deg,#FFF9F1,#fff)}
+.valuation-result-head{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.valuation-result-head span{display:inline-block;padding:3px 8px;border-radius:999px;background:#F2E4D4;color:#925821;font-size:9px;font-weight:900}
+.valuation-result-head h3{margin:5px 0 0;color:var(--navy);font-size:22px}
+.valuation-result-head>strong{font-family:Arial,sans-serif;color:var(--gold);font-size:32px}
+.valuation-result-body{display:grid;grid-template-columns:1.1fr .9fr;gap:12px;margin-top:12px}
+.valuation-result-body>div{padding:12px;border:1px solid #E9E1D7;border-radius:14px;background:rgba(255,255,255,.86)}
+.valuation-result-body h4{margin:0 0 4px;color:var(--navy);font-size:15px}
+.valuation-result-body p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.valuation-result-body small{display:block;color:#8A6A48;font-size:9px;font-weight:900}
+.valuation-result-body ul{margin:6px 0 0;padding-right:18px;color:#354650;font-size:11px;line-height:1.7}
+.valuation-result footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:10px;color:#766A5D;font-size:10px}
+.valuation-result footer a{display:flex;align-items:center;gap:4px;color:var(--navy);font-weight:900;text-decoration:none}
+@media(max-width:980px){
+ .valuation-stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+ .valuation-insights{padding:17px}.valuation-insights-head{align-items:stretch;flex-direction:column}
+ .valuation-stats-grid{grid-template-columns:1fr}.knowledge-card.featured{grid-column:auto}
+ .valuation-result-body{grid-template-columns:1fr}.valuation-result footer{align-items:flex-start;flex-direction:column}
+}
+@media print{
+ .valuation-result{padding:8px}.valuation-result-head h3{font-size:14px}.valuation-result-head>strong{font-size:19px}
+ .valuation-result-body{grid-template-columns:repeat(2,1fr);gap:5px;margin-top:5px}.valuation-result-body>div{padding:6px}
+ .valuation-result-body h4{font-size:10px}.valuation-result-body p,.valuation-result-body ul{font-size:8px}
+ .valuation-result footer{margin-top:5px;font-size:7px}
+}
