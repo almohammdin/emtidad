@@ -109,14 +109,19 @@ const charterDefaults={
 };
 const charterState={active:false,step:0,data:{...charterDefaults},linkedDiagnostic:false,draft:null};
 
+function charterLatinDigits(value){
+ return String(value??'')
+  .replace(/[٠-٩]/g,digit=>String(digit.charCodeAt(0)-1632))
+  .replace(/[۰-۹]/g,digit=>String(digit.charCodeAt(0)-1776));
+}
 function charterEscape(value){
- return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
+ return charterLatinDigits(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
 }
 function charterLabel(group,value){
  return CHARTER_OPTION_LABELS[group]?.[value]||String(value||'');
 }
 function charterReportDate(){
- try{return new Intl.DateTimeFormat('ar-SA',{year:'numeric',month:'long',day:'numeric'}).format(new Date())}catch(error){return new Date().toLocaleDateString('ar-SA')}
+ try{return new Intl.DateTimeFormat('ar-SA-u-nu-latn',{year:'numeric',month:'long',day:'numeric'}).format(new Date())}catch(error){return new Date().toLocaleDateString('en-GB')}
 }
 function charterSafeFilename(value){
  return String(value||'العائلة').replace(/[\\/:*?"<>|]+/g,' ').replace(/\s+/g,' ').trim();
@@ -132,11 +137,12 @@ function charterSave(){
 function charterLoad(){
  try{
   const saved=JSON.parse(localStorage.getItem(CHARTER_STORAGE_KEY)||'null');
-  if(!saved)return;
-  charterState.active=Boolean(saved.active);
-  charterState.step=Math.max(0,Math.min(CHARTER_STEPS.length-1,Number(saved.step)||0));
-  charterState.data={...charterDefaults,...(saved.data||{})};
-  charterState.linkedDiagnostic=Boolean(saved.linkedDiagnostic);
+ if(!saved)return;
+ charterState.active=Boolean(saved.active);
+ charterState.step=Math.max(0,Math.min(CHARTER_STEPS.length-1,Number(saved.step)||0));
+ charterState.data={...charterDefaults,...(saved.data||{})};
+  Object.keys(charterState.data).forEach(key=>charterState.data[key]=charterLatinDigits(charterState.data[key]));
+ charterState.linkedDiagnostic=Boolean(saved.linkedDiagnostic);
  }catch(error){}
 }
 function charterHasDiagnostic(){
@@ -177,7 +183,9 @@ function charterFieldHelp(name,kind){
 }
 function charterInput(name,label,type='text',placeholder='',required=false){
  const value=charterEscape(charterState.data[name]||'');
- return `<label class="charter-field"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'input')}<input data-charter-field="${name}" type="${type}" value="${value}" placeholder="${charterEscape(placeholder)}"></label>`;
+ const numeric=type==='number';
+ const attributes=numeric?'type="text" inputmode="numeric" pattern="[0-9]*" lang="en-US" dir="ltr" class="charter-number-input"':'type="text"';
+ return `<label class="charter-field"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'input')}<input data-charter-field="${name}" ${attributes} value="${value}" placeholder="${charterEscape(placeholder)}"></label>`;
 }
 function charterTextarea(name,label,placeholder='',required=false){
  return `<label class="charter-field charter-field-wide"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'textarea')}<textarea data-charter-field="${name}" rows="3" placeholder="${charterEscape(placeholder)}">${charterEscape(charterState.data[name]||'')}</textarea></label>`;
@@ -576,7 +584,9 @@ function charterRenderProgress(){
 function charterBindFields(){
  document.querySelectorAll('#charterBuilderPanel [data-charter-field]').forEach(input=>{
   const update=()=>{
-   charterState.data[input.dataset.charterField]=input.value;
+   const normalized=charterLatinDigits(input.value);
+   if(input.value!==normalized)input.value=normalized;
+   charterState.data[input.dataset.charterField]=normalized;
    charterState.draft=null;
    charterSave();
   };
@@ -621,7 +631,7 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}<footer>${article.refs.map(ref=>charterEscape(CHARTER_REFERENCES.find(item=>item.id===ref)?.level||ref)).join(' · ')}</footer></article>`).join('')}</section>`).join('');
@@ -645,8 +655,27 @@ function charterBuildDocx(draft,D,images){
  const navy='0D3656',gold='C9853C',ink='263843',muted='66727B',line='E5E0D8',soft='F8F4EE',white='FFFFFF';
  const border=(color=line,size=5)=>({style:D.BorderStyle.SINGLE,size,color});
  const borders=(color=line,size=5)=>({top:border(color,size),bottom:border(color,size),left:border(color,size),right:border(color,size)});
- const run=(text,options={})=>new D.TextRun({text:String(text??''),font:'Arial',size:options.size||20,color:options.color||ink,bold:Boolean(options.bold),rightToLeft:options.rtl!==false,break:options.break||0});
- const paragraph=(text,options={})=>new D.Paragraph({children:Array.isArray(text)?text:[run(text,options)],bidirectional:options.rtl!==false,alignment:options.alignment||D.AlignmentType.RIGHT,spacing:{before:options.before||0,after:options.after??90,line:options.line||320},keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines),pageBreakBefore:Boolean(options.pageBreakBefore)});
+ const run=(text,options={})=>{
+  const rtl=options.rtl!==false;
+ return new D.TextRun({
+   text:charterLatinDigits(text),font:'Arial',size:options.size||20,color:options.color||ink,
+   bold:Boolean(options.bold),rightToLeft:rtl,language:rtl?{value:'ar-SA',bidirectional:'ar-SA'}:{value:'en-US'},
+   break:options.break||0
+  });
+ };
+ const textRuns=(text,options={})=>charterLatinDigits(text)
+  .split(/([0-9]+(?:[.,:/-][0-9]+)*%?)/g)
+  .filter(Boolean)
+  .map(part=>/[0-9]/.test(part)?run(part,{...options,rtl:false}):run(part,options));
+ const paragraph=(text,options={})=>{
+  const rtl=options.rtl!==false;
+  return new D.Paragraph({
+   children:Array.isArray(text)?text:textRuns(text,options),bidirectional:rtl,
+   alignment:options.alignment??(rtl?D.AlignmentType.RIGHT:D.AlignmentType.LEFT),
+   spacing:{before:options.before||0,after:options.after??90,line:options.line||320},
+   keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines),pageBreakBefore:Boolean(options.pageBreakBefore)
+  });
+ };
  const cell=(children,options={})=>new D.TableCell({children:Array.isArray(children)?children:[children],width:options.width?{size:options.width,type:D.WidthType.DXA}:undefined,shading:options.fill?{type:D.ShadingType.CLEAR,color:'auto',fill:options.fill}:undefined,borders:options.borders||borders(),margins:options.margins||{top:90,bottom:90,left:110,right:110},verticalAlign:D.VerticalAlign.CENTER});
  const table=rows=>new D.Table({rows,width:{size:10450,type:D.WidthType.DXA},layout:D.TableLayoutType.FIXED});
  const imageParagraph=(data,width,height)=>new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{before:0,after:0},children:data?[new D.ImageRun({type:'png',data,transformation:{width,height},altText:{title:'إمتداد',description:'شعار إمتداد',name:'Emtidad'}})]:[run('إمتداد',{bold:true,color:navy})]});
@@ -684,7 +713,7 @@ function charterBuildDocx(draft,D,images){
  });
  children.push(paragraph('المرجعيات', {bold:true,size:26,color:navy,before:180,after:110,keepNext:true}));
  draft.references.forEach(ref=>children.push(table([new D.TableRow({cantSplit:true,children:[
-  cell([paragraph(ref.name,{bold:true,size:17,color:navy,after:25}),paragraph(ref.use,{size:14,color:muted,after:25}),new D.Paragraph({alignment:D.AlignmentType.RIGHT,bidirectional:true,children:[new D.ExternalHyperlink({link:ref.url,children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:14,color:navy,bold:true,rightToLeft:true,underline:{type:'single',color:navy}})]})]})],{width:8700}),
+  cell([paragraph(ref.name,{bold:true,size:17,color:navy,after:25}),paragraph(ref.use,{size:14,color:muted,after:25}),new D.Paragraph({alignment:D.AlignmentType.RIGHT,bidirectional:true,children:[new D.ExternalHyperlink({link:ref.url,children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:14,color:navy,bold:true,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'},underline:{type:'single',color:navy}})]})]})],{width:8700}),
   cell(paragraph(ref.level,{bold:true,size:15,color:'925821',alignment:D.AlignmentType.CENTER,after:0}),{width:1750,fill:'F2E4D4'})
  ]})])));
  children.push(paragraph('',{after:80}));
@@ -692,7 +721,10 @@ function charterBuildDocx(draft,D,images){
  return new D.Document({
   creator:'إمتداد',title:draft.title,subject:'مسودة استرشادية للميثاق العائلي',
   description:'مسودة مولدة من منشئ الميثاق العائلي في إمتداد',
-  styles:{default:{document:{run:{font:'Arial',size:20,color:ink},paragraph:{spacing:{after:80}}}}},
+  styles:{default:{document:{
+   run:{font:'Arial',size:20,color:ink,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
+   paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{after:80}}
+  }}},
   sections:[{properties:{page:{size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},margin:{top:1050,right:720,bottom:980,left:720,header:260,footer:260}}},headers:{default:header},footers:{default:footer},children}]
  });
 }
@@ -704,7 +736,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
