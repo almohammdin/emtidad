@@ -578,7 +578,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .valuation-result footer{margin-top:5px;font-size:7px}
 }
 
-/* v0.5.1 guided family-charter draft builder */
+/* v0.5.2 guided family-charter draft builder */
 .nav-links a.nav-charter-service{
  border-color:rgba(201,133,60,.44);
  background:linear-gradient(135deg,#FFF7EB,#F4E1C7);color:var(--navy)
@@ -715,6 +715,10 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  padding:0 11px;outline:none;font-size:11.5px;transition:.2s
 }
 .charter-field input,.charter-field select{height:43px}
+.charter-field input.charter-number-input{
+ direction:ltr;text-align:right;unicode-bidi:plaintext;font-family:Arial,Tahoma,sans-serif!important;
+ font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1
+}
 .charter-field textarea{min-height:86px;padding-block:10px;resize:vertical;line-height:1.7}
 .charter-field input:focus,.charter-field select:focus,.charter-field textarea:focus{
  border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,133,60,.11)
