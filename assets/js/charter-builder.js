@@ -373,7 +373,7 @@ function charterBuildDraft(){
  const sensitiveThreshold=d.decisionModel==='enhanced'?'75%':`${d.approvalThreshold}%`;
  const chapters=[];
  chapters.push(charterChapter('الباب الأول: الأحكام العامة ونطاق الميثاق',[
-  charterArticle('طبيعة الوثيقة',`هذه الوثيقة مسودة استرشادية لميثاق عائلة ${family} المالكة أو المرتبطة بشركة ${company}. تصبح صيغتها النهائية قابلة للاعتماد بعد مناقشتها ومواءمتها مع الأنظمة و${t.doc} وصدورها من الجهة المختصة.`,['law11','qadha'],'يحتاج مراجعة نظامية'),
+  charterArticle('طبيعة الوثيقة',`الوثيقة مسودة استرشادية لميثاق عائلة ${family} المالكة أو المرتبطة بشركة ${company}. تصبح صيغتها النهائية قابلة للاعتماد بعد مناقشتها ومواءمتها مع الأنظمة و${t.doc} وصدورها من الجهة المختصة.`,['law11','qadha'],'يحتاج مراجعة نظامية'),
   charterArticle('التعريفات',[
    `العائلة: عائلة ${family} وفروعها وأجيالها الداخلة في نطاق الميثاق وفق سجل يعتمد لهذا الغرض.`,
    `الشركة: ${company} والكيانات التي تقرر الجهة المختصة شمولها بالمبادئ الواردة في الميثاق.`,
@@ -557,7 +557,7 @@ function charterDraftMarkup(){
   <div><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} طباعة / حفظ PDF</button><button class="btn ghost" type="button" data-charter-export="copy">نسخ نص الميثاق</button></div>
  </div>
  <div class="charter-draft-document">${chapters}</div>
- <div class="charter-draft-disclaimer"><strong>حدود الاستخدام</strong><p>هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</p></div>`;
+ <div class="charter-draft-disclaimer"><strong>حدود الاستخدام</strong><p>مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</p></div>`;
 }
 function charterNavigationMarkup(){
  if(charterState.step===4){
@@ -637,14 +637,14 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.5.3',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.5.4',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</article>`).join('')}</section>`).join('');
  const preamble=`<section class="preamble"><blockquote>${charterEscape(draft.preamble.verse)}</blockquote><span>${charterEscape(draft.preamble.verseSource)}</span><h2>${charterEscape(draft.preamble.lawTitle)}</h2>${draft.preamble.lawParagraphs.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</section>`;
  return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${charterEscape(draft.title)}</title><style>
  @page{size:A4;margin:13mm 14mm 15mm}*{box-sizing:border-box}body{margin:0;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;text-align:right;font-size:10.5pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}.head{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #E5DDD1;background:#F7F1E8}.head img{width:62px;height:62px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:20pt}.head p{margin:3px 0 0;color:#69747C}.head time{direction:ltr;color:#8A735E;font-size:8pt}.status{margin:10px 0;padding:9px 11px;border-right:4px solid #C9853C;background:#FFF8EF;color:#6B5946;font-size:8.5pt}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.meta div{padding:8px;border:1px solid #E6E0D8;background:#fff}.meta small{display:block;color:#7E8A92;font-size:7pt}.meta strong{color:#0D3656}.preamble{margin:12px 0;padding:12px;border:1px solid #E4D6C5;background:#FFF9F0;page-break-inside:avoid}.preamble blockquote{margin:0;text-align:center;color:#0D3656;font-size:15pt;font-weight:700}.preamble>span{display:block;text-align:center;color:#8F5825;font-size:8pt}.preamble h2{margin:12px 0 5px;color:#0D3656;font-size:11pt}.preamble p{margin:4px 0;color:#303F49;font-size:8.5pt}.warnings{display:grid;gap:5px;margin:10px 0}.warning{padding:7px 9px;border:1px solid #EADCCB;background:#FFF9F2}.warning strong{display:block;color:#9A5F26;font-size:8pt}.warning span{font-size:7.5pt;color:#655D55}.chapter{margin:13px 0}.chapter h2{margin:0 0 7px;padding:7px 9px;background:#0D3656;color:#fff;font-size:13pt;page-break-after:avoid}.chapter article{margin:0 0 7px;padding:8px 10px;border:1px solid #E4DED6;page-break-inside:avoid}.chapter article header{display:flex;justify-content:space-between;gap:10px;align-items:start}.chapter article header b{color:#0D3656;font-size:10pt}.chapter article header small{padding:2px 6px;border-radius:10px;background:#F2E4D4;color:#8F5825;font-size:6.5pt}.chapter article p{margin:5px 0;color:#303F49;font-size:8.5pt}.disclaimer{margin-top:12px;padding:9px 11px;background:#F7F5F1;color:#675F57;font-size:7.5pt}.doc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:8px;border-top:1px solid #D8D0C5;color:#6D7880;font-size:7pt}.doc-footer img{width:78px;height:36px;object-fit:contain}.doc-footer strong{color:#0D3656}.doc-footer span{color:#A36328;font-weight:700}
- </style></head><body><header class="head"><img src="${logo}" alt="إمتداد"><div><h1>${charterEscape(draft.title)}</h1><p>${charterEscape(draft.subtitle)}</p></div><time>${charterEscape(draft.createdAt)}</time></header><div class="status">مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد</div><div class="meta"><div><small>الأبواب</small><strong>${draft.chapters.length}</strong></div><div><small>المواد</small><strong>${draft.articleCount}</strong></div><div><small>التنبيهات</small><strong>${draft.warnings.length}</strong></div><div><small>التشخيص</small><strong>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</strong></div></div>${preamble}<section class="warnings">${warnings}</section>${chapters}<div class="disclaimer"><strong>حدود الاستخدام:</strong> هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</div><footer class="doc-footer"><img src="${naif}" alt="نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><br>almohammdin.github.io/emtidad/</div><span>${VERSION}</span></footer></body></html>`;
+ </style></head><body><header class="head"><img src="${logo}" alt="إمتداد"><div><h1>${charterEscape(draft.title)}</h1><p>${charterEscape(draft.subtitle)}</p></div><time>${charterEscape(draft.createdAt)}</time></header><div class="status">مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد</div><div class="meta"><div><small>الأبواب</small><strong>${draft.chapters.length}</strong></div><div><small>المواد</small><strong>${draft.articleCount}</strong></div><div><small>التنبيهات</small><strong>${draft.warnings.length}</strong></div><div><small>التشخيص</small><strong>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</strong></div></div>${preamble}<section class="warnings">${warnings}</section>${chapters}<div class="disclaimer"><strong>حدود الاستخدام:</strong> مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</div><footer class="doc-footer"><img src="${naif}" alt="نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><br>almohammdin.github.io/emtidad/</div><span>${VERSION}</span></footer></body></html>`;
 }
 function charterPrintDraft(){
  const draft=charterState.draft||charterBuildDraft();
@@ -676,7 +676,7 @@ function charterPlainText(draft){
    lines.push(`المادة ${article.number}: ${article.title}`,...article.body,'');
   });
  });
- lines.push('حدود الاستخدام: هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.');
+ lines.push('حدود الاستخدام: مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.');
  return charterLatinDigits(lines.join('\n')).replace(/\n{3,}/g,'\n\n').trim();
 }
 async function charterCopyText(button){
@@ -732,21 +732,22 @@ function charterBuildDocx(draft,D,images){
  };
  const cell=(children,options={})=>new D.TableCell({children:Array.isArray(children)?children:[children],width:options.width?{size:options.width,type:D.WidthType.DXA}:undefined,shading:options.fill?{type:D.ShadingType.CLEAR,color:'auto',fill:options.fill}:undefined,borders:options.borders||borders(),margins:options.margins||{top:90,bottom:90,left:110,right:110},verticalAlign:D.VerticalAlign.CENTER});
  const table=rows=>new D.Table({rows,width:{size:10450,type:D.WidthType.DXA},layout:D.TableLayoutType.FIXED});
- const imageParagraph=(data,width,height)=>new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{before:0,after:0},children:data?[new D.ImageRun({type:'png',data,transformation:{width,height},altText:{title:'إمتداد',description:'شعار إمتداد',name:'Emtidad'}})]:[run('إمتداد',{bold:true,color:navy})]});
- const headerTable=()=>table([new D.TableRow({cantSplit:true,children:[
-  cell(paragraph(draft.createdAt,{rtl:false,alignment:D.AlignmentType.LEFT,size:13,color:muted,after:0}),{width:1500,fill:soft}),
-  cell([paragraph(draft.title,{bold:true,size:23,color:navy,after:20}),paragraph('منظومة الشركات العائلية | أداة إمتداد',{size:14,color:muted,after:0})],{width:7700,fill:soft}),
-  cell(imageParagraph(images.logo,48,48),{width:1250,fill:soft})
- ]})]);
- const footer=new D.Footer({children:[new D.Paragraph({alignment:D.AlignmentType.CENTER,bidirectional:true,spacing:{before:0,after:0},border:{top:{style:D.BorderStyle.SINGLE,size:5,color:'D8CFC2'}},children:[
+ const imageRun=(data,width,height)=>data?new D.ImageRun({type:'png',data,transformation:{width,height},altText:{title:'إمتداد',description:'شعار إمتداد',name:'Emtidad'}}):run('إمتداد',{bold:true,color:navy,size:15});
+ const makeHeader=(includeImageAnchor=false)=>new D.Header({children:[new D.Paragraph({
+  alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{before:0,after:0},
+  border:{bottom:{style:D.BorderStyle.SINGLE,size:5,color:'D8CFC2'}},
+  children:[
+   ...(includeImageAnchor?[imageRun(images.logo,1,1)]:[]),
+   run(`${draft.title}  ·  إمتداد`,{size:15,color:navy,bold:true})
+  ]
+ })]});
+ const makeFooter=()=>new D.Footer({children:[new D.Paragraph({alignment:D.AlignmentType.CENTER,bidirectional:true,spacing:{before:0,after:0},border:{top:{style:D.BorderStyle.SINGLE,size:5,color:'D8CFC2'}},children:[
   run('منظومة الشركات العائلية | أداة إمتداد  ·  ',{size:13,color:navy,bold:true}),
   new D.ExternalHyperlink({link:PLATFORM_URL,children:[new D.TextRun({text:'almohammdin.github.io/emtidad/',font:'Arial',size:13,color:navy,underline:{type:'single',color:navy}})]}),
   run(`  ·  ${VERSION}  ·  صفحة `,{size:13,color:gold,rtl:true}),
   new D.TextRun({children:[D.PageNumber.CURRENT],font:'Arial',size:13,color:gold})
  ]})]});
  const children=[];
- children.push(headerTable());
- children.push(paragraph('',{after:45}));
  children.push(table([new D.TableRow({cantSplit:true,children:[cell([
   paragraph('مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد',{bold:true,size:18,color:'925821',after:35}),
   paragraph(draft.subtitle,{size:17,color:navy,after:0})
@@ -774,10 +775,11 @@ function charterBuildDocx(draft,D,images){
    children.push(paragraph('',{after:55}));
   });
  });
- children.push(table([new D.TableRow({cantSplit:true,children:[cell(paragraph('حدود الاستخدام: هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.',{size:14,color:'6F665D',after:0}),{width:10450,fill:'F7F5F1'})]})]));
- return new D.Document({
+ children.push(table([new D.TableRow({cantSplit:true,children:[cell(paragraph('حدود الاستخدام: مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.',{size:14,color:'6F665D',after:0}),{width:10450,fill:'F7F5F1'})]})]));
+ const documentFile=new D.Document({
   creator:'إمتداد',title:draft.title,subject:'مسودة استرشادية للميثاق العائلي',
   description:'مسودة مولدة من منشئ الميثاق العائلي في إمتداد',
+  evenAndOddHeaderAndFooters:true,
   styles:{default:{document:{
    run:{font:'Arial',size:20,color:ink,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
    paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{after:80}}
@@ -793,8 +795,14 @@ function charterBuildDocx(draft,D,images){
     paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,keepNext:true,spacing:{before:120,after:80}}
    }
   ]},
-  sections:[{properties:{page:{size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},margin:{top:720,right:720,bottom:980,left:720,header:260,footer:260}}},footers:{default:footer},children}]
+  sections:[{
+   properties:{titlePage:true,page:{size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},margin:{top:1200,right:720,bottom:980,left:720,header:500,footer:260}}},
+   headers:{default:makeHeader(),even:makeHeader(true),first:makeHeader()},
+   footers:{default:makeFooter(),even:makeFooter(),first:makeFooter()},
+   children
+  }]
  });
+ return documentFile;
 }
 async function charterDownloadWord(button){
  const draft=charterState.draft||charterBuildDraft();
@@ -804,7 +812,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.3',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.4',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
