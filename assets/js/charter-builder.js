@@ -61,6 +61,39 @@ const CHARTER_OPTION_LABELS={
  confidentiality:{strict:'سرية داخلية مقيدة بالحاجة والصلاحية',members:'إتاحة لأعضاء العائلة مع التزام السرية',classified:'تصنيف المعلومات حسب حساسيتها وحقوق الاطلاع'},
  waqfGovernance:{separate:'حوكمة مستقلة للوقف متسقة مع صكه',integrated:'تنسيق مجلس العائلة مع مجلس النظارة دون تداخل',study:'إعداد دراسة مستقلة قبل إدخال الوقف في الميثاق'}
 };
+const CHARTER_FIELD_HELP={
+ familyName:'اكتب الاسم المتداول لأسرة الملاك كما تريد ظهوره في عنوان المسودة، مثل: عائلة المحمدي. لا حاجة إلى إدخال أسماء الأفراد.',
+ companyName:'اكتب اسم الشركة الرئيسة كما يظهر في السجل التجاري أو عقد التأسيس. عند وجود عدة شركات، اكتب اسم الشركة القابضة أو الكيان الرئيس الذي سيطبق عليه الميثاق.',
+ city:'اكتب المدينة التي يوجد فيها المقر الرئيس أو تعقد فيها اجتماعات العائلة عادة. لا يقصد بها مواقع فروع الشركة.',
+ legalForm:'ارجع إلى السجل التجاري أو عقد التأسيس واختر الشكل المسجل للكيان الذي سيطبق عليه الميثاق. عند شمول الميثاق مجموعة شركات اختر القابضة أو المجموعة.',
+ generation:'المؤسس هو الجيل الأول، وأبناؤه الجيل الثاني، وأحفاده الجيل الثالث. عند مشاركة أكثر من جيل اختر الجيل الذي يتولى حالياً القيادة والملكية المؤثرة.',
+ owners:'احسب جميع الأفراد أو الكيانات المقيدة حالياً كملاك في عقد التأسيس أو سجل المساهمين، بصرف النظر عن حجم حصة كل مالك.',
+ branches:'المقصود خطوط العائلة المنحدرة من أبناء أو بنات المؤسس، وليس الفروع التجارية. إذا كانت الملكية ضمن خط أسري واحد فاختر فرعاً واحداً.',
+ values:'اكتب من 4 إلى 7 قيم تحكم قرارات العائلة فعلياً، مثل: العدل، الأمانة، الكفاءة، صلة الرحم والاستدامة. افصل بينها بفواصل.',
+ purpose:'اكتب جملة أو جملتين تجيبان: لماذا تريد العائلة استمرار ملكيتها المشتركة؟ وما الذي تريد حمايته أو تنميته عبر الأجيال؟',
+ familyBody:'الجمعية العائلية تضم جميع الأعضاء المستوفين للشروط، ومجلس العائلة هيئة أصغر للمتابعة والتمثيل. الجمع بينهما أنسب عادة للعائلات الأكبر أو متعددة الفروع.',
+ representation:'حدد الطريقة التي ستوزع بها مقاعد مجلس العائلة. الانتخاب يناسب العائلة الصغيرة، وتمثيل الفروع يوازن العائلات الممتدة، والخيار المختلط يجمع التمثيل والكفاءة.',
+ meetingFrequency:'اختر الحد الأدنى الواقعي للاجتماعات التي تستطيع العائلة الالتزام بها كل سنة، وليس العدد المأمول فقط.',
+ decisionModel:'حدد كيف تعتمد القرارات العائلية. القرارات الحساسة تشمل تعديل الميثاق، التصرفات الجوهرية في الملكية وحل مجلس العائلة.',
+ councilSize:'اختر عدداً يسمح بتمثيل العائلة وسرعة القرار. العدد الفردي من 5 إلى 9 أعضاء مناسب غالباً لتقليل تعادل الأصوات.',
+ councilTerm:'حدد مدة تمنح المجلس وقتاً للعمل وتسمح بتجديد التمثيل. المدة المعتادة من سنتين إلى 4 سنوات مع بيان إمكانية التجديد لاحقاً.',
+ transferPolicy:'اختر القاعدة التي تطبق عندما يرغب مالك في بيع حصته أو نقلها، خصوصاً إلى شخص من خارج العائلة.',
+ valuationPolicy:'حدد كيف تحسب قيمة الحصة عند التخارج أو الشراء بين الملاك. المقيمون المعتمدون يقللون الخلاف حول السعر.',
+ dividendPolicy:'حدد المبدأ الذي يوازن بين احتياج الملاك للتوزيعات واحتياج الشركة للسيولة والنمو. القرار الفعلي يبقى وفق النتائج والوثائق النظامية.',
+ employmentPolicy:'اختر الأساس الذي يحكم توظيف أفراد العائلة. هذا الاختيار يخص الوظيفة والكفاءة، ولا يرتبط بحقوق الملكية أو الأرباح.',
+ externalExperience:'حدد الخبرة التي يكتسبها فرد العائلة خارج الشركة قبل تولي وظيفة دائمة أو قيادية داخلها. يمكن تركها مرتبطة بمتطلبات كل وظيفة.',
+ compensation:'اختر كيف يحدد راتب فرد العائلة العامل. الأجر مقابل الوظيفة والأداء، بينما التوزيعات مقابل الملكية، ويجب الفصل بينهما.',
+ boardPolicy:'حدد المبدأ الذي سيحكم ترشيح أعضاء مجلس الإدارة: الكفاءة أولاً، أو مزيج من أفراد العائلة والمستقلين، أو تعزيز الاستقلال.',
+ executivePolicy:'حدد من يمكنه تولي القيادة التنفيذية وما معيار الاختيار. الملكية وحدها لا تكفي، وتبقى الكفاءة واحتياج الشركة أساس التعيين.',
+ successionPolicy:'اختر مستوى التخطيط المطلوب لانتقال الرئيس التنفيذي والأدوار الحرجة، بما يشمل الانتقال المتوقع والحالات الطارئة.',
+ nextGen:'حدد الوسيلة التي ستعد بها العائلة أبناءها لفهم الملكية والحوكمة قبل دخولهم العمل أو ممارسة حقوقهم كملاك.',
+ disputePath:'اختر ترتيباً متدرجاً لمعالجة الخلاف: حوار، ثم توفيق أو وساطة، ثم المسار المتفق عليه. التحكيم يحتاج اتفاقاً قانونياً مستقلاً ودقيقاً.',
+ confidentiality:'حدد من يطلع على الميثاق والمعلومات العائلية والتجارية. تصنيف المعلومات يسمح بتوسيع الاطلاع دون كشف البيانات الحساسة للجميع.',
+ reviewCycle:'اكتب عدد السنوات بين كل مراجعة دورية. سنتان أو 3 سنوات مناسبة غالباً، مع مراجعة مبكرة عند تغير الملكية أو القيادة.',
+ approvalThreshold:'اكتب نسبة أصحاب حق التصويت المطلوبة لتعديل الميثاق. نسبة 75% تمنح التعديل قبولاً واسعاً، وتراجع مع آلية التصويت ووثائق الشركة.',
+ waqfGovernance:'اختر كيفية تنسيق أحكام الميثاق مع صك الوقف ومجلس النظارة. اختصاصات النظار تبقى مستقلة وفق الصك والأنظمة.',
+ notes:'اكتب القرارات المؤجلة أو الموضوعات الحساسة التي تحتاج مناقشة أو مراجعة مختص، مثل فئة مستثناة أو خلاف قائم. تجنب تسجيل أسرار شخصية غير لازمة.'
+};
 const charterDefaults={
  familyName:'',companyName:'',city:'',legalForm:'',generation:'',owners:'',branches:'',
  values:'الأمانة، العدل، المسؤولية، العمل المؤسسي، صلة الرحم، الاستدامة',
@@ -136,15 +169,21 @@ function charterHydrateFromDiagnostic(overwrite=false){
  charterSave();
  return true;
 }
+function charterFieldHelp(name,kind){
+ const help=CHARTER_FIELD_HELP[name];
+ if(!help)return '';
+ const title=kind==='select'?'كيف تختار؟':'كيف تكتب؟';
+ return `<small class="charter-field-help"><b>${title}</b><span>${charterEscape(help)}</span></small>`;
+}
 function charterInput(name,label,type='text',placeholder='',required=false){
  const value=charterEscape(charterState.data[name]||'');
- return `<label class="charter-field"><span>${label}${required?'<i>مطلوب</i>':''}</span><input data-charter-field="${name}" type="${type}" value="${value}" placeholder="${charterEscape(placeholder)}"></label>`;
+ return `<label class="charter-field"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'input')}<input data-charter-field="${name}" type="${type}" value="${value}" placeholder="${charterEscape(placeholder)}"></label>`;
 }
 function charterTextarea(name,label,placeholder='',required=false){
- return `<label class="charter-field charter-field-wide"><span>${label}${required?'<i>مطلوب</i>':''}</span><textarea data-charter-field="${name}" rows="3" placeholder="${charterEscape(placeholder)}">${charterEscape(charterState.data[name]||'')}</textarea></label>`;
+ return `<label class="charter-field charter-field-wide"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'textarea')}<textarea data-charter-field="${name}" rows="3" placeholder="${charterEscape(placeholder)}">${charterEscape(charterState.data[name]||'')}</textarea></label>`;
 }
 function charterSelect(name,label,options,required=false,wide=false){
- return `<label class="charter-field ${wide?'charter-field-wide':''}"><span>${label}${required?'<i>مطلوب</i>':''}</span><select data-charter-field="${name}">${options.map(([value,text])=>`<option value="${charterEscape(value)}" ${String(charterState.data[name])===String(value)?'selected':''}>${charterEscape(text)}</option>`).join('')}</select></label>`;
+ return `<label class="charter-field ${wide?'charter-field-wide':''}"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'select')}<select data-charter-field="${name}">${options.map(([value,text])=>`<option value="${charterEscape(value)}" ${String(charterState.data[name])===String(value)?'selected':''}>${charterEscape(text)}</option>`).join('')}</select></label>`;
 }
 function charterStepIntro(kicker,title,copy){
  return `<div class="charter-panel-title"><span>${kicker}</span><h3>${title}</h3><p>${copy}</p></div>`;
@@ -582,7 +621,7 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.5.0',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}<footer>${article.refs.map(ref=>charterEscape(CHARTER_REFERENCES.find(item=>item.id===ref)?.level||ref)).join(' · ')}</footer></article>`).join('')}</section>`).join('');
@@ -665,7 +704,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.0',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
