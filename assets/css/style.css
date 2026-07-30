@@ -578,7 +578,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .valuation-result footer{margin-top:5px;font-size:7px}
 }
 
-/* v0.5.0 guided family-charter draft builder */
+/* v0.5.1 guided family-charter draft builder */
 .nav-links a.nav-charter-service{
  border-color:rgba(201,133,60,.44);
  background:linear-gradient(135deg,#FFF7EB,#F4E1C7);color:var(--navy)
@@ -701,6 +701,15 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .charter-field>span i{
  padding:2px 5px;border-radius:999px;background:#F4E9DA;color:#9A602A;font-size:7px;font-style:normal
 }
+.charter-field-help{
+ min-height:34px;display:grid;grid-template-columns:auto 1fr;gap:5px;align-items:start;
+ margin:0 1px 2px;color:#677681;font-size:9.4px;font-weight:500;line-height:1.7
+}
+.charter-field-help b{
+ white-space:nowrap;color:#9A602A;font-size:8.5px;font-weight:900
+}
+.charter-field-help span{display:block}
+.charter-field-wide .charter-field-help{min-height:0}
 .charter-field input,.charter-field select,.charter-field textarea{
  width:100%;border:1px solid #DCD6CD;border-radius:11px;background:#fff;color:#263843;
  padding:0 11px;outline:none;font-size:11.5px;transition:.2s
@@ -849,6 +858,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .charter-builder-empty h3{font-size:21px}
  .charter-form-grid{grid-template-columns:1fr}
  .charter-field-wide{grid-column:auto}
+ .charter-field-help{min-height:0;font-size:10px}
  .charter-diagnostic-status{grid-template-columns:1fr;grid-template-areas:"title" "copy" "action"}
  .charter-diagnostic-status button,.charter-diagnostic-status a{margin-top:6px;text-align:center}
  .charter-panel-actions{align-items:stretch;flex-direction:column-reverse}
