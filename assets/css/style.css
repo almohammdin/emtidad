@@ -487,9 +487,9 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .nav-links::-webkit-scrollbar{display:none}
 .nav-links a{
  position:relative;flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
- padding:9px 12px;border:1px solid rgba(13,54,86,.11);border-radius:13px;
+ padding:10px 13px;border:1px solid rgba(13,54,86,.11);border-radius:13px;
  background:rgba(255,255,255,.82);box-shadow:0 4px 12px rgba(13,54,86,.035);
- color:#42515D;font-size:12px;font-weight:800;line-height:1.2;scroll-snap-align:start
+ color:#42515D;font-size:15px;font-weight:800;line-height:1.35;scroll-snap-align:start
 }
 .nav-links a:before{
  content:"";width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:#D7A064
@@ -523,7 +523,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .top-nav .container{width:calc(100% - 20px)}
  .nav-inner{min-height:60px;padding-block:7px;gap:7px}
  .nav-links{display:flex!important;order:1;gap:6px}
- .nav-links a{padding:8px 10px;border-radius:11px;font-size:10px}
+ .nav-links a{padding:9px 11px;border-radius:11px;font-size:13px}
  .nav-links a.nav-diagnostic{padding-inline:12px}
 }
 
@@ -578,7 +578,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .valuation-result footer{margin-top:5px;font-size:7px}
 }
 
-/* v0.5.2 guided family-charter draft builder */
+/* v0.5.3 guided family-charter draft builder */
 .nav-links a.nav-charter-service{
  border-color:rgba(201,133,60,.44);
  background:linear-gradient(135deg,#FFF7EB,#F4E1C7);color:var(--navy)
@@ -773,6 +773,16 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .charter-warning.critical strong{color:#A83E35}
 .charter-warning.info{border-color:#D2E0E8;background:#F3F8FA}
 .charter-warning.info strong{color:var(--navy)}
+.charter-preamble{
+ display:grid;gap:10px;margin-top:13px;padding:15px;border:1px solid #E5D9CA;border-radius:16px;
+ background:linear-gradient(135deg,#FFF9F0,#fff)
+}
+.charter-preamble-verse{text-align:center;padding:11px;border-radius:12px;background:#F8F3EB}
+.charter-preamble-verse blockquote{margin:0;color:var(--navy);font-size:18px;font-weight:800;line-height:1.9}
+.charter-preamble-verse span{display:block;margin-top:3px;color:#916039;font-family:Arial,Tahoma,sans-serif;font-size:10px;font-weight:800}
+.charter-preamble-law{padding:2px 4px}
+.charter-preamble-law h4{margin:0 0 6px;color:var(--navy);font-size:13px}
+.charter-preamble-law p{margin:4px 0;color:#46535C;font-size:10px;line-height:1.8}
 .charter-draft-toolbar{
  display:flex;justify-content:space-between;align-items:center;gap:12px;margin:15px 0 9px;padding:12px;
  border:1px solid var(--line);border-radius:13px;background:#F8F5F0

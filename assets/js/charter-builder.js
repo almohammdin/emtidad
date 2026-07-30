@@ -520,42 +520,48 @@ function charterBuildDraft(){
  let articleNumber=0;
  chapters.forEach(chapter=>chapter.articles.forEach(article=>{articleNumber++;article.number=articleNumber}));
  const warnings=charterWarnings(d,p);
- const usedReferenceIds=[...new Set(chapters.flatMap(chapter=>chapter.articles.flatMap(article=>article.refs)))];
- const references=usedReferenceIds.map(id=>CHARTER_REFERENCES.find(ref=>ref.id===id)).filter(Boolean);
+ const preamble={
+  verse:'﴿وَأَوْفُوا بِالْعَهْدِ إِنَّ الْعَهْدَ كَانَ مَسْئُولًا﴾',
+  verseSource:'سورة الإسراء، الآية 34',
+  lawTitle:'المادة 11 من نظام الشركات: اتفاق الشركاء والميثاق العائلي',
+  lawParagraphs:[
+   '1- يجوز للمؤسسين أو الشركاء أو المساهمين -سواءً خلال مدة تأسيس الشركة أو بعدها- ما يأتي:',
+   'أ- إبرام اتفاق أو أكثر ينظم العلاقة فيما بينهم أو مع الشركة، بما في ذلك كيفية دخول ورثتهم في الشركة سواءً بأشخاصهم أو من خلال شركة يؤسسونها لهذا الغرض.',
+   'ب- إبرام ميثاق عائلي يتضمن تنظيم الملكية العائلية في الشركة وحوكمتها وإدارتها وسياسة العمل وسياسة توظيف أفراد العائلة وتوزيع الأرباح والتصرف بالحصص أو الأسهم وآلية تسوية المنازعات أو الخلافات، وغيرها.',
+   '2- يكون الاتفاق أو الميثاق العائلي ملزماً، ويجوز أن يكون جزءاً من عقد تأسيس الشركة أو نظامها الأساس. ويشترط ألا يخالف النظام أو عقد تأسيس الشركة أو نظامها الأساس.'
+  ]
+ };
  return {
   title:`مسودة الميثاق العائلي لعائلة ${family}`,
   subtitle:`مرتبطة بـ ${company} · ${charterLabel('legalForm',d.legalForm)}`,
-  createdAt:charterReportDate(),chapters,warnings,references,
+  createdAt:charterReportDate(),chapters,warnings,preamble,
   articleCount:articleNumber,linkedDiagnostic:charterState.linkedDiagnostic,
   data:{...d},profile:{...p}
  };
-}
-function charterReferenceName(id){
- return CHARTER_REFERENCES.find(ref=>ref.id===id)?.name||id;
 }
 function charterDraftMarkup(){
  charterState.draft=charterBuildDraft();
  const draft=charterState.draft;
  const warnings=draft.warnings.map(item=>`<article class="charter-warning ${item.level}"><strong>${charterEscape(item.title)}</strong><p>${charterEscape(item.text)}</p></article>`).join('');
- const chapters=draft.chapters.map((chapter,index)=>`<details class="charter-draft-chapter" ${index===0?'open':''}><summary><span>${charterEscape(chapter.title)}</span><b>${chapter.articles.length} مواد</b></summary><div class="charter-articles">${chapter.articles.map(article=>`<article class="charter-article"><header><span>المادة ${article.number}</span><h4>${charterEscape(article.title)}</h4><i class="${article.status.includes('مراجعة')||article.status.includes('حرجة')?'review':''}">${charterEscape(article.status)}</i></header>${article.body.map(paragraph=>`<p>${charterEscape(paragraph)}</p>`).join('')}<footer>${article.refs.map(ref=>`<span title="${charterEscape(charterReferenceName(ref))}">${charterEscape(CHARTER_REFERENCES.find(item=>item.id===ref)?.level||ref)}</span>`).join('')}</footer></article>`).join('')}</div></details>`).join('');
- const references=draft.references.map(ref=>`<a href="${ref.url}" target="_blank" rel="noopener"><span>${charterEscape(ref.level)}</span><strong>${charterEscape(ref.name)}</strong><small>${charterEscape(ref.use)}</small></a>`).join('');
+ const chapters=draft.chapters.map((chapter,index)=>`<details class="charter-draft-chapter" ${index===0?'open':''}><summary><span>${charterEscape(chapter.title)}</span><b>${chapter.articles.length} مواد</b></summary><div class="charter-articles">${chapter.articles.map(article=>`<article class="charter-article"><header><span>المادة ${article.number}</span><h4>${charterEscape(article.title)}</h4><i class="${article.status.includes('مراجعة')||article.status.includes('حرجة')?'review':''}">${charterEscape(article.status)}</i></header>${article.body.map(paragraph=>`<p>${charterEscape(paragraph)}</p>`).join('')}</article>`).join('')}</div></details>`).join('');
+ const preamble=`<section class="charter-preamble"><div class="charter-preamble-verse"><blockquote>${charterEscape(draft.preamble.verse)}</blockquote><span>${charterEscape(draft.preamble.verseSource)}</span></div><div class="charter-preamble-law"><h4>${charterEscape(draft.preamble.lawTitle)}</h4>${draft.preamble.lawParagraphs.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</div></section>`;
  return `${charterStepIntro('المرحلة 5','المسودة جاهزة للمناقشة والمراجعة','راجع التنبيهات والمواد، ثم نزّل Word للتحرير أو PDF للاجتماع.')}
  <section class="charter-draft-cover">
   <div><span>مسودة استرشادية</span><h3>${charterEscape(draft.title)}</h3><p>${charterEscape(draft.subtitle)}</p></div>
-  <dl><div><dt>الأبواب</dt><dd>${draft.chapters.length}</dd></div><div><dt>المواد</dt><dd>${draft.articleCount}</dd></div><div><dt>المرجعيات</dt><dd>${draft.references.length}</dd></div><div><dt>التشخيص</dt><dd>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</dd></div></dl>
+  <dl><div><dt>الأبواب</dt><dd>${draft.chapters.length}</dd></div><div><dt>المواد</dt><dd>${draft.articleCount}</dd></div><div><dt>التنبيهات</dt><dd>${draft.warnings.length}</dd></div><div><dt>التشخيص</dt><dd>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</dd></div></dl>
  </section>
+ ${preamble}
  <div class="charter-warning-grid">${warnings}</div>
  <div class="charter-draft-toolbar">
-  <div><strong>مواد المسودة</strong><span>افتح كل باب لقراءة مواده ومرجعياته</span></div>
-  <div><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} طباعة / حفظ PDF</button></div>
+  <div><strong>مواد المسودة</strong><span>افتح كل باب لقراءة مواده</span></div>
+  <div><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} طباعة / حفظ PDF</button><button class="btn ghost" type="button" data-charter-export="copy">نسخ نص الميثاق</button></div>
  </div>
  <div class="charter-draft-document">${chapters}</div>
- <section class="charter-draft-references"><div class="charter-panel-title"><span>المرجعية</span><h3>المصادر التي بُنيت عليها المسودة</h3></div><div>${references}</div></section>
  <div class="charter-draft-disclaimer"><strong>حدود الاستخدام</strong><p>هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</p></div>`;
 }
 function charterNavigationMarkup(){
  if(charterState.step===4){
-  return `<div class="charter-panel-actions"><button class="btn ghost" type="button" data-charter-nav="prev">تعديل القرارات</button><div><button class="btn ghost" type="button" data-charter-action="reset">مسودة جديدة</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} حفظ PDF</button><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button></div></div>`;
+  return `<div class="charter-panel-actions"><button class="btn ghost" type="button" data-charter-nav="prev">تعديل القرارات</button><div><button class="btn ghost" type="button" data-charter-action="reset">مسودة جديدة</button><button class="btn ghost" type="button" data-charter-export="copy">نسخ نص الميثاق</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} حفظ PDF</button><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button></div></div>`;
  }
  return `<div class="charter-panel-actions"><button class="btn ghost" type="button" data-charter-nav="prev" ${charterState.step===0?'disabled':''}>السابق</button><div>${charterState.step===0?'<button class="btn ghost" type="button" data-charter-action="reset">مسح البيانات</button>':''}<button class="btn primary" type="button" data-charter-nav="next">${charterState.step===3?'إنشاء المسودة':'التالي'}</button></div></div>`;
 }
@@ -631,14 +637,14 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.5.3',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
- const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}<footer>${article.refs.map(ref=>charterEscape(CHARTER_REFERENCES.find(item=>item.id===ref)?.level||ref)).join(' · ')}</footer></article>`).join('')}</section>`).join('');
- const references=draft.references.map(ref=>`<tr><th>${charterEscape(ref.level)}</th><td><strong>${charterEscape(ref.name)}</strong><p>${charterEscape(ref.use)}</p><a href="${ref.url}">${ref.url}</a></td></tr>`).join('');
+ const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</article>`).join('')}</section>`).join('');
+ const preamble=`<section class="preamble"><blockquote>${charterEscape(draft.preamble.verse)}</blockquote><span>${charterEscape(draft.preamble.verseSource)}</span><h2>${charterEscape(draft.preamble.lawTitle)}</h2>${draft.preamble.lawParagraphs.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</section>`;
  return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${charterEscape(draft.title)}</title><style>
- @page{size:A4;margin:13mm 14mm 15mm}*{box-sizing:border-box}body{margin:0;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;font-size:10.5pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}.head{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #E5DDD1;background:#F7F1E8}.head img{width:62px;height:62px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:20pt}.head p{margin:3px 0 0;color:#69747C}.head time{direction:ltr;color:#8A735E;font-size:8pt}.status{margin:10px 0;padding:9px 11px;border-right:4px solid #C9853C;background:#FFF8EF;color:#6B5946;font-size:8.5pt}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.meta div{padding:8px;border:1px solid #E6E0D8;background:#fff}.meta small{display:block;color:#7E8A92;font-size:7pt}.meta strong{color:#0D3656}.warnings{display:grid;gap:5px;margin:10px 0}.warning{padding:7px 9px;border:1px solid #EADCCB;background:#FFF9F2}.warning strong{display:block;color:#9A5F26;font-size:8pt}.warning span{font-size:7.5pt;color:#655D55}.chapter{margin:13px 0}.chapter h2{margin:0 0 7px;padding:7px 9px;background:#0D3656;color:#fff;font-size:13pt;page-break-after:avoid}.chapter article{margin:0 0 7px;padding:8px 10px;border:1px solid #E4DED6;page-break-inside:avoid}.chapter article header{display:flex;justify-content:space-between;gap:10px;align-items:start}.chapter article header b{color:#0D3656;font-size:10pt}.chapter article header small{padding:2px 6px;border-radius:10px;background:#F2E4D4;color:#8F5825;font-size:6.5pt}.chapter article p{margin:5px 0;color:#303F49;font-size:8.5pt}.chapter article footer{padding-top:5px;border-top:1px dashed #E5DED5;color:#8A735E;font-size:6.5pt}.references{width:100%;border-collapse:collapse;margin-top:8px}.references th,.references td{padding:7px;border:1px solid #E5DED5;vertical-align:top;text-align:right}.references th{width:85px;background:#F2E4D4;color:#8F5825}.references td strong{display:block;color:#0D3656}.references td p{margin:2px 0;font-size:7.5pt}.references td a{color:#0D3656;font-size:6.5pt;overflow-wrap:anywhere}.disclaimer{margin-top:12px;padding:9px 11px;background:#F7F5F1;color:#675F57;font-size:7.5pt}.doc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:8px;border-top:1px solid #D8D0C5;color:#6D7880;font-size:7pt}.doc-footer img{width:78px;height:36px;object-fit:contain}.doc-footer strong{color:#0D3656}.doc-footer span{color:#A36328;font-weight:700}
- </style></head><body><header class="head"><img src="${logo}" alt="إمتداد"><div><h1>${charterEscape(draft.title)}</h1><p>${charterEscape(draft.subtitle)}</p></div><time>${charterEscape(draft.createdAt)}</time></header><div class="status">مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد</div><div class="meta"><div><small>الأبواب</small><strong>${draft.chapters.length}</strong></div><div><small>المواد</small><strong>${draft.articleCount}</strong></div><div><small>المرجعيات</small><strong>${draft.references.length}</strong></div><div><small>التشخيص</small><strong>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</strong></div></div><section class="warnings">${warnings}</section>${chapters}<section class="chapter"><h2>المرجعيات</h2><table class="references"><tbody>${references}</tbody></table></section><div class="disclaimer"><strong>حدود الاستخدام:</strong> هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</div><footer class="doc-footer"><img src="${naif}" alt="نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><br>almohammdin.github.io/emtidad/</div><span>${VERSION}</span></footer></body></html>`;
+ @page{size:A4;margin:13mm 14mm 15mm}*{box-sizing:border-box}body{margin:0;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;text-align:right;font-size:10.5pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}.head{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #E5DDD1;background:#F7F1E8}.head img{width:62px;height:62px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:20pt}.head p{margin:3px 0 0;color:#69747C}.head time{direction:ltr;color:#8A735E;font-size:8pt}.status{margin:10px 0;padding:9px 11px;border-right:4px solid #C9853C;background:#FFF8EF;color:#6B5946;font-size:8.5pt}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.meta div{padding:8px;border:1px solid #E6E0D8;background:#fff}.meta small{display:block;color:#7E8A92;font-size:7pt}.meta strong{color:#0D3656}.preamble{margin:12px 0;padding:12px;border:1px solid #E4D6C5;background:#FFF9F0;page-break-inside:avoid}.preamble blockquote{margin:0;text-align:center;color:#0D3656;font-size:15pt;font-weight:700}.preamble>span{display:block;text-align:center;color:#8F5825;font-size:8pt}.preamble h2{margin:12px 0 5px;color:#0D3656;font-size:11pt}.preamble p{margin:4px 0;color:#303F49;font-size:8.5pt}.warnings{display:grid;gap:5px;margin:10px 0}.warning{padding:7px 9px;border:1px solid #EADCCB;background:#FFF9F2}.warning strong{display:block;color:#9A5F26;font-size:8pt}.warning span{font-size:7.5pt;color:#655D55}.chapter{margin:13px 0}.chapter h2{margin:0 0 7px;padding:7px 9px;background:#0D3656;color:#fff;font-size:13pt;page-break-after:avoid}.chapter article{margin:0 0 7px;padding:8px 10px;border:1px solid #E4DED6;page-break-inside:avoid}.chapter article header{display:flex;justify-content:space-between;gap:10px;align-items:start}.chapter article header b{color:#0D3656;font-size:10pt}.chapter article header small{padding:2px 6px;border-radius:10px;background:#F2E4D4;color:#8F5825;font-size:6.5pt}.chapter article p{margin:5px 0;color:#303F49;font-size:8.5pt}.disclaimer{margin-top:12px;padding:9px 11px;background:#F7F5F1;color:#675F57;font-size:7.5pt}.doc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:8px;border-top:1px solid #D8D0C5;color:#6D7880;font-size:7pt}.doc-footer img{width:78px;height:36px;object-fit:contain}.doc-footer strong{color:#0D3656}.doc-footer span{color:#A36328;font-weight:700}
+ </style></head><body><header class="head"><img src="${logo}" alt="إمتداد"><div><h1>${charterEscape(draft.title)}</h1><p>${charterEscape(draft.subtitle)}</p></div><time>${charterEscape(draft.createdAt)}</time></header><div class="status">مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد</div><div class="meta"><div><small>الأبواب</small><strong>${draft.chapters.length}</strong></div><div><small>المواد</small><strong>${draft.articleCount}</strong></div><div><small>التنبيهات</small><strong>${draft.warnings.length}</strong></div><div><small>التشخيص</small><strong>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</strong></div></div>${preamble}<section class="warnings">${warnings}</section>${chapters}<div class="disclaimer"><strong>حدود الاستخدام:</strong> هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</div><footer class="doc-footer"><img src="${naif}" alt="نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><br>almohammdin.github.io/emtidad/</div><span>${VERSION}</span></footer></body></html>`;
 }
 function charterPrintDraft(){
  const draft=charterState.draft||charterBuildDraft();
@@ -650,6 +656,53 @@ function charterPrintDraft(){
   Promise.all([...win.document.images].map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.onload=resolve;image.onerror=resolve}))).then(()=>setTimeout(()=>{win.focus();win.print()},250));
  };
  if(win.document.readyState==='complete')printWhenReady();else win.addEventListener('load',printWhenReady,{once:true});
+}
+function charterPlainText(draft){
+ const lines=[
+  draft.title,
+  draft.subtitle,
+  'مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد',
+  '',
+  draft.preamble.verse,
+  draft.preamble.verseSource,
+  '',
+  draft.preamble.lawTitle,
+  ...draft.preamble.lawParagraphs,
+  ''
+ ];
+ draft.chapters.forEach(chapter=>{
+  lines.push(chapter.title,'');
+  chapter.articles.forEach(article=>{
+   lines.push(`المادة ${article.number}: ${article.title}`,...article.body,'');
+  });
+ });
+ lines.push('حدود الاستخدام: هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.');
+ return charterLatinDigits(lines.join('\n')).replace(/\n{3,}/g,'\n\n').trim();
+}
+async function charterCopyText(button){
+ const draft=charterState.draft||charterBuildDraft();
+ const original=button?.innerHTML;
+ if(button){button.disabled=true;button.textContent='جارٍ النسخ…'}
+ try{
+  const text=charterPlainText(draft);
+  if(navigator.clipboard?.writeText){
+   await navigator.clipboard.writeText(text);
+  }else{
+   const textarea=document.createElement('textarea');
+   textarea.value=text;textarea.dir='rtl';textarea.lang='ar';
+   textarea.style.position='fixed';textarea.style.opacity='0';
+   document.body.appendChild(textarea);textarea.select();
+   const copied=document.execCommand('copy');
+   textarea.remove();
+   if(!copied)throw new Error('Copy command failed');
+  }
+  toast('تم نسخ نص الميثاق');
+ }catch(error){
+  console.error(error);
+  toast('تعذر نسخ النص، حاول مرة أخرى');
+ }finally{
+  if(button){button.disabled=false;button.innerHTML=original}
+ }
 }
 function charterBuildDocx(draft,D,images){
  const navy='0D3656',gold='C9853C',ink='263843',muted='66727B',line='E5E0D8',soft='F8F4EE',white='FFFFFF';
@@ -671,6 +724,7 @@ function charterBuildDocx(draft,D,images){
   const rtl=options.rtl!==false;
   return new D.Paragraph({
    children:Array.isArray(text)?text:textRuns(text,options),bidirectional:rtl,
+   style:options.style||(rtl?'ArabicBody':undefined),
    alignment:options.alignment??(rtl?D.AlignmentType.RIGHT:D.AlignmentType.LEFT),
    spacing:{before:options.before||0,after:options.after??90,line:options.line||320},
    keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines),pageBreakBefore:Boolean(options.pageBreakBefore)
@@ -679,11 +733,11 @@ function charterBuildDocx(draft,D,images){
  const cell=(children,options={})=>new D.TableCell({children:Array.isArray(children)?children:[children],width:options.width?{size:options.width,type:D.WidthType.DXA}:undefined,shading:options.fill?{type:D.ShadingType.CLEAR,color:'auto',fill:options.fill}:undefined,borders:options.borders||borders(),margins:options.margins||{top:90,bottom:90,left:110,right:110},verticalAlign:D.VerticalAlign.CENTER});
  const table=rows=>new D.Table({rows,width:{size:10450,type:D.WidthType.DXA},layout:D.TableLayoutType.FIXED});
  const imageParagraph=(data,width,height)=>new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{before:0,after:0},children:data?[new D.ImageRun({type:'png',data,transformation:{width,height},altText:{title:'إمتداد',description:'شعار إمتداد',name:'Emtidad'}})]:[run('إمتداد',{bold:true,color:navy})]});
- const header=new D.Header({children:[table([new D.TableRow({cantSplit:true,children:[
+ const headerTable=()=>table([new D.TableRow({cantSplit:true,children:[
   cell(paragraph(draft.createdAt,{rtl:false,alignment:D.AlignmentType.LEFT,size:13,color:muted,after:0}),{width:1500,fill:soft}),
   cell([paragraph(draft.title,{bold:true,size:23,color:navy,after:20}),paragraph('منظومة الشركات العائلية | أداة إمتداد',{size:14,color:muted,after:0})],{width:7700,fill:soft}),
   cell(imageParagraph(images.logo,48,48),{width:1250,fill:soft})
- ]})]) ]});
+ ]})]);
  const footer=new D.Footer({children:[new D.Paragraph({alignment:D.AlignmentType.CENTER,bidirectional:true,spacing:{before:0,after:0},border:{top:{style:D.BorderStyle.SINGLE,size:5,color:'D8CFC2'}},children:[
   run('منظومة الشركات العائلية | أداة إمتداد  ·  ',{size:13,color:navy,bold:true}),
   new D.ExternalHyperlink({link:PLATFORM_URL,children:[new D.TextRun({text:'almohammdin.github.io/emtidad/',font:'Arial',size:13,color:navy,underline:{type:'single',color:navy}})]}),
@@ -691,32 +745,35 @@ function charterBuildDocx(draft,D,images){
   new D.TextRun({children:[D.PageNumber.CURRENT],font:'Arial',size:13,color:gold})
  ]})]});
  const children=[];
+ children.push(headerTable());
+ children.push(paragraph('',{after:45}));
  children.push(table([new D.TableRow({cantSplit:true,children:[cell([
   paragraph('مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد',{bold:true,size:18,color:'925821',after:35}),
   paragraph(draft.subtitle,{size:17,color:navy,after:0})
  ],{width:10450,fill:soft,borders:{top:border('E6D8C8',5),bottom:border('E6D8C8',5),left:border('E6D8C8',5),right:border(gold,22)}})]})]));
+ children.push(paragraph('',{after:80}));
+ children.push(table([new D.TableRow({cantSplit:true,children:[cell([
+  paragraph(draft.preamble.verse,{bold:true,size:28,color:navy,alignment:D.AlignmentType.CENTER,after:35,keepNext:true}),
+  paragraph(draft.preamble.verseSource,{bold:true,size:14,color:'925821',alignment:D.AlignmentType.CENTER,after:100,keepNext:true}),
+  paragraph(draft.preamble.lawTitle,{bold:true,size:20,color:navy,after:55,keepNext:true,style:'ArabicHeading'}),
+  ...draft.preamble.lawParagraphs.map(text=>paragraph(text,{size:16,color:ink,after:45,line:310}))
+ ],{width:10450,fill:'FFF9F0',borders:{top:border('E4D6C5',5),bottom:border('E4D6C5',5),left:border('E4D6C5',5),right:border(gold,16)}})]})]));
  children.push(paragraph('',{after:80}));
  draft.warnings.forEach(item=>children.push(table([new D.TableRow({cantSplit:true,children:[cell([
   paragraph(item.title,{bold:true,size:16,color:'925821',after:25}),
   paragraph(item.text,{size:14,color:muted,after:0})
  ],{width:10450,fill:'FFF9F2'})]})])));
  draft.chapters.forEach((chapter,chapterIndex)=>{
-  children.push(paragraph(chapter.title,{bold:true,size:26,color:navy,before:chapterIndex?180:140,after:110,keepNext:true}));
+  children.push(paragraph(chapter.title,{bold:true,size:26,color:navy,before:chapterIndex?180:140,after:110,keepNext:true,style:'ArabicHeading'}));
   chapter.articles.forEach(article=>{
    children.push(table([new D.TableRow({cantSplit:true,children:[cell([
-    paragraph(`المادة ${article.number}: ${article.title}`,{bold:true,size:19,color:navy,after:45,keepNext:true}),
+    paragraph(`المادة ${article.number}: ${article.title}`,{bold:true,size:19,color:navy,after:45,keepNext:true,style:'ArabicHeading'}),
     ...article.body.map(text=>paragraph(text,{size:16,color:ink,after:55,line:310})),
-    paragraph(`الحالة: ${article.status}  |  المرجعية: ${article.refs.map(charterReferenceName).join('، ')}`,{size:12,color:'8A735E',after:0})
+    paragraph(`الحالة: ${article.status}`,{size:12,color:'8A735E',after:0})
    ],{width:10450,fill:white,margins:{top:120,bottom:120,left:130,right:130}})]})]));
    children.push(paragraph('',{after:55}));
   });
  });
- children.push(paragraph('المرجعيات', {bold:true,size:26,color:navy,before:180,after:110,keepNext:true}));
- draft.references.forEach(ref=>children.push(table([new D.TableRow({cantSplit:true,children:[
-  cell([paragraph(ref.name,{bold:true,size:17,color:navy,after:25}),paragraph(ref.use,{size:14,color:muted,after:25}),new D.Paragraph({alignment:D.AlignmentType.RIGHT,bidirectional:true,children:[new D.ExternalHyperlink({link:ref.url,children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:14,color:navy,bold:true,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'},underline:{type:'single',color:navy}})]})]})],{width:8700}),
-  cell(paragraph(ref.level,{bold:true,size:15,color:'925821',alignment:D.AlignmentType.CENTER,after:0}),{width:1750,fill:'F2E4D4'})
- ]})])));
- children.push(paragraph('',{after:80}));
  children.push(table([new D.TableRow({cantSplit:true,children:[cell(paragraph('حدود الاستخدام: هذه مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.',{size:14,color:'6F665D',after:0}),{width:10450,fill:'F7F5F1'})]})]));
  return new D.Document({
   creator:'إمتداد',title:draft.title,subject:'مسودة استرشادية للميثاق العائلي',
@@ -724,8 +781,19 @@ function charterBuildDocx(draft,D,images){
   styles:{default:{document:{
    run:{font:'Arial',size:20,color:ink,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
    paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{after:80}}
-  }}},
-  sections:[{properties:{page:{size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},margin:{top:1050,right:720,bottom:980,left:720,header:260,footer:260}}},headers:{default:header},footers:{default:footer},children}]
+  }},paragraphStyles:[
+   {
+    id:'ArabicBody',name:'Arabic Body',basedOn:'Normal',next:'ArabicBody',quickFormat:true,
+    run:{font:'Arial',size:20,color:ink,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
+    paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{after:80,line:320}}
+   },
+   {
+    id:'ArabicHeading',name:'Arabic Heading',basedOn:'ArabicBody',next:'ArabicBody',quickFormat:true,
+    run:{font:'Arial',size:24,bold:true,color:navy,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
+    paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,keepNext:true,spacing:{before:120,after:80}}
+   }
+  ]},
+  sections:[{properties:{page:{size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},margin:{top:720,right:720,bottom:980,left:720,header:260,footer:260}}},footers:{default:footer},children}]
  });
 }
 async function charterDownloadWord(button){
@@ -736,7 +804,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.3',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
@@ -786,6 +854,7 @@ function charterInit(){
   const exportButton=event.target.closest('[data-charter-export]');
   if(exportButton?.dataset.charterExport==='word'){charterDownloadWord(exportButton);return}
   if(exportButton?.dataset.charterExport==='pdf'){charterPrintDraft();return}
+  if(exportButton?.dataset.charterExport==='copy'){charterCopyText(exportButton);return}
  });
  const diagnosticPanel=document.getElementById('diagPanel');
  if(diagnosticPanel)new MutationObserver(charterInjectResultCta).observe(diagnosticPanel,{childList:true,subtree:true});
