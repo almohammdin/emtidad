@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.5.1';
+const VERSION='v0.5.2';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const VALUATION_GUIDE_URL='assets/documents/fair-valuation-family-businesses-2026.pdf';
 const STORAGE_KEY='emtidad_v046';
@@ -359,7 +359,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة أولا');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -484,7 +484,7 @@ async function buildResultImageCanvas(){
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
  const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href),
   loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
  ]);
  const canvas=document.createElement('canvas');
@@ -628,9 +628,14 @@ function enhanceResultActions(){
  }
 }
 
-function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function latinDigits(value){
+ return String(value??'')
+  .replace(/[٠-٩]/g,digit=>String(digit.charCodeAt(0)-1632))
+  .replace(/[۰-۹]/g,digit=>String(digit.charCodeAt(0)-1776));
+}
+function escapeHtml(v){return latinDigits(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}}
-function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};state.answers=state.answers||{}}}catch(e){}}
+function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};Object.keys(state.profile).forEach(key=>state.profile[key]=latinDigits(state.profile[key]));state.answers=state.answers||{}}}catch(e){}}
 function toast(msg){const el=$('toast');el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2200)}
 function renderStats(){
  $('statsGrid').innerHTML=statsData.map(s=>`<article class="stat-card"><div class="stat-value">${s.value}</div><h3>${s.title}</h3><p>${s.meaning}</p><div class="source-line"><span>${s.region}</span><span>${s.sample}</span><span>${s.year}</span><a href="${s.url}" target="_blank" rel="noopener">${s.source}</a></div></article>`).join('');
@@ -645,15 +650,15 @@ function templateGuideFor(t){return templateGuides[t.title]||{outcome:'مخرج 
 function collectTemplateState(){
  const values={};
  document.querySelectorAll('#modalBody [data-template-section][data-template-item]').forEach(el=>{
-  const key=`${el.dataset.templateSection}:${el.dataset.templateItem}`;
-  values[key]=el.type==='checkbox'?el.checked:el.value.trim();
+ const key=`${el.dataset.templateSection}:${el.dataset.templateItem}`;
+  values[key]=el.type==='checkbox'?el.checked:latinDigits(el.value.trim());
  });
  return values;
 }
 function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
  const isWord=mode==='word';
- const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href;
+ const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href;
  const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo.png',document.baseURI).href;
  const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><table class="doc-table ${section.type==='fields'?'doc-fields':'doc-checks'}" width="100%" cellspacing="0" cellpadding="0"><tbody>${section.items.map((item,ii)=>{
   const value=values[`${si}:${ii}`];
@@ -712,18 +717,27 @@ function buildTemplateDocx(i,D,images){
  const pageWidth=10450;
  const border=(color=line,size=5)=>({style:D.BorderStyle.SINGLE,size,color});
  const borders=(color=line,size=5)=>({top:border(color,size),bottom:border(color,size),left:border(color,size),right:border(color,size)});
- const run=(text,options={})=>new D.TextRun({
-  text:String(text??''),font:'Arial',size:options.size||20,color:options.color||ink,
-  bold:Boolean(options.bold),italics:Boolean(options.italics),rightToLeft:options.rtl!==false,
-  break:options.break||0
- });
- const paragraph=(content,options={})=>new D.Paragraph({
-  children:Array.isArray(content)?content:[run(content,options)],
-  bidirectional:options.rtl!==false,
-  alignment:options.alignment||D.AlignmentType.RIGHT,
-  spacing:{before:options.before||0,after:options.after??80,line:options.line||300},
-  keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines)
- });
+ const run=(text,options={})=>{
+  const rtl=options.rtl!==false;
+  return new D.TextRun({
+   text:latinDigits(text),font:'Arial',size:options.size||20,color:options.color||ink,
+   bold:Boolean(options.bold),italics:Boolean(options.italics),rightToLeft:rtl,
+   language:rtl?{value:'ar-SA',bidirectional:'ar-SA'}:{value:'en-US'},break:options.break||0
+  });
+ };
+ const textRuns=(text,options={})=>latinDigits(text)
+  .split(/([0-9]+(?:[.,:/-][0-9]+)*%?)/g)
+  .filter(Boolean)
+  .map(part=>/[0-9]/.test(part)?run(part,{...options,rtl:false}):run(part,options));
+ const paragraph=(content,options={})=>{
+  const rtl=options.rtl!==false;
+  return new D.Paragraph({
+   children:Array.isArray(content)?content:textRuns(content,options),bidirectional:rtl,
+   alignment:options.alignment??(rtl?D.AlignmentType.RIGHT:D.AlignmentType.LEFT),
+   spacing:{before:options.before||0,after:options.after??80,line:options.line||300},
+   keepNext:Boolean(options.keepNext),keepLines:Boolean(options.keepLines)
+  });
+ };
  const cell=(children,options={})=>new D.TableCell({
   children:Array.isArray(children)?children:[children],
   width:options.width?{size:options.width,type:D.WidthType.DXA}:undefined,
@@ -817,7 +831,7 @@ function buildTemplateDocx(i,D,images){
     bidirectional:true,alignment:D.AlignmentType.RIGHT,spacing:{before:0,after:0},
     children:[new D.ExternalHyperlink({
      link:ref.url,
-     children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:15,color:navy,bold:true,rightToLeft:true,underline:{type:'single',color:navy}})]
+     children:[new D.TextRun({text:'فتح المرجع',font:'Arial',size:15,color:navy,bold:true,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'},underline:{type:'single',color:navy}})]
     })]
    })
   ],{width:8800,fill:white,margins:{top:110,bottom:110,left:120,right:120}}),
@@ -832,7 +846,10 @@ function buildTemplateDocx(i,D,images){
  return new D.Document({
   creator:'إمتداد',title:`إمتداد - ${t.title}`,subject:'نموذج عملي للشركات العائلية',
   description:`نموذج ${t.title} من منظومة الشركات العائلية | أداة إمتداد`,
-  styles:{default:{document:{run:{font:'Arial',size:20,color:ink},paragraph:{spacing:{after:80}}}}},
+  styles:{default:{document:{
+   run:{font:'Arial',size:20,color:ink,rightToLeft:true,language:{value:'ar-SA',bidirectional:'ar-SA'}},
+   paragraph:{alignment:D.AlignmentType.RIGHT,bidirectional:true,spacing:{after:80}}
+  }}},
   sections:[{
    properties:{page:{
     size:{width:11906,height:16838,orientation:D.PageOrientation.PORTRAIT},
@@ -849,7 +866,7 @@ async function downloadTemplateWord(i){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.1',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.2',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=buildTemplateDocx(i,D,{logo,naif});
@@ -918,8 +935,8 @@ function isLastAxis(id){const arr=applicableAxes();return arr[arr.length-1]?.id=
 function validateProfile(){const required=['generation','owners','branches','legalForm','board','familyEmployees','waqfInterest','conflict','leadershipTransition','holding','listing'];for(const id of required){if(!state.profile[id]){toast('أكمل بيانات ملف العائلة والشركة');$(id)?.focus();return false}}return true}
 function unanswered(axisId){return applicableQuestions(axisId).filter(q=>!Object.prototype.hasOwnProperty.call(state.answers,axisId+'_'+q.id))}
 function canAdvanceTo(target){if(target===0)return true;if(!validateProfile())return false;const s=steps();for(let i=1;i<Math.min(target,s.length-1);i++){const id=s[i].id;if(unanswered(id).length){toast('أكمل إجابات المحاور السابقة');return false}}return true}
-function syncProfileInputs(){document.querySelectorAll('#diagPanel input[id],#diagPanel select[id]').forEach(el=>{state.profile[el.id]=el.value})}
-function bindPanel(){document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{state.profile[el.id]=el.value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));$('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save()});$('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save()});$('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})}
+function syncProfileInputs(){document.querySelectorAll('#diagPanel input[id],#diagPanel select[id]').forEach(el=>{const value=latinDigits(el.value);if(el.value!==value)el.value=value;state.profile[el.id]=value})}
+function bindPanel(){document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{const value=latinDigits(el.value);if(el.value!==value)el.value=value;state.profile[el.id]=value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));$('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save()});$('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save()});$('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})}
 function scoreAxis(axisId){const qs=applicableQuestions(axisId);let earned=0,max=0,answered=0;qs.forEach(q=>{const k=axisId+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k))return;const v=state.answers[k];if(v===null)return;earned+=v*q.w;max+=4*q.w;answered++});return {score:max?Math.round(earned/max*100):null,answered,total:qs.length}}
 function stage(score){const level=RESULT_LEVELS.find(x=>score>=x.min&&score<=x.max)||RESULT_LEVELS[0];return[level.label,level.desc]}
 function valuationReadiness(){
