@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://almohammdin.github.io/emtidad/sitemap.xml
