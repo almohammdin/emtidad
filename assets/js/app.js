@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.5.5';
+const VERSION='v0.6.0';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const VALUATION_GUIDE_URL='assets/documents/fair-valuation-family-businesses-2026.pdf';
 const STORAGE_KEY='emtidad_v046';
@@ -311,6 +311,7 @@ const RESULT_LEVELS=[
  {min:85,max:100,label:'جاهزية متقدمة',desc:'المنظومة مترابطة، ويتركز الاهتمام على التجديد والاختبار وإعداد الأجيال.'}
 ];
 const state={step:0,profile:{},answers:{},result:null};
+let diagnosticHadSavedData=false;
 const $=id=>document.getElementById(id);
 function icon(name){return ICONS[name]||ICONS.book}
 
@@ -359,7 +360,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة قبل المتابعة');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.5.5',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -370,7 +371,7 @@ function printReport(){
  const reportTools=['فحص صحة الحوكمة','منظومة أعمال المجالس','بوصلة النمو','سجل المخاطر'].map((title,i)=>{
 	  const tool=naifToolsData.find(x=>x.title===title);if(!tool)return '';
 	  return `<li class="tool-item"><a href="${escapeAttr(tool.url)}" target="_blank" rel="noopener"><b>${i+1}</b><div><strong>${escapeHtml(tool.title)}</strong><span>${escapeHtml(tool.desc)}</span></div><em>فتح الأداة</em></a></li>`;
-	 }).join('')+`<li class="tool-item"><a href="${PLATFORM_URL}#emtidad-templates" target="_blank" rel="noopener"><b>5</b><div><strong>قائمة جاهزية التقييم العادل</strong><span>تجهيز البيانات والحوكمة قبل تكليف المقيّم</span></div><em>فتح النموذج</em></a></li>`;
+	 }).join('')+`<li class="tool-item"><a href="${PLATFORM_URL}resources.html#emtidad-templates" target="_blank" rel="noopener"><b>5</b><div><strong>قائمة جاهزية التقييم العادل</strong><span>تجهيز البيانات والحوكمة قبل تكليف المقيّم</span></div><em>فتح النموذج</em></a></li>`;
  const family=escapeHtml(state.profile.familyName||'غير محدد');
  const generationMap={'1':'الجيل الأول','2':'الجيل الثاني','3':'الجيل الثالث','4':'الجيل الرابع فأكثر'};
  const legalMap={llc:'شركة ذات مسؤولية محدودة',jsc:'شركة مساهمة',sjsc:'شركة مساهمة مبسطة',holding:'شركة قابضة',other:'شكل آخر'};
@@ -484,7 +485,7 @@ async function buildResultImageCanvas(){
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
  const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.5.5',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href),
   loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
  ]);
  const canvas=document.createElement('canvas');
@@ -619,12 +620,17 @@ function enhanceResultActions(){
  }
 	 if(!$('resultServices')){
 	  const tools=[
-	   {title:'قائمة جاهزية التقييم العادل',icon:'chart',desc:'جهّز البيانات والحوكمة قبل تكليف المقيّم.',url:'#emtidad-templates',local:true},
+	   {title:'قائمة جاهزية التقييم العادل',icon:'chart',desc:'جهّز البيانات والحوكمة قبل تكليف المقيّم.',url:'resources.html#emtidad-templates',local:true},
 	   ...['فحص صحة الحوكمة','منظومة أعمال المجالس','بوصلة النمو','سجل المخاطر'].map(title=>naifToolsData.find(tool=>tool.title===title)).filter(Boolean)
 	  ];
 	  const services=document.createElement('section');services.className='result-services';services.id='resultServices';
 	  services.innerHTML=`<div class="result-services-head"><div><span>بحسب النتيجة</span><h3>أدوات ونماذج تناسب نتيجتك</h3></div></div><div class="result-services-grid">${tools.map(tool=>`<a href="${tool.url}" ${tool.local?'':'target="_blank" rel="noopener"'}><span class="service-icon">${icon(tool.icon)}</span><span><em class="service-source">${tool.local?'من إمتداد':'منظومة نايف'}</em><strong>${tool.title}</strong><small>${tool.desc}</small></span>${icon('external')}</a>`).join('')}</div>`;
-  footer?.parentElement?.querySelector('.method-card')?.before(services);
+	  footer?.parentElement?.querySelector('.method-card')?.before(services);
+ }
+ if(!$('diagnosticCharterCta')){
+  const cta=document.createElement('section');cta.className='charter-result-cta';cta.id='diagnosticCharterCta';
+  cta.innerHTML=`<div><span>الخطوة التالية</span><h3>حوّل نتيجة التشخيص إلى مسودة ميثاق عائلي</h3><p>سيستخدم منشئ المسودة بيانات الملف والفجوات ذات الصلة.</p></div><a class="btn primary" href="charter.html?from=diagnostic">إنشاء مسودة الميثاق</a>`;
+  footer?.parentElement?.querySelector('.method-card')?.before(cta);
  }
 }
 
@@ -635,8 +641,19 @@ function latinDigits(value){
 }
 function escapeHtml(v){return latinDigits(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){}}
-function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};Object.keys(state.profile).forEach(key=>state.profile[key]=latinDigits(state.profile[key]));state.answers=state.answers||{}}}catch(e){}}
-function toast(msg){const el=$('toast');el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2200)}
+function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};Object.keys(state.profile).forEach(key=>state.profile[key]=latinDigits(state.profile[key]));state.answers=state.answers||{};diagnosticHadSavedData=Boolean(Object.keys(state.profile).length||Object.keys(state.answers).length||state.result)}}catch(e){}}
+function toast(msg){const el=$('toast');if(!el)return;el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2200)}
+function resetDiagnosticData(){
+ localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;diagnosticHadSavedData=false;
+ if($('diagPanel'))renderDiagnostic();
+}
+function setupDiagnosticStorageControls(){
+ const notice=$('diagnosticRestoreNotice');
+ if(notice&&diagnosticHadSavedData)notice.hidden=false;
+ $('continueDiagnosticBtn')?.addEventListener('click',()=>{notice.hidden=true;toast('تمت متابعة البيانات السابقة')});
+ $('newDiagnosticBtn')?.addEventListener('click',()=>{resetDiagnosticData();if(notice)notice.hidden=true;toast('بدأ تشخيص جديد')});
+ $('clearDiagnosticDataBtn')?.addEventListener('click',()=>{if(!confirm('سيتم مسح بيانات التشخيص المحفوظة في هذا المتصفح.'))return;resetDiagnosticData();if(notice)notice.hidden=true;toast('تم مسح بيانات التشخيص')});
+}
 function renderStats(){
  $('statsGrid').innerHTML=statsData.map(s=>`<article class="stat-card"><div class="stat-value">${s.value}</div><h3>${s.title}</h3><p>${s.meaning}</p><div class="source-line"><span>${s.region}</span><span>${s.sample}</span><span>${s.year}</span><a href="${s.url}" target="_blank" rel="noopener">${s.source}</a></div></article>`).join('');
  const valuationGrid=$('valuationStatsGrid');
@@ -658,7 +675,7 @@ function collectTemplateState(){
 function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
  const isWord=mode==='word';
- const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.5.5',document.baseURI).href;
+ const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href;
  const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo.png',document.baseURI).href;
  const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><table class="doc-table ${section.type==='fields'?'doc-fields':'doc-checks'}" width="100%" cellspacing="0" cellpadding="0"><tbody>${section.items.map((item,ii)=>{
   const value=values[`${si}:${ii}`];
@@ -866,7 +883,7 @@ async function downloadTemplateWord(i){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.5',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=buildTemplateDocx(i,D,{logo,naif});
@@ -1028,5 +1045,13 @@ function stabilizeInitialHash(){
  if(document.readyState==='complete')align();
  else window.addEventListener('load',align,{once:true});
 }
-$('modalClose').addEventListener('click',()=>$('modal').hidden=true);$('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').hidden=true});
-load();renderStats();renderAxesPreview();renderDiagnostic();initDeferredContent();bindTopNavigation();stabilizeInitialHash();
+if($('modalClose')&&$('modal')){
+ $('modalClose').addEventListener('click',()=>$('modal').hidden=true);
+ $('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').hidden=true});
+}
+load();
+if($('statsGrid'))renderStats();
+if($('axisPreview'))renderAxesPreview();
+if($('diagPanel'))renderDiagnostic();
+setupDiagnosticStorageControls();
+initDeferredContent();bindTopNavigation();stabilizeInitialHash();

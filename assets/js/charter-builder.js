@@ -35,7 +35,7 @@ const CHARTER_REFERENCES=[
  {
   id:'diagnostic',level:'تشخيص إمتداد',name:'نتيجة تشخيص جاهزية الاستدامة',
   use:'تخصيص المواد والتنبيهات وفق الجيل والملاك والفروع والحوكمة والوقف والخلافات وقرب انتقال القيادة.',
-  url:'#diagnostic'
+  url:'diagnostic.html'
  }
 ];
 const CHARTER_OPTION_LABELS={
@@ -108,6 +108,7 @@ const charterDefaults={
  waqfGovernance:'separate',notes:''
 };
 const charterState={active:false,step:0,data:{...charterDefaults},linkedDiagnostic:false,draft:null};
+let charterHadSavedData=false;
 
 function charterLatinDigits(value){
  return String(value??'')
@@ -138,6 +139,7 @@ function charterLoad(){
  try{
   const saved=JSON.parse(localStorage.getItem(CHARTER_STORAGE_KEY)||'null');
  if(!saved)return;
+ charterHadSavedData=true;
  charterState.active=Boolean(saved.active);
  charterState.step=Math.max(0,Math.min(CHARTER_STEPS.length-1,Number(saved.step)||0));
  charterState.data={...charterDefaults,...(saved.data||{})};
@@ -199,7 +201,7 @@ function charterStepIntro(kicker,title,copy){
 function charterIdentityMarkup(){
  const diagnosticStatus=charterHasDiagnostic()
   ?'<div class="charter-diagnostic-status linked"><strong>نتيجة التشخيص متاحة</strong><span>يمكن استخدام بيانات الملف وإضافة التنبيهات التي تناسب النتيجة.</span><button type="button" data-charter-action="refresh-diagnostic">تحديث من التشخيص</button></div>'
-  :'<div class="charter-diagnostic-status"><strong>ابدأ المسودة</strong><span>أكمل البيانات التالية، ويمكنك تنفيذ التشخيص للحصول على مسودة تناسب حالتك بدرجة أكبر.</span><a href="#diagnostic">فتح التشخيص</a></div>';
+  :'<div class="charter-diagnostic-status"><strong>ابدأ المسودة</strong><span>أكمل البيانات التالية، ويمكنك تنفيذ التشخيص للحصول على مسودة تناسب حالتك بدرجة أكبر.</span><a href="diagnostic.html">فتح التشخيص</a></div>';
  return `${charterStepIntro('المرحلة 1','بيانات العائلة والكيان','تحدد هذه البيانات المصطلحات التي تستخدمها المسودة والمواد التي تنطبق على العائلة.')}
  ${diagnosticStatus}
  <div class="charter-form-grid">
@@ -615,11 +617,30 @@ function openCharterBuilder(source='service'){
 }
 function charterReset(){
  if(!confirm('سيتم مسح بيانات مسودة الميثاق المحفوظة في هذا المتصفح.'))return;
+ charterStartFresh();
+ toast('بدأت مسودة جديدة');
+}
+function charterStartFresh(){
  localStorage.removeItem(CHARTER_STORAGE_KEY);
  charterState.active=true;charterState.step=0;charterState.data={...charterDefaults};charterState.linkedDiagnostic=false;charterState.draft=null;
  charterHydrateFromDiagnostic(false);
  charterRender();
- toast('بدأت مسودة جديدة');
+ charterHadSavedData=false;
+}
+function charterClearStoredData(){
+ localStorage.removeItem(CHARTER_STORAGE_KEY);
+ charterState.active=false;charterState.step=0;charterState.data={...charterDefaults};charterState.linkedDiagnostic=false;charterState.draft=null;charterHadSavedData=false;
+ const panel=document.getElementById('charterBuilderPanel');
+ if(panel)panel.innerHTML='<div class="charter-builder-empty"><span class="charter-builder-empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6"/></svg></span><h3>ابدأ من التشخيص أو أنشئ المسودة مباشرة</h3><p>عند وجود نتيجة تشخيص، تستخدم الخدمة بياناتها وتضيف المواد والتنبيهات المناسبة.</p><button class="btn primary" type="button" data-open-charter="empty">إنشاء مسودة جديدة</button></div>';
+ const label=document.getElementById('charterProgressLabel'),percent=document.getElementById('charterProgressPercent'),fill=document.getElementById('charterProgressFill'),tabs=document.getElementById('charterStepTabs');
+ if(label)label.textContent='البدء';if(percent)percent.textContent='0%';if(fill)fill.style.width='0%';if(tabs)tabs.innerHTML='';
+}
+function setupCharterStorageControls(){
+ const notice=document.getElementById('charterRestoreNotice');
+ if(notice&&charterHadSavedData)notice.hidden=false;
+ document.getElementById('continueCharterBtn')?.addEventListener('click',()=>{notice.hidden=true;toast('تمت متابعة المسودة السابقة')});
+ document.getElementById('newCharterBtn')?.addEventListener('click',()=>{charterStartFresh();if(notice)notice.hidden=true;toast('بدأت مسودة جديدة')});
+ document.getElementById('clearCharterDataBtn')?.addEventListener('click',()=>{if(!confirm('سيتم مسح بيانات مسودة الميثاق المحفوظة في هذا المتصفح.'))return;charterClearStoredData();if(notice)notice.hidden=true;toast('تم مسح بيانات المسودة')});
 }
 function charterHandleNavigation(direction){
  if(direction==='prev'){
@@ -637,7 +658,7 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.5.4',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</article>`).join('')}</section>`).join('');
@@ -812,7 +833,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.5.4',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.0',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
@@ -837,12 +858,13 @@ function charterInjectResultCta(){
  const target=resultShell.querySelector('.method-card')||resultShell.querySelector('.result-footer');
  const cta=document.createElement('section');
  cta.className='charter-result-cta';
- cta.innerHTML=`<div><span>الخطوة التالية</span><h3>حوّل نتيجة التشخيص إلى مسودة ميثاق عائلي</h3><p>سيستخدم منشئ المسودة بيانات الملف والفجوات ذات الصلة.</p></div><button class="btn primary" type="button" data-open-charter="result">إنشاء مسودة الميثاق</button>`;
+ cta.innerHTML=`<div><span>الخطوة التالية</span><h3>حوّل نتيجة التشخيص إلى مسودة ميثاق عائلي</h3><p>سيستخدم منشئ المسودة بيانات الملف والفجوات ذات الصلة.</p></div><a class="btn primary" href="charter.html?from=diagnostic">إنشاء مسودة الميثاق</a>`;
  if(target)resultShell.insertBefore(cta,target);else resultShell.appendChild(cta);
 }
 function charterInit(){
  charterLoad();
  if(charterState.active)charterRender();
+ setupCharterStorageControls();
  document.addEventListener('click',event=>{
   const opener=event.target.closest('[data-open-charter]');
   if(opener){event.preventDefault();openCharterBuilder(opener.dataset.openCharter);return}
@@ -868,5 +890,6 @@ function charterInit(){
  if(diagnosticPanel)new MutationObserver(charterInjectResultCta).observe(diagnosticPanel,{childList:true,subtree:true});
  charterInjectResultCta();
  if(location.hash==='#charter-builder'&&!charterState.active)openCharterBuilder('hash');
+ if(new URLSearchParams(location.search).get('from')==='diagnostic'&&!charterHadSavedData&&!charterState.active)openCharterBuilder('result');
 }
 charterInit();
