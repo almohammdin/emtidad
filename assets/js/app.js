@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.6.1';
+const VERSION='v0.6.2';
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const VALUATION_GUIDE_URL='assets/documents/fair-valuation-family-businesses-2026.pdf';
 const STORAGE_KEY='emtidad_v046';
@@ -360,7 +360,7 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة قبل المتابعة');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.6.1',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href;
  const naifUrl=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
@@ -466,8 +466,9 @@ function canvasWrappedText(ctx,text,x,y,maxWidth,lineHeight,maxLines=3){
 }
 
 function canvasImageContain(ctx,img,x,y,width,height){
- const scale=Math.min(width/img.naturalWidth,height/img.naturalHeight);
- const drawWidth=img.naturalWidth*scale,drawHeight=img.naturalHeight*scale;
+ const sourceWidth=img.naturalWidth||img.width,sourceHeight=img.naturalHeight||img.height;
+ const scale=Math.min(width/sourceWidth,height/sourceHeight);
+ const drawWidth=sourceWidth*scale,drawHeight=sourceHeight*scale;
  ctx.drawImage(img,x+(width-drawWidth)/2,y+(height-drawHeight)/2,drawWidth,drawHeight);
 }
 
@@ -480,20 +481,46 @@ function loadCanvasImage(src){
  });
 }
 
+function canvasSvgIcon(path,color='#F0BC60'){
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="${color}" d="${path}"/></svg>`;
+ return loadCanvasImage(`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`);
+}
+
+function canvasTintImage(image,color){
+ const layer=document.createElement('canvas');
+ layer.width=image.naturalWidth||image.width;layer.height=image.naturalHeight||image.height;
+ const layerContext=layer.getContext('2d');
+ layerContext.drawImage(image,0,0,layer.width,layer.height);
+ layerContext.globalCompositeOperation='source-in';
+ layerContext.fillStyle=color;layerContext.fillRect(0,0,layer.width,layer.height);
+ layerContext.globalCompositeOperation='source-over';
+ return layer;
+}
+
 async function buildResultImageCanvas(){
  const r=state.result;if(!r)throw new Error('لا توجد نتيجة للتصدير');
  syncProfileInputs();
  await (document.fonts?.ready||Promise.resolve());
- const [logo,naif]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.6.1',document.baseURI).href),
-  loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href)
+ const socialPaths=[
+  'M4.4 3h4.8l3.8 5.1L17.5 3H20l-5.9 6.9L20.5 21h-4.8l-4.2-5.7L6.6 21H4l6.3-7.5L4.4 3Zm3.7 2 8.5 14h1.8L9.9 5H8.1Z',
+  'M5.2 8.4h3.2V19H5.2V8.4Zm1.6-5.2a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8Zm3.8 5.2h3.1v1.5h.1c.5-.8 1.6-1.8 3.5-1.8 3.3 0 4 2.2 4 5.1V19H18v-5.2c0-1.2 0-2.8-1.8-2.8s-2 1.3-2 2.7V19h-3.3V8.4Z',
+  'M8.2 16.9c.8.3 1.1.7 1.3 1.1.7-.1 1.5-.2 2.5-.2s1.8.1 2.5.2c.2-.4.5-.8 1.3-1.1 1.2-.4 2.1-1 2.5-1.6-1.9-.7-2.1-2.3-2.1-4.7 0-2.7-1.7-4.5-4.2-4.5s-4.2 1.8-4.2 4.5c0 2.4-.2 4-2.1 4.7.4.6 1.3 1.2 2.5 1.6Z',
+  'M13.736 5.852 17.644 2l1.92 1.92-3.852 3.736h5.644v2.736h-5.66l3.868 3.752-1.92 1.92-5.276-5.28-5.276 5.28-1.92-1.92 3.868-3.752H3.38V7.656h5.644L5.172 3.92 7.092 2l3.932 3.852V0h2.712v5.852ZM11.024 24v-8.604h2.712V24h-2.712Z'
+ ];
+ const [logo,naif,...socialIcons]=await Promise.all([
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/naif-logo.png',document.baseURI).href),
+  ...socialPaths.map(path=>canvasSvgIcon(path))
  ]);
  const canvas=document.createElement('canvas');
- canvas.width=1600;canvas.height=2000;
+ canvas.width=2400;canvas.height=3000;
  const ctx=canvas.getContext('2d',{alpha:false});
- const navy='#0D3656',navy2='#154D74',gold='#C9853C',ink='#263843',muted='#68747D',paper='#F7F5F1';
+ ctx.scale(1.5,1.5);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+ const navy='#0D3656',gold='#C9853C',footerGold='#F0BC60',ink='#263843',muted='#68747D',paper='#F7F5F1';
  const font='EmtidadCraft, Arial, sans-serif';
- ctx.fillStyle=paper;ctx.fillRect(0,0,canvas.width,canvas.height);
+ const riskScore=Math.max(0,100-r.overall);
+ const riskLabel=riskScore<=15?'مخاطر محدودة':riskScore<=35?'مخاطر منخفضة':riskScore<=55?'مخاطر متوسطة':riskScore<=75?'مخاطر مرتفعة':'مخاطر عالية جدا';
+ ctx.fillStyle=paper;ctx.fillRect(0,0,1600,2000);
  const bg=ctx.createLinearGradient(0,0,1600,2000);
  bg.addColorStop(0,'#FFFFFF');bg.addColorStop(.52,'#F8F6F2');bg.addColorStop(1,'#F1F5F7');
  ctx.fillStyle=bg;ctx.fillRect(0,0,1600,2000);
@@ -522,68 +549,54 @@ async function buildResultImageCanvas(){
  ctx.fillText(r.label,1140,570);
  ctx.fillStyle=muted;ctx.font=`500 24px ${font}`;
  canvasWrappedText(ctx,r.desc,1140,620,900,41,3);
- const kpis=[
-  ['نسبة الأسئلة المحتسبة',`${r.confidence}%`],
-  ['أقوى محور',r.strongest.title],
-  ['الأولوية الآن',r.weakest.title]
- ];
+ const kpis=[['درجة المخاطر',`${riskScore}%`],['تصنيف المخاطر',riskLabel]];
  kpis.forEach((item,index)=>{
-  const x=110+(index*330);
-  canvasCard(ctx,x,690,305,58,15,'#F7F3ED','#E8DED2');
-  ctx.textAlign='right';ctx.fillStyle=muted;ctx.font=`500 16px ${font}`;ctx.fillText(item[0],x+285,714);
-  ctx.fillStyle=navy;ctx.font=`800 18px ${font}`;ctx.fillText(item[1],x+285,738);
+  const x=110+(index*500);
+  canvasCard(ctx,x,688,470,62,15,'#F7F3ED','#E8DED2');
+  ctx.textAlign='right';ctx.fillStyle=muted;ctx.font=`500 16px ${font}`;ctx.fillText(item[0],x+445,713);
+  ctx.fillStyle=navy;ctx.font=`800 20px ${font}`;ctx.fillText(item[1],x+445,740);
  });
 
  canvasCard(ctx,90,810,1420,250,30,'#FFFEFC','#E5E0D8');
- ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 30px ${font}`;ctx.fillText('دليل قراءة النتيجة',1450,860);
- const level=RESULT_LEVELS.find(item=>r.overall>=item.min&&r.overall<=item.max)||RESULT_LEVELS[0];
- ctx.fillStyle=muted;ctx.font=`500 19px ${font}`;ctx.fillText(`${level.label}: ${level.desc}`,1450,895);
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 30px ${font}`;ctx.fillText('درجة المخاطر',1450,860);
+ ctx.fillStyle=muted;ctx.font=`500 20px ${font}`;ctx.fillText(`${riskScore}%  ·  ${riskLabel}`,1450,900);
  const barX=150,barY=970,barWidth=1300,barHeight=30;
  const heat=ctx.createLinearGradient(barX,0,barX+barWidth,0);
  heat.addColorStop(0,'#3CA653');heat.addColorStop(.34,'#A8CF36');heat.addColorStop(.55,'#F2C43C');heat.addColorStop(.76,'#F06B23');heat.addColorStop(1,'#D9362B');
  canvasRoundRect(ctx,barX,barY,barWidth,barHeight,15);ctx.fillStyle=heat;ctx.fill();ctx.strokeStyle='#DDE2E1';ctx.lineWidth=8;ctx.stroke();
- const pointerX=barX+(barWidth*(1-(r.overall/100)));
+ const pointerX=barX+(barWidth*(riskScore/100));
  canvasCard(ctx,pointerX-49,barY-69,98,43,11,navy,null);
- ctx.textAlign='center';ctx.fillStyle='#FFFFFF';ctx.font='800 19px Arial';ctx.fillText(`${r.overall}%`,pointerX,barY-41);
+ ctx.textAlign='center';ctx.fillStyle='#FFFFFF';ctx.font='800 19px Arial';ctx.fillText(`${riskScore}%`,pointerX,barY-41);
  ctx.beginPath();ctx.moveTo(pointerX-12,barY-26);ctx.lineTo(pointerX+12,barY-26);ctx.lineTo(pointerX,barY-8);ctx.closePath();ctx.fillStyle=navy;ctx.fill();
  ctx.direction='ltr';ctx.font='700 16px Arial';ctx.fillStyle=muted;
- [0,20,40,60,80,100].forEach(value=>{const x=barX+(barWidth*(1-(value/100)));ctx.textAlign='center';ctx.fillText(String(value),x,1035)});
-	 ctx.direction='rtl';
-	 canvasCard(ctx,90,1068,700,40,13,'#FFF7EC','#E2D2BF');
-	 ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`800 17px ${font}`;ctx.fillText(`جاهزية التقييم العادل: ${r.valuation.score}%`,755,1095);
-	 ctx.textAlign='left';ctx.fillStyle=gold;ctx.font=`800 14px ${font}`;ctx.fillText(r.valuation.label,125,1095);
+ [0,20,40,60,80,100].forEach(value=>{const x=barX+(barWidth*(value/100));ctx.textAlign='center';ctx.fillText(String(value),x,1035)});
 
-	 ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 31px ${font}`;ctx.fillText('نتائج المحاور',1510,1125);
- r.axisScores.slice(0,6).forEach((axis,index)=>{
-  const col=index%2,row=Math.floor(index/2),x=col===0?825:90,y=1155+(row*122),width=685;
-  canvasCard(ctx,x,y,width,101,22,'#FFFFFF','#E5E0D8');
-  ctx.textAlign='right';ctx.fillStyle=ink;ctx.font=`800 21px ${font}`;ctx.fillText(axis.title,x+width-28,y+36);
-  ctx.textAlign='left';ctx.fillStyle=gold;ctx.font='900 22px Arial';ctx.fillText(`${axis.score}%`,x+28,y+36);
-  canvasRoundRect(ctx,x+28,y+62,width-56,12,6);ctx.fillStyle='#ECE9E4';ctx.fill();
-  const fillWidth=(width-56)*(axis.score/100);
-  canvasRoundRect(ctx,x+width-28-fillWidth,y+62,fillWidth,12,6);
-  const axisGradient=ctx.createLinearGradient(x+28,0,x+width-28,0);axisGradient.addColorStop(0,gold);axisGradient.addColorStop(1,navy2);
-  ctx.fillStyle=axisGradient;ctx.fill();
- });
-
- const prioritiesY=1540;
- canvasCard(ctx,90,prioritiesY,1420,300,30,'#FFFFFF','#E5E0D8');
- ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 31px ${font}`;ctx.fillText('أهم الأولويات',1450,1595);
+ ctx.direction='rtl';
+ const prioritiesY=1120;
+ canvasCard(ctx,90,prioritiesY,1420,680,30,'#FFFFFF','#E5E0D8');
+ ctx.textAlign='right';ctx.fillStyle=navy;ctx.font=`900 34px ${font}`;ctx.fillText('أهم التوصيات',1450,1190);
+ ctx.fillStyle=muted;ctx.font=`500 19px ${font}`;ctx.fillText('خطوات مقترحة بحسب النتيجة الحالية',1450,1230);
  r.priorities.slice(0,3).forEach((priority,index)=>{
-  const y=1645+(index*58);
-  canvasCard(ctx,1360,y-30,46,46,13,'#F2E4D4',null);
-  ctx.textAlign='center';ctx.fillStyle=gold;ctx.font='900 19px Arial';ctx.fillText(String(index+1),1383,y);
-  ctx.textAlign='right';ctx.fillStyle=ink;ctx.font=`700 21px ${font}`;
-  canvasWrappedText(ctx,priority.action,1335,y,1160,29,2);
+  const y=1320+(index*150);
+  canvasCard(ctx,150,y-55,1300,112,22,'#F8F5F0','#E8DED2');
+  canvasCard(ctx,1350,y-31,58,58,16,'#F2E4D4',null);
+  ctx.textAlign='center';ctx.fillStyle=gold;ctx.font='900 22px Arial';ctx.fillText(String(index+1),1379,y+7);
+  ctx.textAlign='right';ctx.fillStyle=ink;ctx.font=`800 24px ${font}`;
+  canvasWrappedText(ctx,priority.action,1315,y,1085,35,2);
  });
 
- ctx.strokeStyle='#DED8CF';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(90,1890);ctx.lineTo(1510,1890);ctx.stroke();
- canvasImageContain(ctx,naif,1280,1910,220,58);
- canvasCard(ctx,820,1915,420,48,24,'#F8F4EE','#DCCDBB');
- ctx.textAlign='center';ctx.fillStyle=navy;ctx.font=`800 17px ${font}`;ctx.fillText('منظومة الشركات العائلية  |  أداة إمتداد',1030,1946);
+ ctx.strokeStyle='#DED8CF';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(90,1865);ctx.lineTo(1510,1865);ctx.stroke();
+ const goldNaif=canvasTintImage(naif,footerGold);
+ canvasImageContain(ctx,goldNaif,1260,1890,240,72);
+ socialIcons.forEach((socialIcon,index)=>{
+  const x=665+(index*70);
+  canvasCard(ctx,x,1892,52,52,15,navy,null);
+  canvasImageContain(ctx,socialIcon,x+13,1905,26,26);
+ });
+ ctx.direction='ltr';ctx.textAlign='center';ctx.fillStyle=navy;ctx.font='800 18px Arial';ctx.fillText('Almohammdin',800,1972);
  ctx.direction='ltr';ctx.textAlign='left';ctx.fillStyle=navy;ctx.font='700 16px Arial';
  ctx.fillText('almohammdin.github.io/emtidad/',100,1938);
- ctx.fillStyle=gold;ctx.font='800 14px Arial';ctx.fillText(VERSION,100,1964);
+ ctx.fillStyle=footerGold;ctx.font='800 14px Arial';ctx.fillText(VERSION,100,1964);
  return canvas;
 }
 
@@ -597,7 +610,7 @@ async function exportResultImage(){
   const url=URL.createObjectURL(blob),link=document.createElement('a');
   link.href=url;link.download=`${reportFileName()}.png`;document.body.appendChild(link);link.click();link.remove();
   setTimeout(()=>URL.revokeObjectURL(url),2000);
-  if(btn)btn.dataset.exported='1600x2000';
+  if(btn)btn.dataset.exported='2400x3000';
   toast('تم تجهيز صورة النتيجة بدقة عالية');
  }catch(error){
   console.error(error);toast('تعذر تصدير الصورة، حاول مرة أخرى');
@@ -680,7 +693,7 @@ function collectTemplateState(){
 function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
  const isWord=mode==='word';
- const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.6.1',document.baseURI).href;
+ const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href;
  const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo.png',document.baseURI).href;
  const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><table class="doc-table ${section.type==='fields'?'doc-fields':'doc-checks'}" width="100%" cellspacing="0" cellpadding="0"><tbody>${section.items.map((item,ii)=>{
   const value=values[`${si}:${ii}`];
@@ -888,7 +901,7 @@ async function downloadTemplateWord(i){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.1',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=buildTemplateDocx(i,D,{logo,naif});
@@ -933,8 +946,9 @@ function renderCenters(){$('centersGrid').innerHTML=centersData.map(c=>`<article
 function applicableAxes(){return axes.filter(a=>a.id!=='wealth'||state.profile.waqfInterest==='yes')}
 function applicableQuestions(axisId){return (questions[axisId]||[]).filter(q=>!q.show||q.show(state.profile))}
 function steps(){return [{id:'profile',title:'ملف العائلة',icon:'profile'},...applicableAxes().map(a=>({id:a.id,title:a.title,icon:a.icon})),{id:'result',title:'النتيجة',icon:'report'}]}
-function renderStepTabs(){const s=steps();$('stepTabs').innerHTML=s.map((x,i)=>`<button class="step-tab ${i===state.step?'active':''} ${i<state.step?'done':''}" data-goto="${i}">${x.title}</button>`).join('');document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.goto);if(i<=state.step||canAdvanceTo(i)){state.step=i;renderDiagnostic();save()}}))}
+function renderStepTabs(){const s=steps();$('stepTabs').innerHTML=s.map((x,i)=>`<button class="step-tab ${i===state.step?'active':''} ${i<state.step?'done':''}" data-goto="${i}">${x.title}</button>`).join('');document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.goto);if(i<=state.step||canAdvanceTo(i)){state.step=i;renderDiagnostic();save();scrollDiagnosticStepStart()}}))}
 function updateProgress(){const s=steps();const pct=Math.round((state.step/(s.length-1))*100);$('progressFill').style.width=pct+'%';$('progressPercent').textContent=pct+'%';$('progressLabel').textContent=s[state.step]?.title||''}
+function scrollDiagnosticStepStart(){requestAnimationFrame(()=>document.querySelector('.progress-shell')?.scrollIntoView({behavior:'smooth',block:'start'}))}
 function profilePanel(){return `<div class="panel-title"><div class="axis-icon">${icon('profile')}</div><div><h3>ملف العائلة والشركة</h3><p>تحدد البيانات الأسئلة التي ستظهر بما يناسب حالة العائلة والشركة.</p></div></div><div class="form-grid">
  ${field('familyName','اسم العائلة أو الشركة','text','اختياري')}
  ${selectField('generation','الجيل الحالي',[['','اختر'],['1','الجيل الأول'],['2','الجيل الثاني'],['3','الجيل الثالث'],['4','الجيل الرابع فأكثر']])}
@@ -958,7 +972,13 @@ function validateProfile(){const required=['generation','owners','branches','leg
 function unanswered(axisId){return applicableQuestions(axisId).filter(q=>!Object.prototype.hasOwnProperty.call(state.answers,axisId+'_'+q.id))}
 function canAdvanceTo(target){if(target===0)return true;if(!validateProfile())return false;const s=steps();for(let i=1;i<Math.min(target,s.length-1);i++){const id=s[i].id;if(unanswered(id).length){toast('أكمل إجابات المحاور السابقة');return false}}return true}
 function syncProfileInputs(){document.querySelectorAll('#diagPanel input[id],#diagPanel select[id]').forEach(el=>{const value=latinDigits(el.value);if(el.value!==value)el.value=value;state.profile[el.id]=value})}
-function bindPanel(){document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{const value=latinDigits(el.value);if(el.value!==value)el.value=value;state.profile[el.id]=value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));$('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save()});$('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save()});$('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})}
+function bindPanel(){
+ document.querySelectorAll('#diagPanel input,#diagPanel select').forEach(el=>el.addEventListener('input',()=>{const value=latinDigits(el.value);if(el.value!==value)el.value=value;state.profile[el.id]=value;state.result=null;save();if(el.id==='waqfInterest'){state.step=0;renderDiagnostic()}}));
+ document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));
+ $('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save();scrollDiagnosticStepStart()});
+ $('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){buildResult();state.step=s.length-1}else state.step++}renderDiagnostic();save();scrollDiagnosticStepStart()});
+ $('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية.')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})
+}
 function scoreAxis(axisId){const qs=applicableQuestions(axisId);let earned=0,max=0,answered=0;qs.forEach(q=>{const k=axisId+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k))return;const v=state.answers[k];if(v===null)return;earned+=v*q.w;max+=4*q.w;answered++});return {score:max?Math.round(earned/max*100):null,answered,total:qs.length}}
 function stage(score){const level=RESULT_LEVELS.find(x=>score>=x.min&&score<=x.max)||RESULT_LEVELS[0];return[level.label,level.desc]}
 function valuationReadiness(){

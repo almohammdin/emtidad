@@ -983,3 +983,27 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 @media(max-width:800px){.persuasion-strip{grid-template-columns:1fr}.charter-chapters-grid{grid-template-columns:1fr}}
 @media(max-width:720px){.hero-audience{border-radius:14px}.persuasion-strip{margin-bottom:28px;padding:17px}.persuasion-points{grid-template-columns:1fr}.consultation-cta{align-items:stretch;flex-direction:column}.consultation-cta .btn{width:100%}}
 @media print{.consultation-cta{display:none!important}}
+
+/* v0.6.2 fixed diagnostic navigation and unified footer gold */
+.diagnostic-wrap{overflow:visible}
+.diag-head{border-radius:27px 27px 0 0}
+.progress-shell{
+ position:sticky;top:72px;z-index:34;
+ box-shadow:0 10px 24px rgba(13,54,86,.09)
+}
+.naif-mark{
+ display:block!important;width:82px!important;height:38px!important;max-height:none!important;
+ flex:0 0 82px;background:var(--footer-gold)!important;opacity:1!important;filter:none!important;
+ -webkit-mask:url('../images/naif-logo.png') center/contain no-repeat;
+ mask:url('../images/naif-logo.png') center/contain no-repeat
+}
+@media(max-width:900px){.progress-shell{top:63px}}
+@media(max-width:720px){
+ .progress-shell{padding:13px 15px}
+ .step-tabs{margin-top:9px}
+ .panel-actions{width:100%;flex-wrap:nowrap;justify-content:space-between}
+ .panel-actions .btn{min-width:118px;flex:0 0 auto}
+ .panel-actions-end{justify-content:flex-end!important}
+ .naif-mark{width:78px!important;height:36px!important;flex-basis:78px}
+}
+@media(max-width:390px){.panel-actions .btn{min-width:108px}}
