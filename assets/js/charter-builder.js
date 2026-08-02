@@ -62,42 +62,42 @@ const CHARTER_OPTION_LABELS={
  waqfGovernance:{separate:'حوكمة مستقلة للوقف متسقة مع صكه',integrated:'تنسيق مجلس العائلة مع مجلس النظارة دون تداخل',study:'إعداد دراسة مستقلة قبل إدخال الوقف في الميثاق'}
 };
 const CHARTER_FIELD_HELP={
- familyName:'اكتب الاسم المتداول لأسرة الملاك كما تريد ظهوره في عنوان المسودة، مثل: عائلة المحمدي. لا حاجة إلى إدخال أسماء الأفراد.',
- companyName:'اكتب اسم الشركة الرئيسة كما يظهر في السجل التجاري أو عقد التأسيس. عند وجود عدة شركات، اكتب اسم الشركة القابضة أو الكيان الرئيس الذي سيطبق عليه الميثاق.',
- city:'اكتب المدينة التي يوجد فيها المقر الرئيس أو تعقد فيها اجتماعات العائلة عادة. لا يقصد بها مواقع فروع الشركة.',
- legalForm:'ارجع إلى السجل التجاري أو عقد التأسيس واختر الشكل المسجل للكيان الذي سيطبق عليه الميثاق. عند شمول الميثاق مجموعة شركات اختر القابضة أو المجموعة.',
- generation:'المؤسس هو الجيل الأول، وأبناؤه الجيل الثاني، وأحفاده الجيل الثالث. عند مشاركة أكثر من جيل اختر الجيل الذي يتولى القيادة والملكية المؤثرة في الوقت الحالي.',
- owners:'احسب كل فرد أو كيان مقيد ضمن الملاك في عقد التأسيس أو سجل المساهمين، بصرف النظر عن حجم الحصة.',
- branches:'المقصود خطوط العائلة المنحدرة من أبناء أو بنات المؤسس، وليست الفروع التجارية. إذا كانت الملكية ضمن خط أسري واحد فاختر خيار «فرع عائلي واحد».',
- values:'اكتب من 4 إلى 7 قيم تحكم قرارات العائلة، مثل: العدل، الأمانة، الكفاءة، صلة الرحم والاستدامة. افصل بينها بفواصل.',
+ familyName:'اكتب الاسم المتداول لأسرة الملاك كما تريد ظهوره في عنوان المسودة، مثل: عائلة المحمدي، لا حاجة إلى إدخال أسماء الأفراد',
+ companyName:'اكتب اسم الشركة الرئيسة كما يظهر في السجل التجاري أو عقد التأسيس، عند وجود عدة شركات، اكتب اسم الشركة القابضة أو الكيان الرئيس الذي سيطبق عليه الميثاق',
+ city:'اكتب المدينة التي يوجد فيها المقر الرئيس أو تعقد فيها اجتماعات العائلة عادة، لا يقصد بها مواقع فروع الشركة',
+ legalForm:'ارجع إلى السجل التجاري أو عقد التأسيس واختر الشكل المسجل للكيان الذي سيطبق عليه الميثاق، عند شمول الميثاق مجموعة شركات اختر القابضة أو المجموعة',
+ generation:'المؤسس هو الجيل الأول، وأبناؤه الجيل الثاني، وأحفاده الجيل الثالث، عند مشاركة أكثر من جيل اختر الجيل الذي يتولى القيادة والملكية المؤثرة في الوقت الحالي',
+ owners:'احسب كل فرد أو كيان مقيد ضمن الملاك في عقد التأسيس أو سجل المساهمين، بصرف النظر عن حجم الحصة',
+ branches:'المقصود خطوط العائلة المنحدرة من أبناء أو بنات المؤسس، وليست الفروع التجارية، إذا كانت الملكية ضمن خط أسري واحد فاختر خيار «فرع عائلي واحد».',
+ values:'اكتب من 4 إلى 7 قيم تحكم قرارات العائلة، مثل: العدل، الأمانة، الكفاءة، صلة الرحم والاستدامة، افصل بينها بفواصل',
  purpose:'اكتب جملة أو جملتين تجيبان: لماذا تريد العائلة استمرار ملكيتها المشتركة؟ وما الذي تريد حمايته أو تنميته عبر الأجيال؟',
- familyBody:'الجمعية العائلية تضم جميع الأعضاء المستوفين للشروط، ومجلس العائلة هيئة أصغر للمتابعة والتمثيل. الجمع بينهما أنسب عادة للعائلات الأكبر أو متعددة الفروع.',
- representation:'حدد الطريقة التي ستوزع بها مقاعد مجلس العائلة. الانتخاب يناسب العائلة الصغيرة، وتمثيل الفروع يوازن العائلات الممتدة، والخيار المختلط يجمع التمثيل والكفاءة.',
- meetingFrequency:'اختر الحد الأدنى الواقعي للاجتماعات التي تستطيع العائلة الالتزام بها كل سنة، وليس العدد المأمول فقط.',
- decisionModel:'حدد كيف تعتمد القرارات العائلية. القرارات الحساسة تشمل تعديل الميثاق، التصرفات الجوهرية في الملكية وحل مجلس العائلة.',
- councilSize:'اختر عدد أعضاء يتيح تمثيل العائلة وسرعة القرار. يساعد العدد الفردي من 5 إلى 9 أعضاء على تقليل تعادل الأصوات.',
- councilTerm:'حدد مدة تمنح المجلس الوقت الكافي للعمل وتسمح بتجديد التمثيل. المدة المعتادة من سنتين إلى 4 سنوات، مع بيان إمكانية التجديد.',
- transferPolicy:'اختر القاعدة التي تطبق عندما يرغب مالك في بيع حصته أو نقلها، وخاصة إلى شخص من خارج العائلة.',
- valuationPolicy:'حدد كيف تحسب قيمة الحصة عند التخارج أو الشراء بين الملاك. المقيمون المعتمدون يقللون الخلاف حول السعر.',
- dividendPolicy:'حدد المبدأ الذي يوازن بين احتياج الملاك للتوزيعات واحتياج الشركة للسيولة والنمو. القرار الفعلي يبقى وفق النتائج والوثائق النظامية.',
- employmentPolicy:'اختر الأساس الذي يحكم توظيف أفراد العائلة. هذا الاختيار يخص الوظيفة والكفاءة، ولا يرتبط بحقوق الملكية أو الأرباح.',
- externalExperience:'حدد الخبرة التي يكتسبها فرد العائلة خارج الشركة قبل تولي وظيفة دائمة أو قيادية داخلها. يمكن تركها مرتبطة بمتطلبات كل وظيفة.',
- compensation:'اختر كيف يحدد راتب فرد العائلة العامل. الأجر مقابل الوظيفة والأداء، بينما التوزيعات مقابل الملكية، ويجب الفصل بينهما.',
- boardPolicy:'حدد المبدأ الذي سيحكم ترشيح أعضاء مجلس الإدارة: الكفاءة أساس الاختيار، أو مزيج من أفراد العائلة والمستقلين، أو تعزيز الاستقلال.',
- executivePolicy:'حدد من يمكنه تولي القيادة التنفيذية وما معيار الاختيار. الملكية وحدها لا تكفي، وتبقى الكفاءة واحتياج الشركة أساس التعيين.',
- successionPolicy:'اختر مستوى التخطيط المطلوب لانتقال الرئيس التنفيذي والأدوار الحرجة، بما يشمل الانتقال المتوقع والحالات الطارئة.',
- nextGen:'حدد الوسيلة التي ستعد بها العائلة أبناءها لفهم الملكية والحوكمة قبل دخولهم العمل أو ممارسة حقوقهم كملاك.',
- disputePath:'اختر خطوات معالجة الخلاف: الحوار، ثم التوفيق أو الوساطة، ثم المسار المتفق عليه. يحتاج التحكيم إلى اتفاق قانوني مستقل ودقيق.',
- confidentiality:'حدد من يطلع على الميثاق والمعلومات العائلية والتجارية. تصنيف المعلومات يسمح بتوسيع الاطلاع دون كشف البيانات الحساسة للجميع.',
- reviewCycle:'اكتب عدد السنوات بين كل مراجعة. تناسب مدة سنتين أو 3 سنوات معظم العائلات، مع مراجعة مبكرة عند تغير الملكية أو القيادة.',
- approvalThreshold:'اكتب نسبة أصحاب حق التصويت المطلوبة لتعديل الميثاق. تدعم نسبة 75% قبول التعديل على نطاق واسع، وتراجع مع آلية التصويت ووثائق الشركة.',
- waqfGovernance:'اختر كيفية تنسيق أحكام الميثاق مع صك الوقف ومجلس النظارة. اختصاصات النظار تبقى مستقلة وفق الصك والأنظمة.',
- notes:'اكتب القرارات المؤجلة أو الموضوعات الحساسة التي تحتاج مناقشة أو مراجعة مختص، مثل فئة مستثناة أو خلاف قائم. تجنب تسجيل أسرار شخصية غير لازمة.'
+ familyBody:'الجمعية العائلية تضم جميع الأعضاء المستوفين للشروط، ومجلس العائلة هيئة أصغر للمتابعة والتمثيل، الجمع بينهما أنسب عادة للعائلات الأكبر أو متعددة الفروع',
+ representation:'حدد الطريقة التي ستوزع بها مقاعد مجلس العائلة، الانتخاب يناسب العائلة الصغيرة، وتمثيل الفروع يوازن العائلات الممتدة، والخيار المختلط يجمع التمثيل والكفاءة',
+ meetingFrequency:'اختر الحد الأدنى الواقعي للاجتماعات التي تستطيع العائلة الالتزام بها كل سنة، وليس العدد المأمول فقط',
+ decisionModel:'حدد كيف تعتمد القرارات العائلية، القرارات الحساسة تشمل تعديل الميثاق، التصرفات الجوهرية في الملكية وحل مجلس العائلة',
+ councilSize:'اختر عدد أعضاء يتيح تمثيل العائلة وسرعة القرار، يساعد العدد الفردي من 5 إلى 9 أعضاء على تقليل تعادل الأصوات',
+ councilTerm:'حدد مدة تمنح المجلس الوقت الكافي للعمل وتسمح بتجديد التمثيل، المدة المعتادة من سنتين إلى 4 سنوات، مع بيان إمكانية التجديد',
+ transferPolicy:'اختر القاعدة التي تطبق عندما يرغب مالك في بيع حصته أو نقلها، وخاصة إلى شخص من خارج العائلة',
+ valuationPolicy:'حدد كيف تحسب قيمة الحصة عند التخارج أو الشراء بين الملاك، المقيمون المعتمدون يقللون الخلاف حول السعر',
+ dividendPolicy:'حدد المبدأ الذي يوازن بين احتياج الملاك للتوزيعات واحتياج الشركة للسيولة والنمو، القرار الفعلي يبقى وفق النتائج والوثائق النظامية',
+ employmentPolicy:'اختر الأساس الذي يحكم توظيف أفراد العائلة، هذا الاختيار يخص الوظيفة والكفاءة، ولا يرتبط بحقوق الملكية أو الأرباح',
+ externalExperience:'حدد الخبرة التي يكتسبها فرد العائلة خارج الشركة قبل تولي وظيفة دائمة أو قيادية داخلها، يمكن تركها مرتبطة بمتطلبات كل وظيفة',
+ compensation:'اختر كيف يحدد راتب فرد العائلة العامل، الأجر مقابل الوظيفة والأداء، بينما التوزيعات مقابل الملكية، ويجب الفصل بينهما',
+ boardPolicy:'حدد المبدأ الذي سيحكم ترشيح أعضاء مجلس الإدارة: الكفاءة أساس الاختيار، أو مزيج من أفراد العائلة والمستقلين، أو تعزيز الاستقلال',
+ executivePolicy:'حدد من يمكنه تولي القيادة التنفيذية وما معيار الاختيار، الملكية وحدها لا تكفي، وتبقى الكفاءة واحتياج الشركة أساس التعيين',
+ successionPolicy:'اختر مستوى التخطيط المطلوب لانتقال الرئيس التنفيذي والأدوار الحرجة، بما يشمل الانتقال المتوقع والحالات الطارئة',
+ nextGen:'حدد الوسيلة التي ستعد بها العائلة أبناءها لفهم الملكية والحوكمة قبل دخولهم العمل أو ممارسة حقوقهم كملاك',
+ disputePath:'اختر خطوات معالجة الخلاف: الحوار، ثم التوفيق أو الوساطة، ثم المسار المتفق عليه، يحتاج التحكيم إلى اتفاق قانوني مستقل ودقيق',
+ confidentiality:'حدد من يطلع على الميثاق والمعلومات العائلية والتجارية، تصنيف المعلومات يسمح بتوسيع الاطلاع دون كشف البيانات الحساسة للجميع',
+ reviewCycle:'اكتب عدد السنوات بين كل مراجعة، تناسب مدة سنتين أو 3 سنوات معظم العائلات، مع مراجعة مبكرة عند تغير الملكية أو القيادة',
+ approvalThreshold:'اكتب نسبة أصحاب حق التصويت المطلوبة لتعديل الميثاق، تدعم نسبة 75% قبول التعديل على نطاق واسع، وتراجع مع آلية التصويت ووثائق الشركة',
+ waqfGovernance:'اختر كيفية تنسيق أحكام الميثاق مع صك الوقف ومجلس النظارة، اختصاصات النظار تبقى مستقلة وفق الصك والأنظمة',
+ notes:'اكتب القرارات المؤجلة أو الموضوعات الحساسة التي تحتاج مناقشة أو مراجعة مختص، مثل فئة مستثناة أو خلاف قائم، تجنب تسجيل أسرار شخصية غير لازمة'
 };
 const charterDefaults={
  familyName:'',companyName:'',city:'',legalForm:'',generation:'',owners:'',branches:'',
  values:'الأمانة، العدل، المسؤولية، العمل المؤسسي، صلة الرحم، الاستدامة',
- purpose:'حفظ تماسك العائلة وتنمية الشركة واستدامتها وانتقالها المنظم بين الأجيال.',
+ purpose:'حفظ تماسك العائلة وتنمية الشركة واستدامتها وانتقالها المنظم بين الأجيال',
  familyBody:'both',councilSize:'5',councilTerm:'3',meetingFrequency:'quarterly',
  representation:'mixed',decisionModel:'enhanced',
  employmentPolicy:'merit',externalExperience:'3',compensation:'market',
@@ -200,9 +200,9 @@ function charterStepIntro(kicker,title,copy){
 }
 function charterIdentityMarkup(){
  const diagnosticStatus=charterHasDiagnostic()
-  ?'<div class="charter-diagnostic-status linked"><strong>نتيجة التشخيص متاحة</strong><span>يمكن استخدام بيانات الملف وإضافة التنبيهات التي تناسب النتيجة.</span><button type="button" data-charter-action="refresh-diagnostic">تحديث من التشخيص</button></div>'
-  :'<div class="charter-diagnostic-status"><strong>ابدأ المسودة</strong><span>أكمل البيانات التالية، ويمكنك تنفيذ التشخيص للحصول على مسودة تناسب حالتك بدرجة أكبر.</span><a href="diagnostic.html">فتح التشخيص</a></div>';
- return `${charterStepIntro('المرحلة 1','بيانات العائلة والكيان','تحدد هذه البيانات المصطلحات التي تستخدمها المسودة والمواد التي تنطبق على العائلة.')}
+  ?'<div class="charter-diagnostic-status linked"><strong>نتيجة التشخيص متاحة</strong><span>يمكن استخدام بيانات الملف وإضافة التنبيهات التي تناسب النتيجة</span><button type="button" data-charter-action="refresh-diagnostic">تحديث من التشخيص</button></div>'
+  :'<div class="charter-diagnostic-status"><strong>ابدأ المسودة</strong><span>أكمل البيانات التالية، ويمكنك تنفيذ التشخيص للحصول على مسودة تناسب حالتك بدرجة أكبر</span><a href="diagnostic.html">فتح التشخيص</a></div>';
+ return `${charterStepIntro('المرحلة 1','بيانات العائلة والكيان','تحدد هذه البيانات المصطلحات التي تستخدمها المسودة والمواد التي تنطبق على العائلة')}
  ${diagnosticStatus}
  <div class="charter-form-grid">
   ${charterInput('familyName','اسم العائلة أو المجموعة','text','مثال: عائلة ...',true)}
@@ -225,7 +225,7 @@ function charterIdentityMarkup(){
 }
 function charterFamilyMarkup(){
  const councilEnabled=['council','both'].includes(charterState.data.familyBody);
- return `${charterStepIntro('المرحلة 2','هوية العائلة وحوكمتها','حدد الغرض والقيم وهيئة الحوار وطريقة اتخاذ القرار قبل تحويلها إلى مواد.')}
+ return `${charterStepIntro('المرحلة 2','هوية العائلة وحوكمتها','حدد الغرض والقيم وهيئة الحوار وطريقة اتخاذ القرار قبل تحويلها إلى مواد')}
  <div class="charter-form-grid">
   ${charterTextarea('values','القيم الأساسية','اكتب القيم مفصولة بفواصل',true)}
   ${charterTextarea('purpose','الغرض المشترك من استمرار الملكية العائلية','ما الذي تريد العائلة المحافظة عليه وتحقيقه؟',true)}
@@ -244,10 +244,10 @@ function charterFamilyMarkup(){
   ${councilEnabled?charterInput('councilSize','عدد أعضاء مجلس العائلة','number','5',true):''}
   ${councilEnabled?charterInput('councilTerm','مدة دورة مجلس العائلة بالسنوات','number','3',true):''}
  </div>
- <div class="charter-decision-note"><strong>ما ستعتمد عليه المسودة</strong><span>تظل أجهزة الشركة النظامية واختصاصاتها مستقلة، ويعمل مجلس العائلة كهيئة حوكمة عائلية وفق النطاق المعتمد له.</span></div>`;
+ <div class="charter-decision-note"><strong>ما ستعتمد عليه المسودة</strong><span>تظل أجهزة الشركة النظامية واختصاصاتها مستقلة، ويعمل مجلس العائلة كهيئة حوكمة عائلية وفق النطاق المعتمد له</span></div>`;
 }
 function charterOwnershipMarkup(){
- return `${charterStepIntro('المرحلة 3','الملكية والعمل داخل الشركة','هذه القرارات تعالج أكثر الموضوعات حساسية: انتقال الملكية والتقييم والتوزيعات والعمل العائلي.')}
+ return `${charterStepIntro('المرحلة 3','الملكية والعمل داخل الشركة','هذه القرارات تعالج أكثر الموضوعات حساسية: انتقال الملكية والتقييم والتوزيعات والعمل العائلي')}
  <div class="charter-form-grid">
   ${charterSelect('transferPolicy','التصرف في الملكية',[
    ['familyFirst','أولوية الشراء لبقية الملاك من العائلة'],['controlled','موافقة مسبقة قبل الانتقال خارج العائلة'],['openRules','قواعد معلنة للتصرف وفق وثائق الشركة']
@@ -279,7 +279,7 @@ function charterContinuityMarkup(){
  let profile={};
  try{profile=state?.profile||{}}catch(error){}
  const waqfEnabled=profile.waqfInterest==='yes';
- return `${charterStepIntro('المرحلة 4','التعاقب والخلافات والمراجعة','حدد كيف تستمر القيادة، وكيف تعالج الخلافات، ومن يراجع الميثاق ويعتمد تعديله.')}
+ return `${charterStepIntro('المرحلة 4','التعاقب والخلافات والمراجعة','حدد كيف تستمر القيادة، وكيف تعالج الخلافات، ومن يراجع الميثاق ويعتمد تعديله')}
  <div class="charter-form-grid">
   ${charterSelect('successionPolicy','منهج التعاقب القيادي',[
    ['planned','خطة مكتوبة للأدوار القيادية الحرجة'],['readiness','قائمة مرشحين ومعايير جاهزية لكل دور'],['emergency','خطة انتقال طارئ وخطة انتقال طويل الأجل']
@@ -300,7 +300,7 @@ function charterContinuityMarkup(){
   ],true):''}
   ${charterTextarea('notes','ملاحظات تريد ظهورها في سجل المراجعة','أي موضوع حساس أو قرار مؤجل')}
  </div>
- ${waqfEnabled?'<div class="charter-decision-note emphasized"><strong>محور الوقف مفعّل من التشخيص</strong><span>ستضاف مواد تفصل بين اختصاصات العائلة والشركة ومجلس النظارة، مع تنبيه لمواءمة المواد مع صك الوقف.</span></div>':''}`;
+ ${waqfEnabled?'<div class="charter-decision-note emphasized"><strong>محور الوقف مفعّل من التشخيص</strong><span>ستضاف مواد تفصل بين اختصاصات العائلة والشركة ومجلس النظارة، مع تنبيه لمواءمة المواد مع صك الوقف</span></div>':''}`;
 }
 function charterValidateStep(step=charterState.step){
  const requirements={
@@ -355,15 +355,15 @@ function charterChapter(title,articles){
 function charterWarnings(data,profile){
  const warnings=[];
  const push=(title,text,level='attention')=>warnings.push({title,text,level});
- if(!charterState.linkedDiagnostic)push('استخدام نتيجة التشخيص','أعدت المسودة من اختياراتك هنا. يضيف التشخيص الفجوات والأولويات المرتبطة بحالة العائلة.','info');
- if(profile.conflict==='active')push('خلاف قائم','تحتاج مواد الملكية والخلافات إلى جلسة مستقلة ومراجعة محايدة قبل عرض المسودة للاعتماد.','critical');
- if(profile.leadershipTransition==='near')push('انتقال قيادة قريب','ثبّت المرشحين والصلاحيات وخطة التسليم ومؤشرات الجاهزية في وثيقة تنفيذية مرتبطة بالميثاق.','critical');
- if(profile.board==='none'||profile.board==='informal')push('مجلس الإدارة','مواد المجلس في المسودة صيغة مقترحة، وتحتاج إلى مواءمة مع الهيكل النظامي القائم.','attention');
- if(profile.listing==='study'||profile.listing==='active')push('إدراج أو دخول مستثمر','تحتاج قيود الملكية والإفصاح والتصرف في الأسهم إلى مراجعة متخصصة ضمن مسار الصفقة أو الإدراج.','critical');
- if(data.legalForm==='holding'||profile.holding==='yes')push('مجموعة شركات','تطبق مبادئ الميثاق على المجموعة، بينما تعتمد الأحكام الملزمة في كل شركة وفق وثائقها واختصاصات أجهزتها.','attention');
- if(data.legalForm==='other')push('الشكل النظامي','تحتاج المصطلحات والاختصاصات إلى مراجعة قانونية قبل الاعتماد.','attention');
- if(data.disputePath==='arbitration')push('التحكيم','يصاغ اتفاق التحكيم ونطاقه ومقره وإجراءاته بواسطة مختص قبل إدراجه كالتزام نهائي.','critical');
- if(profile.waqfInterest==='yes')push('الوقف','تراجع مواد الوقف مع صك الوقف واختصاصات مجلس النظارة والأنظمة ذات الصلة.','attention');
+ if(!charterState.linkedDiagnostic)push('استخدام نتيجة التشخيص','أعدت المسودة من اختياراتك هنا، يضيف التشخيص الفجوات والأولويات المرتبطة بحالة العائلة','info');
+ if(profile.conflict==='active')push('خلاف قائم','تحتاج مواد الملكية والخلافات إلى جلسة مستقلة ومراجعة محايدة قبل عرض المسودة للاعتماد','critical');
+ if(profile.leadershipTransition==='near')push('انتقال قيادة قريب','ثبّت المرشحين والصلاحيات وخطة التسليم ومؤشرات الجاهزية في وثيقة تنفيذية مرتبطة بالميثاق','critical');
+ if(profile.board==='none'||profile.board==='informal')push('مجلس الإدارة','مواد المجلس في المسودة صيغة مقترحة، وتحتاج إلى مواءمة مع الهيكل النظامي القائم','attention');
+ if(profile.listing==='study'||profile.listing==='active')push('إدراج أو دخول مستثمر','تحتاج قيود الملكية والإفصاح والتصرف في الأسهم إلى مراجعة متخصصة ضمن مسار الصفقة أو الإدراج','critical');
+ if(data.legalForm==='holding'||profile.holding==='yes')push('مجموعة شركات','تطبق مبادئ الميثاق على المجموعة، بينما تعتمد الأحكام الملزمة في كل شركة وفق وثائقها واختصاصات أجهزتها','attention');
+ if(data.legalForm==='other')push('الشكل النظامي','تحتاج المصطلحات والاختصاصات إلى مراجعة قانونية قبل الاعتماد','attention');
+ if(data.disputePath==='arbitration')push('التحكيم','يصاغ اتفاق التحكيم ونطاقه ومقره وإجراءاته بواسطة مختص قبل إدراجه كالتزام نهائي','critical');
+ if(profile.waqfInterest==='yes')push('الوقف','تراجع مواد الوقف مع صك الوقف واختصاصات مجلس النظارة والأنظمة ذات الصلة','attention');
  return warnings;
 }
 function charterBuildDraft(){
@@ -442,7 +442,7 @@ function charterBuildDraft(){
  ];
  if(p.waqfInterest==='yes'){
   ownershipArticles.push(
-   charterArticle('حوكمة الوقف',`تعتمد العائلة منهج ${charterLabel('waqfGovernance',d.waqfGovernance)}. وتظل صلاحيات مجلس النظارة وأحكام صك الوقف مستقلة، وينظم التنسيق مع مجلس العائلة والشركة عبر قنوات وتقارير واضحة دون تداخل في الاختصاص.`,['gcc','diagnostic'],'يحتاج مراجعة شرعية ونظامية'),
+   charterArticle('حوكمة الوقف',`تعتمد العائلة منهج ${charterLabel('waqfGovernance',d.waqfGovernance)}. وتظل صلاحيات مجلس النظارة وأحكام صك الوقف مستقلة، وينظم التنسيق مع مجلس العائلة والشركة عبر قنوات وتقارير محددة دون تداخل في الاختصاص.`,['gcc','diagnostic'],'يحتاج مراجعة شرعية ونظامية'),
    charterArticle('إدارة الثروة العائلية',`تفصل العائلة بين أصول الشركة وأصول الوقف والثروة الشخصية، وتحدد عند الحاجة نطاق مكتب العائلة وخدماته وحوكمته وتقاريره وسياسة الاستثمار وإدارة المخاطر.`,['gcc','ifc','diagnostic'],'أضيف بناء على التشخيص')
   );
  }
@@ -450,12 +450,12 @@ function charterBuildDraft(){
  const boardText={
   competence:'يختار أعضاء مجلس الإدارة على أساس الكفاءة والخبرة والقدرة على الإشراف الاستراتيجي، سواء كانوا من العائلة أو من خارجها.',
   mixed:'يتكون المجلس من أعضاء مؤهلين من العائلة، إلى جانب أعضاء مستقلين وذوي خبرة تناسب أعمال الشركة.',
-  independent:'يعزز المجلس تمثيل الأعضاء المستقلين وذوي الخبرة، مع تحديد واضح لدور ممثلي العائلة ومسؤوليتهم تجاه الشركة وجميع الملاك.'
+  independent:'يعزز المجلس تمثيل الأعضاء المستقلين وذوي الخبرة، مع تحديد دور ممثلي العائلة ومسؤوليتهم تجاه الشركة وجميع الملاك.'
  }[d.boardPolicy];
  const executiveText={
   separate:'تفصل صفة المالك عن الاستحقاق التنفيذي، ويكون تعيين الرئيس التنفيذي والقيادات وفق الجدارة واحتياجات الشركة وصلاحيات مجلس الإدارة.',
   familyQualified:'تتاح القيادة التنفيذية لأفراد العائلة عند استيفاء المؤهلات والخبرة والمنافسة العادلة، ويطبق عليهم نظام الأداء والمساءلة نفسه.',
-  professional:'تعطى الأولوية لقيادة تنفيذية مهنية، مع تطوير أفراد العائلة المؤهلين عبر مسارات واضحة دون ضمان منصب تنفيذي.'
+  professional:'تعطى الأولوية لقيادة تنفيذية مهنية، مع تطوير أفراد العائلة المؤهلين عبر مسارات معلنة دون ضمان منصب تنفيذي.'
  }[d.executivePolicy];
  const companyArticles=[
   charterArticle('الفصل بين الدوائر',`تتعامل العائلة مع ثلاث دوائر مترابطة: العائلة والملكية والشركة. ويحدد لكل دائرة أجهزتها وقراراتها وسجلاتها، ويحظر استخدام الصفة العائلية لتجاوز الصلاحيات الإدارية أو الرقابية.`,['gcc','ifc'],'أساسي'),
@@ -492,7 +492,7 @@ function charterBuildDraft(){
  chapters.push(charterChapter('الباب السادس: العمل العائلي والتعاقب بين الأجيال',[
   charterArticle('مبدأ العمل في الشركة',employmentText,['law11','qadha','gcc','ifc'],'اختيار العائلة'),
   charterArticle('الأهلية والخبرة',experienceText,['gcc','ifc'],'اختيار العائلة'),
-  charterArticle('الاختيار والتقييم',`تطبق إجراءات إعلان واختيار وتعيين وتقييم موثقة، ويكون المدير المباشر ولجنة التقييم في وضع يحد من تضارب المصالح والمجاملة العائلية.`,['gcc','ifc'],'أساسي'),
+  charterArticle('الاختيار والتقييم',`تطبق إجراءات إعلان واختيار وتعيين وتقييم مسجلة، ويكون المدير المباشر ولجنة التقييم في وضع يحد من تضارب المصالح والمجاملة العائلية.`,['gcc','ifc'],'أساسي'),
   charterArticle('الأجر والمزايا',compensationText,['gcc','ifc'],'اختيار العائلة'),
   charterArticle('المساءلة وانتهاء الخدمة',`يخضع فرد العائلة للسياسات المهنية نفسها المطبقة على شاغلي الوظائف المماثلة، وتفصل معالجة الأداء أو إنهاء الخدمة عن حقوق الملكية أو العضوية في العائلة.`,['gcc','ifc'],'أساسي'),
   charterArticle('التعاقب القيادي',successionText,['gcc','ifc',...(charterState.linkedDiagnostic?['diagnostic']:[])],p.leadershipTransition==='near'?'أولوية عالية':'اختيار العائلة'),
@@ -547,7 +547,7 @@ function charterDraftMarkup(){
  const warnings=draft.warnings.map(item=>`<article class="charter-warning ${item.level}"><strong>${charterEscape(item.title)}</strong><p>${charterEscape(item.text)}</p></article>`).join('');
  const chapters=draft.chapters.map((chapter,index)=>`<details class="charter-draft-chapter" ${index===0?'open':''}><summary><span>${charterEscape(chapter.title)}</span><b>${chapter.articles.length} مواد</b></summary><div class="charter-articles">${chapter.articles.map(article=>`<article class="charter-article"><header><span>المادة ${article.number}</span><h4>${charterEscape(article.title)}</h4><i class="${article.status.includes('مراجعة')||article.status.includes('حرجة')?'review':''}">${charterEscape(article.status)}</i></header>${article.body.map(paragraph=>`<p>${charterEscape(paragraph)}</p>`).join('')}</article>`).join('')}</div></details>`).join('');
  const preamble=`<section class="charter-preamble"><div class="charter-preamble-verse"><blockquote>${charterEscape(draft.preamble.verse)}</blockquote><span>${charterEscape(draft.preamble.verseSource)}</span></div><div class="charter-preamble-law"><h4>${charterEscape(draft.preamble.lawTitle)}</h4>${draft.preamble.lawParagraphs.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</div></section>`;
- return `${charterStepIntro('المرحلة 5','المسودة جاهزة للمناقشة والمراجعة','راجع التنبيهات والمواد، ثم نزّل Word للتحرير أو PDF للاجتماع.')}
+ return `${charterStepIntro('المرحلة 5','المسودة جاهزة للمناقشة والمراجعة','راجع التنبيهات والمواد، ثم نزّل Word للتحرير أو PDF للاجتماع')}
  <section class="charter-draft-cover">
   <div><span>مسودة استرشادية</span><h3>${charterEscape(draft.title)}</h3><p>${charterEscape(draft.subtitle)}</p></div>
   <dl><div><dt>الأبواب</dt><dd>${draft.chapters.length}</dd></div><div><dt>المواد</dt><dd>${draft.articleCount}</dd></div><div><dt>التنبيهات</dt><dd>${draft.warnings.length}</dd></div><div><dt>التشخيص</dt><dd>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</dd></div></dl>
@@ -559,7 +559,7 @@ function charterDraftMarkup(){
   <div><button class="btn primary" type="button" data-charter-export="word">تنزيل Word</button><button class="btn secondary" type="button" data-charter-export="pdf">${icon('print')} طباعة / حفظ PDF</button><button class="btn ghost" type="button" data-charter-export="copy">نسخ نص الميثاق</button></div>
  </div>
  <div class="charter-draft-document">${chapters}</div>
- <div class="charter-draft-disclaimer"><strong>حدود الاستخدام</strong><p>مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</p></div>`;
+ <div class="charter-draft-disclaimer"><strong>حدود الاستخدام</strong><p>مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة، تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين</p></div>`;
 }
 function charterNavigationMarkup(){
  if(charterState.step===4){
@@ -658,7 +658,7 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.6.3',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</article>`).join('')}</section>`).join('');
@@ -833,7 +833,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.2',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.6.3',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
