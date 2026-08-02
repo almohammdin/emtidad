@@ -1008,7 +1008,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 }
 @media(max-width:390px){.panel-actions .btn{min-width:108px}}
 
-/* v0.6.7 lighter copy, interactive need signals and featured knowledge */
+/* v0.6.8 lighter copy, interactive need signals and featured knowledge */
 .compact-head{margin-bottom:24px}
 .persuasion-points{margin:0;padding:0;list-style:none}
 .persuasion-points li{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center;min-height:62px;padding:10px 12px;border:1px solid #E7DED3;border-radius:15px;background:#fff;color:#334651}
@@ -1046,7 +1046,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .case-source-link{border-top:1px dashed var(--line);margin-top:13px;padding-top:11px!important}
 @media(max-width:720px){.knowledge-grid{grid-template-columns:1fr}.knowledge-card.has-video,.case-card.featured,.case-card.has-media{grid-column:auto}.knowledge-card.has-video{padding:17px}.knowledge-card.has-video h3{font-size:20px}.case-media{padding:14px}.case-media>h4{font-size:19px}.case-media-meta{align-items:flex-start;flex-direction:column}.persuasion-points li{min-height:58px}}
 
-/* v0.6.7 clean logo field and relocated brand pattern */
+/* v0.6.8 clean logo field and relocated brand pattern */
 .home-hero:before{
  background-image:url('../images/brand-pattern.svg'),url('../images/brand-pattern.svg')!important;
  background-position:left -110px top 55px,right -110px bottom 35px!important;
@@ -1069,7 +1069,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .home-hero .logo-stage{width:min(330px,88vw)!important;padding:14px 18px!important;border-radius:23px!important}
 }
 
-/* v0.6.7 unified hero field, balanced knowledge cards and compact video */
+/* v0.6.8 unified hero field, balanced knowledge cards and compact video */
 .home-hero{
  background:#F7F5F1!important
 }
@@ -1136,7 +1136,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .case-companion{grid-column:auto}
 }
 
-/* v0.6.7 structured MASIC case */
+/* v0.6.8 structured MASIC case */
 .case-card.has-media{
  display:block;
  padding:20px;
