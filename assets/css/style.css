@@ -1008,7 +1008,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 }
 @media(max-width:390px){.panel-actions .btn{min-width:108px}}
 
-/* v0.6.3 lighter copy, interactive need signals and featured knowledge */
+/* v0.6.4 lighter copy, interactive need signals and featured knowledge */
 .compact-head{margin-bottom:24px}
 .persuasion-points a{position:relative;display:grid;grid-template-columns:32px 1fr auto;gap:10px;align-items:center;min-height:66px;padding:11px 13px;border:1px solid #E7DED3;border-radius:16px;background:#fff;color:#334651;text-decoration:none;box-shadow:0 7px 18px rgba(13,54,86,.035);overflow:hidden}
 .persuasion-points a:after{content:"←";color:var(--gold);font:900 17px Arial!important;transition:transform .2s ease}
@@ -1036,3 +1036,26 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .case-resource>a{margin-top:9px;padding-top:0;color:var(--navy);font-size:11px}
 .case-source-link{border-top:1px dashed var(--line);margin-top:13px;padding-top:11px!important}
 @media(max-width:720px){.knowledge-card.has-video,.case-card.featured{grid-column:auto}.persuasion-points a{min-height:60px}}
+
+/* v0.6.4 clean logo field and relocated brand pattern */
+.home-hero:before{
+ background-image:url('../images/brand-pattern.svg'),url('../images/brand-pattern.svg')!important;
+ background-position:left -110px top 55px,right -110px bottom 35px!important;
+ background-size:440px 250px,440px 250px!important;
+ background-repeat:no-repeat,no-repeat!important;
+ opacity:.3!important
+}
+.home-hero .logo-stage{
+ width:min(370px,86vw)!important;
+ padding:18px 24px!important;
+ border:1px solid rgba(13,54,86,.08)!important;
+ border-radius:28px!important;
+ background:#fff!important;
+ box-shadow:0 15px 36px rgba(13,54,86,.08)!important;
+ overflow:hidden!important
+}
+.home-hero .platform-logo{filter:none!important}
+@media(max-width:720px){
+ .home-hero:before{background-position:left -150px top 70px,right -150px bottom 45px!important;opacity:.24!important}
+ .home-hero .logo-stage{width:min(330px,88vw)!important;padding:14px 18px!important;border-radius:23px!important}
+}
