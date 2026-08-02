@@ -1008,7 +1008,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 }
 @media(max-width:390px){.panel-actions .btn{min-width:108px}}
 
-/* v0.6.6 lighter copy, interactive need signals and featured knowledge */
+/* v0.6.7 lighter copy, interactive need signals and featured knowledge */
 .compact-head{margin-bottom:24px}
 .persuasion-points{margin:0;padding:0;list-style:none}
 .persuasion-points li{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center;min-height:62px;padding:10px 12px;border:1px solid #E7DED3;border-radius:15px;background:#fff;color:#334651}
@@ -1046,7 +1046,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .case-source-link{border-top:1px dashed var(--line);margin-top:13px;padding-top:11px!important}
 @media(max-width:720px){.knowledge-grid{grid-template-columns:1fr}.knowledge-card.has-video,.case-card.featured,.case-card.has-media{grid-column:auto}.knowledge-card.has-video{padding:17px}.knowledge-card.has-video h3{font-size:20px}.case-media{padding:14px}.case-media>h4{font-size:19px}.case-media-meta{align-items:flex-start;flex-direction:column}.persuasion-points li{min-height:58px}}
 
-/* v0.6.6 clean logo field and relocated brand pattern */
+/* v0.6.7 clean logo field and relocated brand pattern */
 .home-hero:before{
  background-image:url('../images/brand-pattern.svg'),url('../images/brand-pattern.svg')!important;
  background-position:left -110px top 55px,right -110px bottom 35px!important;
@@ -1069,7 +1069,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .home-hero .logo-stage{width:min(330px,88vw)!important;padding:14px 18px!important;border-radius:23px!important}
 }
 
-/* v0.6.6 unified hero field, balanced knowledge cards and compact video */
+/* v0.6.7 unified hero field, balanced knowledge cards and compact video */
 .home-hero{
  background:#F7F5F1!important
 }
@@ -1134,4 +1134,72 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .case-card.has-media{grid-column:auto}
  .case-media{grid-template-columns:1fr;padding:14px}
  .case-companion{grid-column:auto}
+}
+
+/* v0.6.7 structured MASIC case */
+.case-card.has-media{
+ display:block;
+ padding:20px;
+ border-color:rgba(201,133,60,.42);
+ background:linear-gradient(135deg,#F8F2E9,#FFFFFF 72%);
+ box-shadow:0 16px 38px rgba(13,54,86,.08)
+}
+.case-feature-layout{
+ display:grid;
+ grid-template-columns:minmax(260px,.68fr) minmax(0,1.32fr);
+ gap:18px;
+ align-items:stretch
+}
+.case-overview{
+ display:flex;
+ flex-direction:column;
+ min-width:0;
+ padding:19px;
+ border:1px solid rgba(13,54,86,.1);
+ border-radius:18px;
+ background:#FFFFFF
+}
+.case-overview h3{font-size:24px}
+.case-overview .case-source-link{margin-top:auto}
+.case-card.has-media .case-media{
+ display:block;
+ min-width:0;
+ margin:0;
+ padding:19px;
+ border-radius:18px;
+ background:#FFFFFF
+}
+.case-media-head{padding-bottom:14px;border-bottom:1px solid var(--line)}
+.case-media-head>span{display:block;color:#A66328;font-size:9px;font-weight:900}
+.case-media-head>h4{margin:4px 0;color:var(--navy);font-size:21px}
+.case-media-head>p{margin:0;color:var(--muted);font-size:12px;line-height:1.75}
+.case-media-head .case-media-meta{align-items:center;flex-direction:row;margin-top:9px}
+.case-media-body{
+ display:grid;
+ grid-template-columns:minmax(0,1.28fr) minmax(225px,.72fr);
+ gap:14px;
+ align-items:stretch;
+ margin-top:14px
+}
+.case-media-body .knowledge-video{align-self:center;margin:0}
+.case-media-body .case-companion{
+ display:flex;
+ flex-direction:column;
+ grid-column:auto;
+ min-width:0;
+ height:100%;
+ margin:0;
+ padding:15px 16px
+}
+.case-media-body .case-companion>a{margin-top:auto;align-self:flex-start}
+@media(max-width:980px){
+ .case-feature-layout{grid-template-columns:1fr}
+ .case-overview .case-source-link{margin-top:13px}
+}
+@media(max-width:720px){
+ .case-card.has-media{padding:14px}
+ .case-overview,.case-card.has-media .case-media{padding:15px}
+ .case-media-head .case-media-meta{align-items:flex-start;flex-direction:column}
+ .case-media-body{grid-template-columns:1fr}
+ .case-media-body .case-companion{height:auto}
 }
