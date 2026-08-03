@@ -1017,7 +1017,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 }
 @media(max-width:390px){.panel-actions .btn{min-width:108px}}
 
-/* v0.6.9 lighter copy, interactive need signals and featured knowledge */
+/* v0.7.0 lighter copy, interactive need signals and featured knowledge */
 .compact-head{margin-bottom:24px}
 .persuasion-points{margin:0;padding:0;list-style:none}
 .persuasion-points li{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center;min-height:62px;padding:10px 12px;border:1px solid #E7DED3;border-radius:15px;background:#fff;color:#334651}
@@ -1055,7 +1055,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .case-source-link{border-top:1px dashed var(--line);margin-top:13px;padding-top:11px!important}
 @media(max-width:720px){.knowledge-grid{grid-template-columns:1fr}.knowledge-card.has-video,.case-card.featured,.case-card.has-media{grid-column:auto}.knowledge-card.has-video{padding:17px}.knowledge-card.has-video h3{font-size:20px}.case-media{padding:14px}.case-media>h4{font-size:19px}.case-media-meta{align-items:flex-start;flex-direction:column}.persuasion-points li{min-height:58px}}
 
-/* v0.6.9 clean logo field and relocated brand pattern */
+/* v0.7.0 clean logo field and relocated brand pattern */
 .home-hero:before{
  background-image:url('../images/brand-pattern.svg'),url('../images/brand-pattern.svg')!important;
  background-position:left -110px top 55px,right -110px bottom 35px!important;
@@ -1078,7 +1078,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .home-hero .logo-stage{width:min(330px,88vw)!important;padding:14px 18px!important;border-radius:23px!important}
 }
 
-/* v0.6.9 unified hero field, balanced knowledge cards and compact video */
+/* v0.7.0 unified hero field, balanced knowledge cards and compact video */
 .home-hero{
  background:#F7F5F1!important
 }
@@ -1145,7 +1145,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .case-companion{grid-column:auto}
 }
 
-/* v0.6.9 structured MASIC case */
+/* v0.7.0 structured MASIC case */
 .case-card.has-media{
  display:block;
  padding:20px;
@@ -1211,4 +1211,102 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  .case-media-head .case-media-meta{align-items:flex-start;flex-direction:column}
  .case-media-body{grid-template-columns:1fr}
  .case-media-body .case-companion{height:auto}
+}
+
+/* v0.7.0 Arabic readability and fluid typography */
+:root{
+ --fs-body:clamp(1.0625rem,1rem + .25vw,1.1875rem);
+ --fs-card:clamp(1rem,.97rem + .15vw,1.0625rem);
+ --fs-card-title:clamp(1.1875rem,1.14rem + .2vw,1.375rem);
+ --fs-h3:clamp(1.25rem,1.1rem + .6vw,1.75rem);
+ --fs-h2:clamp(1.5rem,1.15rem + 1.4vw,2.5rem);
+ --fs-h1:clamp(1.875rem,1.35rem + 2.2vw,3.25rem);
+ --fs-meta:clamp(.875rem,.86rem + .1vw,.9375rem)
+}
+@media screen{
+ body{font-size:var(--fs-body);line-height:1.8}
+ .hero h1,.home-hero h1,.page-hero h1{font-size:var(--fs-h1)!important;line-height:1.3!important;font-weight:800!important}
+ .section-head h2,.coverage-copy h2,.page-next h2,.charter-builder-top h2{font-size:var(--fs-h2)!important;line-height:1.35!important;font-weight:800!important}
+ .panel-title h3,.result-summary h3,.modal-head h3,.tools-subhead h3,.consultation-cta h3{font-size:var(--fs-h3)!important;line-height:1.35!important;font-weight:600!important}
+ h3,h4,.knowledge-card h3,.case-card h3,.tool-card h3,.stat-card h3,.axis-preview-card h3,.hub-card h3,.center-card h3,.question-head h4,.charter-chapter-card h4,.case-media-head>h4{font-size:var(--fs-card-title)!important;line-height:1.45!important;font-weight:600!important}
+ .hero p,.page-hero-copy p,.section-head p,.coverage-copy p,.page-next p,.privacy-content p{max-width:65ch;line-height:1.8}
+ .hero p,.page-hero-copy p,.section-head p,.coverage-copy p,.page-next p{font-size:var(--fs-body)!important}
+ .hero p,.section-head p{margin-inline:auto}
+
+ .how-card p,.stat-card p,.axis-preview-card p,.knowledge-card p,.case-card p,.tool-card p,.center-card p,.hub-card p,
+ .question-head p,.panel-title p,.result-summary p,.result-footer p,.result-empty span,.values-card .principle p,
+ .friction-card p,.charter-index-head p,.templates-showcase p,.template-intro p,.template-outcome strong,
+ .template-fields label,.template-checks label,.template-references a>strong,.template-references a>small,.template-method,
+ .template-actions p,.valuation-insights-head p,.valuation-stat-card p,.valuation-disclaimer,.valuation-result-body p,
+ .valuation-result-body ul,.charter-guide-action p,.charter-service-summary>p,.charter-builder-empty p,
+ .charter-panel-title p,.charter-decision-note span,.charter-draft-cover p,.charter-preamble-law p,
+ .charter-article p,.charter-draft-disclaimer p,.charter-result-cta p,.persuasion-points li>span,
+ .knowledge-companion>p,.case-media-head>p,.case-media-copy>p,.case-resource>p{
+  font-size:var(--fs-card)!important;
+  line-height:1.7!important;
+  font-weight:400!important
+ }
+
+ .eyebrow,.chip,.source-line,.case-card .case-top span,.case-media-meta,.case-media-head>span,
+ .case-media-copy>span,.case-resource>span,.knowledge-companion>span,.knowledge-companion>small,
+ .knowledge-card footer span,.knowledge-card footer a,.legal-foot p,.case-card a,.center-card a,
+ .templates-showcase-kicker,.tools-group-badge,.tool-source-badge,.template-source-badge,.template-kind,
+ .template-card-meta span,.template-card-outcome,.template-intro span,.template-outcome small,
+ .template-block-head>span,.template-references a>span,.result-entity small,.result-item span,
+ .result-empty span,.result-services-head span,.result-services-head p,.result-services-grid small,
+ .service-source,.result-guide-head span,.result-guide-head p,.result-guide-grid strong,
+ .valuation-stat-card footer span,.valuation-stat-card footer a,.valuation-result-head span,
+ .valuation-result-body small,.valuation-result footer,.charter-service-badge,.charter-service-privacy strong,
+ .charter-service-privacy span,.charter-service-diagnostic,.charter-clear-button,.charter-builder-top span,
+ .charter-field>span,.charter-field-help,.charter-field-tip,.charter-diagnostic-status span,
+ .charter-diagnostic-status a,.charter-decision-note strong,.charter-warning strong,.charter-warning p,
+ .charter-draft-toolbar span,.charter-draft-chapter summary span,.charter-article h4,
+ .charter-draft-references a strong,.charter-draft-disclaimer strong,.charter-result-cta>div>span,
+ .privacy-strip span,.privacy-strip a,.privacy-strip button,.privacy-updated,.page-hero-meta span,
+ .page-hero-meta a,.resource-divider,.naif-external-link,.footer-copy p,.footer-nav a,.footer-update,
+ .independent-note,.footer-version{
+  font-size:var(--fs-meta)!important;
+  line-height:1.65!important;
+  font-weight:600!important
+ }
+
+ .knowledge-card .highlights li,.case-lessons li,.article-text,.values-card blockquote small,
+ .charter-index-item,.result-item strong,.result-empty strong,.result-kpi small,.result-kpi strong,
+ .axis-result h4,.axis-result strong,.method-card,.privacy-strip strong,.restore-notice p,
+ .charter-service-flow strong,.charter-service-flow small,.charter-diagnostic-status strong,
+ .charter-draft-toolbar strong,.charter-draft-chapter summary,.charter-preamble-law h4,
+ .charter-draft-cover .chip,.consultation-cta p,.consultation-cta span,.knowledge-companion>a,
+ .case-resource>a,.case-media-meta>a,.linked-tool a,.print-filename{
+  font-size:var(--fs-meta)!important;
+  line-height:1.7!important
+ }
+
+ .form-group label,.charter-field>span{font-size:15px!important;font-weight:600!important}
+ input,select,textarea,.form-group input,.form-group select,.field input,.knowledge-controls select,
+ .charter-field input,.charter-field select,.charter-field textarea,.template-field-input{font-size:16px!important}
+ .question-head h4{font-weight:600!important}
+ .answer{font-size:14px!important;font-weight:600!important;line-height:1.45!important;min-height:45px}
+ .step-tab,.progress-meta,.axis-note,.profile-adaptive-note,.silent-save,.score-ring span,
+ .btn.small,.toast,.nav-menu-toggle b{font-size:var(--fs-meta)!important;line-height:1.5!important}
+ .btn,.tool-card button,.template-actions button{font-size:15px!important;font-weight:600!important}
+ .nav-links a{font-size:15px;font-weight:600}
+ .result-card h3{font-size:var(--fs-card-title)!important;font-weight:600!important;line-height:1.4!important}
+ .footer-copy strong,.result-services-grid strong{font-size:var(--fs-card)!important}
+ .platform-suite-badge,.platform-suite-badge span,.platform-suite-badge strong,.social-handle,
+ .persuasion-points li>b,.charter-chapter-card>b,.charter-chapter-card li,
+ .charter-guide-action>div>span,.charter-guide-action a,.values-lead blockquote small,
+ .legal-card .card-title small,.principles-card .card-title small,.principles-card .principle p,
+ .valuation-insights-head>a,.templates-showcase-stats strong,.templates-showcase-titles li,
+ .tools-subhead p,.hub-card b,.charter-service-privacy a,
+ .charter-step-tabs button,.charter-step-tabs button b,.charter-panel-title>span,
+ .charter-field>span i,.charter-field-help,.charter-field-help b,
+ .charter-diagnostic-status button,.charter-diagnostic-status a,
+ .charter-draft-cover>div>span,.charter-draft-cover dt,.charter-preamble-verse span,
+ .charter-draft-chapter summary b,.charter-article header>span,.charter-article header i,
+ .charter-article footer span,.charter-draft-references a span,.charter-draft-references a small,
+ .template-practices li,.template-practices li b{
+  font-size:var(--fs-meta)!important;
+  line-height:1.65!important;
+  font-weight:600!important
+ }
 }
