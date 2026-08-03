@@ -11,15 +11,15 @@
   <meta property="og:description" content="فرز الغرض، وترتيب الأصول والديون والمستفيدين، وإعداد مسودة استرشادية للوصية">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://almohammdin.github.io/emtidad/will.html">
-  <meta property="og:image" content="https://almohammdin.github.io/emtidad/assets/images/emtidad-social-preview.png?v=0.9.1">
+  <meta property="og:image" content="https://almohammdin.github.io/emtidad/assets/images/emtidad-social-preview.png?v=0.9.2">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://almohammdin.github.io/emtidad/will.html">
   <link rel="preload" href="assets/fonts/TheYearofHandicrafts-Black.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=0.9.1">
-  <link rel="stylesheet" href="assets/css/style.css?v=0.9.1">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=0.9.2">
+  <link rel="stylesheet" href="assets/css/style.css?v=0.9.2">
   <style>
     :root{--green-soft:#EAF5F0;--amber-soft:#FCF1E4;--red-soft:#FAECEA}
     p,.helper,.card-copy,.draft-body{letter-spacing:0;text-wrap:pretty}
@@ -94,9 +94,6 @@
     .step-button.done{color:var(--green);background:var(--green-soft)}
     .builder-main{min-width:0}
     .builder-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 20px;border-bottom:1px solid var(--line);background:#FBFAF8}
-    .focus-explain{display:flex;align-items:center;gap:10px;min-width:0}
-    .focus-explain button{min-height:40px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--navy);padding:7px 12px;font-weight:600;white-space:nowrap}
-    .focus-explain span{color:var(--muted);font-size:14px;line-height:1.55}
     .save-controls{display:flex;align-items:center}
     .switch{position:relative;width:48px;height:27px;display:inline-block}
     .switch input{position:absolute;opacity:0}
@@ -186,7 +183,7 @@
     .focus-bar span{color:#E7B276;font-size:14px}
     .focus-exit{min-height:38px;border:1px solid rgba(255,255,255,.25);border-radius:11px;background:rgba(255,255,255,.08);color:#fff;padding:6px 12px;font-weight:600}
 
-    html[data-theme="dark"] :is(.principle,.app-shell,.choice,.route-main,.route-side,.builder-panel,.draft,.field input,.field select,.field textarea,.repeat-row,.repeat-row input,.repeat-row select,.check-card,.modal-card,.focus-explain button){background:#102735;color:var(--ink);border-color:var(--line)}
+    html[data-theme="dark"] :is(.principle,.app-shell,.choice,.route-main,.route-side,.builder-panel,.draft,.field input,.field select,.field textarea,.repeat-row,.repeat-row input,.repeat-row select,.check-card,.modal-card){background:#102735;color:var(--ink);border-color:var(--line)}
     html[data-theme="dark"] :is(.progress,.builder-toolbar,.draft-cover){background:#142D3B}
     html[data-theme="dark"] :is(.principle h3,.section-head h2,.panel-title h3,.route-main h3,.field>label,.field>span,.subsection-head h4,.draft-section h4,.draft-cover h3){color:#DDEAF2}
     html[data-theme="dark"] .choice.selected{background:#193B4E}
@@ -210,8 +207,6 @@
       .panel-actions .btn,.panel-actions .left,.route-actions .btn{width:100%}
       .panel-actions .left{display:grid;grid-template-columns:1fr 1fr}
       .builder-toolbar{padding:13px 15px}
-      .focus-explain{display:grid;grid-template-columns:auto 1fr}
-      .focus-explain span{font-size:13px}
       .repeat-row,.repeat-row.three,.repeat-row.five{grid-template-columns:1fr}
       .repeat-row .remove-row{grid-column:1;justify-self:end}
       .focus-bar-inner{width:calc(100% - 22px)}
@@ -222,7 +217,7 @@
       @page{size:A4;margin:14mm}
       body{background:#fff;color:#111;font-size:12pt}
       :is(.top-nav,.page-hero,.principles-section,.sorting-section,.footer-wrap,.back-to-top,.builder-toolbar,.step-nav,.progress,.panel-actions,.draft-actions,.alerts,.focus-bar){display:none!important}
-      .builder-section{display:block!important;padding:0!important}
+      #builder.builder-section{display:block!important;visibility:visible!important;padding:0!important}
       .container{width:100%}
       .app-shell,.draft{border:0;box-shadow:none}
       .app-head{background:#fff;color:#111;border-bottom:2px solid #0D3656;padding:0 0 10px}
@@ -250,21 +245,21 @@
 
     <section class="section principles-section">
       <div class="container">
-        <div class="section-head"><span class="eyebrow">قبل كتابة الوصية</span><h2>ثلاثة قرارات تسبق الصياغة</h2></div>
+        <div class="section-head"><span class="eyebrow">قبل الصياغة</span><h2>ما الذي يسبق كتابة الوصية</h2></div>
         <div class="principles">
-          <article class="principle"><div class="principle-icon">1</div><h3>اختر الأداة المناسبة</h3><p>بعض رغبات انتقال الملكية تحتاج إجراء في حياة المالك مثل الهبة أو الشركة القابضة أو اتفاقية بيع وشراء</p></article>
-          <article class="principle"><div class="principle-icon">2</div><h3>ما الذي يدخل في الوصية</h3><p>تحديد الأصل أو النسبة والمستفيد والغرض يقلل اللبس، خاصة عند وجود حصص في منشأة عائلية</p></article>
-          <article class="principle"><div class="principle-icon">3</div><h3>كيف تتصل بالوقف والشركة</h3><p>الوصية والوقف وعقد الشركة والميثاق أدوات مختلفة، وتحتاج أن تعمل ضمن ترتيب واحد</p></article>
+          <article class="principle"><div class="principle-icon" aria-hidden="true">✓</div><h3>اختر الأداة المناسبة</h3><p>بعض رغبات انتقال الملكية تحتاج إجراء في حياة المالك مثل الهبة أو الشركة القابضة أو اتفاقية بيع وشراء</p></article>
+          <article class="principle"><div class="principle-icon" aria-hidden="true">✓</div><h3>ما الذي يدخل في الوصية</h3><p>تحديد الأصل أو النسبة والمستفيد والغرض يقلل اللبس، خاصة عند وجود حصص في منشأة عائلية</p></article>
+          <article class="principle"><div class="principle-icon" aria-hidden="true">✓</div><h3>كيف تتصل بالوقف والشركة</h3><p>الوصية والوقف وعقد الشركة والميثاق أدوات مختلفة، وتحتاج أن تعمل ضمن ترتيب واحد</p></article>
         </div>
       </div>
     </section>
 
     <section class="section soft sorting-section" id="sorting">
       <div class="container">
-        <div class="section-head"><span class="eyebrow">الخطوة الأولى</span><h2>اختر ما تريد أن يحدث</h2><p>4 أسئلة تفرز حاجتك بين الوصية والترتيب في الحياة والوقف</p></div>
+        <div class="section-head"><span class="eyebrow">الخطوة الأولى</span><h2>اختر ما تريد أن يحدث</h2><p>تساعدك الأسئلة على فرز حاجتك بين الوصية والترتيب في الحياة والوقف</p></div>
         <div class="app-shell" id="sorterApp">
           <div class="app-head"><div class="app-head-row"><div><h2>ما الترتيب الأقرب لحالتك</h2><p>النتيجة استرشادية وتساعدك على اختيار المسار الذي يستحق النقاش مع المختص</p></div></div></div>
-          <div class="progress"><div class="progress-meta"><strong id="sortProgressLabel">السؤال 1 من 4</strong><span id="sortProgressPercent">0%</span></div><div class="track"><div class="fill" id="sortProgressFill"></div></div></div>
+          <div class="progress"><div class="progress-meta"><strong id="sortProgressLabel">السؤال 1</strong><span id="sortProgressPercent">0%</span></div><div class="track"><div class="fill" id="sortProgressFill"></div></div></div>
           <div class="panel" id="sortPanel"></div>
         </div>
       </div>
@@ -280,7 +275,7 @@
             <aside class="step-nav" id="stepNav" aria-label="مراحل منشئ الوصية"></aside>
             <div class="builder-main">
               <div class="builder-toolbar">
-                <div class="focus-explain"><button id="focusEntry" type="button">وضع التركيز</button><span>يكبر النص ويخفي عناصر الصفحة حتى تنتهي من النموذج</span></div>
+                <div class="focus-control"><button class="focus-entry focus-entry-light" id="focusEntry" type="button">وضع التركيز</button><small class="focus-help">يكبر النص ويخفي بقية الصفحة أثناء تعبئة النموذج</small></div>
                 <div class="save-controls"><label class="switch" aria-label="تفعيل الحفظ على هذا الجهاز"><input type="checkbox" id="saveToggle"><span></span></label></div>
               </div>
 
@@ -373,7 +368,7 @@
 
   </main>
 
-  <footer class="footer-wrap"><div class="container footer-shell"><div class="footer-main"><div class="footer-brand"><span class="naif-mark" role="img" aria-label="شعار نايف المحمدي"></span><div class="footer-copy"><p>مستشار الحوكمة وتطوير الأعمال</p></div></div><div class="footer-nav"><a href="index.html">الرئيسية</a><a href="diagnostic.html">التشخيص</a><a href="charter.html">الميثاق</a><a href="knowledge.html">مركز المعرفة</a><a href="resources.html">الأدوات والنماذج</a><a href="privacy.html">الخصوصية</a></div><a class="social-handle" href="https://linktr.ee/almohammdin" target="_blank" rel="noopener">Almohammdin</a></div><div class="footer-bottom"><span class="independent-note">منصة مستقلة، وتذكر المصادر والجهات والشركات للتعريف بها وتسجيل المعلومات المنشورة</span><span class="footer-update">آخر تحديث: أغسطس 2026</span><span class="footer-version">v0.9.1</span></div></div></footer>
+  <footer class="footer-wrap"><div class="container footer-shell"><div class="footer-main"><div class="footer-brand"><span class="naif-mark" role="img" aria-label="شعار نايف المحمدي"></span><div class="footer-copy"><p>مستشار الحوكمة وتطوير الأعمال</p></div></div><div class="footer-nav"><a href="index.html">الرئيسية</a><a href="diagnostic.html">التشخيص</a><a href="charter.html">الميثاق</a><a href="knowledge.html">مركز المعرفة</a><a href="resources.html">الأدوات والنماذج</a><a href="privacy.html">الخصوصية</a></div><a class="social-handle" href="https://linktr.ee/almohammdin" target="_blank" rel="noopener">Almohammdin</a></div><div class="footer-bottom"><span class="independent-note">منصة مستقلة، وتذكر المصادر والجهات والشركات للتعريف بها وتسجيل المعلومات المنشورة</span><span class="footer-update">آخر تحديث: أغسطس 2026</span><span class="footer-version">v0.9.2</span></div></div></footer>
   <button class="back-to-top" id="backToTop" type="button" aria-label="العودة إلى أعلى الصفحة">↑</button>
 
   <div class="modal" id="saveModal" hidden role="dialog" aria-modal="true" aria-labelledby="saveModalTitle"><div class="modal-card"><div class="modal-head"><h3 id="saveModalTitle">الحفظ على هذا الجهاز</h3><button class="modal-close" data-close-modal type="button" aria-label="إغلاق">×</button></div><p>بيانات الوصية تشمل الأصول والديون والمستفيدين، لا تفعّل الحفظ على جهاز مشترك أو جهاز يمكن لغيرك الدخول إليه</p><ul><li>سيتم الحفظ داخل المتصفح على هذا الجهاز فقط</li><li>يمكن مسح البيانات من الزر الظاهر في أعلى الصفحة وفي كل مرحلة</li><li>لا تدخل أرقام الحسابات أو كلمات المرور أو صور الهويات</li></ul><div class="modal-actions"><button class="btn secondary" data-close-modal type="button">إلغاء</button><button class="btn primary" id="confirmSave" type="button">أفهم، فعّل الحفظ</button></div></div></div>
@@ -407,7 +402,7 @@
       function renderSorter(){
         const q=sorterQuestions[state.sortIndex],answer=state.sortAnswers[q.id];
         const selected=Array.isArray(answer)?answer:[answer].filter(Boolean);
-        $('#sortProgressLabel').textContent=`السؤال ${state.sortIndex+1} من ${sorterQuestions.length}`;
+        $('#sortProgressLabel').textContent=`السؤال ${state.sortIndex+1}`;
         const pct=Math.round((state.sortIndex/sorterQuestions.length)*100);$('#sortProgressPercent').textContent=`${pct}%`;$('#sortProgressFill').style.width=`${pct}%`;
         $('#sortPanel').innerHTML=`<div class="panel-title"><div class="panel-number">${state.sortIndex+1}</div><div><h3>${q.title}</h3><p>${q.help}</p></div></div><div class="choice-grid">${q.options.map(([value,label])=>`<button type="button" class="choice ${q.multiple?'checkbox':''} ${selected.includes(value)?'selected':''}" data-sort-value="${value}" aria-pressed="${selected.includes(value)}"><i aria-hidden="true"></i><span>${label}</span></button>`).join('')}</div><div class="panel-actions">${state.sortIndex?'<button type="button" class="btn secondary" id="sortPrev">السابق</button>':'<span></span>'}<div class="left"><button type="button" class="btn primary" id="sortNext" ${selected.length?'':'disabled'}>${state.sortIndex===sorterQuestions.length-1?'اعرض النتيجة':'التالي'}</button></div></div>`;
         $$('[data-sort-value]',$('#sortPanel')).forEach(btn=>btn.addEventListener('click',()=>{
@@ -547,6 +542,41 @@
       function requestWipe(){openModal('#wipeModal')}
       function wipeAll(){try{localStorage.removeItem(STORAGE_KEY)}catch(e){}Object.assign(state,{sortIndex:0,sortAnswers:{},route:null,builderStep:1,saveEnabled:false,fields:{},checks:{},assets:[],debts:[],bequests:[]});$('#saveToggle').checked=false;$('#builder').hidden=true;closeModals();renderSorter();toast('تم مسح جميع البيانات');window.scrollTo({top:$('#sorting').offsetTop-70,behavior:'smooth'})}
 
+      function printDraftDocument(){
+        renderDraft();
+        const popup=window.open('','_blank','noopener,noreferrer');
+        if(!popup){window.print();return}
+        const regular=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
+        const semi=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
+        const draft=$('#draftDocument').outerHTML;
+        popup.document.open();
+        popup.document.write(`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مسودة الوصية</title><link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet"><style>
+          @font-face{font-family:EmtidadCraft;src:url('${regular}') format('woff2');font-weight:400;font-style:normal}
+          @font-face{font-family:EmtidadCraft;src:url('${semi}') format('woff2');font-weight:600;font-style:normal}
+          @page{size:A4;margin:14mm}
+          *{box-sizing:border-box}
+          html,body{margin:0;padding:0;background:#fff;color:#283841;font-family:EmtidadCraft,Tahoma,sans-serif;direction:rtl;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+          body{font-size:12pt;line-height:1.9}
+          .draft{width:100%;max-width:190mm;margin:auto}
+          .draft-cover{padding:8px 0 18px;text-align:center;border-bottom:2px solid #0D3656}
+          .draft-cover img{display:block;width:70px;height:70px;margin:auto;object-fit:contain}
+          .draft-cover h3{margin:9px 0 3px;color:#0D3656;font-size:22pt;line-height:1.4}
+          .draft-cover p{margin:0;color:#65727D;font-size:9.5pt}
+          .quran{margin:14px 0 0;color:#0D3656;font-family:"Amiri Quran","Traditional Arabic",serif;font-size:22pt;font-weight:400;line-height:1.9}
+          .quran-source{display:block;color:#C9853C;font-family:EmtidadCraft,Tahoma,sans-serif;font-size:9pt;font-weight:400}
+          .draft-body{padding:8px 0 0;font-size:11pt;line-height:1.9}
+          .draft-section{padding:11px 0;border-bottom:1px solid #E3DED6;break-inside:avoid}
+          .draft-section h4{margin:0 0 5px;color:#0D3656;font-size:14pt}
+          .draft-section p{margin:0}
+          .draft-list{margin:0;padding-right:22px}
+          .draft-empty{color:#65727D}
+          .draft-disclaimer{margin:16px 0 0;padding:12px 14px;border:1px solid #E7CBAE;border-radius:12px;background:#FFF8EF;color:#6D543D;font-size:9.5pt;break-inside:avoid}
+        </style></head><body>${draft}</body></html>`);
+        popup.document.close();
+        const images=[...popup.document.images].map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.onload=resolve;image.onerror=resolve}));
+        Promise.all([popup.document.fonts?.ready||Promise.resolve(),...images]).then(()=>setTimeout(()=>{popup.focus();popup.print()},250));
+      }
+
       function bindGlobal(){
         $('#saveToggle').addEventListener('change',e=>{if(e.target.checked&&!state.saveEnabled){e.target.checked=false;openModal('#saveModal')}else if(!e.target.checked){state.saveEnabled=false;try{localStorage.removeItem(STORAGE_KEY)}catch(err){}toast('أوقف الحفظ ومسحت النسخة المحفوظة')}});
         $('#confirmSave').addEventListener('click',()=>{state.saveEnabled=true;$('#saveToggle').checked=true;closeModals();saveIfEnabled();toast('تم تفعيل الحفظ على هذا الجهاز')});
@@ -555,7 +585,7 @@
         $('#focusEntry').addEventListener('click',()=>{document.documentElement.classList.add('focus-mode');$('.focus-bar').setAttribute('aria-hidden','false');window.scrollTo({top:0,behavior:'smooth'})});
         $('#focusExit').addEventListener('click',()=>{document.documentElement.classList.remove('focus-mode');$('.focus-bar').setAttribute('aria-hidden','true');$('#builder').scrollIntoView({behavior:'smooth',block:'start'})});
         document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.documentElement.classList.contains('focus-mode'))$('#focusExit').click();else closeModals()}});
-        $('#printDraft').addEventListener('click',()=>window.print());
+        $('#printDraft').addEventListener('click',printDraftDocument);
         $('#copyDraft').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#draftDocument').innerText);toast('تم نسخ نص المسودة')}catch(e){toast('تعذر النسخ التلقائي')}});
         $('#editDraft').addEventListener('click',()=>{state.builderStep=1;renderBuilder();$('#builder').scrollIntoView({behavior:'smooth'})});
       }
@@ -563,6 +593,6 @@
       loadSaved();renderSorter();bindStaticInputs();bindGlobal();renderBuilder();
     })();
   </script>
-  <script src="assets/js/shell.js?v=0.9.1" defer></script>
+  <script src="assets/js/shell.js?v=0.9.2" defer></script>
 </body>
 </html>
