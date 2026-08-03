@@ -43,8 +43,6 @@
     .app-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
     .app-head h2{margin:0 0 4px;font-size:clamp(26px,3vw,34px)}
     .app-head p{max-width:650px;margin:0;color:rgba(255,255,255,.76);font-size:16px}
-    .privacy-status{display:flex;align-items:center;gap:7px;white-space:nowrap;padding:7px 10px;border:1px solid rgba(255,255,255,.2);border-radius:11px;background:rgba(255,255,255,.08);font-size:14px}
-    .privacy-status i{width:9px;height:9px;border-radius:50%;background:#7BD2AC}
     .progress{padding:17px 22px;border-bottom:1px solid var(--line);background:#FBFAF8}
     .progress-meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px}
     .progress-meta strong{color:var(--navy)}
@@ -75,8 +73,9 @@
     .route-points{display:grid;gap:8px;margin:18px 0 0;padding:0;list-style:none}
     .route-points li{display:flex;gap:9px;color:#40505B;font-size:16px}
     .route-points li:before{content:"";width:8px;height:8px;flex:0 0 8px;margin-top:10px;border-radius:50%;background:var(--gold)}
-    .route-side h4{margin:0 0 9px;color:var(--navy);font-size:20px}
-    .route-side p{margin:0 0 13px;color:var(--muted);font-size:15px}
+    .route-rules{display:grid;gap:10px;margin:0;padding:0 20px 0 0;color:var(--muted)}
+    .route-rules li{padding-right:3px;font-size:15px;line-height:1.8}
+    .route-rules li::marker{color:var(--gold)}
     .route-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
 
     .source-insight{margin-top:18px;padding:18px;border:1px solid #DFC9AE;border-radius:18px;background:linear-gradient(135deg,#FFF9F1,#fff)}
@@ -98,9 +97,7 @@
     .focus-explain{display:flex;align-items:center;gap:10px;min-width:0}
     .focus-explain button{min-height:40px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--navy);padding:7px 12px;font-weight:600;white-space:nowrap}
     .focus-explain span{color:var(--muted);font-size:14px;line-height:1.55}
-    .save-controls{display:flex;align-items:center;gap:8px}
-    .save-state{font-size:13px;color:var(--muted)}
-    .save-state.on{color:var(--green)}
+    .save-controls{display:flex;align-items:center}
     .switch{position:relative;width:48px;height:27px;display:inline-block}
     .switch input{position:absolute;opacity:0}
     .switch span{position:absolute;inset:0;border-radius:999px;background:#CCD2D4;transition:.2s}
@@ -191,7 +188,7 @@
 
     html[data-theme="dark"] :is(.principle,.app-shell,.choice,.route-main,.route-side,.builder-panel,.draft,.field input,.field select,.field textarea,.repeat-row,.repeat-row input,.repeat-row select,.check-card,.modal-card,.focus-explain button){background:#102735;color:var(--ink);border-color:var(--line)}
     html[data-theme="dark"] :is(.progress,.builder-toolbar,.draft-cover){background:#142D3B}
-    html[data-theme="dark"] :is(.principle h3,.section-head h2,.panel-title h3,.route-main h3,.route-side h4,.field>label,.field>span,.subsection-head h4,.draft-section h4,.draft-cover h3){color:#DDEAF2}
+    html[data-theme="dark"] :is(.principle h3,.section-head h2,.panel-title h3,.route-main h3,.field>label,.field>span,.subsection-head h4,.draft-section h4,.draft-cover h3){color:#DDEAF2}
     html[data-theme="dark"] .choice.selected{background:#193B4E}
     html[data-theme="dark"] .step-nav{background:#102735}
 
@@ -209,14 +206,12 @@
       .principles,.choice-grid,.route-result,.field-grid,.field-grid.three,.check-grid{grid-template-columns:1fr}
       .app-head,.panel,.builder-panel{padding:19px 16px}
       .app-head-row,.builder-toolbar{align-items:stretch;flex-direction:column}
-      .privacy-status{align-self:flex-start}
       .panel-actions{align-items:stretch;flex-direction:column-reverse}
       .panel-actions .btn,.panel-actions .left,.route-actions .btn{width:100%}
       .panel-actions .left{display:grid;grid-template-columns:1fr 1fr}
       .builder-toolbar{padding:13px 15px}
       .focus-explain{display:grid;grid-template-columns:auto 1fr}
       .focus-explain span{font-size:13px}
-      .save-controls{justify-content:space-between}
       .repeat-row,.repeat-row.three,.repeat-row.five{grid-template-columns:1fr}
       .repeat-row .remove-row{grid-column:1;justify-self:end}
       .focus-bar-inner{width:calc(100% - 22px)}
@@ -231,7 +226,7 @@
       .container{width:100%}
       .app-shell,.draft{border:0;box-shadow:none}
       .app-head{background:#fff;color:#111;border-bottom:2px solid #0D3656;padding:0 0 10px}
-      .app-head p,.privacy-status{display:none}
+      .app-head p{display:none}
       .builder-layout{display:block}
       .builder-panel{padding:0}
       .builder-panel:not(.draft-panel){display:none!important}
@@ -268,7 +263,7 @@
       <div class="container">
         <div class="section-head"><span class="eyebrow">الخطوة الأولى</span><h2>اختر ما تريد أن يحدث</h2><p>4 أسئلة تفرز حاجتك بين الوصية والترتيب في الحياة والوقف</p></div>
         <div class="app-shell" id="sorterApp">
-          <div class="app-head"><div class="app-head-row"><div><h2>ما الترتيب الأقرب لحالتك</h2><p>النتيجة استرشادية وتساعدك على اختيار المسار الذي يستحق النقاش مع المختص</p></div><div class="privacy-status"><i></i><span>لا يتم حفظ الإجابات</span></div></div></div>
+          <div class="app-head"><div class="app-head-row"><div><h2>ما الترتيب الأقرب لحالتك</h2><p>النتيجة استرشادية وتساعدك على اختيار المسار الذي يستحق النقاش مع المختص</p></div></div></div>
           <div class="progress"><div class="progress-meta"><strong id="sortProgressLabel">السؤال 1 من 4</strong><span id="sortProgressPercent">0%</span></div><div class="track"><div class="fill" id="sortProgressFill"></div></div></div>
           <div class="panel" id="sortPanel"></div>
         </div>
@@ -279,14 +274,14 @@
       <div class="container">
         <div class="section-head"><span class="eyebrow">منشئ الوصية</span><h2>أنشئ مسودة استرشادية للمراجعة</h2><p>أدخل ما تحتاجه فقط، واترك البيانات التي لا تريد كتابتها فارغة</p></div>
         <div class="app-shell">
-          <div class="app-head"><div class="app-head-row"><div><h2>مسودة الوصية</h2><p>تجمع الغرض والأصول والالتزامات وبنود الوصية وصلتها بالمنشأة والوقف</p></div><div class="privacy-status" id="builderPrivacy"><i></i><span>الحفظ غير مفعّل</span></div></div></div>
+          <div class="app-head"><div class="app-head-row"><div><h2>مسودة الوصية</h2><p>تجمع الغرض والأصول والالتزامات وبنود الوصية وصلتها بالمنشأة والوقف</p></div></div></div>
           <div class="progress"><div class="progress-meta"><strong id="builderProgressLabel">بيانات الموصي والغرض</strong><span id="builderProgressPercent">25%</span></div><div class="track"><div class="fill" id="builderProgressFill" style="width:25%"></div></div></div>
           <div class="builder-layout">
             <aside class="step-nav" id="stepNav" aria-label="مراحل منشئ الوصية"></aside>
             <div class="builder-main">
               <div class="builder-toolbar">
                 <div class="focus-explain"><button id="focusEntry" type="button">وضع التركيز</button><span>يكبر النص ويخفي عناصر الصفحة حتى تنتهي من النموذج</span></div>
-                <div class="save-controls"><span class="save-state" id="saveState">الحفظ غير مفعّل</span><label class="switch" aria-label="تفعيل الحفظ على هذا الجهاز"><input type="checkbox" id="saveToggle"><span></span></label></div>
+                <div class="save-controls"><label class="switch" aria-label="تفعيل الحفظ على هذا الجهاز"><input type="checkbox" id="saveToggle"><span></span></label></div>
               </div>
 
               <section class="builder-panel" data-step="1">
@@ -445,7 +440,7 @@
       function renderRoute(){
         state.route=calculateRoute();const r=routeCopy[state.route];
         $('#sortProgressLabel').textContent='نتيجة الفرز';$('#sortProgressPercent').textContent='100%';$('#sortProgressFill').style.width='100%';
-        $('#sortPanel').innerHTML=`<div class="route-result"><article class="route-main"><span class="route-label">${r.label}</span><h3>${r.title}</h3><p>${r.copy}</p><ul class="route-points">${r.points.map(x=>`<li>${x}</li>`).join('')}</ul><div class="route-actions"><button class="btn primary" id="openBuilder" type="button">انتقل إلى منشئ الوصية</button><button class="btn secondary" id="restartSort" type="button">أعد الفرز</button></div></article><aside class="route-side"><h4>قاعدتان قبل الصياغة</h4><p>الوصية لوارث تتوقف على إجازة باقي الورثة بعد الوفاة، وما زاد على الثلث يتوقف على إجازتهم بقدر نصيب من أجاز</p><p>الديون والحقوق تسبق تنفيذ الوصية، لذلك يبنى المقدار على التركة بعد حصرها</p></aside></div><div class="source-insight"><strong>صلة النتيجة بتجربة الفوزان</strong><p>التجربة جمعت وصايا الشركاء بوقف مشترك وجهة تنفيذ ونظام للوقف، وتفيد في بناء ترتيب متناسق بين الشركة والوقف والوصية</p><a href="https://alfozan.com/sites/default/files/2023-05/%D8%A7%D9%84%D9%88%D8%B5%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%AD%D8%AF%D8%A9%20%D9%88%D8%A7%D9%84%D9%88%D9%82%D9%81%20%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%83_0.pdf" target="_blank" rel="noopener">اقرأ التجربة</a></div>`;
+        $('#sortPanel').innerHTML=`<div class="route-result"><article class="route-main"><span class="route-label">${r.label}</span><h3>${r.title}</h3><p>${r.copy}</p><ul class="route-points">${r.points.map(x=>`<li>${x}</li>`).join('')}</ul><div class="route-actions"><button class="btn primary" id="openBuilder" type="button">انتقل إلى منشئ الوصية</button><button class="btn secondary" id="restartSort" type="button">أعد الفرز</button></div></article><aside class="route-side"><ul class="route-rules"><li>الوصية لوارث تتوقف على إجازة باقي الورثة بعد الوفاة، وما زاد على الثلث يتوقف على إجازتهم بقدر نصيب من أجاز</li><li>الديون والحقوق تسبق تنفيذ الوصية، لذلك يبنى المقدار على التركة بعد حصرها</li></ul></aside></div><div class="source-insight"><strong>صلة النتيجة بتجربة الفوزان</strong><p>التجربة جمعت وصايا الشركاء بوقف مشترك وجهة تنفيذ ونظام للوقف، وتفيد في بناء ترتيب متناسق بين الشركة والوقف والوصية</p><a href="https://alfozan.com/sites/default/files/2023-05/%D8%A7%D9%84%D9%88%D8%B5%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%AD%D8%AF%D8%A9%20%D9%88%D8%A7%D9%84%D9%88%D9%82%D9%81%20%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%83_0.pdf" target="_blank" rel="noopener">اقرأ التجربة</a></div>`;
         $('#restartSort').addEventListener('click',()=>{state.sortIndex=0;state.sortAnswers={};state.route=null;renderSorter()});
         $('#openBuilder').addEventListener('click',()=>{const b=$('#builder');b.hidden=false;syncSorterToBuilder();renderBuilder();b.scrollIntoView({behavior:'smooth',block:'start'})});
       }
@@ -545,15 +540,15 @@
       }
 
       function serializable(){return {sortAnswers:state.sortAnswers,route:state.route,builderStep:state.builderStep,saveEnabled:state.saveEnabled,fields:state.fields,checks:state.checks,assets:state.assets,debts:state.debts,bequests:state.bequests}}
-      function saveIfEnabled(){if(!state.saveEnabled)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(serializable()));$('#saveState').textContent='محفوظ على هذا الجهاز';$('#saveState').classList.add('on');$('#builderPrivacy span').textContent='الحفظ مفعّل على هذا الجهاز'}catch(e){toast('تعذر الحفظ على هذا المتصفح')}}
-      function loadSaved(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;const saved=JSON.parse(raw);Object.assign(state,saved,{sortIndex:0});if(state.saveEnabled){$('#saveToggle').checked=true;$('#saveState').textContent='تمت استعادة البيانات المحفوظة';$('#saveState').classList.add('on');$('#builderPrivacy span').textContent='الحفظ مفعّل على هذا الجهاز';$('#builder').hidden=false}}catch(e){}}
+      function saveIfEnabled(){if(!state.saveEnabled)return;try{localStorage.setItem(STORAGE_KEY,JSON.stringify(serializable()))}catch(e){toast('تعذر الحفظ على هذا المتصفح')}}
+      function loadSaved(){try{const raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;const saved=JSON.parse(raw);Object.assign(state,saved,{sortIndex:0});if(state.saveEnabled){$('#saveToggle').checked=true;$('#builder').hidden=false}}catch(e){}}
       function openModal(id){$(id).hidden=false;document.body.style.overflow='hidden'}
       function closeModals(){$$('.modal').forEach(m=>m.hidden=true);document.body.style.overflow=''}
       function requestWipe(){openModal('#wipeModal')}
-      function wipeAll(){try{localStorage.removeItem(STORAGE_KEY)}catch(e){}Object.assign(state,{sortIndex:0,sortAnswers:{},route:null,builderStep:1,saveEnabled:false,fields:{},checks:{},assets:[],debts:[],bequests:[]});$('#saveToggle').checked=false;$('#builder').hidden=true;$('#saveState').textContent='الحفظ غير مفعّل';$('#saveState').classList.remove('on');$('#builderPrivacy span').textContent='الحفظ غير مفعّل';closeModals();renderSorter();toast('تم مسح جميع البيانات');window.scrollTo({top:$('#sorting').offsetTop-70,behavior:'smooth'})}
+      function wipeAll(){try{localStorage.removeItem(STORAGE_KEY)}catch(e){}Object.assign(state,{sortIndex:0,sortAnswers:{},route:null,builderStep:1,saveEnabled:false,fields:{},checks:{},assets:[],debts:[],bequests:[]});$('#saveToggle').checked=false;$('#builder').hidden=true;closeModals();renderSorter();toast('تم مسح جميع البيانات');window.scrollTo({top:$('#sorting').offsetTop-70,behavior:'smooth'})}
 
       function bindGlobal(){
-        $('#saveToggle').addEventListener('change',e=>{if(e.target.checked&&!state.saveEnabled){e.target.checked=false;openModal('#saveModal')}else if(!e.target.checked){state.saveEnabled=false;try{localStorage.removeItem(STORAGE_KEY)}catch(err){}$('#saveState').textContent='الحفظ غير مفعّل';$('#saveState').classList.remove('on');$('#builderPrivacy span').textContent='الحفظ غير مفعّل';toast('أوقف الحفظ ومسحت النسخة المحفوظة')}});
+        $('#saveToggle').addEventListener('change',e=>{if(e.target.checked&&!state.saveEnabled){e.target.checked=false;openModal('#saveModal')}else if(!e.target.checked){state.saveEnabled=false;try{localStorage.removeItem(STORAGE_KEY)}catch(err){}toast('أوقف الحفظ ومسحت النسخة المحفوظة')}});
         $('#confirmSave').addEventListener('click',()=>{state.saveEnabled=true;$('#saveToggle').checked=true;closeModals();saveIfEnabled();toast('تم تفعيل الحفظ على هذا الجهاز')});
         $$('.wipe-inline').forEach(b=>b.addEventListener('click',requestWipe));$('#confirmWipe').addEventListener('click',wipeAll);
         $$('[data-close-modal]').forEach(b=>b.addEventListener('click',closeModals));$$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModals()}));
