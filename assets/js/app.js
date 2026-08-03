@@ -1,6 +1,6 @@
 
 const ICONS={"profile": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0\"/></svg>", "layers": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4\"/></svg>", "report": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6\"/></svg>", "charter": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM9 7h6M9 11h6M9 15h4\"/></svg>", "governance": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-4\"/></svg>", "ownership": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V9l8-5 8 5v11M8 20v-6h8v6\"/></svg>", "succession": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 7a4 4 0 1 1 8 0M5 20a7 7 0 0 1 14 0M4 4l2-2 2 2M20 4l-2-2-2 2\"/></svg>", "waqf": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M7 7h10M6 21h12M9 7c0 3-1 5-3 6 2 2 4 2 6 0-2-1-3-3-3-6Zm6 0c0 3 1 5 3 6-2 2-4 2-6 0 2-1 3-3 3-6Z\"/></svg>", "risk": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3 2 21h20L12 3Zm0 6v5m0 3v1\"/></svg>", "purpose": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"8\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v3M22 12h-3M12 22v-3M2 12h3\"/></svg>", "law": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M5 6h14M7 6l-4 7h8L7 6Zm10 0-4 7h8l-4-7ZM6 21h12\"/></svg>", "book": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 4h6a3 3 0 0 1 3 3v13a3 3 0 0 0-3-3H4V4Zm16 0h-6a3 3 0 0 0-3 3v13a3 3 0 0 1 3-3h6V4Z\"/></svg>", "chart": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 20V10h4v10H4Zm6 0V4h4v16h-4Zm6 0v-7h4v7h-4Z\"/></svg>", "case": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16v13H4V7Zm4 0V4h8v3M4 12h16\"/></svg>", "tools": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m14 6 4-4 4 4-4 4M3 21l8-8M5 3l16 16M3 5l2-2 4 4-2 2-4-4Z\"/></svg>", "search": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg>", "external": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M14 4h6v6M20 4l-9 9M18 13v7H4V6h7\"/></svg>", "print": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 8V3h10v5M7 17H4v-7h16v7h-3M7 14h10v7H7v-7Z\"/></svg>", "check": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 12 4 4L19 6\"/></svg>", "family": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 21a6 6 0 0 1 12 0M13 21a5 5 0 0 1 9 0\"/></svg>"};
-const VERSION='v0.7.0';
+const VERSION='v0.8.0';
 const RESULT_SCHEMA_VERSION=2;
 const PLATFORM_URL='https://almohammdin.github.io/emtidad/';
 const VALUATION_GUIDE_URL='assets/documents/fair-valuation-family-businesses-2026.pdf';
@@ -51,7 +51,7 @@ const knowledgeData=[
 const caseStudiesData=[
  {name:'الفوزان القابضة',focus:'التوسع عبر كيان قابض',featured:true,summary:'مجموعة عائلية ذات محفظة متنوعة تعمل عبر مظلة قابضة تدير شركات في قطاعات متعددة',lessons:['تنظيم المحفظة تحت مظلة مؤسسية','ربط التوسع بالحوكمة والهوية','تعزيز الأثر المجتمعي المنظم'],url:'https://www.alfozan.com/ar',source:'موقع الفوزان القابضة | alfozan.com',reviewed:'أغسطس 2026',resource:{title:'الوصية الموحدة والوقف المشترك',summary:'تجربة منشورة تعرض كيف وحدت العائلة وصايا الشركاء، وبنت وقفا مشتركا مع فصل الغرض الوقفي عن تشغيل الشركات',url:'https://alfozan.com/sites/default/files/2023-05/%D8%A7%D9%84%D9%88%D8%B5%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D8%AD%D8%AF%D8%A9%20%D9%88%D8%A7%D9%84%D9%88%D9%82%D9%81%20%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%83_0.pdf'}},
  {name:'العثيم القابضة',focus:'التنوع والمكتب العائلي',summary:'تطور النشاط من مؤسسة عائلية إلى مجموعة متنوعة، مع ذراع استثماري معلن يعمل كمكتب عائلي منفرد',lessons:['الفصل بين التشغيل والاستثمار','تنويع القطاعات ضمن إطار قابض','تطوير أدوات إدارة الثروة'],url:'https://othaim.sa/?lang=ar',source:'موقع العثيم القابضة | othaim.sa',reviewed:'يوليو 2026'},
- {name:'ماسك',focus:'إدارة الثروة العائلية',featured:true,summary:'شركة استثمارية عائلية تأسست لإدارة أصول المؤسس والعائلة عبر الأسهم العامة والخاصة والعقار',lessons:['تحويل الأصول إلى كيان مؤسسي','تنويع الأصول على المدى الطويل','مجلس وفريق تنفيذي محددا الأدوار'],url:'https://masic.com.sa/ar/about/',source:'موقع شركة ماسك | masic.com.sa',reviewed:'يوليو 2026',media:{eyebrow:'لقاء مع عبدالعزيز بن محمد السبيعي',title:'كيف تعمل الشركات العائلية بلا نزاعات',source:'بودكاست سقراط',summary:'حوار عن تجربة ماسك، وبناء الميثاق، وتنظيم العلاقة بين أفراد العائلة، وانتقال الملكية والإدارة بين الأجيال',url:'https://www.youtube.com/watch?v=nczXDb2l4VU',videoId:'nczXDb2l4VU',published:'2023',companion:{eyebrow:'ملخص الحلقة',title:'أبرز ما ورد في اللقاء',summary:'ثماني صفحات تجمع محاور فصل الشراكة العائلية، والميثاق، ومجلس الإدارة، ودخول أفراد العائلة، والتخارج، وتنظيم العمل، والحوكمة، ومكتب العائلة',credit:'إعداد نايف المحمدي',url:'assets/documents/subaie-family-business-podcast-highlights.pdf?v=0.7.0',actionLabel:'فتح الملخص'}}},
+ {name:'ماسك',focus:'إدارة الثروة العائلية',featured:true,summary:'شركة استثمارية عائلية تأسست لإدارة أصول المؤسس والعائلة عبر الأسهم العامة والخاصة والعقار',lessons:['تحويل الأصول إلى كيان مؤسسي','تنويع الأصول على المدى الطويل','مجلس وفريق تنفيذي محددا الأدوار'],url:'https://masic.com.sa/ar/about/',source:'موقع شركة ماسك | masic.com.sa',reviewed:'يوليو 2026',media:{eyebrow:'لقاء مع عبدالعزيز بن محمد السبيعي',title:'كيف تعمل الشركات العائلية بلا نزاعات',source:'بودكاست سقراط',summary:'حوار عن تجربة ماسك، وبناء الميثاق، وتنظيم العلاقة بين أفراد العائلة، وانتقال الملكية والإدارة بين الأجيال',url:'https://www.youtube.com/watch?v=nczXDb2l4VU',videoId:'nczXDb2l4VU',published:'2023',companion:{eyebrow:'ملخص الحلقة',title:'أبرز ما ورد في اللقاء',summary:'ثماني صفحات تجمع محاور فصل الشراكة العائلية، والميثاق، ومجلس الإدارة، ودخول أفراد العائلة، والتخارج، وتنظيم العمل، والحوكمة، ومكتب العائلة',credit:'إعداد نايف المحمدي',url:'assets/documents/subaie-family-business-podcast-highlights.pdf?v=0.8.0',actionLabel:'فتح الملخص'}}},
  {name:'سدكو القابضة',focus:'حوكمة العائلة والشركة',summary:'حالة سعودية منشورة حول التحول إلى شركة قابضة مؤسسية وتطوير الحوكمة والمواثيق العائلية',lessons:['تحديث الميثاق وربطه بالأعمال','الاستعانة بقيادات وأعضاء من خارج العائلة','المجالس واللجان والإفصاح'],url:'https://annualreview.sedco.com/corporate_governance/governance_framework.html',source:'التقرير المتكامل 2025',reviewed:'يوليو 2026'},
  {name:'أوقاف سليمان الراجحي',focus:'حوكمة الوقف واستدامة الغرض',summary:'نظام حوكمة والتزام معلن يحدد أدوار مجلس النظارة والمجالس واللجان والعلاقة مع أصحاب المصالح',lessons:['فصل الغرض الوقفي عن التشغيل','تحديد المسؤوليات والصلاحيات','الشفافية والرقابة والالتزام بالصك'],url:'https://waqfsr.org.sa/ar/home/%D8%A7%D9%84%D8%AD%D9%88%D9%83%D9%85%D8%A9/',source:'موقع أوقاف سليمان الراجحي | waqfsr.org.sa',reviewed:'يوليو 2026'},
  {name:'مجموعة الزامل',focus:'تعاقب واحتراف الإدارة',summary:'توضح دراسة تعليمية تطور الحوكمة في مجموعة عائلية متعددة الأعمال وفق المعلومات المنشورة',lessons:['يحتاج التعاقب إلى إعداد مبكر','الملكية والإدارة مساران متكاملان','الاستفادة من التجربة تكون في حدود ما نشرته المجموعة'],url:'https://www.zamil.com/',source:'المواد المنشورة',reviewed:'يوليو 2026'}
@@ -314,7 +314,7 @@ const RESULT_LEVELS=[
  {min:65,max:84,label:'تطبيق مستقر',desc:'تعمل الأسس في عدة محاور، وتبقى فجوات محددة تحتاج إلى معالجة ومراجعة'},
  {min:85,max:100,label:'جاهزية متقدمة',desc:'المنظومة مترابطة، ويتركز الاهتمام على التجديد والاختبار وإعداد الأجيال'}
 ];
-const state={step:0,profile:{},answers:{},result:null};
+const state={step:0,profile:{},answers:{},result:null,focusMode:false};
 let diagnosticHadSavedData=false;
 const $=id=>document.getElementById(id);
 function icon(name){return ICONS[name]||ICONS.book}
@@ -338,8 +338,8 @@ function printReport(){
  const r=state.result;if(!r){toast('اعرض النتيجة قبل المتابعة');return}
  syncProfileInputs();
  const fileName=reportFileName();
- const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href;
- const naifUrl=new URL('assets/images/naif-logo-gold.png?v=0.7.0',document.baseURI).href;
+ const logoUrl=new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href;
+ const naifUrl=new URL('assets/images/naif-logo-gold.png?v=0.8.0',document.baseURI).href;
  const regularUrl=new URL('assets/fonts/TheYearofHandicrafts-Regular.woff2',document.baseURI).href;
  const semiUrl=new URL('assets/fonts/TheYearofHandicrafts-SemiBold.woff2',document.baseURI).href;
  const blackUrl=new URL('assets/fonts/TheYearofHandicrafts-Black.woff2',document.baseURI).href;
@@ -478,8 +478,8 @@ async function buildResultImageCanvas(){
   'M13.736 5.852 17.644 2l1.92 1.92-3.852 3.736h5.644v2.736h-5.66l3.868 3.752-1.92 1.92-5.276-5.28-5.276 5.28-1.92-1.92 3.868-3.752H3.38V7.656h5.644L5.172 3.92 7.092 2l3.932 3.852V0h2.712v5.852ZM11.024 24v-8.604h2.712V24h-2.712Z'
  ];
  const [logo,naif,...socialIcons]=await Promise.all([
-  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href),
-  loadCanvasImage(new URL('assets/images/naif-logo-gold.png?v=0.7.0',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href),
+  loadCanvasImage(new URL('assets/images/naif-logo-gold.png?v=0.8.0',document.baseURI).href),
   ...socialPaths.map(path=>canvasSvgIcon(path))
  ]);
  const canvas=document.createElement('canvas');
@@ -627,8 +627,9 @@ function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catc
 function load(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(x){Object.assign(state,x);state.profile=state.profile||{};Object.keys(state.profile).forEach(key=>state.profile[key]=latinDigits(state.profile[key]));state.answers=state.answers||{};diagnosticHadSavedData=Boolean(Object.keys(state.profile).length||Object.keys(state.answers).length||state.result)}}catch(e){}}
 function toast(msg){const el=$('toast');if(!el)return;el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2200)}
 function resetDiagnosticData(){
- localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;diagnosticHadSavedData=false;
+ const focusMode=state.focusMode;localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;state.focusMode=focusMode;diagnosticHadSavedData=false;
  if($('diagPanel'))renderDiagnostic();
+ save();
 }
 function setupDiagnosticStorageControls(){
  const notice=$('diagnosticRestoreNotice');
@@ -681,8 +682,8 @@ function collectTemplateState(){
 function templateDocumentHtml(i,mode='print',embeddedImages={}){
  const t=toolsData[i],guide=templateGuideFor(t),values=collectTemplateState();
  const isWord=mode==='word';
- const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href;
- const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo-gold.png?v=0.7.0',document.baseURI).href;
+ const logoUrl=embeddedImages.logo||new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href;
+ const naifUrl=embeddedImages.naif||new URL('assets/images/naif-logo-gold.png?v=0.8.0',document.baseURI).href;
  const sections=t.sections.map((section,si)=>`<section class="doc-section"><h2>${escapeHtml(section.title)}</h2><table class="doc-table ${section.type==='fields'?'doc-fields':'doc-checks'}" width="100%" cellspacing="0" cellpadding="0"><tbody>${section.items.map((item,ii)=>{
   const value=values[`${si}:${ii}`];
   return section.type==='fields'?`<tr><th>${escapeHtml(item)}</th><td>${escapeHtml(value||'لم يُعبأ')}</td></tr>`:`<tr class="${value?'checked':''}"><td class="check-mark" width="34">${value?'✓':'□'}</td><td>${escapeHtml(item)}</td></tr>`;
@@ -889,8 +890,8 @@ async function downloadTemplateWord(i){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href),
-   imageUrlAsBytes(new URL('assets/images/naif-logo-gold.png?v=0.7.0',document.baseURI).href)
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/naif-logo-gold.png?v=0.8.0',document.baseURI).href)
   ]);
   const documentFile=buildTemplateDocx(i,D,{logo,naif});
   const blob=await D.Packer.toBlob(documentFile);
@@ -946,7 +947,35 @@ function applicableAxes(){return axes.filter(a=>a.id!=='wealth'||state.profile.w
 function applicableQuestions(axisId){return (questions[axisId]||[]).filter(q=>!q.show||q.show(state.profile))}
 function steps(){return [{id:'profile',title:'ملف العائلة',icon:'profile'},...applicableAxes().map(a=>({id:a.id,title:a.title,icon:a.icon})),{id:'result',title:'النتيجة',icon:'report'}]}
 function renderStepTabs(){const s=steps();$('stepTabs').innerHTML=s.map((x,i)=>`<button class="step-tab ${i===state.step?'active':''} ${i<state.step?'done':''}" data-goto="${i}">${x.title}</button>`).join('');document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>{const i=Number(b.dataset.goto);if(i<=state.step||canAdvanceTo(i)){state.step=i;renderDiagnostic();save();scrollDiagnosticStepStart()}}))}
-function updateProgress(){const s=steps();const pct=Math.round((state.step/(s.length-1))*100);$('progressFill').style.width=pct+'%';$('progressPercent').textContent=pct+'%';$('progressLabel').textContent=s[state.step]?.title||''}
+function updateProgress(){const s=steps();const pct=Math.round((state.step/(s.length-1))*100);$('progressFill').style.width=pct+'%';$('progressPercent').textContent=pct+'%';$('progressLabel').textContent=s[state.step]?.title||'';if($('diagnosticFocusProgress'))$('diagnosticFocusProgress').textContent=pct+'%';if($('diagnosticFocusLabel'))$('diagnosticFocusLabel').textContent=s[state.step]?.title||'تشخيص الجاهزية'}
+function renderFocusAxisRail(){
+ const rail=$('focusAxisRail');if(!rail)return;
+ const s=steps(),current=s[state.step]?.id;
+ rail.innerHTML=`<span>المحاور السبعة</span>${axes.map((axis,index)=>{
+  const stepIndex=s.findIndex(step=>step.id===axis.id),included=stepIndex>=0;
+  const status=current===axis.id?'الحالي':!included?'خارج النطاق':stepIndex<state.step?'مكتمل':'لاحقاً';
+  return `<button type="button" class="${current===axis.id?'active':''} ${included&&stepIndex<state.step?'done':''} ${!included?'skipped':''}" ${included&&stepIndex<=state.step?`data-focus-goto="${stepIndex}"`:'disabled'}><b>${index+1}</b><span><strong>${axis.title}</strong><small>${status}</small></span></button>`;
+ }).join('')}`;
+ rail.querySelectorAll('[data-focus-goto]').forEach(button=>button.addEventListener('click',()=>{state.step=Number(button.dataset.focusGoto);renderDiagnostic();save();scrollDiagnosticStepStart()}));
+}
+let diagnosticFocusReturn=null;
+function setDiagnosticFocusMode(active,returnFocus=true){
+ state.focusMode=Boolean(active);
+ document.documentElement.classList.toggle('focus-mode',state.focusMode);
+ const toolbar=$('diagnosticFocusToolbar'),entry=$('diagnosticFocusBtn');
+ if(toolbar)toolbar.hidden=!state.focusMode;
+ if(entry)entry.setAttribute('aria-pressed',String(state.focusMode));
+ save();
+ if(!state.focusMode&&returnFocus&&diagnosticFocusReturn&&document.contains(diagnosticFocusReturn))diagnosticFocusReturn.focus();
+}
+function setupDiagnosticFocusMode(){
+ const entry=$('diagnosticFocusBtn'),exit=$('diagnosticFocusExit');
+ if(!entry)return;
+ entry?.addEventListener('click',()=>{diagnosticFocusReturn=entry;setDiagnosticFocusMode(true);exit?.focus()});
+ exit?.addEventListener('click',()=>setDiagnosticFocusMode(false));
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&state.focusMode){event.preventDefault();setDiagnosticFocusMode(false)}});
+ if(state.focusMode)setDiagnosticFocusMode(true,false);
+}
 function scrollDiagnosticStepStart(){requestAnimationFrame(()=>document.querySelector('.progress-shell')?.scrollIntoView({behavior:'smooth',block:'start'}))}
 function profilePanel(){return `<div class="panel-title"><div class="axis-icon">${icon('profile')}</div><div><h3>ملف العائلة والشركة</h3><p>تضيف البيانات خلفية عن الحالة إلى التقرير والمسودة، وتحدد بعض الأسئلة التي تناسب العائلة والشركة</p></div></div><div class="form-grid">
  ${field('familyName','اسم العائلة أو الشركة','text','اختياري')}
@@ -981,7 +1010,7 @@ function bindPanel(){
  document.querySelectorAll('[data-answer-key]').forEach(b=>b.addEventListener('click',()=>{const key=b.dataset.answerKey;state.answers[key]=b.dataset.answer==='na'?null:Number(b.dataset.answer);state.result=null;save();b.closest('.answers').querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b))}));
  $('prevBtn')?.addEventListener('click',()=>{state.step=Math.max(0,state.step-1);renderDiagnostic();save();scrollDiagnosticStepStart()});
  $('nextBtn')?.addEventListener('click',()=>{const s=steps();if(state.step===0){syncProfileInputs();save();if(!validateProfile())return;state.step=1}else{const id=s[state.step].id;const left=unanswered(id);if(left.length){toast(`بقي ${left.length} من الأسئلة دون إجابة`);return}if(state.step===s.length-2){if(!buildResult())return;state.step=s.length-1}else state.step++}renderDiagnostic();save();scrollDiagnosticStepStart()});
- $('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية')){localStorage.removeItem(STORAGE_KEY);state.step=0;state.profile={};state.answers={};state.result=null;renderDiagnostic()}})
+ $('printBtn')?.addEventListener('click',printReport);$('imageBtn')?.addEventListener('click',exportResultImage);$('restartBtn')?.addEventListener('click',()=>{if(confirm('سيتم حذف بيانات التشخيص الحالية')){resetDiagnosticData()}})
 }
 function scoreAxis(axisId){const qs=applicableQuestions(axisId);let earned=0,max=0,answered=0;qs.forEach(q=>{const k=axisId+'_'+q.id;if(!Object.prototype.hasOwnProperty.call(state.answers,k))return;const v=state.answers[k];if(v===null)return;earned+=v*q.w;max+=4*q.w;answered++});return {score:max?Math.round(earned/max*100):null,answered,total:qs.length}}
 function stage(score){const level=RESULT_LEVELS.find(x=>score>=x.min&&score<=x.max)||RESULT_LEVELS[0];return[level.label,level.desc]}
@@ -1035,6 +1064,7 @@ function knowledgeForAxis(axisId){const map={purpose:['pwc2025','imd'],charter:[
 function renderDiagnostic(){
  const s=steps();if(state.step>=s.length)state.step=s.length-1;
  renderStepTabs();updateProgress();
+ renderFocusAxisRail();
  const current=s[state.step];
  $('diagPanel').innerHTML=current.id==='profile'?profilePanel():current.id==='result'?resultPanel():axisPanel(axes.find(a=>a.id===current.id));
  bindPanel();enhanceResultActions();
@@ -1114,6 +1144,7 @@ if($('modalClose')&&$('modal')){
  });
 }
 load();
+setupDiagnosticFocusMode();
 if($('statsGrid'))renderStats();
 if($('axisPreview'))renderAxesPreview();
 if($('diagPanel'))renderDiagnostic();

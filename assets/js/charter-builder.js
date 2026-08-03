@@ -63,37 +63,37 @@ const CHARTER_OPTION_LABELS={
  waqfGovernance:{separate:'حوكمة مستقلة للوقف متسقة مع صكه',integrated:'تنسيق مجلس العائلة مع مجلس النظارة دون تداخل',study:'إعداد دراسة مستقلة قبل إدخال الوقف في الميثاق'}
 };
 const CHARTER_FIELD_HELP={
- familyName:'اكتب الاسم المتداول لأسرة الملاك كما تريد ظهوره في عنوان المسودة، مثل: عائلة المحمدي، لا حاجة إلى إدخال أسماء الأفراد',
- companyName:'اكتب اسم الشركة الرئيسة كما يظهر في السجل التجاري أو عقد التأسيس، عند وجود عدة شركات، اكتب اسم الشركة القابضة أو الكيان الرئيس الذي سيطبق عليه الميثاق',
- city:'اكتب المدينة التي يوجد فيها المقر الرئيس أو تعقد فيها اجتماعات العائلة عادة، لا يقصد بها مواقع فروع الشركة',
- legalForm:'ارجع إلى السجل التجاري أو عقد التأسيس واختر الشكل المسجل للكيان الذي سيطبق عليه الميثاق، عند شمول الميثاق مجموعة شركات اختر القابضة أو المجموعة',
- generation:'المؤسس هو الجيل الأول، وأبناؤه الجيل الثاني، وأحفاده الجيل الثالث، عند مشاركة أكثر من جيل اختر الجيل الذي يتولى القيادة والملكية المؤثرة في الوقت الحالي',
- owners:'احسب كل فرد أو كيان مقيد ضمن الملاك في عقد التأسيس أو سجل المساهمين، بصرف النظر عن حجم الحصة',
- branches:'المقصود خطوط العائلة المنحدرة من أبناء أو بنات المؤسس، وليست الفروع التجارية، إذا كانت الملكية ضمن خط أسري واحد فاختر خيار «فرع عائلي واحد».',
- values:'اكتب من 4 إلى 7 قيم تحكم قرارات العائلة، مثل: العدل، الأمانة، الكفاءة، صلة الرحم والاستدامة، افصل بينها بفواصل',
- purpose:'اكتب جملة أو جملتين تجيبان: لماذا تريد العائلة استمرار ملكيتها المشتركة؟ وما الذي تريد حمايته أو تنميته عبر الأجيال؟',
- familyBody:'الجمعية العائلية تضم جميع الأعضاء المستوفين للشروط، ومجلس العائلة هيئة أصغر للمتابعة والتمثيل، الجمع بينهما أنسب عادة للعائلات الأكبر أو متعددة الفروع',
- representation:'حدد الطريقة التي ستوزع بها مقاعد مجلس العائلة، الانتخاب يناسب العائلة الصغيرة، وتمثيل الفروع يوازن العائلات الممتدة، والخيار المختلط يجمع التمثيل والكفاءة',
- meetingFrequency:'اختر الحد الأدنى الواقعي للاجتماعات التي تستطيع العائلة الالتزام بها كل سنة، وليس العدد المأمول فقط',
- decisionModel:'حدد كيف تعتمد القرارات العائلية، القرارات الحساسة تشمل تعديل الميثاق، التصرفات الجوهرية في الملكية وحل مجلس العائلة',
- councilSize:'اختر عدد أعضاء يتيح تمثيل العائلة وسرعة القرار، يساعد العدد الفردي من 5 إلى 9 أعضاء على تقليل تعادل الأصوات',
- councilTerm:'حدد مدة تمنح المجلس الوقت الكافي للعمل وتسمح بتجديد التمثيل، المدة المعتادة من سنتين إلى 4 سنوات، مع بيان إمكانية التجديد',
- transferPolicy:'اختر القاعدة التي تطبق عندما يرغب مالك في بيع حصته أو نقلها، وخاصة إلى شخص من خارج العائلة',
- valuationPolicy:'حدد كيف تحسب قيمة الحصة عند التخارج أو الشراء بين الملاك، المقيمون المعتمدون يقللون الخلاف حول السعر',
- dividendPolicy:'حدد المبدأ الذي يوازن بين احتياج الملاك للتوزيعات واحتياج الشركة للسيولة والنمو، القرار الفعلي يبقى وفق النتائج والوثائق النظامية',
- employmentPolicy:'اختر الأساس الذي يحكم توظيف أفراد العائلة، هذا الاختيار يخص الوظيفة والكفاءة، ولا يرتبط بحقوق الملكية أو الأرباح',
- externalExperience:'حدد الخبرة التي يكتسبها فرد العائلة خارج الشركة قبل تولي وظيفة دائمة أو قيادية داخلها، يمكن تركها مرتبطة بمتطلبات كل وظيفة',
- compensation:'اختر كيف يحدد راتب فرد العائلة العامل، الأجر مقابل الوظيفة والأداء، بينما التوزيعات مقابل الملكية، ويجب الفصل بينهما',
- boardPolicy:'حدد المبدأ الذي سيحكم ترشيح أعضاء مجلس الإدارة: الكفاءة أساس الاختيار، أو مزيج من أفراد العائلة والمستقلين، أو تعزيز الاستقلال',
- executivePolicy:'حدد من يمكنه تولي القيادة التنفيذية وما معيار الاختيار، الملكية وحدها لا تكفي، وتبقى الكفاءة واحتياج الشركة أساس التعيين',
- successionPolicy:'اختر مستوى التخطيط المطلوب لانتقال الرئيس التنفيذي والأدوار الحرجة، بما يشمل الانتقال المتوقع والحالات الطارئة',
- nextGen:'حدد الوسيلة التي ستعد بها العائلة أبناءها لفهم الملكية والحوكمة قبل دخولهم العمل أو ممارسة حقوقهم كملاك',
- disputePath:'اختر خطوات معالجة الخلاف: الحوار، ثم التوفيق أو الوساطة، ثم المسار المتفق عليه، يحتاج التحكيم إلى اتفاق قانوني مستقل ودقيق',
- confidentiality:'حدد من يطلع على الميثاق والمعلومات العائلية والتجارية، تصنيف المعلومات يسمح بتوسيع الاطلاع دون كشف البيانات الحساسة للجميع',
- reviewCycle:'اكتب عدد السنوات بين كل مراجعة، تناسب مدة سنتين أو 3 سنوات معظم العائلات، مع مراجعة مبكرة عند تغير الملكية أو القيادة',
- approvalThreshold:'اكتب نسبة أصحاب حق التصويت المطلوبة لتعديل الميثاق، تدعم نسبة 75% قبول التعديل على نطاق واسع، وتراجع مع آلية التصويت ووثائق الشركة',
- waqfGovernance:'اختر كيفية تنسيق أحكام الميثاق مع صك الوقف ومجلس النظارة، اختصاصات النظار تبقى مستقلة وفق الصك والأنظمة',
- notes:'اكتب القرارات المؤجلة أو الموضوعات الحساسة التي تحتاج مناقشة أو مراجعة مختص، مثل فئة مستثناة أو خلاف قائم، تجنب تسجيل أسرار شخصية غير لازمة'
+ familyName:'اكتب اسم أسرة الملاك كما تريد ظهوره في عنوان المسودة، من دون أسماء الأفراد',
+ companyName:'اكتب اسم الشركة الرئيسة أو الكيان القابض الذي سيطبق عليه الميثاق',
+ city:'اكتب مدينة المقر الرئيس أو المكان المعتاد لاجتماعات العائلة',
+ legalForm:'اختر الشكل المسجل في السجل التجاري أو عقد التأسيس للكيان المشمول بالميثاق',
+ generation:'اختر الجيل الذي يتولى القيادة والملكية المؤثرة حالياً',
+ owners:'احسب الأفراد والكيانات المقيدة في عقد التأسيس أو سجل المساهمين',
+ branches:'احسب الخطوط العائلية المنحدرة من أبناء أو بنات المؤسس، لا الفروع التجارية',
+ values:'اكتب من 4 إلى 7 قيم تحكم قرارات العائلة وافصل بينها بفواصل',
+ purpose:'اكتب ما تريد العائلة حمايته أو تنميته عبر استمرار الملكية المشتركة',
+ familyBody:'اختر الهيئة التي تمثل العائلة وتتابع قراراتها',
+ representation:'اختر طريقة توزيع المقاعد بما يوازن التمثيل والكفاءة',
+ meetingFrequency:'اختر الحد الأدنى للاجتماعات التي تستطيع العائلة الالتزام بها سنوياً',
+ decisionModel:'اختر طريقة اعتماد القرارات العادية والحساسة داخل العائلة',
+ councilSize:'اختر عدداً يوازن تمثيل العائلة وسرعة القرار، ويفضل أن يكون فردياً',
+ councilTerm:'حدد مدة تمنح المجلس وقتاً للعمل وتسمح بتجديد التمثيل',
+ transferPolicy:'اختر القاعدة المطبقة عند بيع الحصة أو نقلها داخل العائلة أو خارجها',
+ valuationPolicy:'اختر منهج حساب قيمة الحصة عند التخارج أو الشراء بين الملاك',
+ dividendPolicy:'اختر المبدأ الذي يوازن التوزيعات مع السيولة والنمو',
+ employmentPolicy:'اختر الأساس الذي يحكم توظيف أفراد العائلة بعيداً عن حقوق الملكية',
+ externalExperience:'حدد الخبرة الخارجية المطلوبة قبل تولي وظيفة دائمة أو قيادية',
+ compensation:'اختر طريقة تحديد الأجر مقابل الوظيفة والأداء، بعيداً عن توزيعات الملكية',
+ boardPolicy:'اختر المبدأ الذي يحكم ترشيح أعضاء مجلس الإدارة',
+ executivePolicy:'اختر من يمكنه تولي القيادة التنفيذية ومعيار الاختيار',
+ successionPolicy:'اختر مستوى تخطيط انتقال الرئيس التنفيذي والأدوار الحرجة، شاملاً الانتقال المتوقع والطوارئ',
+ nextGen:'اختر وسيلة إعداد الجيل القادم لفهم الملكية والحوكمة قبل ممارسة أدواره',
+ disputePath:'اختر تسلسل معالجة الخلاف من الحوار إلى المسار النظامي المتفق عليه',
+ confidentiality:'حدد من يطلع على الميثاق والمعلومات بحسب حساسيتها وصلاحيات الاطلاع',
+ reviewCycle:'حدد عدد السنوات بين المراجعات، مع مراجعة مبكرة عند تغير الملكية أو القيادة',
+ approvalThreshold:'حدد نسبة أصحاب حق التصويت المطلوبة لتعديل الميثاق',
+ waqfGovernance:'اختر طريقة تنسيق الميثاق مع صك الوقف واختصاصات مجلس النظارة',
+ notes:'اكتب القرارات المؤجلة أو الموضوعات التي تحتاج مناقشة أو مراجعة مختص'
 };
 const charterDefaults={
  familyName:'',companyName:'',city:'',legalForm:'',generation:'',owners:'',branches:'',
@@ -108,7 +108,7 @@ const charterDefaults={
  reviewCycle:'2',approvalThreshold:'75',confidentiality:'classified',
  waqfGovernance:'separate',notes:''
 };
-const charterState={active:false,step:0,data:{...charterDefaults},linkedDiagnostic:false,draft:null};
+const charterState={active:false,step:0,data:{...charterDefaults},linkedDiagnostic:false,draft:null,focusMode:false};
 let charterHadSavedData=false;
 
 function charterLatinDigits(value){
@@ -132,7 +132,7 @@ function charterSave(){
  try{
   localStorage.setItem(CHARTER_STORAGE_KEY,JSON.stringify({
    active:charterState.active,step:charterState.step,data:charterState.data,
-   linkedDiagnostic:charterState.linkedDiagnostic
+   linkedDiagnostic:charterState.linkedDiagnostic,focusMode:charterState.focusMode
   }));
  }catch(error){}
 }
@@ -146,6 +146,7 @@ function charterLoad(){
  charterState.data={...charterDefaults,...(saved.data||{})};
   Object.keys(charterState.data).forEach(key=>charterState.data[key]=charterLatinDigits(charterState.data[key]));
  charterState.linkedDiagnostic=Boolean(saved.linkedDiagnostic);
+ charterState.focusMode=Boolean(saved.focusMode);
  }catch(error){}
 }
 function charterHasDiagnostic(){
@@ -181,20 +182,19 @@ function charterHydrateFromDiagnostic(overwrite=false){
 function charterFieldHelp(name,kind){
  const help=CHARTER_FIELD_HELP[name];
  if(!help)return '';
- const title=kind==='select'?'كيف تختار؟':'كيف تكتب؟';
- return `<small class="charter-field-help"><b>${title}</b><span>${charterEscape(help)}</span></small>`;
+ return `<small class="charter-field-help" id="charter-help-${name}">${charterEscape(help)}</small>`;
 }
 function charterInput(name,label,type='text',placeholder='',required=false){
  const value=charterEscape(charterState.data[name]||'');
  const numeric=type==='number';
  const attributes=numeric?'type="text" inputmode="numeric" pattern="[0-9]*" lang="en-US" dir="ltr" class="charter-number-input"':'type="text"';
- return `<label class="charter-field"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'input')}<input data-charter-field="${name}" ${attributes} value="${value}" placeholder="${charterEscape(placeholder)}"></label>`;
+ return `<label class="charter-field" for="charter-field-${name}"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'input')}<input id="charter-field-${name}" data-charter-field="${name}" ${attributes} value="${value}" placeholder="${charterEscape(placeholder)}" aria-describedby="charter-help-${name}" ${required?'required':''}></label>`;
 }
 function charterTextarea(name,label,placeholder='',required=false){
- return `<label class="charter-field charter-field-wide"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'textarea')}<textarea data-charter-field="${name}" rows="3" placeholder="${charterEscape(placeholder)}">${charterEscape(charterState.data[name]||'')}</textarea></label>`;
+ return `<label class="charter-field charter-field-wide" for="charter-field-${name}"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'textarea')}<textarea id="charter-field-${name}" data-charter-field="${name}" rows="3" placeholder="${charterEscape(placeholder)}" aria-describedby="charter-help-${name}" ${required?'required':''}>${charterEscape(charterState.data[name]||'')}</textarea></label>`;
 }
 function charterSelect(name,label,options,required=false,wide=false){
- return `<label class="charter-field ${wide?'charter-field-wide':''}"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'select')}<select data-charter-field="${name}">${options.map(([value,text])=>`<option value="${charterEscape(value)}" ${String(charterState.data[name])===String(value)?'selected':''}>${charterEscape(text)}</option>`).join('')}</select></label>`;
+ return `<label class="charter-field ${wide?'charter-field-wide':''}" for="charter-field-${name}"><span>${label}${required?'<i>مطلوب</i>':''}</span>${charterFieldHelp(name,'select')}<select id="charter-field-${name}" data-charter-field="${name}" aria-describedby="charter-help-${name}" ${required?'required':''}>${options.map(([value,text])=>`<option value="${charterEscape(value)}" ${String(charterState.data[name])===String(value)?'selected':''}>${charterEscape(text)}</option>`).join('')}</select></label>`;
 }
 function charterStepIntro(kicker,title,copy){
  return `<div class="charter-panel-title"><span>${kicker}</span><h3>${title}</h3><p>${copy}</p></div>`;
@@ -589,6 +589,29 @@ function charterRenderProgress(){
  if(percent)percent.textContent=`${pct}%`;
  if(fill)fill.style.width=`${pct}%`;
  if(tabs)tabs.innerHTML=CHARTER_STEPS.map((step,index)=>`<button type="button" data-charter-step="${index}" class="${index===charterState.step?'active':''} ${index<charterState.step?'done':''}" ${index>charterState.step?'disabled':''}><b>${index+1}</b><span>${step.short}</span></button>`).join('');
+ const focusLabel=document.getElementById('charterFocusLabel');
+ const focusProgress=document.getElementById('charterFocusProgress');
+ if(focusLabel)focusLabel.textContent=CHARTER_STEPS[charterState.step].label;
+ if(focusProgress)focusProgress.textContent=`${pct}%`;
+}
+let charterFocusReturn=null;
+function charterSetFocusMode(active,returnFocus=true){
+ charterState.focusMode=Boolean(active);
+ document.documentElement.classList.toggle('focus-mode',charterState.focusMode);
+ const toolbar=document.getElementById('charterFocusToolbar');
+ const entry=document.getElementById('charterFocusBtn');
+ if(toolbar)toolbar.hidden=!charterState.focusMode;
+ if(entry)entry.setAttribute('aria-pressed',String(charterState.focusMode));
+ charterSave();
+ if(!charterState.focusMode&&returnFocus&&charterFocusReturn&&document.contains(charterFocusReturn))charterFocusReturn.focus();
+}
+function charterSetupFocusMode(){
+ const entry=document.getElementById('charterFocusBtn');
+ const exit=document.getElementById('charterFocusExit');
+ entry?.addEventListener('click',()=>{charterFocusReturn=entry;charterSetFocusMode(true);document.getElementById('charterFocusExit')?.focus()});
+ exit?.addEventListener('click',()=>charterSetFocusMode(false));
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&charterState.focusMode){event.preventDefault();charterSetFocusMode(false)}});
+ if(charterState.focusMode)charterSetFocusMode(true,false);
 }
 function charterBindFields(){
  document.querySelectorAll('#charterBuilderPanel [data-charter-field]').forEach(input=>{
@@ -630,7 +653,8 @@ function charterStartFresh(){
 }
 function charterClearStoredData(){
  localStorage.removeItem(CHARTER_STORAGE_KEY);
- charterState.active=false;charterState.step=0;charterState.data={...charterDefaults};charterState.linkedDiagnostic=false;charterState.draft=null;charterHadSavedData=false;
+ charterState.active=false;charterState.step=0;charterState.data={...charterDefaults};charterState.linkedDiagnostic=false;charterState.draft=null;charterState.focusMode=false;charterHadSavedData=false;
+ charterSetFocusMode(false,false);
  const panel=document.getElementById('charterBuilderPanel');
  if(panel)panel.innerHTML='<div class="charter-builder-empty"><span class="charter-builder-empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6V3Zm9 0v4h4M9 11h6M9 15h6"/></svg></span><h3>ابدأ من التشخيص أو أنشئ المسودة مباشرة</h3><p>عند وجود نتيجة تشخيص، تستخدم الخدمة بياناتها وتضيف المواد والتنبيهات المناسبة.</p><button class="btn primary" type="button" data-open-charter="empty">إنشاء مسودة جديدة</button></div>';
  const label=document.getElementById('charterProgressLabel'),percent=document.getElementById('charterProgressPercent'),fill=document.getElementById('charterProgressFill'),tabs=document.getElementById('charterStepTabs');
@@ -659,13 +683,13 @@ function charterHandleNavigation(direction){
  }
 }
 function charterPrintHtml(draft){
- const logo=new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href;
+ const logo=new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href;
  const naif=new URL('assets/images/naif-logo.png',document.baseURI).href;
  const warnings=draft.warnings.map(item=>`<div class="warning"><strong>${charterEscape(item.title)}</strong><span>${charterEscape(item.text)}</span></div>`).join('');
  const chapters=draft.chapters.map(chapter=>`<section class="chapter"><h2>${charterEscape(chapter.title)}</h2>${chapter.articles.map(article=>`<article><header><b>المادة ${article.number}: ${charterEscape(article.title)}</b><small>${charterEscape(article.status)}</small></header>${article.body.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</article>`).join('')}</section>`).join('');
  const preamble=`<section class="preamble"><blockquote>${charterEscape(draft.preamble.verse)}</blockquote><span>${charterEscape(draft.preamble.verseSource)}</span><h2>${charterEscape(draft.preamble.lawTitle)}</h2>${draft.preamble.lawParagraphs.map(text=>`<p>${charterEscape(text)}</p>`).join('')}</section>`;
- return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${charterEscape(draft.title)}</title><style>
- @page{size:A4;margin:13mm 14mm 15mm}*{box-sizing:border-box}body{margin:0;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;text-align:right;font-size:10.5pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}.head{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #E5DDD1;background:#F7F1E8}.head img{width:62px;height:62px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:20pt}.head p{margin:3px 0 0;color:#69747C}.head time{direction:ltr;color:#8A735E;font-size:8pt}.status{margin:10px 0;padding:9px 11px;border-right:4px solid #C9853C;background:#FFF8EF;color:#6B5946;font-size:8.5pt}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.meta div{padding:8px;border:1px solid #E6E0D8;background:#fff}.meta small{display:block;color:#7E8A92;font-size:7pt}.meta strong{color:#0D3656}.preamble{margin:12px 0;padding:12px;border:1px solid #E4D6C5;background:#FFF9F0;page-break-inside:avoid}.preamble blockquote{margin:0;text-align:center;color:#0D3656;font-size:15pt;font-weight:700}.preamble>span{display:block;text-align:center;color:#8F5825;font-size:8pt}.preamble h2{margin:12px 0 5px;color:#0D3656;font-size:11pt}.preamble p{margin:4px 0;color:#303F49;font-size:8.5pt}.warnings{display:grid;gap:5px;margin:10px 0}.warning{padding:7px 9px;border:1px solid #EADCCB;background:#FFF9F2}.warning strong{display:block;color:#9A5F26;font-size:8pt}.warning span{font-size:7.5pt;color:#655D55}.chapter{margin:13px 0}.chapter h2{margin:0 0 7px;padding:7px 9px;background:#0D3656;color:#fff;font-size:13pt;page-break-after:avoid}.chapter article{margin:0 0 7px;padding:8px 10px;border:1px solid #E4DED6;page-break-inside:avoid}.chapter article header{display:flex;justify-content:space-between;gap:10px;align-items:start}.chapter article header b{color:#0D3656;font-size:10pt}.chapter article header small{padding:2px 6px;border-radius:10px;background:#F2E4D4;color:#8F5825;font-size:6.5pt}.chapter article p{margin:5px 0;color:#303F49;font-size:8.5pt}.disclaimer{margin-top:12px;padding:9px 11px;background:#F7F5F1;color:#675F57;font-size:7.5pt}.doc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:8px;border-top:1px solid #D8D0C5;color:#6D7880;font-size:7pt}.doc-footer img{width:78px;height:36px;object-fit:contain}.doc-footer strong{color:#0D3656}.doc-footer span{color:#A36328;font-weight:700}
+ return `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${charterEscape(draft.title)}</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet"><style>
+ @page{size:A4;margin:13mm 14mm 15mm}*{box-sizing:border-box}body{margin:0;color:#263843;font-family:Arial,Tahoma,sans-serif;direction:rtl;text-align:right;font-size:10.5pt;line-height:1.75;-webkit-print-color-adjust:exact;print-color-adjust:exact}.head{display:grid;grid-template-columns:75px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #E5DDD1;background:#F7F1E8}.head img{width:62px;height:62px;object-fit:contain}.head h1{margin:0;color:#0D3656;font-size:20pt}.head p{margin:3px 0 0;color:#69747C}.head time{direction:ltr;color:#8A735E;font-size:8pt}.status{margin:10px 0;padding:9px 11px;border-right:4px solid #C9853C;background:#FFF8EF;color:#6B5946;font-size:8.5pt}.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.meta div{padding:8px;border:1px solid #E6E0D8;background:#fff}.meta small{display:block;color:#7E8A92;font-size:7pt}.meta strong{color:#0D3656}.preamble{margin:12px 0;padding:12px;border:1px solid #E4D6C5;background:#FFF9F0;page-break-inside:avoid}.preamble blockquote{margin:0;text-align:center;color:#0D3656;font-family:'Amiri Quran','Noto Naskh Arabic','Amiri',serif;font-size:18pt;font-weight:400;line-height:1.9}.preamble>span{display:block;text-align:center;color:#8F5825;font-size:8pt}.preamble h2{margin:12px 0 5px;color:#0D3656;font-size:11pt}.preamble p{margin:4px 0;color:#303F49;font-size:8.5pt}.warnings{display:grid;gap:5px;margin:10px 0}.warning{padding:7px 9px;border:1px solid #EADCCB;background:#FFF9F0}.warning strong{display:block;color:#9A5F26;font-size:8pt}.warning span{font-size:7.5pt;color:#655D55}.chapter{margin:13px 0}.chapter h2{margin:0 0 7px;padding:7px 9px;background:#0D3656;color:#fff;font-size:13pt;page-break-after:avoid}.chapter article{margin:0 0 7px;padding:8px 10px;border:1px solid #E4DED6;page-break-inside:avoid}.chapter article header{display:flex;justify-content:space-between;gap:10px;align-items:start}.chapter article header b{color:#0D3656;font-size:10pt}.chapter article header small{padding:2px 6px;border-radius:10px;background:#F2E4D4;color:#8F5825;font-size:6.5pt}.chapter article p{margin:5px 0;color:#303F49;font-size:8.5pt}.disclaimer{margin-top:12px;padding:9px 11px;background:#F7F5F1;color:#675F57;font-size:7.5pt}.doc-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:8px;border-top:1px solid #D8D0C5;color:#6D7880;font-size:7pt}.doc-footer img{width:78px;height:36px;object-fit:contain}.doc-footer strong{color:#0D3656}.doc-footer span{color:#A36328;font-weight:700}
  </style></head><body><header class="head"><img src="${logo}" alt="إمتداد"><div><h1>${charterEscape(draft.title)}</h1><p>${charterEscape(draft.subtitle)}</p></div><time>${charterEscape(draft.createdAt)}</time></header><div class="status">مسودة استرشادية للمناقشة والمراجعة قبل الاعتماد</div><div class="meta"><div><small>الأبواب</small><strong>${draft.chapters.length}</strong></div><div><small>المواد</small><strong>${draft.articleCount}</strong></div><div><small>التنبيهات</small><strong>${draft.warnings.length}</strong></div><div><small>التشخيص</small><strong>${draft.linkedDiagnostic?'مرتبط':'مباشر'}</strong></div></div>${preamble}<section class="warnings">${warnings}</section>${chapters}<div class="disclaimer"><strong>حدود الاستخدام:</strong> مسودة استرشادية تجمع قرارات العائلة وتترجمها إلى هيكل قابل للمراجعة. تعتمد النسخة النهائية بعد مواءمتها مع الأنظمة ووثائق الشركة وصك الوقف عند انطباقه، ومراجعتها من المختصين.</div><footer class="doc-footer"><img src="${naif}" alt="نايف المحمدي"><div><strong>منظومة الشركات العائلية | أداة إمتداد</strong><br>almohammdin.github.io/emtidad/</div><span>${VERSION}</span></footer></body></html>`;
 }
 function charterPrintDraft(){
@@ -675,7 +699,7 @@ function charterPrintDraft(){
  win.opener=null;
  win.document.open();win.document.write(charterPrintHtml(draft));win.document.close();
  const printWhenReady=()=>{
-  Promise.all([...win.document.images].map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.onload=resolve;image.onerror=resolve}))).then(()=>setTimeout(()=>{win.focus();win.print()},250));
+  Promise.all([win.document.fonts?.ready||Promise.resolve(),...[...win.document.images].map(image=>image.complete?Promise.resolve():new Promise(resolve=>{image.onload=resolve;image.onerror=resolve}))]).then(()=>setTimeout(()=>{win.focus();win.print()},250));
  };
  if(win.document.readyState==='complete')printWhenReady();else win.addEventListener('load',printWhenReady,{once:true});
 }
@@ -733,7 +757,7 @@ function charterBuildDocx(draft,D,images){
  const run=(text,options={})=>{
   const rtl=options.rtl!==false;
  return new D.TextRun({
-   text:charterLatinDigits(text),font:'Arial',size:options.size||20,color:options.color||ink,
+   text:charterLatinDigits(text),font:options.font||'Arial',size:options.size||20,color:options.color||ink,
    bold:Boolean(options.bold),rightToLeft:rtl,language:rtl?{value:'ar-SA',bidirectional:'ar-SA'}:{value:'en-US'},
    break:options.break||0
   });
@@ -776,7 +800,7 @@ function charterBuildDocx(draft,D,images){
  ],{width:10450,fill:soft,borders:{top:border('E6D8C8',5),bottom:border('E6D8C8',5),left:border('E6D8C8',5),right:border(gold,22)}})]})]));
  children.push(paragraph('',{after:80}));
  children.push(table([new D.TableRow({cantSplit:true,children:[cell([
-  paragraph(draft.preamble.verse,{bold:true,size:28,color:navy,alignment:D.AlignmentType.CENTER,after:35,keepNext:true}),
+  paragraph(draft.preamble.verse,{font:'Amiri Quran',size:34,color:navy,alignment:D.AlignmentType.CENTER,after:35,keepNext:true,line:380}),
   paragraph(draft.preamble.verseSource,{bold:true,size:14,color:'925821',alignment:D.AlignmentType.CENTER,after:100,keepNext:true}),
   paragraph(draft.preamble.lawTitle,{bold:true,size:20,color:navy,after:55,keepNext:true,style:'ArabicHeading'}),
   ...draft.preamble.lawParagraphs.map(text=>paragraph(text,{size:16,color:ink,after:45,line:310}))
@@ -834,7 +858,7 @@ async function charterDownloadWord(button){
  try{
   const [D,logo,naif]=await Promise.all([
    ensureDocxLibrary(),
-   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.7.0',document.baseURI).href),
+   imageUrlAsBytes(new URL('assets/images/emtidad-logo.png?v=0.8.0',document.baseURI).href),
    imageUrlAsBytes(new URL('assets/images/naif-logo.png',document.baseURI).href)
   ]);
   const documentFile=charterBuildDocx(draft,D,{logo,naif});
@@ -865,6 +889,7 @@ function charterInjectResultCta(){
 function charterInit(){
  charterLoad();
  if(charterState.active)charterRender();
+ charterSetupFocusMode();
  setupCharterStorageControls();
  document.addEventListener('click',event=>{
   const opener=event.target.closest('[data-open-charter]');

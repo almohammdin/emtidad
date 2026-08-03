@@ -4,6 +4,20 @@
  const toggle = document.getElementById('navMenuToggle');
  const backToTop = document.getElementById('backToTop');
  const page = body.dataset.page || '';
+ const THEME_KEY = 'emtidad_theme_v080';
+
+ const applyTheme = theme => {
+  const dark = theme === 'dark';
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+   button.setAttribute('aria-pressed', String(dark));
+   button.setAttribute('aria-label', dark ? 'الانتقال إلى الوضع النهاري' : 'الانتقال إلى الوضع الليلي');
+   button.innerHTML = dark ? '<span aria-hidden="true">☀</span> الوضع النهاري' : '<span aria-hidden="true">☾</span> الوضع الليلي';
+  });
+ };
+ let savedTheme = 'light';
+ try { savedTheme = localStorage.getItem(THEME_KEY) || 'light'; } catch (error) {}
+ applyTheme(savedTheme);
 
  document.querySelectorAll('[data-nav]').forEach(link => {
   const active = link.dataset.nav === page;
@@ -21,8 +35,24 @@
    <a href="https://www.snapchat.com/add/almohammdin" target="_blank" rel="noopener" aria-label="Snapchat" title="Snapchat"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="brand-fill" d="M8.2 16.9c.8.3 1.1.7 1.3 1.1.7-.1 1.5-.2 2.5-.2s1.8.1 2.5.2c.2-.4.5-.8 1.3-1.1 1.2-.4 2.1-1 2.5-1.6-1.9-.7-2.1-2.3-2.1-4.7 0-2.7-1.7-4.5-4.2-4.5s-4.2 1.8-4.2 4.5c0 2.4-.2 4-2.1 4.7.4.6 1.3 1.2 2.5 1.6Z"/></svg></span></a>
    <a href="https://linktr.ee/almohammdin" target="_blank" rel="noopener" aria-label="Linktree" title="Linktree"><span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="brand-fill" d="M13.736 5.852 17.644 2l1.92 1.92-3.852 3.736h5.644v2.736h-5.66l3.868 3.752-1.92 1.92-5.276-5.28-5.276 5.28-1.92-1.92 3.868-3.752H3.38V7.656h5.644L5.172 3.92 7.092 2l3.932 3.852V0h2.712v5.852ZM11.024 24v-8.604h2.712V24h-2.712Z"/></svg></span></a>
   </div><a class="social-handle" href="https://linktr.ee/almohammdin" target="_blank" rel="noopener">Almohammdin</a>`;
-  handle.replaceWith(social);
+ handle.replaceWith(social);
  });
+
+ document.querySelectorAll('.footer-bottom').forEach(footer => {
+  if (footer.querySelector('[data-theme-toggle]')) return;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'theme-toggle';
+  button.dataset.themeToggle = '';
+  button.setAttribute('aria-label', 'تبديل ألوان المنصة');
+  footer.querySelector('.footer-version')?.before(button);
+  button.addEventListener('click', () => {
+   const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+   try { localStorage.setItem(THEME_KEY, next); } catch (error) {}
+   applyTheme(next);
+  });
+ });
+ applyTheme(savedTheme);
 
  if (toggle && nav) {
   const setOpen = open => {
