@@ -493,6 +493,27 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 }
 
 /* v0.4.2 fixed Word furniture and distinguished Emtidad templates */
+.will-feature-card{
+ position:relative;overflow:hidden;display:grid;grid-template-columns:92px minmax(0,1fr) auto;gap:20px;align-items:center;
+ margin:30px 0 16px;padding:24px 26px;border:1px solid rgba(201,133,60,.48);border-radius:26px;
+ background:linear-gradient(135deg,#FFF9F1 0%,#F4E7D7 52%,#EEF4F7 100%);color:inherit;text-decoration:none;
+ box-shadow:0 16px 38px rgba(13,54,86,.1)
+}
+.will-feature-card:after{content:"";position:absolute;left:-65px;bottom:-88px;width:210px;height:210px;border:1px solid rgba(201,133,60,.2);border-radius:50%;box-shadow:0 0 0 28px rgba(201,133,60,.04)}
+.will-feature-card>*{position:relative;z-index:1}
+.will-feature-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 22px 48px rgba(13,54,86,.14)}
+.will-feature-icon{width:86px;height:86px;display:grid;place-items:center;border-radius:24px;background:var(--navy);color:#fff;box-shadow:0 12px 24px rgba(13,54,86,.18)}
+.will-feature-icon svg{width:52px;height:52px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.will-feature-badges{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.will-feature-badges span,.will-feature-badges b{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:600}
+.will-feature-badges span{background:#E7EEF2;color:var(--navy)}
+.will-feature-badges b{background:var(--gold);color:#fff}
+.will-feature-copy h3{margin:0 0 5px;color:var(--navy);font-size:clamp(24px,3vw,34px);line-height:1.35}
+.will-feature-copy p{max-width:760px;margin:0;color:#56646E;font-size:16px;line-height:1.8}
+.will-feature-points{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.will-feature-points span{padding:5px 9px;border:1px solid rgba(13,54,86,.1);border-radius:10px;background:rgba(255,255,255,.65);color:#5A6670;font-size:13px;font-weight:600}
+.will-feature-action{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;border-radius:14px;background:var(--navy);color:#fff;white-space:nowrap;font-size:15px}
+.will-feature-action svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none}
 .templates-showcase{
  position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
  gap:24px;align-items:center;margin:34px 0 15px;padding:25px;border-radius:26px;
@@ -617,6 +638,10 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
 .template-actions .btn{flex:0 0 auto;white-space:nowrap}
 .modal-card:has(.template-references){width:min(920px,100%)}
 @media(max-width:720px){
+ .will-feature-card{grid-template-columns:1fr;gap:14px;margin-top:25px;padding:20px;border-radius:22px}
+ .will-feature-icon{width:68px;height:68px;border-radius:19px}
+ .will-feature-icon svg{width:42px;height:42px}
+ .will-feature-action{width:100%}
  .templates-showcase{grid-template-columns:1fr;gap:18px;margin-top:26px;padding:20px;border-radius:22px}
  .templates-showcase-titles{grid-template-columns:1fr}
  .templates-showcase-titles li{min-height:40px}
@@ -1487,4 +1512,15 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  html[data-theme="dark"] :is(.page-hero-meta a,.page-hero-meta span){background:#173241!important;border-color:#3A5261!important;color:#DDE7EC!important}
  html[data-theme="dark"] :is(.article-text,.article-text li,.principles-card .principle p,.knowledge-card .highlights li,.case-lessons li,.charter-index-item,.legal-foot p,.modal-body){color:#C7D2D8!important}
  html[data-theme="dark"] :is(.chip,.source-line span,.case-card .case-top span,.charter-field>span i){background:#243B49!important;color:#E5B77B!important;border-color:#425866!important}
+}
+
+/* v0.9.0 featured will tool */
+@media screen{
+ .will-feature-copy h3{font-size:clamp(24px,3vw,34px)!important;line-height:1.35!important}
+ .will-feature-copy p{font-size:16px!important;line-height:1.8!important}
+ html[data-theme="dark"] .will-feature-card{background:linear-gradient(135deg,#142C3A,#102735);border-color:#765936}
+ html[data-theme="dark"] .will-feature-copy h3{color:#DDEBF3!important}
+ html[data-theme="dark"] .will-feature-copy p{color:#B5C0C7!important}
+ html[data-theme="dark"] .will-feature-points span{background:#173241;border-color:#3A5261;color:#D7E1E6}
+ html[data-theme="dark"] .will-feature-badges span{background:#243B49;color:#E5B77B}
 }
