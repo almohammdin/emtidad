@@ -1514,7 +1514,7 @@ a{color:inherit}.container{width:min(1180px,calc(100% - 34px));margin:auto}
  html[data-theme="dark"] :is(.chip,.source-line span,.case-card .case-top span,.charter-field>span i){background:#243B49!important;color:#E5B77B!important;border-color:#425866!important}
 }
 
-/* v0.9.0 featured will tool */
+/* v0.9.1 featured will tool */
 @media screen{
  .will-feature-copy h3{font-size:clamp(24px,3vw,34px)!important;line-height:1.35!important}
  .will-feature-copy p{font-size:16px!important;line-height:1.8!important}
