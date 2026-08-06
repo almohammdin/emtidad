@@ -18,6 +18,7 @@
  const arabicLetter=/[ء-ي]/;
  let scheduled=false;
  let resizeTimer=null;
+ let observer=null;
 
  function improveTemplateCards(){
   document.querySelector('.page-next')?.remove();
@@ -163,12 +164,14 @@
   scheduled=true;
   requestAnimationFrame(()=>{
    scheduled=false;
+   observer?.disconnect();
    improveTemplateCards();
+   observer?.observe(document.body,{childList:true,subtree:true,characterData:true});
   });
  }
 
  improveTemplateCards();
- const observer=new MutationObserver(scheduleImprove);
+ observer=new MutationObserver(scheduleImprove);
  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
  window.addEventListener('resize',()=>{
   clearTimeout(resizeTimer);
