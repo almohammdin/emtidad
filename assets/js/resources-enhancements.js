@@ -8,6 +8,80 @@
    :'ضع علامة أمام البنود المتحققة أو التي تم حسمها، واترك غير المتحقق دون تحديد.';
  }
 
+ const referenceAudit={
+  'قائمة جاهزية التقييم العادل':{
+   roles:{
+    'دليل التقييم العادل للمنشآت العائلية':'مرجع مباشر',
+    'الهيئة السعودية للمقيّمين المعتمدين':'إطار مهني سعودي',
+    'المعايير الدولية للتقييم IVS':'معيار مهني'
+   }
+  },
+  'قائمة جاهزية الميثاق':{
+   roles:{
+    'المركز الوطني للمنشآت العائلية':'إطار وطني عام',
+    'ميثاق حوكمة الشركات العائلية الخليجية':'مرجع خليجي مرتبط',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع متخصص'
+   }
+  },
+  'فهرس الميثاق العائلي':{
+   roles:{
+    'وزارة التجارة — نطاق الميثاق العائلي':'مرجع مباشر للنطاق',
+    'ميثاق حوكمة الشركات العائلية الخليجية':'مرجع خليجي مرتبط',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع مباشر للمكونات'
+   }
+  },
+  'سياسة توظيف أفراد العائلة':{
+   roles:{
+    'وزارة التجارة — الميثاق العائلي':'مرجع مباشر للنطاق',
+    'ميثاق حوكمة الشركات العائلية الخليجية':'مرجع خليجي مرتبط',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع مباشر للسياسة'
+   }
+  },
+  'مبادئ توزيع الأرباح':{
+   roles:{
+    'وزارة التجارة — نطاق الميثاق العائلي':'مرجع مباشر للنطاق',
+    'Strategy& الشرق الأوسط — دستور العائلة واتفاقية المساهمين':'حالة تطبيقية مباشرة',
+    'PwC — حوكمة الشركات العائلية':'مرجع داعم'
+   }
+  },
+  'قائمة التعاقب القيادي':{
+   omit:['المركز الوطني للمنشآت العائلية'],
+   roles:{
+    'دليل التعاقب لمجلس الشركات العائلية الخليجية':'مرجع مباشر للتعاقب',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع مباشر للخطة'
+   }
+  },
+  'جدول مجلس العائلة':{
+   roles:{
+    'المركز الوطني للمنشآت العائلية':'إطار وطني عام',
+    'ميثاق حوكمة الشركات العائلية الخليجية':'مرجع خليجي مرتبط',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع مباشر لدور المجلس'
+   }
+  },
+  'مصفوفة الأدوار':{
+   roles:{
+    'المركز الوطني للمنشآت العائلية':'إطار وطني عام',
+    'ميثاق حوكمة الشركات العائلية الخليجية':'مرجع خليجي مرتبط',
+    'دليل IFC لحوكمة الشركات العائلية':'مرجع داعم للأدوار'
+   }
+  },
+  'قائمة دراسة الوقف':{
+   omit:['دليل التعاقب لمجلس الشركات العائلية الخليجية'],
+   roles:{
+    'الهيئة العامة للأوقاف — مشروع حوكمة الأوقاف':'مرجع سعودي مباشر',
+    'المبادئ الأساسية لتشغيل الوقف والإشراف عليه':'مرجع دولي مباشر'
+   }
+  }
+ };
+
+ function auditedReferences(template,guide){
+  const audit=referenceAudit[template.title]||{};
+  const omitted=new Set(audit.omit||[]);
+  return guide.references
+   .filter(reference=>!omitted.has(reference.name))
+   .map(reference=>({...reference,relation:audit.roles?.[reference.name]||'مصدر مرتبط'}));
+ }
+
  function renderEnhancedTools(){
   const toolsGrid=document.getElementById('toolsGrid');
   const naifGrid=document.getElementById('naifToolsGrid');
@@ -26,13 +100,14 @@
  function openEnhancedTool(index){
   const template=toolsData[index];
   const guide=templateGuideFor(template);
+  const references=auditedReferences(template,guide);
   const modal=document.getElementById('modal');
   const modalTitle=document.getElementById('modalTitle');
   const modalBody=document.getElementById('modalBody');
   if(!template||!modal||!modalTitle||!modalBody)return;
 
   modalTitle.textContent=template.title;
-  modalBody.innerHTML=`<div class="template-purpose-grid"><section><small>متى تستخدم هذا النموذج؟</small><strong>${escapeHtml(template.intro)}</strong></section><section><small>ما الذي يجهزه لك؟</small><strong>${escapeHtml(guide.outcome)}</strong></section></div><section class="template-use-guide"><div class="template-block-head"><span>طريقة الاستخدام</span><h4>ثلاث خطوات فقط</h4></div><ol class="template-use-steps"><li><b>1</b><span><strong>عبئ البيانات الأساسية</strong><small>اكتب معلومات العائلة أو الشركة والقرار محل العمل.</small></span></li><li><b>2</b><span><strong>حدد البنود المناسبة</strong><small>${escapeHtml(selectionInstruction(template))}</small></span></li><li><b>3</b><span><strong>حمّل الملف وراجعه</strong><small>استخدم Word للتعديل أو PDF للمشاركة والمراجعة.</small></span></li></ol></section><div class="template-sections">${template.sections.map((section,sectionIndex)=>`<section class="template-section"><h4>${escapeHtml(section.title)}</h4>${section.type==='fields'?`<div class="template-fields">${section.items.map((item,itemIndex)=>`<label><span>${escapeHtml(item)}</span><input class="template-field-input" data-template-section="${sectionIndex}" data-template-item="${itemIndex}" placeholder="اكتب هنا"></label>`).join('')}</div>`:`<div class="template-checks">${section.items.map((item,itemIndex)=>`<label><input type="checkbox" data-template-section="${sectionIndex}" data-template-item="${itemIndex}"><span>${escapeHtml(item)}</span></label>`).join('')}</div>`}</section>`).join('')}</div><section class="template-practices"><div class="template-block-head"><span>إرشادات</span><h4>ما الذي يساعدك أثناء التعبئة؟</h4></div><ol>${guide.practices.map((item,itemIndex)=>`<li><b>${itemIndex+1}</b><span>${escapeHtml(item)}</span></li>`).join('')}</ol></section><section class="template-references"><div class="template-block-head"><span>للاطلاع</span><h4>المراجع التي بُني عليها النموذج</h4></div><div>${guide.references.map(reference=>`<a href="${reference.url}" target="_blank" rel="noopener"><span>${escapeHtml(reference.level)}</span><strong>${escapeHtml(reference.name)}</strong><small>${escapeHtml(reference.use)}</small>${icon('external')}</a>`).join('')}</div></section><div class="template-method">المراجع والإرشادات للمساعدة أثناء الاستخدام، ولا تظهر في الملف المحمل.</div><div class="template-actions enhanced-template-actions"><p><strong>ملف التصدير يشمل النموذج المعبأ فقط</strong><span>حمّل Word للتعديل، أو احفظ PDF للمشاركة.</span></p><div><button class="btn primary" type="button" id="wordToolBtn">تحميل Word</button><button class="btn secondary" type="button" id="pdfToolBtn">${icon('print')} طباعة أو حفظ PDF</button></div></div>`;
+  modalBody.innerHTML=`<div class="template-purpose-grid"><section><small>متى تستخدم هذا النموذج؟</small><strong>${escapeHtml(template.intro)}</strong></section><section><small>ما الذي يجهزه لك؟</small><strong>${escapeHtml(guide.outcome)}</strong></section></div><section class="template-use-guide"><div class="template-block-head"><span>طريقة الاستخدام</span><h4>ثلاث خطوات فقط</h4></div><ol class="template-use-steps"><li><b>1</b><span><strong>عبئ البيانات الأساسية</strong><small>اكتب معلومات العائلة أو الشركة والقرار محل العمل.</small></span></li><li><b>2</b><span><strong>حدد البنود المناسبة</strong><small>${escapeHtml(selectionInstruction(template))}</small></span></li><li><b>3</b><span><strong>حمّل الملف وراجعه</strong><small>استخدم Word للتعديل أو PDF للمشاركة والمراجعة.</small></span></li></ol></section><div class="template-sections">${template.sections.map((section,sectionIndex)=>`<section class="template-section"><h4>${escapeHtml(section.title)}</h4>${section.type==='fields'?`<div class="template-fields">${section.items.map((item,itemIndex)=>`<label><span>${escapeHtml(item)}</span><input class="template-field-input" data-template-section="${sectionIndex}" data-template-item="${itemIndex}" placeholder="اكتب هنا"></label>`).join('')}</div>`:`<div class="template-checks">${section.items.map((item,itemIndex)=>`<label><input type="checkbox" data-template-section="${sectionIndex}" data-template-item="${itemIndex}"><span>${escapeHtml(item)}</span></label>`).join('')}</div>`}</section>`).join('')}</div><section class="template-practices"><div class="template-block-head"><span>إرشادات</span><h4>ما الذي يساعدك أثناء التعبئة؟</h4></div><ol>${guide.practices.map((item,itemIndex)=>`<li><b>${itemIndex+1}</b><span>${escapeHtml(item)}</span></li>`).join('')}</ol></section><section class="template-references"><div class="template-block-head"><span>للاطلاع والتحقق</span><h4>مصادر مرتبطة بالموضوع</h4></div><p class="template-reference-note">لا يعني إدراج المصدر أن النموذج ورد فيه بصورته الحالية. يوضح التصنيف إن كان المصدر مباشرًا أو داعمًا أو إطارًا عامًا، والنموذج من إعداد إمتداد.</p><div>${references.map(reference=>`<a href="${reference.url}" target="_blank" rel="noopener"><span>${escapeHtml(reference.relation)}</span><strong>${escapeHtml(reference.name)}</strong><small><b>${escapeHtml(reference.level)}</b> · ${escapeHtml(reference.use)}</small>${icon('external')}</a>`).join('')}</div></section><div class="template-method">المصادر والإرشادات للمساعدة أثناء الاستخدام والتحقق، ولا تظهر في الملف المحمل.</div><div class="template-actions enhanced-template-actions"><p><strong>ملف التصدير يشمل النموذج المعبأ فقط</strong><span>حمّل Word للتعديل، أو احفظ PDF للمشاركة.</span></p><div><button class="btn primary" type="button" id="wordToolBtn">تحميل Word</button><button class="btn secondary" type="button" id="pdfToolBtn">${icon('print')} طباعة أو حفظ PDF</button></div></div>`;
 
   document.getElementById('wordToolBtn')?.addEventListener('click',()=>downloadTemplateWord(index));
   document.getElementById('pdfToolBtn')?.addEventListener('click',()=>printTemplate(index));
