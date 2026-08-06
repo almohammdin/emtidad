@@ -9,13 +9,13 @@
 .template-card-result{background:#f2f6f8;border:1px solid #dfe8ed}
 .template-card-use small,.template-card-result small{display:block;margin-bottom:3px;color:#925821;font-size:12px;font-weight:800}
 .template-card-result small{color:#0d5d78}
-.template-card-use p,.template-card-result p{margin:0;color:#344650;font-size:14px;line-height:1.55}
+.template-card-use p,.template-card-result p{margin:0;color:#344650;font-size:14px;line-height:1.55;text-align:justify;text-align-last:right;text-justify:inter-word}
 .template-purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .template-purpose-grid section{padding:13px 14px;border:1px solid #e4ddd3;border-radius:13px;background:#fbfaf8}
 .template-purpose-grid section:last-child{background:#f3f7f9;border-color:#dce8ed}
 .template-purpose-grid small{display:block;margin-bottom:5px;color:#925821;font-size:12px;font-weight:800}
 .template-purpose-grid section:last-child small{color:#0d5d78}
-.template-purpose-grid strong{display:block;color:#243943;font-size:15px;line-height:1.65}
+.template-purpose-grid strong{display:block;color:#243943;font-size:15px;line-height:1.65;text-align:justify;text-align-last:right;text-justify:inter-word}
 .template-use-guide{margin:0 0 12px;padding:13px 14px;border:1px solid #e4ddd3;border-radius:13px;background:#fff}
 .template-use-steps{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .template-use-steps li{display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:start;padding:10px;border-radius:10px;background:#f8f5f0}
@@ -23,7 +23,10 @@
 .template-use-steps strong,.template-use-steps small{display:block}
 .template-use-steps strong{color:#0d3656;font-size:14px}
 .template-use-steps small{margin-top:3px;color:#64717a;font-size:12px;line-height:1.55}
+.template-reference-note{margin:8px 0 11px;padding:9px 11px;border-right:3px solid #c9853c;border-radius:8px;background:#f8f5f0;color:#5f6c74;font-size:13px;line-height:1.65}
+.template-references a>span{white-space:nowrap}
+.template-references a>small b{color:#925821;font-weight:800}
 .enhanced-template-actions p{display:grid;gap:2px}
 .enhanced-template-actions p strong{color:#0d3656;font-size:14px}
 .enhanced-template-actions p span{color:#68747d;font-size:12px}
-@media (max-width:820px){.templates-how,.template-use-steps{grid-template-columns:1fr}.template-purpose-grid{grid-template-columns:1fr}}
+@media (max-width:820px){.templates-how,.template-use-steps{grid-template-columns:1fr}.template-purpose-grid{grid-template-columns:1fr}.template-card-use p,.template-card-result p,.template-purpose-grid strong{text-align:right;text-align-last:auto}}
