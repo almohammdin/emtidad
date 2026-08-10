@@ -39,6 +39,10 @@
  });
 
  document.querySelectorAll('.footer-bottom').forEach(footer => {
+  footer.querySelectorAll('span').forEach(span => {
+   const text = (span.textContent || '').trim();
+   if (text.startsWith('آخر تحديث:') || text === 'مرجعية نظام الأحوال الشخصية السعودي') span.remove();
+  });
   if (footer.querySelector('[data-theme-toggle]')) return;
   const button = document.createElement('button');
   button.type = 'button';
