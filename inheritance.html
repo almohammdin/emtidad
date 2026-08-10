@@ -6,9 +6,9 @@
 <title>حاسبة المواريث | إمتداد</title>
 <meta name="theme-color" content="#0D3656">
 <meta name="description" content="حاسبة المواريث ضمن أدوات إمتداد.">
-<link rel="icon" type="image/png" href="assets/images/favicon.png?v=0.10.0">
-<link rel="stylesheet" href="assets/css/style.css?v=0.10.0">
-<link rel="stylesheet" href="assets/css/inheritance.css?v=0.10.0">
+<link rel="icon" type="image/png" href="assets/images/favicon.png?v=0.10.1">
+<link rel="stylesheet" href="assets/css/style.css?v=0.10.1">
+<link rel="stylesheet" href="assets/css/inheritance.css?v=0.10.1">
 <style>
 .inherit-guide{margin:0 0 16px;padding:13px 15px;border-radius:14px;background:#f7f4ee;color:#596870;font-size:.88rem;line-height:1.75}.inherit-guide strong{color:#0d3656}.inherit-example-note{margin-top:10px;color:#79858b;font-size:.8rem}.inherit-example-badge{display:inline-flex;margin-left:7px;padding:5px 9px;border-radius:999px;background:#f4e9dc;color:#754b25;font-size:.76rem;font-weight:850}.sar-symbol{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:800}.sar-money{display:inline-flex;align-items:center;gap:.28em;white-space:nowrap}.currency-hint{display:inline-flex;align-items:center;gap:6px;margin-top:3px;color:#7b858b;font-size:.75rem;font-weight:600}.inherit-result .inherit-actions{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(255,255,255,.6),#fff 28%);padding-top:14px;margin-top:14px}.inherit-row{border-right:3px solid transparent;transition:.18s}.inherit-row:hover{border-right-color:#b77a3d}.inherit-summary{grid-template-columns:1.2fr .8fr}.inherit-ref{margin-top:18px}
 </style>
@@ -30,8 +30,8 @@
 <aside class="inherit-card inherit-result" id="resultCard" aria-live="polite"><div class="inherit-empty" id="emptyState"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6v36M10 12h28M13 12 6 25h14L13 12Zm22 0-7 13h14L35 12ZM14 42h20"/></svg><h2>النتيجة تظهر هنا</h2><p>أدخل البيانات أو افتح المثال التجريبي.</p></div><div id="resultContent" hidden></div></aside></div>
 <section class="inherit-ref"><span class="inherit-badge">المرجعية</span><h3>مرجع الحساب والتحقق</h3><p>يبنى المحرك على أحكام التركة والإرث في نظام الأحوال الشخصية السعودي، وتستخدم حاسبات إنفاذ ووزارة العدل للمقارنة والتحقق. الحالات المركبة تنتقل إلى المرجع الرسمي.</p><div class="inherit-ref-links"><a href="https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/4d72d829-947b-45d5-b9b5-ae5800d6bac2/1" target="_blank" rel="noopener">نظام الأحوال الشخصية</a><a href="https://infath.gov.sa/ar/inheritances/" target="_blank" rel="noopener">حاسبات إنفاذ</a></div></section>
 </div></main>
-<footer class="footer-wrap"><div class="container footer-shell"><div class="footer-main"><div class="footer-brand"><span class="naif-mark" role="img" aria-label="شعار نايف المحمدي"></span><div class="footer-copy"><p>مستشار الحوكمة وتطوير الأعمال</p></div></div><div class="footer-nav"><a href="index.html">الرئيسية</a><a href="resources.html">الأدوات والنماذج</a><a href="privacy.html">الخصوصية</a></div><a class="social-handle" href="https://linktr.ee/almohammdin" target="_blank" rel="noopener">Almohammdin</a></div><div class="footer-bottom"><span class="footer-version">v0.10.0</span></div></div></footer><button class="back-to-top" id="backToTop" type="button">↑</button>
-<script src="assets/js/inheritance-engine.js?v=0.10.0"></script>
+<footer class="footer-wrap"><div class="container footer-shell"><div class="footer-main"><div class="footer-brand"><span class="naif-mark" role="img" aria-label="شعار نايف المحمدي"></span><div class="footer-copy"><p>مستشار الحوكمة وتطوير الأعمال</p></div></div><div class="footer-nav"><a href="index.html">الرئيسية</a><a href="resources.html">الأدوات والنماذج</a><a href="privacy.html">الخصوصية</a></div><a class="social-handle" href="https://linktr.ee/almohammdin" target="_blank" rel="noopener">Almohammdin</a></div><div class="footer-bottom"><span class="footer-version">v0.10.1</span></div></div></footer><button class="back-to-top" id="backToTop" type="button">↑</button>
+<script src="assets/js/inheritance-engine.js?v=0.10.1"></script>
 <script>
 (()=>{
 'use strict';
@@ -53,7 +53,7 @@ function renderOk(out,isExample=false){
   const rows=out.shares.map(x=>{const groupAmount=d.estate*E.num(x.share),perShare=E.div(x.share,E.F(x.count)),perAmount=groupAmount/x.count,percent=pctFmt(E.num(x.share));return `<article class="inherit-row" data-name="${esc(x.label)}" data-share="${esc(frac(x.share))}" data-percent="${esc(percent)}" data-amount="${groupAmount}" data-each="${x.count>1?perAmount:0}" data-reason="${esc(x.reason)}"><div class="inherit-row-head"><div><h4>${esc(x.label)}${x.count>1?` <small>(${x.count})</small>`:''}</h4><p>${esc(x.reason)}</p></div><span class="inherit-share">${frac(x.share)} · ${percent}</span></div><div class="inherit-money"><span>${x.count>1?'إجمالي المجموعة':'النصيب'}</span><strong>${money(groupAmount)}</strong></div>${x.count>1?`<div class="inherit-money"><span>لكل فرد</span><strong>${frac(perShare)} · ${money(perAmount)}</strong></div>`:''}</article>`;}).join('');
   const blocked=out.blocked.length?`<div class="inherit-blocked"><h4>المحجوبون في البيانات المدخلة</h4><ul>${out.blocked.map(x=>`<li>${esc(x.label)}${x.count>1?` (${x.count})`:''}: ${esc(x.reason)}</li>`).join('')}</ul></div>`:'';
   const notes=out.notes.map(x=>`<div class="inherit-note">${esc(x)}</div>`).join(''),warnings=out.warnings.map(x=>`<div class="inherit-info">${esc(x)}</div>`).join('');
-  showResult();$('resultContent').innerHTML=`${isExample?'<span class="inherit-example-badge">مثال تجريبي</span>':''}<span class="inherit-badge">${out.mode==='عادي'?'نتيجة المسألة':esc(out.mode)}</span><h2 style="margin-top:8px">توزيع صافي التركة</h2><div class="inherit-summary"><div class="inherit-stat"><small>صافي التركة</small><strong>${money(d.estate)}</strong></div><div class="inherit-stat"><small>مجموع الأنصبة</small><strong>${pctFmt(total)}</strong></div></div>${rows}${notes}${warnings}${blocked}<div class="inherit-actions"><button class="inherit-btn ghost" type="button" data-export-pdf>حفظ PDF</button><a class="inherit-btn secondary" href="https://infath.gov.sa/ar/inheritances/" target="_blank" rel="noopener">مقارنة مع إنفاذ</a></div>`;
+  showResult();$('resultContent').innerHTML=`${isExample?'<span class="inherit-example-badge">مثال تجريبي</span>':''}<span class="inherit-badge">${out.mode==='عادي'?'نتيجة المسألة':esc(out.mode)}</span><h2 style="margin-top:8px">توزيع صافي التركة</h2><div class="inherit-summary"><div class="inherit-stat"><small>صافي التركة</small><strong>${money(d.estate)}</strong></div><div class="inherit-stat"><small>مجموع الأنصبة</small><strong>${pctFmt(total)}</strong></div></div>${rows}${notes}${warnings}${blocked}<div class="inherit-actions"><button class="inherit-btn ghost" type="button" data-export-pdf>حفظ PDF</button></div>`;
 }
 function calculate(isExample=false){
   if(!E){alert('تعذر تحميل محرك الحساب');return;}
@@ -66,6 +66,6 @@ function toggleGender(){const male=$('deceasedGender').value==='male';$('spouseM
 $('deceasedGender').onchange=toggleGender;$('calculateBtn').onclick=()=>calculate(false);$('exampleBtn').onclick=example;$('resetBtn').onclick=reset;toggleGender();window.EmtidadInheritancePage={read,calculate,reset,example};
 })();
 </script>
-<script src="assets/js/inheritance-export.js?v=0.10.0"></script>
-<script src="assets/js/shell.js?v=0.10.0" defer></script>
+<script src="assets/js/inheritance-export.js?v=0.10.1"></script>
+<script src="assets/js/shell.js?v=0.10.1" defer></script>
 </body></html>
