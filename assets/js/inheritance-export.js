@@ -1,28 +1,46 @@
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id),RIYAL='⃁';
-function cleanText(el){return (el?.textContent||'').replace(/\s+/g,' ').trim();}
-function htmlEscape(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
-function moneyText(strong){return strong?.dataset?.money||cleanText(strong);}
-function exportExcel(){
-  try{
-    const rows=[...document.querySelectorAll('#resultContent .inherit-row')];
-    if(!rows.length){alert('احسب الأنصبة أولا');return;}
-    const body=rows.map(row=>{
-      const name=cleanText(row.querySelector('h4'));
-      const reason=cleanText(row.querySelector('p'));
-      const share=cleanText(row.querySelector('.inherit-share'));
-      const moneyLines=[...row.querySelectorAll('.inherit-money')];
-      const total=moneyLines[0]?moneyText(moneyLines[0].querySelector('strong')):'';
-      const each=moneyLines[1]?moneyText(moneyLines[1].querySelector('strong')):'';
-      return `<tr><td>${htmlEscape(name)}</td><td>${htmlEscape(share)}</td><td>${htmlEscape(total)}</td><td>${htmlEscape(each)}</td><td>${htmlEscape(reason)}</td></tr>`;
-    }).join('');
-    const estateStrong=document.querySelector('#resultContent .inherit-stat strong');
-    const estate=estateStrong?.dataset?.money||cleanText(estateStrong);
-    const html=`<!doctype html><html dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;direction:rtl}h2{color:#0d3656}table{border-collapse:collapse;width:100%}th,td{border:1px solid #cfd6da;padding:9px;text-align:right}th{background:#eef3f6;color:#0d3656}</style></head><body><h2>نتيجة حاسبة المواريث</h2><p>صافي التركة: ${htmlEscape(estate)}</p><p>رمز العملة: ${RIYAL} ريال سعودي</p><table><thead><tr><th>الوارث</th><th>النصيب والنسبة</th><th>إجمالي النصيب</th><th>نصيب الفرد</th><th>سبب الاستحقاق</th></tr></thead><tbody>${body}</tbody></table></body></html>`;
-    const blob=new Blob(['\ufeff',html],{type:'application/vnd.ms-excel;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`نتيجة-المواريث-${new Date().toISOString().slice(0,10)}.xls`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
-  }catch(error){console.error(error);alert('تعذر تجهيز ملف إكسل الآن');}
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
+function resultRows(){
+  return [...document.querySelectorAll('#resultContent .inherit-row')].map(row=>({
+    name:row.dataset.name||clean(row.querySelector('h4')?.textContent),
+    share:row.dataset.share||clean(row.querySelector('.inherit-share')?.textContent).split('·')[0],
+    percent:row.dataset.percent||clean(row.querySelector('.inherit-share')?.textContent).split('·')[1]||'',
+    amount:Number(row.dataset.amount||0),
+    each:Number(row.dataset.each||0),
+    reason:row.dataset.reason||clean(row.querySelector('p')?.textContent)
+  }));
 }
-function enhance(){const result=$('resultContent');if(!result)return;const print=$('printResultBtn');if(print)print.textContent='حفظ PDF';const actions=result.querySelector('.inherit-actions');if(actions&&result.querySelector('.inherit-row')&&!$('excelResultBtn')){const btn=document.createElement('button');btn.className='inherit-btn ghost';btn.id='excelResultBtn';btn.type='button';btn.textContent='تحميل ملف إكسل';btn.addEventListener('click',exportExcel);actions.insertBefore(btn,actions.firstChild);}}
-const target=$('resultContent');if(target)new MutationObserver(enhance).observe(target,{childList:true,subtree:true});enhance();
+function estateValue(){return Number($('estate')?.value||0);}
+function money(n){return `${RIYAL} ${new Intl.NumberFormat('en-SA',{maximumFractionDigits:2}).format(Number(n)||0)}`;}
+function blockedItems(){return [...document.querySelectorAll('#resultContent .inherit-blocked li')].map(li=>clean(li.textContent));}
+function resultMode(){return clean(document.querySelector('#resultContent .inherit-badge:last-of-type')?.textContent)||'نتيجة المسألة';}
+function exportInheritancePdf(){
+  const rows=resultRows();if(!rows.length){alert('احسب الأنصبة أولا');return;}
+  const win=window.open('','_blank','noopener,noreferrer');if(!win){alert('اسمح بفتح نافذة التصدير ثم حاول مرة أخرى');return;}
+  const blocked=blockedItems();
+  const tbody=rows.map(r=>`<tr><td><b>${esc(r.name)}</b></td><td>${esc(r.share)}</td><td>${esc(r.percent)}</td><td class="money">${esc(money(r.amount))}</td><td class="money">${r.each?esc(money(r.each)):'—'}</td><td>${esc(r.reason)}</td></tr>`).join('');
+  const blockedHtml=blocked.length?`<section class="blocked"><h3>المحجوبون في البيانات المدخلة</h3><ul>${blocked.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></section>`:'';
+  win.document.open();
+  win.document.write(`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>نتيجة حاسبة المواريث</title><style>
+  @page{size:A4;margin:12mm}*{box-sizing:border-box}body{margin:0;font-family:Arial,"Tahoma",sans-serif;color:#263843;background:#fff;direction:rtl}.page{max-width:186mm;margin:auto}.brand{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid #0d3656;padding:0 0 12px}.brand-mark{display:flex;align-items:center;gap:10px}.brand-icon{width:40px;height:40px;border-radius:12px;background:#0d3656;color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px}.brand b{color:#0d3656;font-size:18px}.brand small{color:#7b878d}.title{padding:18px 0 12px}.title h1{margin:0 0 6px;color:#0d3656;font-size:25px}.title p{margin:0;color:#748087;font-size:12px}.summary{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:8px;margin:6px 0 16px}.stat{border:1px solid #dfe5e8;border-radius:11px;padding:11px;background:#f8fafb}.stat small{display:block;color:#7d898f;font-size:10px;margin-bottom:5px}.stat strong{color:#0d3656;font-size:15px}.stat.money strong{direction:ltr;display:inline-block}.table-wrap{border:1px solid #dfe5e8;border-radius:12px;overflow:hidden}table{width:100%;border-collapse:collapse;font-size:10.5px}thead{background:#0d3656;color:#fff}th{padding:9px 7px;text-align:right;font-weight:700}td{padding:9px 7px;border-bottom:1px solid #e9edef;vertical-align:top;line-height:1.55}tbody tr:nth-child(even){background:#fafbfb}td.money{direction:ltr;text-align:left;white-space:nowrap;font-weight:700;color:#0d3656}.blocked{margin-top:14px;border-right:4px solid #b77a3d;background:#faf7f2;border-radius:9px;padding:10px 13px}.blocked h3{margin:0 0 6px;color:#754b25;font-size:12px}.blocked ul{margin:0;padding-right:18px;font-size:10.5px;line-height:1.7}.note{margin-top:14px;padding-top:10px;border-top:1px solid #e4e8ea;color:#7b858b;font-size:9.5px;line-height:1.7}.footer{margin-top:12px;display:flex;justify-content:space-between;color:#8b969b;font-size:9px}.no-print{margin:15px auto;text-align:center}.no-print button{border:0;border-radius:8px;padding:9px 16px;background:#0d3656;color:white;font:inherit;cursor:pointer}@media print{.no-print{display:none}.page{max-width:none}tr{break-inside:avoid}}
+  </style></head><body><div class="page"><header class="brand"><div class="brand-mark"><span class="brand-icon">ا</span><div><b>إمتداد</b><small> · أدوات الشركات العائلية</small></div></div><small>حاسبة المواريث</small></header><section class="title"><h1>نتيجة حاسبة المواريث</h1><p>ملخص الأنصبة بحسب البيانات المدخلة في الحاسبة</p></section><section class="summary"><div class="stat money"><small>صافي التركة</small><strong>${esc(money(estateValue()))}</strong></div><div class="stat"><small>حالة المسألة</small><strong>${esc(resultMode())}</strong></div><div class="stat"><small>فئات الورثة</small><strong>${rows.length}</strong></div></section><div class="table-wrap"><table><thead><tr><th>الوارث</th><th>النصيب</th><th>النسبة</th><th>إجمالي المبلغ</th><th>نصيب الفرد</th><th>سبب الاستحقاق</th></tr></thead><tbody>${tbody}</tbody></table></div>${blockedHtml}<div class="note">هذه النتيجة أداة مساعدة أولية مبنية على البيانات المدخلة. عند القسمة الفعلية أو وجود حالة مركبة يرجع إلى المستند الرسمي والجهة المختصة.</div><div class="footer"><span>إمتداد</span><span>نظام الأحوال الشخصية · حاسبات إنفاذ</span></div><div class="no-print"><button onclick="window.print()">حفظ PDF</button></div></div></body></html>`);
+  win.document.close();setTimeout(()=>win.print(),350);
+}
+function exportInheritanceExcel(){
+  const rows=resultRows();if(!rows.length){alert('احسب الأنصبة أولا');return;}
+  const tbody=rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.share)}</td><td>${esc(r.percent)}</td><td class="num">${r.amount||''}</td><td class="num">${r.each||''}</td><td>${esc(r.reason)}</td></tr>`).join('');
+  const blocked=blockedItems();
+  const html=`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>body{font-family:Arial;direction:rtl}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bfcbd1;padding:8px;text-align:right}th{background:#0d3656;color:#fff}.head{background:#eef3f6;color:#0d3656;font-weight:bold}.num{mso-number-format:'0.00';direction:ltr;text-align:left}</style></head><body><table><tr><td class="head" colspan="6">نتيجة حاسبة المواريث | إمتداد</td></tr><tr><td class="head">صافي التركة</td><td colspan="5" class="num">${estateValue()}</td></tr><tr><th>الوارث</th><th>النصيب</th><th>النسبة</th><th>إجمالي المبلغ</th><th>نصيب الفرد</th><th>سبب الاستحقاق</th></tr>${tbody}${blocked.length?`<tr><td class="head">المحجوبون</td><td colspan="5">${esc(blocked.join(' | '))}</td></tr>`:''}</table></body></html>`;
+  const blob=new Blob(['\ufeff',html],{type:'application/vnd.ms-excel;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='نتيجة-المواريث.xls';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function wire(){
+  document.querySelectorAll('[data-export-pdf],#printResultBtn').forEach(btn=>{if(btn.dataset.exportBound)return;btn.dataset.exportBound='1';btn.textContent='حفظ PDF';btn.addEventListener('click',e=>{e.preventDefault();exportInheritancePdf();});});
+  const actions=document.querySelector('#resultContent .inherit-actions');
+  if(actions&&!document.getElementById('excelResultBtn')){const b=document.createElement('button');b.type='button';b.id='excelResultBtn';b.className='inherit-btn ghost';b.textContent='تحميل ملف إكسل';b.addEventListener('click',exportInheritanceExcel);actions.insertBefore(b,actions.firstChild);}
+}
+const target=$('resultContent');if(target)new MutationObserver(wire).observe(target,{childList:true,subtree:true});wire();
+window.exportInheritancePdf=exportInheritancePdf;window.exportInheritanceExcel=exportInheritanceExcel;
 })();
