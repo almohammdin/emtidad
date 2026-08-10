@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 const $=id=>document.getElementById(id),RIYAL='⃁';
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[m]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const clean=s=>String(s??'').replace(/\s+/g,' ').trim();
 function resultRows(){return [...document.querySelectorAll('#resultContent .inherit-row')].map(row=>({name:row.dataset.name||clean(row.querySelector('h4')?.textContent),share:row.dataset.share||clean(row.querySelector('.inherit-share')?.textContent).split('·')[0],percent:row.dataset.percent||clean(row.querySelector('.inherit-share')?.textContent).split('·')[1]||'',amount:Number(row.dataset.amount||0),each:Number(row.dataset.each||0),reason:row.dataset.reason||clean(row.querySelector('p')?.textContent)}));}
 function estateValue(){return Number($('estate')?.value||0);}
@@ -24,11 +24,7 @@ function exportInheritanceExcel(){
   const blob=new Blob(['\ufeff',html],{type:'application/vnd.ms-excel;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='نتيجة-المواريث.xls';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function removeComparison(){document.querySelectorAll('#resultContent a').forEach(a=>{if(clean(a.textContent)==='مقارنة مع إنفاذ')a.remove();});}
-function wire(){
-  removeComparison();
-  document.querySelectorAll('[data-export-pdf],#printResultBtn').forEach(btn=>{if(btn.dataset.exportBound)return;btn.dataset.exportBound='1';btn.textContent='حفظ PDF';btn.addEventListener('click',e=>{e.preventDefault();exportInheritancePdf();});});
-  const actions=document.querySelector('#resultContent .inherit-actions');if(actions&&!document.getElementById('excelResultBtn')){const b=document.createElement('button');b.type='button';b.id='excelResultBtn';b.className='inherit-btn ghost';b.textContent='تحميل ملف إكسل';b.addEventListener('click',exportInheritanceExcel);actions.insertBefore(b,actions.firstChild);}
-}
+function wire(){removeComparison();document.querySelectorAll('[data-export-pdf],#printResultBtn').forEach(btn=>{if(btn.dataset.exportBound)return;btn.dataset.exportBound='1';btn.textContent='حفظ PDF';btn.addEventListener('click',e=>{e.preventDefault();exportInheritancePdf();});});const actions=document.querySelector('#resultContent .inherit-actions');if(actions&&!document.getElementById('excelResultBtn')){const b=document.createElement('button');b.type='button';b.id='excelResultBtn';b.className='inherit-btn ghost';b.textContent='تحميل ملف إكسل';b.addEventListener('click',exportInheritanceExcel);actions.insertBefore(b,actions.firstChild);}}
 const target=$('resultContent');if(target)new MutationObserver(wire).observe(target,{childList:true,subtree:true});wire();
 window.exportInheritancePdf=exportInheritancePdf;window.exportInheritanceExcel=exportInheritanceExcel;
 })();
